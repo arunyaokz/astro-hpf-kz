@@ -57,7 +57,21 @@ export const TRANSLATIONS = {
     
     // Contact
     contactTitle: "联系我们",
-    getInTouch: "开始合作"
+    getInTouch: "开始合作",
+    
+    // Route Tracking
+    routeTrackingTitle: "实时路线追踪",
+    trackingNumber: "运单号",
+    enterTrackingNumber: "请输入运单号",
+    track: "追踪",
+    shipmentStatus: "货物状态",
+    currentLocation: "当前位置",
+    estimatedArrival: "预计到达",
+    trackingHistory: "追踪历史",
+    
+    // Customer Reviews
+    customerReviewsTitle: "客户评价",
+    seeMoreReviews: "查看更多评价"
   },
   
   en: {
@@ -104,7 +118,21 @@ export const TRANSLATIONS = {
     
     // Contact
     contactTitle: "Contact Us",
-    getInTouch: "Get In Touch"
+    getInTouch: "Get In Touch",
+    
+    // Route Tracking
+    routeTrackingTitle: "Real-time Route Tracking",
+    trackingNumber: "Tracking Number",
+    enterTrackingNumber: "Enter tracking number",
+    track: "Track",
+    shipmentStatus: "Shipment Status",
+    currentLocation: "Current Location",
+    estimatedArrival: "Estimated Arrival",
+    trackingHistory: "Tracking History",
+    
+    // Customer Reviews
+    customerReviewsTitle: "Customer Reviews",
+    seeMoreReviews: "See More Reviews"
   },
   
   ru: {
@@ -151,7 +179,21 @@ export const TRANSLATIONS = {
     
     // Contact
     contactTitle: "Связаться с нами", 
-    getInTouch: "Связаться"
+    getInTouch: "Связаться",
+    
+    // Route Tracking
+    routeTrackingTitle: "Отслеживание маршрута в реальном времени",
+    trackingNumber: "Номер отслеживания",
+    enterTrackingNumber: "Введите номер отслеживания",
+    track: "Отследить",
+    shipmentStatus: "Статус груза",
+    currentLocation: "Текущее местоположение",
+    estimatedArrival: "Ожидаемое прибытие",
+    trackingHistory: "История отслеживания",
+    
+    // Customer Reviews
+    customerReviewsTitle: "Отзывы клиентов",
+    seeMoreReviews: "Посмотреть больше отзывов"
   }
 };
 
@@ -224,3 +266,118 @@ export const COLORS = {
   warning: '#FF9500', 
   error: '#FF3B30'
 };
+
+// Route Tracking Data
+export const TRACKING_DATA = {
+  "HPF240816001": {
+    status: "in_transit",
+    currentLocation: {
+      zh: "阿拉木图 → 库雷克港",
+      en: "Almaty → Port of Kuryk",
+      ru: "Алматы → Порт Курык"
+    },
+    progress: 45,
+    estimatedArrival: "2024-08-20T14:30:00Z",
+    route: [
+      {
+        location: { zh: "哈萨克斯坦 阿拉木图", en: "Almaty, Kazakhstan", ru: "Алматы, Казахстан" },
+        status: "completed",
+        timestamp: "2024-08-16T08:00:00Z",
+        description: { zh: "货物已取件", en: "Package picked up", ru: "Груз забран" }
+      },
+      {
+        location: { zh: "哈萨克斯坦 库雷克港", en: "Port of Kuryk, Kazakhstan", ru: "Порт Курык, Казахстан" },
+        status: "in_progress",
+        timestamp: "2024-08-18T12:00:00Z",
+        description: { zh: "运输中", en: "In transit", ru: "В пути" }
+      },
+      {
+        location: { zh: "阿塞拜疆 巴库", en: "Baku, Azerbaijan", ru: "Баку, Азербайджан" },
+        status: "pending",
+        timestamp: "2024-08-19T16:00:00Z",
+        description: { zh: "海运装船", en: "Loading for sea freight", ru: "Загрузка морского груза" }
+      },
+      {
+        location: { zh: "格鲁吉亚 巴统", en: "Batumi, Georgia", ru: "Батуми, Грузия" },
+        status: "pending",
+        timestamp: "2024-08-20T10:00:00Z",
+        description: { zh: "到港清关", en: "Port clearance", ru: "Портовая очистка" }
+      },
+      {
+        location: { zh: "土耳其 伊斯坦布尔", en: "Istanbul, Turkey", ru: "Стамбул, Турция" },
+        status: "pending",
+        timestamp: "2024-08-20T14:30:00Z",
+        description: { zh: "最终目的地", en: "Final destination", ru: "Конечный пункт назначения" }
+      }
+    ]
+  }
+};
+
+// Customer Reviews Data
+export const CUSTOMER_REVIEWS = [
+  {
+    id: "review_001",
+    name: { zh: "张总", en: "Mr. Zhang", ru: "Г-н Чжан" },
+    company: { zh: "北方工程机械", en: "Northern Engineering", ru: "Северная Инженерия" },
+    industry: { zh: "机械制造", en: "Manufacturing", ru: "Производство" },
+    rating: 5,
+    content: {
+      zh: "HPF的绿通服务真正解决了我们的痛点，从阿拉木图到伊斯坦布尔的运输时间缩短了40%，而且全程透明可控。",
+      en: "HPF's Green Channel service truly solved our pain points. Transit time from Almaty to Istanbul was reduced by 40%, with full transparency and control.",
+      ru: "Услуга «Зеленый канал» HPF действительно решила наши проблемы. Время доставки из Алматы в Стамбул сократилось на 40% при полной прозрачности и контроле."
+    },
+    date: "2024-07-15"
+  },
+  {
+    id: "review_002", 
+    name: { zh: "李经理", en: "Manager Li", ru: "Менеджер Ли" },
+    company: { zh: "中亚贸易集团", en: "Central Asia Trading", ru: "Центральная Азия Трейдинг" },
+    industry: { zh: "跨境贸易", en: "Cross-border Trade", ru: "Трансграничная торговля" },
+    rating: 5,
+    content: {
+      zh: "选择HPF是我们今年最正确的决定。专业的团队，稳定的服务，让我们在TMTM走廊的业务拓展非常顺利。",
+      en: "Choosing HPF was our best decision this year. Professional team and stable service made our TMTM corridor business expansion very smooth.",
+      ru: "Выбор HPF был нашим лучшим решением в этом году. Профессиональная команда и стабильный сервис обеспечили плавное развитие нашего бизнеса в коридоре ТМТМ."
+    },
+    date: "2024-08-01"
+  },
+  {
+    id: "review_003",
+    name: { zh: "Dmitri", en: "Dmitri", ru: "Дмитрий" },
+    company: { zh: "欧亚物流", en: "Eurasia Logistics", ru: "Евразия Логистика" },
+    industry: { zh: "物流服务", en: "Logistics Services", ru: "Логистические услуги" },
+    rating: 5,
+    content: {
+      zh: "HPF的数字化平台让我们实现了全链路可视化管理，客户满意度显著提升，强烈推荐！",
+      en: "HPF's digital platform enabled full supply chain visibility management. Customer satisfaction improved significantly. Highly recommended!",
+      ru: "Цифровая платформа HPF обеспечила полную прозрачность управления цепочкой поставок. Удовлетворенность клиентов значительно повысилась. Настоятельно рекомендую!"
+    },
+    date: "2024-08-10"
+  },
+  {
+    id: "review_004",
+    name: { zh: "王董", en: "Chairman Wang", ru: "Председатель Ван" },
+    company: { zh: "新疆矿业", en: "Xinjiang Mining", ru: "Синьцзян Майнинг" },
+    industry: { zh: "矿产开采", en: "Mining", ru: "Добыча полезных ископаемых" },
+    rating: 4,
+    content: {
+      zh: "与HPF合作三个月来，运输效率和成本控制都超出预期，期待更深入的合作。",
+      en: "Three months of cooperation with HPF exceeded expectations in both efficiency and cost control. Looking forward to deeper collaboration.",
+      ru: "Три месяца сотрудничества с HPF превзошли ожидания как по эффективности, так и по контролю затрат. С нетерпением ждем более глубокого сотрудничества."
+    },
+    date: "2024-07-28"
+  },
+  {
+    id: "review_005",
+    name: { zh: "陈总监", en: "Director Chen", ru: "Директор Чен" },
+    company: { zh: "丝路电商", en: "Silk Road E-commerce", ru: "Шелковый путь Электронная коммерция" },
+    industry: { zh: "电子商务", en: "E-commerce", ru: "Электронная коммерция" },
+    rating: 5,
+    content: {
+      zh: "HPF的最后一公里服务覆盖了我们大部分目标市场，交付时效和完损率都达到了行业领先水平。",
+      en: "HPF's last-mile service covers most of our target markets, with industry-leading delivery times and intact rates.",
+      ru: "Услуга «последней мили» HPF покрывает большинство наших целевых рынков с лидирующими в отрасли временем доставки и показателями сохранности."
+    },
+    date: "2024-08-05"
+  }
+];

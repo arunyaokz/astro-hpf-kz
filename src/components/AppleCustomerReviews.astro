@@ -1,0 +1,740 @@
+---
+import { TRANSLATIONS, CUSTOMER_REVIEWS } from '../consts.ts';
+---
+
+<section class="apple-customer-reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <h2 class="section-title" data-text="customerReviewsTitle">客户评价</h2>
+      <p class="section-subtitle">真实客户反馈，见证HPF品质承诺</p>
+    </div>
+    
+    <div class="reviews-carousel" id="reviews-carousel">
+      <div class="reviews-track" id="reviews-track">
+        <!-- Review cards will be populated by JavaScript -->
+      </div>
+      
+      <div class="carousel-controls">
+        <button class="carousel-btn prev-btn" id="prev-btn" aria-label="Previous review">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="carousel-indicators" id="carousel-indicators">
+          <!-- Indicators will be populated by JavaScript -->
+        </div>
+        <button class="carousel-btn next-btn" id="next-btn" aria-label="Next review">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="reviews-cta">
+      <button class="cta-button" data-text="seeMoreReviews">查看更多评价</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.apple-customer-reviews {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.apple-customer-reviews::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: var(--text-6xl);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: var(--text-xl);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.reviews-carousel {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.reviews-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  gap: 32px;
+  padding: 20px 0;
+}
+
+.review-card {
+  flex: 0 0 380px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 
+              0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  transform: scale(0.95);
+  opacity: 0.7;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.review-card.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.review-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15),
+              0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.review-avatar {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-success));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.review-author {
+  flex: 1;
+}
+
+.author-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.author-company {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+.author-industry {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  padding: 4px 8px;
+  background: var(--color-background-secondary);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.review-rating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  color: #FFD700;
+}
+
+.star.empty {
+  color: var(--color-border);
+}
+
+.review-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.review-content::before {
+  content: '"';
+  font-size: 48px;
+  color: var(--color-accent);
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  font-family: Georgia, serif;
+  opacity: 0.3;
+}
+
+.review-date {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.carousel-btn {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 12px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.reviews-cta {
+  text-align: center;
+}
+
+.cta-button {
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Auto-scroll animation */
+.reviews-track.auto-scroll {
+  animation: autoScroll 20s linear infinite;
+}
+
+@keyframes autoScroll {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-412px); }
+  50% { transform: translateX(-824px); }
+  75% { transform: translateX(-1236px); }
+  100% { transform: translateX(0); }
+}
+
+.reviews-track.auto-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .review-card {
+    flex: 0 0 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .apple-customer-reviews {
+    padding: 80px 0;
+  }
+  
+  .section-title {
+    font-size: var(--text-4xl);
+  }
+  
+  .review-card {
+    flex: 0 0 320px;
+    padding: 32px;
+  }
+  
+  .reviews-track {
+    gap: 20px;
+  }
+  
+  .carousel-controls {
+    gap: 20px;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-card {
+    flex: 0 0 280px;
+    padding: 24px;
+  }
+  
+  .review-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .author-industry {
+    margin-top: 8px;
+  }
+}
+</style>
+
+<script>
+interface Review {
+  id: string;
+  name: { zh: string; en: string; ru: string };
+  company: { zh: string; en: string; ru: string };
+  industry: { zh: string; en: string; ru: string };
+  rating: number;
+  content: { zh: string; en: string; ru: string };
+  date: string;
+}
+
+class AppleCustomerReviews {
+  private currentLang: string = 'zh';
+  private reviews: Review[] = [];
+  private translations: any;
+  private currentIndex: number = 0;
+  private autoScrollInterval: number | null = null;
+  private isUserInteracting: boolean = false;
+
+  constructor() {
+    this.reviews = (window as any).CUSTOMER_REVIEWS || [];
+    this.translations = (window as any).TRANSLATIONS || {};
+    this.init();
+  }
+
+  init() {
+    // Get current language
+    this.currentLang = localStorage.getItem('language') || 'zh';
+    this.updateTexts();
+
+    // Initialize reviews
+    this.renderReviews();
+    this.setupCarousel();
+    this.startAutoScroll();
+
+    // Bind events
+    this.bindEvents();
+
+    // Listen for language changes
+    window.addEventListener('languageChange', (e: any) => {
+      this.currentLang = e.detail.language;
+      this.updateTexts();
+      this.renderReviews();
+    });
+
+    // Intersection Observer for performance
+    this.setupIntersectionObserver();
+  }
+
+  updateTexts() {
+    const t = this.translations[this.currentLang] || this.translations.zh;
+    
+    document.querySelectorAll('[data-text]').forEach(element => {
+      const key = element.getAttribute('data-text');
+      if (key && t[key]) {
+        element.textContent = t[key];
+      }
+    });
+  }
+
+  renderReviews() {
+    const track = document.getElementById('reviews-track');
+    if (!track) return;
+
+    track.innerHTML = '';
+
+    this.reviews.forEach((review, index) => {
+      const reviewCard = this.createReviewCard(review, index);
+      track.appendChild(reviewCard);
+    });
+
+    this.renderIndicators();
+    this.updateActiveCard();
+  }
+
+  createReviewCard(review: Review, index: number): HTMLElement {
+    const card = document.createElement('div');
+    card.className = 'review-card';
+    card.dataset.index = index.toString();
+
+    // Get first letter for avatar
+    const firstLetter = review.name[this.currentLang as keyof typeof review.name].charAt(0);
+
+    card.innerHTML = `
+      <div class="review-header">
+        <div class="review-avatar">${firstLetter}</div>
+        <div class="review-author">
+          <div class="author-name">${review.name[this.currentLang as keyof typeof review.name]}</div>
+          <div class="author-company">${review.company[this.currentLang as keyof typeof review.company]}</div>
+          <div class="author-industry">${review.industry[this.currentLang as keyof typeof review.industry]}</div>
+        </div>
+      </div>
+      <div class="review-rating">
+        ${this.renderStars(review.rating)}
+      </div>
+      <div class="review-content">
+        ${review.content[this.currentLang as keyof typeof review.content]}
+      </div>
+      <div class="review-date">
+        ${this.formatDate(review.date)}
+      </div>
+    `;
+
+    return card;
+  }
+
+  renderStars(rating: number): string {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+      const starClass = i <= rating ? 'star' : 'star empty';
+      stars += `
+        <svg class="${starClass}" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      `;
+    }
+    return stars;
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    
+    if (this.currentLang === 'zh') {
+      return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+    } else if (this.currentLang === 'en') {
+      return date.toLocaleDateString('en', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+      });
+    } else { // ru
+      return date.toLocaleDateString('ru', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+      });
+    }
+  }
+
+  renderIndicators() {
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+    if (!indicatorsContainer) return;
+
+    indicatorsContainer.innerHTML = '';
+
+    this.reviews.forEach((_, index) => {
+      const indicator = document.createElement('div');
+      indicator.className = 'indicator';
+      indicator.dataset.index = index.toString();
+      
+      indicator.addEventListener('click', () => {
+        this.goToSlide(index);
+      });
+
+      indicatorsContainer.appendChild(indicator);
+    });
+
+    this.updateIndicators();
+  }
+
+  setupCarousel() {
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    prevBtn?.addEventListener('click', () => {
+      this.previousSlide();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      this.nextSlide();
+    });
+
+    // Touch/swipe support
+    this.setupTouchEvents();
+  }
+
+  setupTouchEvents() {
+    const track = document.getElementById('reviews-track');
+    if (!track) return;
+
+    let startX: number;
+    let startY: number;
+    let isDragging = false;
+
+    track.addEventListener('touchstart', (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isDragging = true;
+      this.pauseAutoScroll();
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!isDragging) return;
+      
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const diffX = startX - currentX;
+      const diffY = startY - currentY;
+
+      // If vertical scroll is more significant, don't prevent default
+      if (Math.abs(diffY) > Math.abs(diffX)) {
+        return;
+      }
+
+      e.preventDefault();
+    }, { passive: false });
+
+    track.addEventListener('touchend', (e: TouchEvent) => {
+      if (!isDragging) return;
+      
+      const endX = e.changedTouches[0].clientX;
+      const diffX = startX - endX;
+
+      if (Math.abs(diffX) > 50) { // Minimum swipe distance
+        if (diffX > 0) {
+          this.nextSlide();
+        } else {
+          this.previousSlide();
+        }
+      }
+
+      isDragging = false;
+      this.resumeAutoScroll();
+    }, { passive: true });
+  }
+
+  bindEvents() {
+    const carousel = document.getElementById('reviews-carousel');
+    
+    // Pause auto-scroll on hover
+    carousel?.addEventListener('mouseenter', () => {
+      this.pauseAutoScroll();
+    });
+
+    carousel?.addEventListener('mouseleave', () => {
+      if (!this.isUserInteracting) {
+        this.resumeAutoScroll();
+      }
+    });
+
+    // Pause on any user interaction
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.pauseAutoScroll();
+      } else if (!this.isUserInteracting) {
+        this.resumeAutoScroll();
+      }
+    });
+  }
+
+  setupIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Start animations when in view
+          entry.target.classList.add('animate-in');
+          this.resumeAutoScroll();
+        } else {
+          // Pause when out of view
+          this.pauseAutoScroll();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const section = document.querySelector('.apple-customer-reviews');
+    if (section) {
+      observer.observe(section);
+    }
+  }
+
+  goToSlide(index: number) {
+    this.isUserInteracting = true;
+    this.currentIndex = index;
+    this.updateCarousel();
+    
+    // Resume auto-scroll after a delay
+    setTimeout(() => {
+      this.isUserInteracting = false;
+      this.resumeAutoScroll();
+    }, 5000);
+  }
+
+  nextSlide() {
+    this.isUserInteracting = true;
+    this.currentIndex = (this.currentIndex + 1) % this.reviews.length;
+    this.updateCarousel();
+    
+    setTimeout(() => {
+      this.isUserInteracting = false;
+      this.resumeAutoScroll();
+    }, 5000);
+  }
+
+  previousSlide() {
+    this.isUserInteracting = true;
+    this.currentIndex = (this.currentIndex - 1 + this.reviews.length) % this.reviews.length;
+    this.updateCarousel();
+    
+    setTimeout(() => {
+      this.isUserInteracting = false;
+      this.resumeAutoScroll();
+    }, 5000);
+  }
+
+  updateCarousel() {
+    const track = document.getElementById('reviews-track');
+    if (!track) return;
+
+    const cardWidth = 412; // 380px + 32px gap
+    const offset = -this.currentIndex * cardWidth;
+    
+    track.style.transform = `translateX(${offset}px)`;
+    
+    this.updateActiveCard();
+    this.updateIndicators();
+    this.updateButtons();
+  }
+
+  updateActiveCard() {
+    const cards = document.querySelectorAll('.review-card');
+    cards.forEach((card, index) => {
+      if (index === this.currentIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+  }
+
+  updateIndicators() {
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+      if (index === this.currentIndex) {
+        indicator.classList.add('active');
+      } else {
+        indicator.classList.remove('active');
+      }
+    });
+  }
+
+  updateButtons() {
+    const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+
+    if (prevBtn) {
+      prevBtn.disabled = this.currentIndex === 0;
+    }
+    
+    if (nextBtn) {
+      nextBtn.disabled = this.currentIndex === this.reviews.length - 1;
+    }
+  }
+
+  startAutoScroll() {
+    this.autoScrollInterval = window.setInterval(() => {
+      if (!this.isUserInteracting) {
+        this.nextSlide();
+      }
+    }, 4000);
+  }
+
+  pauseAutoScroll() {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+      this.autoScrollInterval = null;
+    }
+  }
+
+  resumeAutoScroll() {
+    if (!this.autoScrollInterval && !this.isUserInteracting) {
+      this.startAutoScroll();
+    }
+  }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new AppleCustomerReviews();
+});
+</script>

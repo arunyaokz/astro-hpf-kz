@@ -5,9 +5,11 @@ import Footer from '../components/Footer.astro';
 import AppleHeroSection from '../components/AppleHeroSection.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import SolutionsSection from '../components/SolutionsSection.astro';
+import AppleRouteTracking from '../components/AppleRouteTracking.astro';
+import AppleCustomerReviews from '../components/AppleCustomerReviews.astro';
 import AboutSection from '../components/AboutSection.astro';
 import ContactSection from '../components/ContactSection.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, TRANSLATIONS, TRACKING_DATA, CUSTOMER_REVIEWS } from '../consts';
 ---
 
 <!doctype html>
@@ -69,6 +71,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			
 			<!-- 行业解决方案区域 -->
 			<SolutionsSection />
+			
+			<!-- 实时路线追踪区域 -->
+			<AppleRouteTracking />
+			
+			<!-- 客户评价区域 -->
+			<AppleCustomerReviews />
 			
 			<!-- 关于我们区域 -->
 			<AboutSection />
@@ -218,6 +226,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			}
 		</style>
 		
+		<!-- 全局数据注入 -->
+		<script define:vars={{ TRANSLATIONS, TRACKING_DATA, CUSTOMER_REVIEWS }}>
+			// 将数据注入到全局作用域
+			window.TRANSLATIONS = TRANSLATIONS;
+			window.TRACKING_DATA = TRACKING_DATA;
+			window.CUSTOMER_REVIEWS = CUSTOMER_REVIEWS;
+		</script>
+
 		<!-- 页面级别的JavaScript -->
 		<script>
 			// 页面加载完成后的初始化
