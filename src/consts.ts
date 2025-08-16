@@ -9,7 +9,7 @@ export const COMPANY_NAME = "HPF.kz";
 export const COMPANY_TAGLINE = "低调确定性的跨境效率";
 export const COMPANY_TAGLINE_EN = "Move quietly, deliver surely.";
 export const COMPANY_HERO_TITLE = "行稳致远·交付确定性";
-export const COMPANY_HERO_SUBTITLE = "把复杂留给系统，把简单留给客户。HPF.kz以"低调而有效"的运营方法论贯通跨里海中间走廊，构建低摩擦、可观测、可承诺的跨境物流网络。";
+export const COMPANY_HERO_SUBTITLE = "把复杂留给系统，把简单留给客户。HPF.kz以\"低调而有效\"的运营方法论贯通跨里海中间走廊，构建低摩擦、可观测、可承诺的跨境物流网络。";
 
 // Brand Values
 export const COMPANY_MISSION = "用系统化确定性，为客户创造长期价值";
@@ -29,11 +29,11 @@ export const OPERATING_PRINCIPLES = [
   },
   {
     name: "顺势设计", 
-    description: "尊重地理、运能与政策的"势"，以系统化手段处理不确定性"
+    description: "尊重地理、运能与政策的\"势\"，以系统化手段处理不确定性"
   },
   {
     name: "节制增长",
-    description: "拒绝一次性"奇迹运力"，以可持续SLA与健康KPI构筑复利"
+    description: "拒绝一次性\"奇迹运力\"，以可持续SLA与健康KPI构筑复利"
   }
 ];
 
