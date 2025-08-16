@@ -1,0 +1,23 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`核心服务 - ${SITE_TITLE}`} description={`HPF KZ核心服务：战略咨询、技术创新、文化融合。${SITE_DESCRIPTION}`} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#5751D5">
+	</head>
+	<body>
+		<Header />
+		<main style="padding-top: 80px;">
+			<ServicesSection />
+		</main>
+		<Footer />
+	</body>
+</html>
