@@ -9,17 +9,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  /* 道德经"和光同尘"配色方案 */
-  --bg-primary: #FDFDFD;        /* 主背景 - 纯净如光 */
-  --text-primary: #161615;      /* 主文字 - 深邃如尘 */
-  --text-secondary: #666666;    /* 次要文字 */
-  --accent-primary: #5751D5;    /* 特殊高亮色 - 紫气东来 */
+  /* HPF.kz 专业物流配色方案 */
+  --bg-primary: #FDFDFD;        /* 主背景 - 纯净白色 */
+  --text-primary: #161615;      /* 主文字 - 深色文字 */
+  --text-secondary: #6B7280;    /* 次要文字 - 灰色 */
+  --accent-primary: #0066CC;    /* 物流蓝 - 专业可信 */
   --highlight: #161615;         /* 按钮高亮色 */
   
-  /* Aurora Gradient 配色 */
-  --aurora-1: rgba(87, 81, 213, 0.1);
-  --aurora-2: rgba(87, 81, 213, 0.05);
-  --aurora-3: rgba(22, 22, 21, 0.02);
+  /* 专业渐变配色 */
+  --gradient-1: rgba(0, 102, 204, 0.1);
+  --gradient-2: rgba(0, 102, 204, 0.05);
+  --gradient-3: rgba(22, 22, 21, 0.02);
   
   /* 字体尺寸 - 大对比设计 */
   --text-xs: 0.75rem;   /* 12px - 英文点缀文字 */
@@ -51,7 +51,7 @@
   --shadow-subtle: 0 1px 3px rgba(22, 22, 21, 0.1);
   --shadow-medium: 0 4px 6px rgba(22, 22, 21, 0.1);
   --shadow-large: 0 10px 15px rgba(22, 22, 21, 0.1);
-  --shadow-aurora: 0 20px 40px rgba(87, 81, 213, 0.15);
+  --shadow-brand: 0 20px 40px rgba(0, 102, 204, 0.15);
 }
 
 /* 重置和基础样式 */
@@ -74,11 +74,11 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   
-  /* Aurora背景渐变 */
+  /* 专业背景渐变 */
   background-image: 
-    radial-gradient(circle at 20% 80%, var(--aurora-1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, var(--aurora-2) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, var(--aurora-3) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, var(--gradient-1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--gradient-2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, var(--gradient-3) 0%, transparent 50%);
   background-attachment: fixed;
 }
 
@@ -165,7 +165,7 @@ body {
 .btn-primary:hover {
   background-color: var(--accent-primary);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-aurora);
+  box-shadow: var(--shadow-brand);
 }
 
 .btn-outline {
