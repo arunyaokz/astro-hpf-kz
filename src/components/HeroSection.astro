@@ -1,0 +1,265 @@
+---
+import { COMPANY_NAME, COMPANY_TAGLINE, COMPANY_TAGLINE_EN, COMPANY_DESCRIPTION } from '../consts';
+---
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      
+      <!-- 超大视觉数字元素 -->
+      <div class="hero-visual">
+        <span class="accent-number aurora-float">01</span>
+        <div class="visual-subtitle english-text small-element">
+          Philosophy
+        </div>
+      </div>
+      
+      <!-- 主标题区域 -->
+      <div class="hero-text">
+        <div class="hero-tagline chinese-text">
+          <h1 class="hero-title">{COMPANY_TAGLINE}</h1>
+          <p class="hero-subtitle english-text">{COMPANY_TAGLINE_EN}</p>
+        </div>
+        
+        <!-- 公司名称 -->
+        <div class="company-brand">
+          <h2 class="company-name large-element font-black">{COMPANY_NAME}</h2>
+          <div class="brand-line"></div>
+        </div>
+        
+        <!-- 描述文字 -->
+        <div class="hero-description">
+          <p class="description-text chinese-text">{COMPANY_DESCRIPTION}</p>
+          <p class="description-subtitle english-text small-element opacity-70 mt-md">
+            Embracing ancient wisdom in modern innovation
+          </p>
+        </div>
+        
+        <!-- 行动按钮 -->
+        <div class="hero-actions mt-4xl">
+          <a href="#services" class="btn btn-primary chinese-text">
+            了解我们
+            <span class="english-text small-element">Learn More</span>
+          </a>
+          <a href="#contact" class="btn btn-outline chinese-text">
+            联系合作
+            <span class="english-text small-element">Contact</span>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- 装饰性元素 -->
+    <div class="hero-decorations">
+      <div class="decoration decoration-1"></div>
+      <div class="decoration decoration-2"></div>
+      <div class="decoration decoration-3"></div>
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: 
+      radial-gradient(circle at 30% 20%, rgba(87, 81, 213, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(87, 81, 213, 0.05) 0%, transparent 50%);
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-5xl);
+    align-items: center;
+    padding: var(--spacing-5xl) 0;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-visual {
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero-visual .accent-number {
+    display: block;
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 4px 20px rgba(87, 81, 213, 0.3);
+  }
+  
+  .visual-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+  }
+  
+  .hero-text {
+    max-width: 100%;
+  }
+  
+  .hero-tagline {
+    margin-bottom: var(--spacing-3xl);
+  }
+  
+  .hero-title {
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .company-brand {
+    position: relative;
+    margin-bottom: var(--spacing-3xl);
+  }
+  
+  .company-name {
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .brand-line {
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-primary) 0%, var(--text-primary) 100%);
+    border-radius: 2px;
+  }
+  
+  .hero-description {
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .description-text {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+  
+  .hero-actions .btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    min-width: 160px;
+  }
+  
+  /* 装饰性元素 */
+  .hero-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .decoration {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(87, 81, 213, 0.1) 0%, rgba(22, 22, 21, 0.05) 100%);
+    filter: blur(40px);
+  }
+  
+  .decoration-1 {
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    right: 10%;
+    animation: aurora-float 8s ease-in-out infinite;
+  }
+  
+  .decoration-2 {
+    width: 300px;
+    height: 300px;
+    bottom: 20%;
+    left: 15%;
+    animation: aurora-float 10s ease-in-out infinite reverse;
+  }
+  
+  .decoration-3 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 30%;
+    animation: aurora-float 6s ease-in-out infinite;
+    animation-delay: -2s;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 1200px) {
+    .hero-content {
+      gap: var(--spacing-4xl);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-3xl);
+      text-align: center;
+      padding: var(--spacing-3xl) 0;
+    }
+    
+    .hero-visual {
+      order: 2;
+      margin-top: var(--spacing-2xl);
+    }
+    
+    .hero-text {
+      order: 1;
+    }
+    
+    .hero-actions {
+      justify-content: center;
+    }
+    
+    .hero-actions .btn {
+      min-width: 140px;
+      padding: var(--spacing-md) var(--spacing-xl);
+    }
+    
+    .decoration {
+      transform: scale(0.7);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    .hero-actions .btn {
+      width: 100%;
+      max-width: 280px;
+    }
+    
+    .brand-line {
+      width: 80px;
+      height: 3px;
+    }
+  }
+</style>

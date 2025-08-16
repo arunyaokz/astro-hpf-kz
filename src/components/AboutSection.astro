@@ -1,0 +1,389 @@
+---
+// 关于我们组件
+---
+
+<section id="about" class="about-section py-5xl">
+  <div class="container">
+    
+    <!-- 关于我们内容 -->
+    <div class="about-content grid grid-2 gap-5xl items-center">
+      
+      <!-- 左侧文字内容 -->
+      <div class="about-text">
+        <div class="section-number mb-xl">
+          <span class="accent-number">03</span>
+          <div class="english-text small-element opacity-70">About Us</div>
+        </div>
+        
+        <h2 class="section-title chinese-text mb-xl">
+          道法自然
+          <br />
+          <span class="english-text font-light opacity-80">Following Nature's Way</span>
+        </h2>
+        
+        <div class="about-description mb-2xl">
+          <p class="chinese-text text-lg mb-lg">
+            HPF KZ 源于对道德经智慧的深度理解，「和光同尘」不仅是我们的理念，更是我们行动的准则。我们相信，真正的成功源于内心的平静与外在的和谐。
+          </p>
+          
+          <p class="chinese-text text-lg mb-lg">
+            在这个快速变化的时代，我们选择以不变应万变，以古老的智慧指导现代的实践。我们不追求表面的辉煌，而专注于本质的价值创造。
+          </p>
+          
+          <div class="philosophy-quote mt-xl mb-xl">
+            <blockquote class="chinese-text text-xl font-medium">
+              "和其光，同其尘，是谓玄同"
+            </blockquote>
+            <cite class="english-text small-element opacity-70">
+              — 道德经第五十六章
+            </cite>
+          </div>
+        </div>
+        
+        <div class="about-stats grid grid-2 gap-lg mb-2xl">
+          <div class="stat-item">
+            <div class="stat-number accent-number font-black">5+</div>
+            <div class="stat-label chinese-text font-semibold">年深耕</div>
+            <div class="stat-sublabel english-text small-element opacity-70">Years of Excellence</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number accent-number font-black">100+</div>
+            <div class="stat-label chinese-text font-semibold">项目成功</div>
+            <div class="stat-sublabel english-text small-element opacity-70">Successful Projects</div>
+          </div>
+        </div>
+        
+        <a href="#contact" class="btn btn-outline chinese-text">
+          开启合作
+          <span class="english-text small-element">Start Collaboration</span>
+        </a>
+      </div>
+      
+      <!-- 右侧视觉元素 -->
+      <div class="about-visual">
+        <div class="visual-container">
+          
+          <!-- 主要视觉元素 -->
+          <div class="main-visual">
+            <div class="tao-symbol">
+              <div class="circle-outer">
+                <div class="circle-inner">
+                  <span class="tao-text chinese-text">道</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 装饰性文字 -->
+          <div class="visual-text">
+            <div class="text-item text-1 chinese-text opacity-60">和光</div>
+            <div class="text-item text-2 chinese-text opacity-60">同尘</div>
+            <div class="text-item text-3 english-text small-element opacity-40">Harmony</div>
+            <div class="text-item text-4 english-text small-element opacity-40">Unity</div>
+          </div>
+          
+          <!-- 背景装饰 -->
+          <div class="bg-decorations">
+            <div class="decoration dec-1"></div>
+            <div class="decoration dec-2"></div>
+            <div class="decoration dec-3"></div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- 企业文化 -->
+    <div class="culture-section mt-5xl pt-4xl">
+      <div class="culture-header text-center mb-4xl">
+        <h3 class="chinese-text text-4xl font-bold mb-md">企业文化</h3>
+        <p class="english-text opacity-70">Corporate Culture</p>
+      </div>
+      
+      <div class="culture-grid grid grid-3 gap-xl">
+        <div class="culture-item card text-center">
+          <div class="culture-icon chinese-text large-element mb-lg">虚</div>
+          <h4 class="chinese-text font-bold text-xl mb-md">虚怀若谷</h4>
+          <p class="chinese-text mb-sm">保持开放的心态，虚心学习，持续成长</p>
+          <p class="english-text small-element opacity-70">Open Mind, Continuous Learning</p>
+        </div>
+        
+        <div class="culture-item card text-center">
+          <div class="culture-icon chinese-text large-element mb-lg">静</div>
+          <h4 class="chinese-text font-bold text-xl mb-md">宁静致远</h4>
+          <p class="chinese-text mb-sm">在浮躁中保持冷静，在变化中寻找方向</p>
+          <p class="english-text small-element opacity-70">Calm Focus, Long-term Vision</p>
+        </div>
+        
+        <div class="culture-item card text-center">
+          <div class="culture-icon chinese-text large-element mb-lg">行</div>
+          <h4 class="chinese-text font-bold text-xl mb-md">知行合一</h4>
+          <p class="chinese-text mb-sm">将理念转化为行动，以实践验证真理</p>
+          <p class="english-text small-element opacity-70">Unity of Knowledge and Action</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(87, 81, 213, 0.04) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(22, 22, 21, 0.01) 0%, rgba(87, 81, 213, 0.02) 100%);
+  }
+  
+  .about-content {
+    align-items: center;
+  }
+  
+  .about-text {
+    max-width: 100%;
+  }
+  
+  .philosophy-quote {
+    position: relative;
+    padding: var(--spacing-xl);
+    border-left: 4px solid var(--accent-primary);
+    background: rgba(87, 81, 213, 0.05);
+    border-radius: 0 12px 12px 0;
+  }
+  
+  .philosophy-quote blockquote {
+    margin: 0 0 var(--spacing-sm) 0;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+  
+  .about-stats {
+    margin: var(--spacing-2xl) 0;
+  }
+  
+  .stat-item {
+    text-align: left;
+  }
+  
+  .stat-number {
+    font-size: var(--text-5xl);
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .stat-label {
+    font-size: var(--text-lg);
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+  }
+  
+  /* 视觉元素样式 */
+  .about-visual {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .visual-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-visual {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .tao-symbol {
+    position: relative;
+    animation: aurora-float 12s ease-in-out infinite;
+  }
+  
+  .circle-outer {
+    width: 200px;
+    height: 200px;
+    border: 3px solid var(--accent-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(253, 253, 253, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-aurora);
+  }
+  
+  .circle-inner {
+    width: 120px;
+    height: 120px;
+    border: 2px solid var(--text-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+  }
+  
+  .tao-text {
+    font-size: var(--text-6xl);
+    font-weight: 900;
+    color: var(--accent-primary);
+  }
+  
+  /* 装饰性文字 */
+  .visual-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+  
+  .text-item {
+    position: absolute;
+    font-weight: 600;
+    transform-origin: center;
+  }
+  
+  .text-1 {
+    top: 20%;
+    left: 10%;
+    font-size: var(--text-3xl);
+    animation: aurora-float 8s ease-in-out infinite;
+  }
+  
+  .text-2 {
+    bottom: 25%;
+    right: 15%;
+    font-size: var(--text-3xl);
+    animation: aurora-float 10s ease-in-out infinite reverse;
+  }
+  
+  .text-3 {
+    top: 15%;
+    right: 20%;
+    animation: aurora-float 9s ease-in-out infinite;
+    animation-delay: -2s;
+  }
+  
+  .text-4 {
+    bottom: 20%;
+    left: 20%;
+    animation: aurora-float 7s ease-in-out infinite;
+    animation-delay: -1s;
+  }
+  
+  /* 背景装饰 */
+  .bg-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .decoration {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(87, 81, 213, 0.1) 0%, rgba(22, 22, 21, 0.05) 100%);
+    filter: blur(30px);
+  }
+  
+  .dec-1 {
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 10%;
+    animation: aurora-float 15s ease-in-out infinite;
+  }
+  
+  .dec-2 {
+    width: 100px;
+    height: 100px;
+    bottom: 15%;
+    right: 10%;
+    animation: aurora-float 12s ease-in-out infinite reverse;
+  }
+  
+  .dec-3 {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 80%;
+    animation: aurora-float 18s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+  
+  /* 企业文化样式 */
+  .culture-section {
+    border-top: 1px solid rgba(22, 22, 21, 0.1);
+  }
+  
+  .culture-item {
+    transition: all 0.3s ease;
+  }
+  
+  .culture-item:hover {
+    transform: translateY(-4px);
+  }
+  
+  .culture-icon {
+    color: var(--accent-primary);
+    display: block;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-3xl);
+    }
+    
+    .about-visual {
+      height: 400px;
+      order: -1;
+    }
+    
+    .circle-outer {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .circle-inner {
+      width: 90px;
+      height: 90px;
+    }
+    
+    .tao-text {
+      font-size: var(--text-4xl);
+    }
+    
+    .text-1,
+    .text-2 {
+      font-size: var(--text-xl);
+    }
+    
+    .culture-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-stats {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: var(--text-4xl);
+    }
+  }
+</style>

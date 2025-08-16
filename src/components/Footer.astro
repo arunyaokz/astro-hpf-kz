@@ -1,62 +1,405 @@
 ---
+import { COMPANY_NAME, COMPANY_TAGLINE, COMPANY_TAGLINE_EN } from '../consts';
 const today = new Date();
 ---
 
-<footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
-	<div class="social-links">
-		<a href="https://m.webtoo.ls/@astro" target="_blank">
-			<span class="sr-only">Follow Astro on Mastodon</span>
-			<svg
-				viewBox="0 0 16 16"
-				aria-hidden="true"
-				width="32"
-				height="32"
-				astro-icon="social/mastodon"
-				><path
-					fill="currentColor"
-					d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-				></path></svg
-			>
-		</a>
-		<a href="https://twitter.com/astrodotbuild" target="_blank">
-			<span class="sr-only">Follow Astro on Twitter</span>
-			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/twitter"
-				><path
-					fill="currentColor"
-					d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-				></path></svg
-			>
-		</a>
-		<a href="https://github.com/withastro/astro" target="_blank">
-			<span class="sr-only">Go to Astro's GitHub repo</span>
-			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github"
-				><path
-					fill="currentColor"
-					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				></path></svg
-			>
-		</a>
-	</div>
+<footer class="site-footer">
+  <div class="container">
+    
+    <!-- 主要内容区域 -->
+    <div class="footer-content grid grid-4 gap-xl mb-5xl">
+      
+      <!-- 品牌信息 -->
+      <div class="footer-brand">
+        <div class="brand-logo mb-lg">
+          <span class="logo-symbol chinese-text">{COMPANY_TAGLINE}</span>
+          <div class="brand-info">
+            <h3 class="brand-name chinese-text font-bold">{COMPANY_NAME}</h3>
+            <p class="brand-tagline english-text small-element opacity-70">
+              {COMPANY_TAGLINE_EN}
+            </p>
+          </div>
+        </div>
+        <p class="brand-description chinese-text opacity-80 mb-lg">
+          以道德经「和光同尘」为指导思想，在浮华世界中保持本真，以包容与智慧创造持久价值。
+        </p>
+        <div class="contact-info">
+          <div class="contact-item mb-sm">
+            <span class="chinese-text font-medium">联系邮箱：</span>
+            <a href="mailto:info@hpfkz.com" class="contact-link">info@hpfkz.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="chinese-text font-medium">合作热线：</span>
+            <a href="tel:+8618888888888" class="contact-link">+86 188 8888 8888</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 服务项目 -->
+      <div class="footer-section">
+        <h4 class="section-title chinese-text font-bold mb-lg">核心服务</h4>
+        <ul class="footer-links">
+          <li><a href="#services" class="footer-link chinese-text">战略咨询</a></li>
+          <li><a href="#services" class="footer-link chinese-text">技术创新</a></li>
+          <li><a href="#services" class="footer-link chinese-text">文化融合</a></li>
+          <li><a href="#services" class="footer-link chinese-text">数字化转型</a></li>
+        </ul>
+      </div>
+      
+      <!-- 公司信息 -->
+      <div class="footer-section">
+        <h4 class="section-title chinese-text font-bold mb-lg">了解我们</h4>
+        <ul class="footer-links">
+          <li><a href="#about" class="footer-link chinese-text">关于我们</a></li>
+          <li><a href="#about" class="footer-link chinese-text">企业文化</a></li>
+          <li><a href="#about" class="footer-link chinese-text">发展历程</a></li>
+          <li><a href="#contact" class="footer-link chinese-text">联系我们</a></li>
+        </ul>
+      </div>
+      
+      <!-- 联系方式 -->
+      <div class="footer-section">
+        <h4 class="section-title chinese-text font-bold mb-lg">联系我们</h4>
+        <div class="contact-methods">
+          <div class="contact-method mb-md">
+            <div class="method-icon">📧</div>
+            <div class="method-info">
+              <div class="chinese-text font-medium">邮箱联系</div>
+              <a href="mailto:info@hpfkz.com" class="contact-link small-element">
+                info@hpfkz.com
+              </a>
+            </div>
+          </div>
+          <div class="contact-method mb-md">
+            <div class="method-icon">📱</div>
+            <div class="method-info">
+              <div class="chinese-text font-medium">电话咨询</div>
+              <a href="tel:+8618888888888" class="contact-link small-element">
+                +86 188 8888 8888
+              </a>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="method-icon">💬</div>
+            <div class="method-info">
+              <div class="chinese-text font-medium">微信咨询</div>
+              <span class="contact-text small-element">HPFKZ2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- 底部分割线 -->
+    <div class="footer-divider mb-xl"></div>
+    
+    <!-- 底部信息 -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content flex justify-between items-center">
+        
+        <!-- 版权信息 -->
+        <div class="copyright">
+          <p class="chinese-text opacity-70">
+            &copy; {today.getFullYear()} {COMPANY_NAME}. 保留所有权利
+          </p>
+          <p class="english-text small-element opacity-60">
+            All rights reserved. Powered by ancient wisdom and modern innovation.
+          </p>
+        </div>
+        
+        <!-- 道德经名句 -->
+        <div class="philosophy-quote">
+          <blockquote class="chinese-text font-medium opacity-80">
+            「和其光，同其尘」
+          </blockquote>
+          <cite class="english-text small-element opacity-60">
+            — 道德经
+          </cite>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- 背景装饰 -->
+  <div class="footer-decorations">
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+  </div>
 </footer>
+
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
+  .site-footer {
+    background: 
+      linear-gradient(135deg, rgba(22, 22, 21, 0.02) 0%, rgba(87, 81, 213, 0.03) 100%),
+      radial-gradient(circle at 30% 70%, rgba(87, 81, 213, 0.05) 0%, transparent 50%);
+    border-top: 1px solid rgba(22, 22, 21, 0.1);
+    padding: var(--spacing-5xl) 0 var(--spacing-3xl);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .footer-content {
+    margin-bottom: var(--spacing-4xl);
+  }
+  
+  /* 品牌信息 */
+  .footer-brand {
+    grid-column: span 2;
+  }
+  
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .logo-symbol {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--accent-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--accent-primary);
+    border-radius: 6px;
+    line-height: 1;
+  }
+  
+  .brand-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .brand-name {
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  
+  .brand-tagline {
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  
+  .brand-description {
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .contact-info {
+    margin-top: var(--spacing-lg);
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .contact-link {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+  
+  .contact-link:hover {
+    opacity: 0.8;
+  }
+  
+  /* 章节样式 */
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .section-title {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .footer-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    font-weight: 400;
+  }
+  
+  .footer-link:hover {
+    color: var(--accent-primary);
+    opacity: 1;
+    transform: translateX(4px);
+  }
+  
+  /* 联系方式样式 */
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .method-icon {
+    font-size: var(--text-xl);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(87, 81, 213, 0.1);
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  
+  .method-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .contact-text {
+    color: var(--text-secondary);
+  }
+  
+  /* 分割线 */
+  .footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(22, 22, 21, 0.2) 50%, transparent 100%);
+  }
+  
+  /* 底部信息 */
+  .footer-bottom-content {
+    align-items: flex-start;
+  }
+  
+  .copyright {
+    flex: 1;
+  }
+  
+  .philosophy-quote {
+    text-align: right;
+    max-width: 300px;
+  }
+  
+  .philosophy-quote blockquote {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--text-lg);
+    line-height: 1.4;
+  }
+  
+  /* 装饰性元素 */
+  .footer-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .decoration {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(87, 81, 213, 0.08) 0%, rgba(22, 22, 21, 0.03) 100%);
+    filter: blur(40px);
+  }
+  
+  .decoration-1 {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    right: 10%;
+    animation: aurora-float 20s ease-in-out infinite;
+  }
+  
+  .decoration-2 {
+    width: 200px;
+    height: 200px;
+    bottom: 10%;
+    left: 15%;
+    animation: aurora-float 25s ease-in-out infinite reverse;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .footer-content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-2xl);
+    }
+    
+    .footer-brand {
+      grid-column: span 2;
+      margin-bottom: var(--spacing-xl);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-2xl);
+    }
+    
+    .footer-brand {
+      grid-column: span 1;
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .footer-bottom-content {
+      flex-direction: column;
+      gap: var(--spacing-xl);
+      text-align: center;
+    }
+    
+    .philosophy-quote {
+      text-align: center;
+      max-width: none;
+    }
+    
+    .brand-logo {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--spacing-sm);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .site-footer {
+      padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+    }
+    
+    .brand-info {
+      display: none;
+    }
+    
+    .logo-symbol {
+      font-size: var(--text-base);
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .contact-method {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--spacing-sm);
+    }
+  }
 </style>
