@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import HeroSection from '../components/HeroSection.astro';
+import AppleHeroSection from '../components/AppleHeroSection.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import SolutionsSection from '../components/SolutionsSection.astro';
 import AboutSection from '../components/AboutSection.astro';
@@ -61,8 +61,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		
 		<!-- 主要内容区域 -->
 		<main>
-			<!-- Hero 主视觉区域 -->
-			<HeroSection />
+			<!-- Apple风格Hero区域 -->
+			<AppleHeroSection />
 			
 			<!-- 核心产品区域 -->
 			<ProductsSection />
@@ -82,9 +82,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		
 		<!-- 全局样式 -->
 		<style>
-			/* 为导航留出空间 */
+			/* Apple风格页面样式 */
 			main {
-				padding-top: 80px;
+				padding-top: 0; /* Apple Hero已经处理了header间距 */
 			}
 			
 			/* 平滑滚动 */
