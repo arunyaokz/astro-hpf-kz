@@ -40,7 +40,7 @@ import LanguageSelector from './LanguageSelector.astro';
     </div>
     
     <!-- Mobile Menu Button -->
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-controls="mobileMenu" aria-expanded="false">
       <span class="menu-line"></span>
       <span class="menu-line"></span>
     </button>
@@ -98,8 +98,8 @@ import LanguageSelector from './LanguageSelector.astro';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
-    height: 64px;
+    padding: 0 var(--space-10);
+    height: var(--space-16);
   }
   
   /* Brand */
@@ -114,9 +114,9 @@ import LanguageSelector from './LanguageSelector.astro';
   }
   
   .logo-text {
-    font-size: 20px;
+    font-size: var(--text-2xl);
     font-weight: 700;
-    color: #1D1D1F;
+    color: var(--color-primary);
     letter-spacing: -0.01em;
   }
   
@@ -124,15 +124,15 @@ import LanguageSelector from './LanguageSelector.astro';
   .nav-menu {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: var(--space-10);
   }
   
   .nav-link {
-    font-size: 16px;
+    font-size: var(--text-lg);
     font-weight: 500;
-    color: #1D1D1F;
+    color: var(--color-primary);
     text-decoration: none;
-    padding: 8px 0;
+    padding: var(--space-2) 0;
     position: relative;
     transition: all 0.2s ease;
   }
@@ -144,7 +144,7 @@ import LanguageSelector from './LanguageSelector.astro';
     left: 0;
     right: 0;
     height: 2px;
-    background: #007AFF;
+    background: var(--color-accent);
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.2s ease;
@@ -155,29 +155,29 @@ import LanguageSelector from './LanguageSelector.astro';
   }
   
   .nav-link:hover {
-    color: #007AFF;
+    color: var(--color-accent);
   }
   
   /* Right Actions */
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--space-5);
   }
   
   .nav-cta {
-    background: #1D1D1F;
-    color: #FFFFFF;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 14px;
+    background: var(--color-primary);
+    color: var(--color-background);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--space-5);
+    font-size: var(--text-base);
     font-weight: 600;
     text-decoration: none;
     transition: all 0.2s ease;
   }
   
   .nav-cta:hover {
-    background: #007AFF;
+    background: var(--color-accent);
     transform: translateY(-1px);
   }
   
@@ -187,8 +187,8 @@ import LanguageSelector from './LanguageSelector.astro';
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 32px;
-    height: 32px;
+    width: var(--space-8);
+    height: var(--space-8);
     background: none;
     border: none;
     cursor: pointer;
@@ -197,9 +197,9 @@ import LanguageSelector from './LanguageSelector.astro';
   }
   
   .menu-line {
-    width: 18px;
+    width: var(--text-xl);
     height: 2px;
-    background: #1D1D1F;
+    background: var(--color-primary);
     border-radius: 1px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform-origin: center;
@@ -216,7 +216,7 @@ import LanguageSelector from './LanguageSelector.astro';
   /* Mobile Menu */
   .mobile-menu {
     position: fixed;
-    top: 64px;
+    top: var(--space-16);
     left: 0;
     right: 0;
     bottom: 0;
@@ -235,49 +235,49 @@ import LanguageSelector from './LanguageSelector.astro';
   }
   
   .mobile-menu-content {
-    padding: 60px 40px;
+    padding: var(--space-16) var(--space-10);
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: var(--space-16);
   }
   
   .mobile-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--space-8);
     text-align: center;
   }
   
   .mobile-nav-link {
-    font-size: 32px;
+    font-size: var(--text-5xl);
     font-weight: 600;
-    color: #1D1D1F;
+    color: var(--color-primary);
     text-decoration: none;
     transition: all 0.2s ease;
   }
   
   .mobile-nav-link:hover {
-    color: #007AFF;
+    color: var(--color-accent);
     transform: scale(1.05);
   }
   
   .mobile-actions {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-4);
     width: 100%;
     max-width: 280px;
   }
   
   .mobile-cta {
-    background: #1D1D1F;
-    color: #FFFFFF;
-    padding: 16px 32px;
+    background: var(--color-primary);
+    color: var(--color-background);
+    padding: var(--space-4) var(--space-8);
     border-radius: 25px;
-    font-size: 18px;
+    font-size: var(--text-xl);
     font-weight: 600;
     text-decoration: none;
     text-align: center;
@@ -285,23 +285,23 @@ import LanguageSelector from './LanguageSelector.astro';
   }
   
   .mobile-cta:hover {
-    background: #007AFF;
+    background: var(--color-accent);
   }
   
   /* Responsive Design */
   @media (max-width: 1024px) {
     .nav-menu {
-      gap: 32px;
+      gap: var(--space-8);
     }
     
     .nav-actions {
-      gap: 16px;
+      gap: var(--space-4);
     }
   }
   
   @media (max-width: 768px) {
     .nav-container {
-      padding: 0 20px;
+      padding: 0 var(--space-5);
       height: 56px;
     }
     
@@ -319,28 +319,28 @@ import LanguageSelector from './LanguageSelector.astro';
     }
     
     .mobile-menu-content {
-      padding: 40px 20px;
-      gap: 40px;
+      padding: var(--space-10) var(--space-5);
+      gap: var(--space-10);
     }
     
     .mobile-nav-link {
-      font-size: 28px;
+      font-size: var(--text-3xl);
     }
   }
   
   @media (max-width: 480px) {
     .logo-text {
-      font-size: 18px;
+      font-size: var(--text-xl);
     }
     
     .mobile-nav-link {
-      font-size: 24px;
+      font-size: var(--text-2xl);
     }
   }
   
   /* Smooth scroll offset for fixed header */
   html {
-    scroll-padding-top: 64px;
+    scroll-padding-top: var(--space-16);
   }
   
   @media (max-width: 768px) {
@@ -350,109 +350,3 @@ import LanguageSelector from './LanguageSelector.astro';
   }
 </style>
 
-<script>
-  class AppleHeader {
-    constructor() {
-      this.header = document.querySelector('.apple-header');
-      this.mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      this.mobileMenu = document.getElementById('mobileMenu');
-      this.mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
-      
-      this.init();
-    }
-    
-    init() {
-      this.setupScrollEffect();
-      this.setupMobileMenu();
-      this.setupSmoothScroll();
-    }
-    
-    setupScrollEffect() {
-      let lastScrollY = window.scrollY;
-      
-      window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        
-        if (scrollY > 50) {
-          this.header?.classList.add('scrolled');
-        } else {
-          this.header?.classList.remove('scrolled');
-        }
-        
-        lastScrollY = scrollY;
-      });
-    }
-    
-    setupMobileMenu() {
-      this.mobileMenuBtn?.addEventListener('click', () => {
-        this.toggleMobileMenu();
-      });
-      
-      // Close mobile menu when clicking nav links
-      this.mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          this.closeMobileMenu();
-        });
-      });
-      
-      // Close mobile menu on escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          this.closeMobileMenu();
-        }
-      });
-      
-      // Close mobile menu on outside click
-      this.mobileMenu?.addEventListener('click', (e) => {
-        if (e.target === this.mobileMenu) {
-          this.closeMobileMenu();
-        }
-      });
-    }
-    
-    toggleMobileMenu() {
-      const isActive = this.mobileMenu?.classList.contains('active');
-      if (isActive) {
-        this.closeMobileMenu();
-      } else {
-        this.openMobileMenu();
-      }
-    }
-    
-    openMobileMenu() {
-      this.mobileMenuBtn?.classList.add('active');
-      this.mobileMenu?.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    closeMobileMenu() {
-      this.mobileMenuBtn?.classList.remove('active');
-      this.mobileMenu?.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    
-    setupSmoothScroll() {
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href === '#') return;
-          
-          const target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-    }
-  }
-  
-  // Initialize when DOM is loaded
-  document.addEventListener('DOMContentLoaded', () => {
-    new AppleHeader();
-  });
-</script>
