@@ -97,13 +97,13 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F7 100%);
+    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-surface) 100%);
   }
   
   .hero-container {
     max-width: 1200px;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 var(--space-10);
     text-align: center;
     position: relative;
     z-index: 10;
@@ -111,20 +111,20 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
   
   /* Hero Content */
   .hero-eyebrow {
-    margin-bottom: 24px;
+    margin-bottom: var(--space-6);
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    animation: fadeInUp 0.8s var(--ease-out) 0.2s forwards;
   }
   
   .eyebrow-text {
     display: inline-block;
-    font-size: 18px;
+    font-size: var(--text-xl);
     font-weight: 600;
-    color: #007AFF;
+    color: var(--color-accent);
     letter-spacing: 0.02em;
-    padding: 8px 16px;
+    padding: var(--space-2) var(--space-4);
     background: rgba(0, 122, 255, 0.1);
-    border-radius: 20px;
+    border-radius: var(--radius-2xl);
     backdrop-filter: blur(20px);
   }
   
@@ -133,69 +133,69 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: #1D1D1F;
-    margin-bottom: 32px;
+    color: var(--color-primary);
+    margin-bottom: var(--space-8);
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    animation: fadeInUp 0.8s var(--ease-out) 0.4s forwards;
   }
   
   .hero-description {
     font-size: clamp(18px, 2.5vw, 24px);
     font-weight: 400;
     line-height: 1.5;
-    color: #86868B;
-    margin-bottom: 48px;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-12);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    animation: fadeInUp 0.8s var(--ease-out) 0.6s forwards;
   }
   
   /* Hero Actions */
   .hero-actions {
     display: flex;
-    gap: 24px;
+    gap: var(--space-6);
     justify-content: center;
-    margin-bottom: 80px;
+    margin-bottom: var(--space-20);
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.8s forwards;
+    animation: fadeInUp 0.8s var(--ease-out) 0.8s forwards;
   }
   
   .btn-primary,
   .btn-secondary {
-    padding: 16px 32px;
-    border-radius: 50px;
-    font-size: 18px;
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xl);
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     border: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s var(--ease-out);
     min-width: 180px;
   }
   
   .btn-primary {
-    background: #1D1D1F;
-    color: #FFFFFF;
+    background: var(--color-primary);
+    color: var(--color-background);
     box-shadow: 0 4px 16px rgba(29, 29, 31, 0.2);
   }
   
   .btn-primary:hover {
-    background: #007AFF;
+    background: var(--color-accent);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
   }
   
   .btn-secondary {
     background: transparent;
-    color: #007AFF;
-    border: 2px solid #007AFF;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
   }
   
   .btn-secondary:hover {
-    background: #007AFF;
-    color: #FFFFFF;
+    background: var(--color-accent);
+    color: var(--color-background);
     transform: translateY(-2px);
   }
   
@@ -203,13 +203,13 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
   .kpi-showcase {
     margin-bottom: 60px;
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out 1s forwards;
+    animation: fadeInUp 0.8s var(--ease-out) 1s forwards;
   }
   
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
+    gap: var(--space-10);
     max-width: 900px;
     margin: 0 auto;
   }
@@ -221,18 +221,18 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
   .kpi-value {
     font-size: clamp(36px, 5vw, 48px);
     font-weight: 700;
-    color: #1D1D1F;
-    margin-bottom: 8px;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 4px;
+    gap: var(--space-1);
   }
   
   .kpi-unit,
   .kpi-prefix {
     font-size: 0.6em;
-    color: #007AFF;
+    color: var(--color-accent);
   }
   
   .animated-number {
@@ -240,31 +240,31 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
   }
   
   .kpi-label {
-    font-size: 16px;
+    font-size: var(--text-lg);
     font-weight: 500;
-    color: #86868B;
+    color: var(--color-secondary);
     letter-spacing: 0.01em;
   }
   
   /* Scroll Indicator */
   .scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: var(--space-10);
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     opacity: 0;
-    animation: fadeIn 1s ease-out 1.5s forwards;
+    animation: fadeIn 1s var(--ease-out) 1.5s forwards;
   }
   
   .scroll-text {
-    font-size: 14px;
-    color: #86868B;
+    font-size: var(--text-base);
+    color: var(--color-secondary);
     margin-bottom: 12px;
   }
   
   .scroll-arrow {
-    color: #86868B;
+    color: var(--color-secondary);
     animation: bounce 2s infinite;
   }
   
@@ -289,7 +289,7 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
   .gradient-orb-1 {
     width: 400px;
     height: 400px;
-    background: linear-gradient(135deg, #007AFF, #00D4FF);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
     top: 10%;
     right: 10%;
     animation-delay: 0s;

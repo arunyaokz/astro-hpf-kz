@@ -136,13 +136,13 @@ const today = new Date();
       linear-gradient(135deg, rgba(22, 22, 21, 0.02) 0%, rgba(87, 81, 213, 0.03) 100%),
       radial-gradient(circle at 30% 70%, rgba(87, 81, 213, 0.05) 0%, transparent 50%);
     border-top: 1px solid rgba(22, 22, 21, 0.1);
-    padding: var(--spacing-5xl) 0 var(--spacing-3xl);
+    padding: var(--space-24) 0 var(--space-16);
     position: relative;
     overflow: hidden;
   }
   
   .footer-content {
-    margin-bottom: var(--spacing-4xl);
+    margin-bottom: var(--space-20);
   }
   
   /* 品牌信息 */
@@ -153,16 +153,16 @@ const today = new Date();
   .brand-logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
   }
   
   .logo-symbol {
     font-size: var(--text-lg);
     font-weight: 700;
-    color: var(--accent-primary);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 2px solid var(--accent-primary);
+    color: var(--color-accent);
+    padding: var(--space-3) var(--space-4);
+    border: 2px solid var(--color-accent);
     border-radius: 6px;
     line-height: 1;
   }
@@ -170,12 +170,12 @@ const today = new Date();
   .brand-info {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: var(--space-2);
   }
   
   .brand-name {
     font-size: var(--text-lg);
-    color: var(--text-primary);
+    color: var(--color-primary);
     line-height: 1;
   }
   
@@ -186,21 +186,21 @@ const today = new Date();
   
   .brand-description {
     line-height: 1.7;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--space-6);
   }
   
   .contact-info {
-    margin-top: var(--spacing-lg);
+    margin-top: var(--space-6);
   }
   
   .contact-item {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: var(--space-3);
   }
   
   .contact-link {
-    color: var(--accent-primary);
+    color: var(--color-accent);
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.3s ease;
@@ -217,8 +217,8 @@ const today = new Date();
   }
   
   .section-title {
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-6);
   }
   
   .footer-links {
@@ -228,11 +228,11 @@ const today = new Date();
   }
   
   .footer-links li {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--space-3);
   }
   
   .footer-link {
-    color: var(--text-primary);
+    color: var(--color-primary);
     text-decoration: none;
     opacity: 0.8;
     transition: all 0.3s ease;
@@ -240,7 +240,7 @@ const today = new Date();
   }
   
   .footer-link:hover {
-    color: var(--accent-primary);
+    color: var(--color-accent);
     opacity: 1;
     transform: translateX(4px);
   }
@@ -249,13 +249,13 @@ const today = new Date();
   .contact-methods {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--space-4);
   }
   
   .contact-method {
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-md);
+    gap: var(--space-4);
   }
   
   .method-icon {
@@ -273,11 +273,11 @@ const today = new Date();
   .method-info {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: var(--space-2);
   }
   
   .contact-text {
-    color: var(--text-secondary);
+    color: var(--color-secondary);
   }
   
   /* 分割线 */
@@ -301,7 +301,7 @@ const today = new Date();
   }
   
   .philosophy-quote blockquote {
-    margin: 0 0 var(--spacing-xs) 0;
+    margin: 0 0 var(--space-2) 0;
     font-size: var(--text-lg);
     line-height: 1.4;
   }
@@ -344,29 +344,29 @@ const today = new Date();
   @media (max-width: 1024px) {
     .footer-content {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-2xl);
+      gap: var(--space-12);
     }
     
     .footer-brand {
       grid-column: span 2;
-      margin-bottom: var(--spacing-xl);
+      margin-bottom: var(--space-8);
     }
   }
   
   @media (max-width: 768px) {
     .footer-content {
       grid-template-columns: 1fr;
-      gap: var(--spacing-2xl);
+      gap: var(--space-12);
     }
     
     .footer-brand {
       grid-column: span 1;
-      margin-bottom: var(--spacing-lg);
+      margin-bottom: var(--space-6);
     }
     
     .footer-bottom-content {
       flex-direction: column;
-      gap: var(--spacing-xl);
+      gap: var(--space-8);
       text-align: center;
     }
     
@@ -378,13 +378,13 @@ const today = new Date();
     .brand-logo {
       flex-direction: column;
       text-align: center;
-      gap: var(--spacing-sm);
+      gap: var(--space-3);
     }
   }
   
   @media (max-width: 480px) {
     .site-footer {
-      padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+      padding: var(--space-16) 0 var(--space-12);
     }
     
     .brand-info {
@@ -393,13 +393,13 @@ const today = new Date();
     
     .logo-symbol {
       font-size: var(--text-base);
-      padding: var(--spacing-xs) var(--spacing-sm);
+      padding: var(--space-2) var(--space-3);
     }
     
     .contact-method {
       flex-direction: column;
       text-align: center;
-      gap: var(--spacing-sm);
+      gap: var(--space-3);
     }
   }
 </style>
