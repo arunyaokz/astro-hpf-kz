@@ -1,0 +1,252 @@
+---
+import { TRANSLATIONS } from '../consts';
+
+const t = TRANSLATIONS.zh;
+---
+
+<section class="bejamas-section bejamas-base">
+  <div class="bejamas-container">
+    <div class="bejamas-section-header bejamas-text-center">
+      <h2 class="bejamas-title-2xl bejamas-heading">{t.philosophyTitle}</h2>
+      <p class="bejamas-subtitle bejamas-mt-2">道 · 法 · 术 · 器 — 经营底层</p>
+    </div>
+    
+    <div class="bejamas-grid bejamas-grid-cols-1 md:bejamas-grid-cols-2 lg:bejamas-grid-cols-4 bejamas-gap-6">
+      <div class="bejamas-card bejamas-card-primary">
+        <div class="bejamas-card-header">
+          <div class="bejamas-card-icon bejamas-bg-blue-500">
+            <span class="bejamas-card-symbol">{t.dao}</span>
+          </div>
+          <div class="bejamas-card-title">
+            <h3 class="bejamas-title-lg">{t.daoTitle}</h3>
+            <p class="bejamas-text-sm bejamas-text-muted">{t.dao}</p>
+          </div>
+        </div>
+        <div class="bejamas-card-content">
+          <p class="bejamas-text-base bejamas-text-muted">{t.daoDesc}</p>
+          <div class="bejamas-tags bejamas-mt-4">
+            <span class="bejamas-tag">成果归客户</span>
+            <span class="bejamas-tag">长期主义</span>
+            <span class="bejamas-tag">节制增长</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bejamas-card bejamas-card-success">
+        <div class="bejamas-card-header">
+          <div class="bejamas-card-icon bejamas-bg-green-500">
+            <span class="bejamas-card-symbol">{t.fa}</span>
+          </div>
+          <div class="bejamas-card-title">
+            <h3 class="bejamas-title-lg">{t.faTitle}</h3>
+            <p class="bejamas-text-sm bejamas-text-muted">{t.fa}</p>
+          </div>
+        </div>
+        <div class="bejamas-card-content">
+          <p class="bejamas-text-base bejamas-text-muted">{t.faDesc}</p>
+          <div class="bejamas-tags bejamas-mt-4">
+            <span class="bejamas-tag">三线治理</span>
+            <span class="bejamas-tag">指标为纲</span>
+            <span class="bejamas-tag">可审计</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bejamas-card bejamas-card-warning">
+        <div class="bejamas-card-header">
+          <div class="bejamas-card-icon bejamas-bg-yellow-500">
+            <span class="bejamas-card-symbol">{t.shu}</span>
+          </div>
+          <div class="bejamas-card-title">
+            <h3 class="bejamas-title-lg">{t.shuTitle}</h3>
+            <p class="bejamas-text-sm bejamas-text-muted">{t.shu}</p>
+          </div>
+        </div>
+        <div class="bejamas-card-content">
+          <p class="bejamas-text-base bejamas-text-muted">{t.shuDesc}</p>
+          <div class="bejamas-tags bejamas-mt-4">
+            <span class="bejamas-tag">顺势设计</span>
+            <span class="bejamas-tag">少而精</span>
+            <span class="bejamas-tag">标准化</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bejamas-card bejamas-card-purple">
+        <div class="bejamas-card-header">
+          <div class="bejamas-card-icon bejamas-bg-purple-500">
+            <span class="bejamas-card-symbol">{t.qi}</span>
+          </div>
+          <div class="bejamas-card-title">
+            <h3 class="bejamas-title-lg">{t.qiTitle}</h3>
+            <p class="bejamas-text-sm bejamas-text-muted">{t.qi}</p>
+          </div>
+        </div>
+        <div class="bejamas-card-content">
+          <p class="bejamas-text-base bejamas-text-muted">{t.qiDesc}</p>
+          <div class="bejamas-tags bejamas-mt-4">
+            <span class="bejamas-tag">可观测性</span>
+            <span class="bejamas-tag">数据API</span>
+            <span class="bejamas-tag">AI运营助手</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bejamas-quote bejamas-mt-12">
+      <blockquote class="bejamas-quote-content">
+        <p class="bejamas-quote-text">"少而精，轻前台，重中台。顺其势，定其心，达其岸。把喧哗留在外，把确定性留给你。"</p>
+        <cite class="bejamas-quote-cite">— HPF 运营格言</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bejamas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--bejamas-space-6);
+  }
+  
+  .bejamas-section-header {
+    margin-bottom: var(--bejamas-space-12);
+  }
+  
+  .bejamas-card {
+    background-color: var(--bejamas-color-surface);
+    border: 1px solid var(--bejamas-color-border);
+    border-radius: var(--bejamas-radius-xl);
+    padding: var(--bejamas-space-6);
+    transition: all var(--bejamas-transition-base);
+    height: 100%;
+  }
+  
+  .bejamas-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--bejamas-shadow-lg);
+  }
+  
+  .bejamas-card-primary {
+    border-top: 4px solid var(--bejamas-color-blue-500);
+  }
+  
+  .bejamas-card-success {
+    border-top: 4px solid var(--bejamas-color-green-500);
+  }
+  
+  .bejamas-card-warning {
+    border-top: 4px solid var(--bejamas-color-yellow-500);
+  }
+  
+  .bejamas-card-purple {
+    border-top: 4px solid var(--bejamas-color-purple-500);
+  }
+  
+  .bejamas-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--bejamas-space-4);
+    margin-bottom: var(--bejamas-space-4);
+  }
+  
+  .bejamas-card-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--bejamas-radius-lg);
+    color: white;
+    font-size: var(--bejamas-text-2xl);
+    font-weight: 300;
+    flex-shrink: 0;
+  }
+  
+  .bejamas-card-title {
+    flex: 1;
+  }
+  
+  .bejamas-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--bejamas-space-2);
+  }
+  
+  .bejamas-tag {
+    background-color: var(--bejamas-color-bg-muted);
+    color: var(--bejamas-color-text-muted);
+    padding: var(--bejamas-space-1) var(--bejamas-space-3);
+    border-radius: var(--bejamas-radius-full);
+    font-size: var(--bejamas-text-xs);
+    font-weight: 500;
+  }
+  
+  .bejamas-quote {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .bejamas-quote-content {
+    border-left: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .bejamas-quote-text {
+    font-size: var(--bejamas-text-lg);
+    font-style: italic;
+    color: var(--bejamas-color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--bejamas-space-4);
+  }
+  
+  .bejamas-quote-cite {
+    font-size: var(--bejamas-text-sm);
+    color: var(--bejamas-color-text-muted);
+    font-style: normal;
+  }
+  
+  /* Utility classes */
+  .bejamas-text-center {
+    text-align: center;
+  }
+  
+  .bejamas-mt-2 {
+    margin-top: var(--bejamas-space-2);
+  }
+  
+  .bejamas-mt-4 {
+    margin-top: var(--bejamas-space-4);
+  }
+  
+  .bejamas-mt-12 {
+    margin-top: var(--bejamas-space-12);
+  }
+  
+  .bejamas-grid {
+    display: grid;
+  }
+  
+  .bejamas-grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .bejamas-gap-6 {
+    gap: var(--bejamas-space-6);
+  }
+  
+  /* Responsive design */
+  @media (min-width: 768px) {
+    .md\:bejamas-grid-cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .lg\:bejamas-grid-cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

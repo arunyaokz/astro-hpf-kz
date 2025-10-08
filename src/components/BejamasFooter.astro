@@ -1,0 +1,493 @@
+---
+import { COMPANY_NAME, COMPANY_TAGLINE, COMPANY_TAGLINE_EN } from '../consts';
+const today = new Date();
+---
+
+<footer class="bejamas-footer">
+  <div class="bejamas-container">
+    
+    <!-- 主要内容区域 -->
+    <div class="bejamas-footer-content">
+      
+      <!-- 品牌信息 -->
+      <div class="bejamas-footer-brand">
+        <div class="bejamas-brand-logo">
+          <div class="bejamas-logo-symbol">{COMPANY_TAGLINE}</div>
+          <div class="bejamas-brand-info">
+            <h3 class="bejamas-brand-name">{COMPANY_NAME}</h3>
+            <p class="bejamas-brand-tagline">{COMPANY_TAGLINE_EN}</p>
+          </div>
+        </div>
+        <p class="bejamas-brand-description">
+          我们不占位，也不喧哗。把力量藏在系统里，把答案写在时效上。你只需收货，其他交给我们。
+        </p>
+        <div class="bejamas-contact-info">
+          <div class="bejamas-contact-item">
+            <span class="bejamas-contact-label">咨询邮箱：</span>
+            <a href="mailto:contact@hpf.kz" class="bejamas-contact-link">contact@hpf.kz</a>
+          </div>
+          <div class="bejamas-contact-item">
+            <span class="bejamas-contact-label">商务合作：</span>
+            <a href="mailto:bd@hpf.kz" class="bejamas-contact-link">bd@hpf.kz</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 服务项目 -->
+      <div class="bejamas-footer-section">
+        <h4 class="bejamas-section-title">核心能力</h4>
+        <ul class="bejamas-footer-links">
+          <li><a href="#products" class="bejamas-footer-link">库雷克绿通</a></li>
+          <li><a href="#products" class="bejamas-footer-link">清关合规</a></li>
+          <li><a href="#products" class="bejamas-footer-link">仓储分拨</a></li>
+          <li><a href="#products" class="bejamas-footer-link">干线联运</a></li>
+        </ul>
+      </div>
+      
+      <!-- 公司信息 -->
+      <div class="bejamas-footer-section">
+        <h4 class="bejamas-section-title">了解我们</h4>
+        <ul class="bejamas-footer-links">
+          <li><a href="#about" class="bejamas-footer-link">关于我们</a></li>
+          <li><a href="#about" class="bejamas-footer-link">企业文化</a></li>
+          <li><a href="#about" class="bejamas-footer-link">发展历程</a></li>
+          <li><a href="#contact" class="bejamas-footer-link">联系我们</a></li>
+        </ul>
+      </div>
+      
+      <!-- 联系方式 -->
+      <div class="bejamas-footer-section">
+        <h4 class="bejamas-section-title">联系我们</h4>
+        <div class="bejamas-contact-methods">
+          <div class="bejamas-contact-method">
+            <div class="bejamas-method-icon bejamas-bg-blue-100">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="bejamas-method-info">
+              <div class="bejamas-method-title">咨询邮箱</div>
+              <a href="mailto:contact@hpf.kz" class="bejamas-contact-link">contact@hpf.kz</a>
+            </div>
+          </div>
+          <div class="bejamas-contact-method">
+            <div class="bejamas-method-icon bejamas-bg-green-100">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 2V6M21 6L16 2M21 6L16 10M21 6C21 3.79086 19.2091 2 17 2H7C4.79086 2 3 3.79086 3 6V18C3 20.2091 4.79086 22 7 22H17C19.2091 22 21 20.2091 21 18V6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="bejamas-method-info">
+              <div class="bejamas-method-title">商务合作</div>
+              <a href="mailto:bd@hpf.kz" class="bejamas-contact-link">bd@hpf.kz</a>
+            </div>
+          </div>
+          <div class="bejamas-contact-method">
+            <div class="bejamas-method-icon bejamas-bg-purple-100">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 8V12L16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="bejamas-method-info">
+              <div class="bejamas-method-title">总部地址</div>
+              <span class="bejamas-contact-text">哈萨克斯坦 · 阿拉木图</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- 底部分割线 -->
+    <div class="bejamas-footer-divider"></div>
+    
+    <!-- 底部信息 -->
+    <div class="bejamas-footer-bottom">
+      <div class="bejamas-footer-bottom-content">
+        
+        <!-- 版权信息 -->
+        <div class="bejamas-copyright">
+          <p class="bejamas-copyright-text">
+            &copy; {today.getFullYear()} {COMPANY_NAME}. 保留所有权利
+          </p>
+          <p class="bejamas-copyright-subtext">
+            All rights reserved. Powered by ancient wisdom and modern innovation.
+          </p>
+        </div>
+        
+        <!-- 道德经名句 -->
+        <div class="bejamas-philosophy-quote">
+          <blockquote class="bejamas-quote-text">
+            「静水深流，润物无声」
+          </blockquote>
+          <cite class="bejamas-quote-cite">
+            — HPF.kz 运营格言
+          </cite>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- 背景装饰 -->
+  <div class="bejamas-footer-decorations">
+    <div class="bejamas-decoration bejamas-decoration-1"></div>
+    <div class="bejamas-decoration bejamas-decoration-2"></div>
+  </div>
+</footer>
+
+<style>
+  .bejamas-footer {
+    background: linear-gradient(135deg, 
+      var(--bejamas-color-bg) 0%, 
+      var(--bejamas-color-surface) 100%);
+    border-top: 1px solid var(--bejamas-color-border);
+    padding: var(--bejamas-space-8) 0 var(--bejamas-space-6);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .bejamas-footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--bejamas-space-8);
+    margin-bottom: var(--bejamas-space-8);
+  }
+  
+  /* 品牌信息 */
+  .bejamas-footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bejamas-space-4);
+  }
+  
+  .bejamas-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--bejamas-space-4);
+    margin-bottom: var(--bejamas-space-2);
+  }
+  
+  .bejamas-logo-symbol {
+    font-size: var(--bejamas-text-lg);
+    font-weight: 700;
+    color: var(--bejamas-color-accent);
+    padding: var(--bejamas-space-2) var(--bejamas-space-3);
+    border: 2px solid var(--bejamas-color-accent);
+    border-radius: var(--bejamas-radius-md);
+    line-height: 1;
+  }
+  
+  .bejamas-brand-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bejamas-space-1);
+  }
+  
+  .bejamas-brand-name {
+    font-size: var(--bejamas-text-lg);
+    font-weight: 600;
+    color: var(--bejamas-color-text);
+    line-height: 1;
+    margin: 0;
+  }
+  
+  .bejamas-brand-tagline {
+    font-size: var(--bejamas-text-sm);
+    color: var(--bejamas-color-text-muted);
+    line-height: 1;
+    margin: 0;
+  }
+  
+  .bejamas-brand-description {
+    font-size: var(--bejamas-text-base);
+    color: var(--bejamas-color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .bejamas-contact-info {
+    margin-top: var(--bejamas-space-2);
+  }
+  
+  .bejamas-contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--bejamas-space-2);
+    margin-bottom: var(--bejamas-space-2);
+  }
+  
+  .bejamas-contact-label {
+    font-size: var(--bejamas-text-sm);
+    color: var(--bejamas-color-text-muted);
+    font-weight: 500;
+  }
+  
+  .bejamas-contact-link {
+    font-size: var(--bejamas-text-sm);
+    color: var(--bejamas-color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--bejamas-transition-base);
+  }
+  
+  .bejamas-contact-link:hover {
+    color: var(--bejamas-color-accent-dark);
+  }
+  
+  /* 章节样式 */
+  .bejamas-footer-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bejamas-section-title {
+    font-size: var(--bejamas-text-lg);
+    font-weight: 600;
+    color: var(--bejamas-color-text);
+    margin-bottom: var(--bejamas-space-4);
+    margin-top: 0;
+  }
+  
+  .bejamas-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--bejamas-space-2);
+  }
+  
+  .bejamas-footer-links li {
+    margin: 0;
+  }
+  
+  .bejamas-footer-link {
+    font-size: var(--bejamas-text-base);
+    color: var(--bejamas-color-text-muted);
+    text-decoration: none;
+    transition: all var(--bejamas-transition-base);
+    font-weight: 400;
+  }
+  
+  .bejamas-footer-link:hover {
+    color: var(--bejamas-color-accent);
+    transform: translateX(4px);
+  }
+  
+  /* 联系方式样式 */
+  .bejamas-contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bejamas-space-4);
+  }
+  
+  .bejamas-contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--bejamas-space-3);
+  }
+  
+  .bejamas-method-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--bejamas-radius-md);
+    color: var(--bejamas-color-accent);
+    flex-shrink: 0;
+  }
+  
+  .bejamas-method-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bejamas-space-1);
+  }
+  
+  .bejamas-method-title {
+    font-size: var(--bejamas-text-sm);
+    font-weight: 500;
+    color: var(--bejamas-color-text);
+  }
+  
+  .bejamas-contact-text {
+    font-size: var(--bejamas-text-sm);
+    color: var(--bejamas-color-text-muted);
+  }
+  
+  /* 分割线 */
+  .bejamas-footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--bejamas-color-border) 50%, 
+      transparent 100%);
+    margin-bottom: var(--bejamas-space-6);
+  }
+  
+  /* 底部信息 */
+  .bejamas-footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .bejamas-copyright {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bejamas-space-1);
+  }
+  
+  .bejamas-copyright-text {
+    font-size: var(--bejamas-text-sm);
+    color: var(--bejamas-color-text-muted);
+    margin: 0;
+  }
+  
+  .bejamas-copyright-subtext {
+    font-size: var(--bejamas-text-xs);
+    color: var(--bejamas-color-text-muted);
+    opacity: 0.7;
+    margin: 0;
+  }
+  
+  .bejamas-philosophy-quote {
+    text-align: right;
+  }
+  
+  .bejamas-quote-text {
+    font-size: var(--bejamas-text-lg);
+    color: var(--bejamas-color-text);
+    font-weight: 500;
+    margin: 0 0 var(--bejamas-space-1) 0;
+    line-height: 1.4;
+  }
+  
+  .bejamas-quote-cite {
+    font-size: var(--bejamas-text-xs);
+    color: var(--bejamas-color-text-muted);
+    opacity: 0.7;
+    font-style: normal;
+  }
+  
+  /* 装饰性元素 */
+  .bejamas-footer-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .bejamas-decoration {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+      rgba(99, 102, 241, 0.05) 0%, 
+      rgba(22, 22, 21, 0.02) 100%);
+    filter: blur(40px);
+  }
+  
+  .bejamas-decoration-1 {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    right: 10%;
+    animation: bejamas-float 20s ease-in-out infinite;
+  }
+  
+  .bejamas-decoration-2 {
+    width: 200px;
+    height: 200px;
+    bottom: 10%;
+    left: 15%;
+    animation: bejamas-float 25s ease-in-out infinite reverse;
+  }
+  
+  @keyframes bejamas-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .bejamas-footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--bejamas-space-6);
+    }
+    
+    .bejamas-footer-brand {
+      grid-column: span 2;
+      margin-bottom: var(--bejamas-space-4);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .bejamas-footer {
+      padding: var(--bejamas-space-6) 0 var(--bejamas-space-4);
+    }
+    
+    .bejamas-footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--bejamas-space-6);
+    }
+    
+    .bejamas-footer-brand {
+      grid-column: span 1;
+      margin-bottom: var(--bejamas-space-4);
+    }
+    
+    .bejamas-footer-bottom-content {
+      flex-direction: column;
+      gap: var(--bejamas-space-4);
+      text-align: center;
+    }
+    
+    .bejamas-philosophy-quote {
+      text-align: center;
+    }
+    
+    .bejamas-brand-logo {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--bejamas-space-2);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .bejamas-footer {
+      padding: var(--bejamas-space-4) 0 var(--bejamas-space-3);
+    }
+    
+    .bejamas-contact-method {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--bejamas-space-2);
+    }
+    
+    .bejamas-method-icon {
+      align-self: center;
+    }
+  }
+  
+  /* Color variants */
+  .bejamas-bg-blue-100 {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--bejamas-color-blue-600);
+  }
+  
+  .bejamas-bg-green-100 {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--bejamas-color-green-600);
+  }
+  
+  .bejamas-bg-purple-100 {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--bejamas-color-purple-600);
+  }
+</style>

@@ -1,0 +1,288 @@
+---
+import { TRANSLATIONS } from '../consts';
+
+const t = TRANSLATIONS.zh;
+---
+
+<section class="bejamas-section bejamas-bg-gradient">
+  <div class="bejamas-container">
+    <div class="bejamas-section-header bejamas-text-center">
+      <h2 class="bejamas-title-2xl bejamas-heading">{t.routeTrackingTitle}</h2>
+      <p class="bejamas-subtitle bejamas-mt-2">实时追踪您的货物位置，全程透明可视</p>
+    </div>
+    
+    <div class="bejamas-route-tracking">
+      <div class="bejamas-route-map">
+        <div class="bejamas-route-line">
+          <div class="bejamas-route-point bejamas-route-point-active">
+            <div class="bejamas-route-marker"></div>
+            <div class="bejamas-route-info">
+              <h4>发货地</h4>
+              <p>中国 · 上海</p>
+              <span class="bejamas-route-time">2024-01-15 08:30</span>
+            </div>
+          </div>
+          
+          <div class="bejamas-route-point bejamas-route-point-active">
+            <div class="bejamas-route-marker"></div>
+            <div class="bejamas-route-info">
+              <h4>海关清关</h4>
+              <p>哈萨克斯坦 · 阿拉木图</p>
+              <span class="bejamas-route-time">2024-01-17 14:20</span>
+            </div>
+          </div>
+          
+          <div class="bejamas-route-point bejamas-route-point-active">
+            <div class="bejamas-route-marker"></div>
+            <div class="bejamas-route-info">
+              <h4>在途运输</h4>
+              <p>哈萨克斯坦境内</p>
+              <span class="bejamas-route-time">2024-01-18 09:15</span>
+            </div>
+          </div>
+          
+          <div class="bejamas-route-point bejamas-route-point-pending">
+            <div class="bejamas-route-marker"></div>
+            <div class="bejamas-route-info">
+              <h4>预计到达</h4>
+              <p>目的地 · 努尔苏丹</p>
+              <span class="bejamas-route-time">2024-01-19 16:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bejamas-tracking-stats">
+        <div class="bejamas-stat-card">
+          <div class="bejamas-stat-icon bejamas-bg-blue-100">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="bejamas-stat-content">
+            <h3 class="bejamas-stat-value">85%</h3>
+            <p class="bejamas-stat-label">准时到达率</p>
+          </div>
+        </div>
+        
+        <div class="bejamas-stat-card">
+          <div class="bejamas-stat-icon bejamas-bg-green-100">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="bejamas-stat-content">
+            <h3 class="bejamas-stat-value">99.7%</h3>
+            <p class="bejamas-stat-label">货物完好率</p>
+          </div>
+        </div>
+        
+        <div class="bejamas-stat-card">
+          <div class="bejamas-stat-icon bejamas-bg-purple-100">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="bejamas-stat-content">
+            <h3 class="bejamas-stat-value">24/7</h3>
+            <p class="bejamas-stat-label">实时监控</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bejamas-tracking-actions bejamas-text-center bejamas-mt-8">
+      <div class="bejamas-tracking-input">
+        <input type="text" placeholder="输入您的运单号" class="bejamas-input bejamas-input-lg" />
+        <button class="bejamas-button bejamas-button-primary">查询状态</button>
+      </div>
+      <p class="bejamas-text-sm bejamas-text-muted bejamas-mt-2">支持所有主流物流公司的运单号查询</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bejamas-route-tracking {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--bejamas-space-12);
+    align-items: start;
+  }
+  
+  @media (min-width: 1024px) {
+    .bejamas-route-tracking {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+  
+  .bejamas-route-map {
+    position: relative;
+  }
+  
+  .bejamas-route-line {
+    position: relative;
+    padding-left: var(--bejamas-space-12);
+  }
+  
+  .bejamas-route-line::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+      var(--bejamas-color-accent) 0%, 
+      var(--bejamas-color-accent) 75%, 
+      var(--bejamas-color-border) 75%, 
+      var(--bejamas-color-border) 100%);
+  }
+  
+  .bejamas-route-point {
+    position: relative;
+    margin-bottom: var(--bejamas-space-8);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--bejamas-space-4);
+  }
+  
+  .bejamas-route-marker {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--bejamas-color-accent);
+    border: 3px solid var(--bejamas-color-bg);
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    z-index: 2;
+  }
+  
+  .bejamas-route-point-pending .bejamas-route-marker {
+    background-color: var(--bejamas-color-border);
+  }
+  
+  .bejamas-route-info {
+    flex: 1;
+  }
+  
+  .bejamas-route-info h4 {
+    font-size: var(--bejamas-text-lg);
+    font-weight: 600;
+    color: var(--bejamas-color-text);
+    margin-bottom: var(--bejamas-space-1);
+  }
+  
+  .bejamas-route-info p {
+    color: var(--bejamas-color-text-muted);
+    margin-bottom: var(--bejamas-space-1);
+  }
+  
+  .bejamas-route-time {
+    font-size: var(--bejamas-text-sm);
+    color: var(--bejamas-color-text-muted);
+    font-weight: 500;
+  }
+  
+  .bejamas-tracking-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bejamas-space-4);
+  }
+  
+  .bejamas-stat-card {
+    background-color: var(--bejamas-color-surface);
+    border: 1px solid var(--bejamas-color-border);
+    border-radius: var(--bejamas-radius-lg);
+    padding: var(--bejamas-space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--bejamas-space-3);
+  }
+  
+  .bejamas-stat-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--bejamas-radius-md);
+    color: var(--bejamas-color-accent);
+  }
+  
+  .bejamas-stat-value {
+    font-size: var(--bejamas-text-2xl);
+    font-weight: 700;
+    color: var(--bejamas-color-text);
+    margin-bottom: var(--bejamas-space-1);
+  }
+  
+  .bejamas-stat-label {
+    color: var(--bejamas-color-text-muted);
+    font-size: var(--bejamas-text-sm);
+  }
+  
+  .bejamas-tracking-actions {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .bejamas-tracking-input {
+    display: flex;
+    gap: var(--bejamas-space-2);
+  }
+  
+  .bejamas-input {
+    flex: 1;
+    padding: var(--bejamas-space-3) var(--bejamas-space-4);
+    border: 1px solid var(--bejamas-color-border);
+    border-radius: var(--bejamas-radius-md);
+    background-color: var(--bejamas-color-bg);
+    color: var(--bejamas-color-text);
+    font-size: var(--bejamas-text-base);
+  }
+  
+  .bejamas-input-lg {
+    padding: var(--bejamas-space-4);
+    font-size: var(--bejamas-text-lg);
+  }
+  
+  .bejamas-input:focus {
+    outline: none;
+    border-color: var(--bejamas-color-accent);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+  
+  /* Color variants */
+  .bejamas-bg-blue-100 {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--bejamas-color-blue-600);
+  }
+  
+  .bejamas-bg-green-100 {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--bejamas-color-green-600);
+  }
+  
+  .bejamas-bg-purple-100 {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--bejamas-color-purple-600);
+  }
+  
+  /* Spacing utilities */
+  .bejamas-mt-2 { margin-top: var(--bejamas-space-2); }
+  .bejamas-mt-4 { margin-top: var(--bejamas-space-4); }
+  .bejamas-mt-8 { margin-top: var(--bejamas-space-8); }
+  
+  .bejamas-text-center { text-align: center; }
+  
+  .bejamas-bg-gradient {
+    background: linear-gradient(135deg, 
+      var(--bejamas-color-bg) 0%, 
+      var(--bejamas-color-surface) 100%);
+  }
+</style>

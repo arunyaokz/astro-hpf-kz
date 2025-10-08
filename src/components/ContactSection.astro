@@ -99,51 +99,38 @@
             请填写您的联系信息和咨询内容，我们将尽快与您取得联系
           </p>
           
-          <form class="consultation-form" id="contactForm">
+          <form class="consultation-form">
             <div class="form-row grid grid-2 gap-lg mb-lg">
               <div class="form-group">
-                <label for="name" class="form-label chinese-text">姓名 *</label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="请输入您的姓名" required>
+                <label for="name" class="form-label chinese-text">
+                  姓名 *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  placeholder="请输入您的姓名"
+                  required
+                />
               </div>
               <div class="form-group">
-                <label for="company" class="form-label chinese-text">公司名称</label>
-                <input type="text" id="company" name="company" class="form-input" placeholder="请输入公司名称">
+                <label for="company" class="form-label chinese-text">
+                  公司名称
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  class="form-input"
+                  placeholder="请输入公司名称"
+                />
               </div>
             </div>
-            
-            <div class="form-row grid grid-2 gap-lg mb-lg">
-              <div class="form-group">
-                <label for="email" class="form-label chinese-text">邮箱 *</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="请输入邮箱地址" required>
-              </div>
-              <div class="form-group">
-                <label for="phone" class="form-label chinese-text">联系电话</label>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="请输入联系电话">
-              </div>
-            </div>
-            
-            <div class="form-group mb-lg">
-              <label for="service" class="form-label chinese-text">咨询服务</label>
-              <select id="service" name="service" class="form-select">
-                <option value="">请选择咨询的服务类型</option>
-                <option value="consulting">战略咨询</option>
-                <option value="innovation">技术创新</option>
-                <option value="culture">文化融合</option>
-                <option value="digital">数字化转型</option>
-                <option value="other">其他服务</option>
-              </select>
-            </div>
-            
-            <div class="form-group mb-2xl">
-              <label for="message" class="form-label chinese-text">咨询内容 *</label>
-              <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="请详细描述您的需求和咨询内容..." required></textarea>
-            </div>
-            
             <button type="submit" class="btn btn-primary chinese-text form-submit">
               提交咨询
               <span class="english-text small-element">Submit</span>
             </button>
-            
             <p class="form-note chinese-text small-element opacity-70 mt-lg text-center">
               提交后我们将在24小时内回复您的咨询，感谢您的信任
             </p>

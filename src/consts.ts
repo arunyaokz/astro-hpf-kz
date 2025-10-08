@@ -2,62 +2,110 @@
 // Multi-language support and brand constants
 
 export const SITE_TITLE = "HPF.kz";
-export const SITE_DESCRIPTION = "低调确定性的跨境效率 | 让货流与价值悄然抵达";
+export const SITE_DESCRIPTION = "静水深流的跨境确定性 | 不与万物争位，唯与时间较真";
 
 // Company Information
 export const COMPANY_NAME = "HPF.kz";
-export const COMPANY_TAGLINE = "低调确定性的跨境效率";
+export const COMPANY_TAGLINE = "静水深流的跨境确定性";
 export const COMPANY_TAGLINE_EN = "Move quietly, deliver surely.";
-export const COMPANY_HERO_TITLE = "重新定义跨境物流";
-export const COMPANY_HERO_SUBTITLE = "把复杂留给系统，把简单留给客户。以极致确定性构建无摩擦的跨境物流网络。";
+export const COMPANY_HERO_TITLE = "行稳致远，润物有声";
+export const COMPANY_HERO_SUBTITLE = "把复杂留给系统，把简单留给客户。我们以“少即是多、柔能制刚”的运营哲学，贯通跨里海通道，交付低摩擦的跨境确定性。";
 
 // Multi-language Content
 export const TRANSLATIONS = {
   zh: {
     // Navigation
-    products: "产品",
-    solutions: "解决方案", 
-    platform: "平台",
-    about: "关于",
-    contact: "联系",
+    products: "能力与产品",
+    solutions: "行业方案", 
+    platform: "平台与数据",
+    resources: "资源中心",
+    about: "关于我们",
+    contact: "联系方式",
     
     // Hero Section
-    heroTitle: "重新定义跨境物流",
-    heroSubtitle: "把复杂留给系统，把简单留给客户。以极致确定性构建无摩擦的跨境物流网络。",
-    getGreenChannel: "获取绿通名额",
-    scheduleDemo: "预约演示",
+    heroTitle: "行稳致远，润物有声",
+    heroSubtitle: "把复杂留给系统，把简单留给客户。我们以“少即是多、柔能制刚”的运营哲学，贯通跨里海通道，交付低摩擦的跨境确定性。",
+    value1: "可解释的时效",
+    value1Desc: "承诺以SLA为锚，路径、缓冲与口岸波动参数透明呈现",
+    value2: "系统化合规", 
+    value2Desc: "合规不是额外工作，而是流程默认；一次性设计优先于事后补救",
+    value3: "生态协同",
+    value3Desc: "以接口为纽带联接港口、机场、铁路、车队、保险与金融伙伴",
+    
+    // CTA Buttons
+    getGreenChannel: "预约路径评估",
+    scheduleDemo: "获取绿通名额", 
+    apiIntegration: "平台演示 / API 对接",
+    downloadWhitepaper: "下载白皮书",
     
     // Products
-    productsTitle: "核心产品",
+    productsTitle: "能力与产品",
     kurekGreen: "库雷克绿通",
+    kurekGreenDesc: "跨里海关键节点的优先通行方案",
     customsClearance: "清关合规",
+    customsClearanceDesc: "哈萨克斯坦&EAEU技术法规对接",
     warehousing: "仓储分拨",
+    warehousingDesc: "保税/普通/温控，SKU级可视化",
     transport: "干线联运",
+    transportDesc: "海/铁/公/空多式联运协同",
     lastMile: "最后一公里",
+    lastMileDesc: "B2B配送与电商逆向闭环",
     financial: "金融增值",
+    financialDesc: "保险、结算、资金流优化",
     
     // Solutions  
-    solutionsTitle: "行业解决方案",
+    solutionsTitle: "行业方案",
     manufacturing: "制造业",
-    mining: "矿产能源",
-    automotive: "汽车零配件", 
+    manufacturingDesc: "超尺与项目物流策划，直达工地",
+    mining: "矿产与能源",
+    miningDesc: "危/特品合规与多节点安全",
+    automotive: "汽车与零部件",
+    automotiveDesc: "整机/CKD/SKD差异化方案",
     ecommerce: "跨境电商",
+    ecommerceDesc: "中高价值SKU时效与成本平衡",
     retail: "快消零售",
+    retailDesc: "高频补货、温控协同、库存健康",
+    
+    // Philosophy
+    philosophyTitle: "经营底层",
+    dao: "道",
+    daoTitle: "价值与取舍",
+    daoDesc: "成果归客户，长期主义，节制增长",
+    fa: "法", 
+    faTitle: "治理与约束",
+    faDesc: "三线治理，指标为纲，可审计",
+    shu: "术",
+    shuTitle: "方法与路径",
+    shuDesc: "顺势设计，少而精，标准化",
+    qi: "器",
+    qiTitle: "平台与基础设施",
+    qiDesc: "可观测性，数据API，AI运营助手",
     
     // KPIs
     ontimeDelivery: "准时达率",
     intactRate: "完损率",
-    responseTime: "响应时间",
-    satisfaction: "客户满意度",
+    responseTime: "异常响应",
+    observability: "可观测性指数",
+    satisfaction: "客户体验(NPS)",
     
     // About
-    aboutTitle: "关于我们",
+    aboutTitle: "关于HPF.kz",
     mission: "用系统化确定性，为客户创造长期价值",
-    vision: "成为跨里海中间走廊最可信赖的端到端物流平台",
+    vision: "成为跨里海通道最可信赖的端到端物流平台",
+    values: "坦诚透明｜长期主义｜合规先行｜以客户成功为北极星",
+    
+    // Resources
+    resourcesTitle: "资源中心",
+    whitepapers: "白皮书",
+    portInsights: "口岸洞察", 
+    complianceGuide: "合规指南",
     
     // Contact
-    contactTitle: "联系我们",
-    getInTouch: "开始合作",
+    contactTitle: "联系与CTA",
+    contactEmail: "contact@hpf.kz",
+    businessEmail: "bd@hpf.kz",
+    location: "哈萨克斯坦 · 阿拉木图",
+    getInTouch: "预约路径评估",
     
     // Route Tracking
     routeTrackingTitle: "实时路线追踪",
@@ -70,23 +118,34 @@ export const TRANSLATIONS = {
     trackingHistory: "追踪历史",
     
     // Customer Reviews
-    customerReviewsTitle: "客户评价",
-    seeMoreReviews: "查看更多评价"
+    customerReviewsTitle: "实证与案例",
+    seeMoreReviews: "查看更多案例",
+    
+    // Footer
+    footerTagline: "静水深流，润物无声"
   },
   
   en: {
     // Navigation
-    products: "Products",
-    solutions: "Solutions",
-    platform: "Platform", 
-    about: "About",
-    contact: "Contact",
+    products: "Products & Capabilities",
+    solutions: "Industry Solutions",
+    platform: "Platform & Data", 
+    resources: "Resources",
+    about: "About Us",
+    contact: "Contact Us",
     
     // Hero Section
     heroTitle: "Redefining Cross-border Logistics",
     heroSubtitle: "Leave complexity to systems, simplicity to customers. Build frictionless cross-border logistics networks with ultimate certainty.",
-    getGreenChannel: "Get Green Channel Access",
-    scheduleDemo: "Schedule Demo",
+    value1: "Explainable Timeliness",
+    value1Desc: "SLA-driven promises with transparent path, buffer and port volatility parameters",
+    value2: "Systematic Compliance", 
+    value2Desc: "Compliance is not extra work but default process; design-first over remedial fixes",
+    value3: "Ecosystem Collaboration",
+    value3Desc: "Connect ports, airports, railways, fleets, insurance and financial partners via interfaces",
+    getGreenChannel: "Schedule Route Assessment",
+    scheduleDemo: "Get Green Channel Access", 
+    apiIntegration: "Platform Demo / API Integration",
     
     // Products
     productsTitle: "Core Products",
@@ -132,22 +191,36 @@ export const TRANSLATIONS = {
     
     // Customer Reviews
     customerReviewsTitle: "Customer Reviews",
-    seeMoreReviews: "See More Reviews"
+    seeMoreReviews: "See More Reviews",
+    
+    // Resources
+    resourcesTitle: "Resources",
+    whitepapers: "Whitepapers",
+    portInsights: "Port Insights", 
+    complianceGuide: "Compliance Guide"
   },
   
   ru: {
     // Navigation
-    products: "Продукты",
-    solutions: "Решения",
-    platform: "Платформа",
+    products: "Продукты и возможности",
+    solutions: "Отраслевые решения",
+    platform: "Платформа и данные",
+    resources: "Ресурсы",
     about: "О нас", 
     contact: "Контакты",
     
     // Hero Section
     heroTitle: "Переосмысляем трансграничную логистику",
     heroSubtitle: "Оставьте сложность системам, простоту - клиентам. Создайте беспрепятственные трансграничные логистические сети с максимальной определенностью.",
-    getGreenChannel: "Получить доступ к зеленому каналу",
-    scheduleDemo: "Запланировать демо",
+    value1: "Объяснимая своевременность",
+    value1Desc: "Обещания на основе SLA с прозрачными параметрами пути, буфера и волатильности портов",
+    value2: "Систематическое соответствие",
+    value2Desc: "Соответствие - это не дополнительная работа, а процесс по умолчанию; проектирование-в-первую-очередь",
+    value3: "Экосистемное сотрудничество",
+    value3Desc: "Соединение портов, аэропортов, железных дорог, флотов, страхования и финансовых партнеров",
+    getGreenChannel: "Запланировать оценку маршрута",
+    scheduleDemo: "Получить доступ к зеленому каналу",
+    apiIntegration: "Демонстрация платформы / Интеграция API",
     
     // Products
     productsTitle: "Основные продукты", 
@@ -193,7 +266,13 @@ export const TRANSLATIONS = {
     
     // Customer Reviews
     customerReviewsTitle: "Отзывы клиентов",
-    seeMoreReviews: "Посмотреть больше отзывов"
+    seeMoreReviews: "Посмотреть больше отзывов",
+    
+    // Resources
+    resourcesTitle: "Ресурсы",
+    whitepapers: "Белые книги",
+    portInsights: "Инсайты портов", 
+    complianceGuide: "Руководство по соответствию"
   }
 };
 

@@ -1,0 +1,1 @@
+{"root":["./.astro/types.d.ts","./astro.config.mjs","./worker-configuration.d.ts","./src/actions.ts","./src/consts.ts","./src/content.config.ts","./src/env.d.ts","./src/components/contactform.tsx","./src/pages/rss.xml.js"],"errors":true,"version":"5.8.3"}

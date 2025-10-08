@@ -1,14 +1,16 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import AppleHeroSection from '../components/AppleHeroSection.astro';
-import ProductsSection from '../components/ProductsSection.astro';
-import SolutionsSection from '../components/SolutionsSection.astro';
-import AppleRouteTracking from '../components/AppleRouteTracking.astro';
-import AppleCustomerReviews from '../components/AppleCustomerReviews.astro';
-import AboutSection from '../components/AboutSection.astro';
-import ContactSection from '../components/ContactSection.astro';
+import BejamasFooter from '../components/BejamasFooter.astro';
+import BejamasHeroSection from '../components/BejamasHeroSection.astro';
+import BejamasPhilosophySection from '../components/BejamasPhilosophySection.astro';
+import BejamasProductsSection from '../components/BejamasProductsSection.astro';
+import BejamasSolutionsSection from '../components/BejamasSolutionsSection.astro';
+import BejamasRouteTracking from '../components/BejamasRouteTracking.astro';
+import BejamasCustomerReviews from '../components/BejamasCustomerReviews.astro';
+import BejamasResourcesSection from '../components/BejamasResourcesSection.astro';
+import BejamasAboutSection from '../components/BejamasAboutSection.astro';
+import BejamasContactSection from '../components/BejamasContactSection.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSLATIONS, TRACKING_DATA, CUSTOMER_REVIEWS } from '../consts';
 ---
 
@@ -63,30 +65,36 @@ import { SITE_TITLE, SITE_DESCRIPTION, TRANSLATIONS, TRACKING_DATA, CUSTOMER_REV
 		
 		<!-- 主要内容区域 -->
 		<main>
-			<!-- Apple风格Hero区域 -->
-			<AppleHeroSection />
+			<!-- Bejamas风格Hero区域 -->
+			<BejamasHeroSection />
 			
-			<!-- 核心产品区域 -->
-			<ProductsSection />
-			
-			<!-- 行业解决方案区域 -->
-			<SolutionsSection />
-			
-			<!-- 实时路线追踪区域 -->
-			<AppleRouteTracking />
-			
-			<!-- 客户评价区域 -->
-			<AppleCustomerReviews />
-			
-			<!-- 关于我们区域 -->
-			<AboutSection />
-			
-			<!-- 联系我们区域 -->
-			<ContactSection />
+			<!-- 经营底层哲学 -->
+		<BejamasPhilosophySection />
+		
+		<!-- 核心产品区域 -->
+		<BejamasProductsSection />
+		
+		<!-- 行业解决方案区域 -->
+		<BejamasSolutionsSection />
+		
+		<!-- 实时路线追踪区域 -->
+		<BejamasRouteTracking />
+		
+		<!-- 客户评价区域 -->
+		<BejamasCustomerReviews />
+		
+		<!-- 资源中心 -->
+		<BejamasResourcesSection />
+		
+		<!-- 关于我们区域 -->
+		<BejamasAboutSection />
+		
+		<!-- 联系我们区域 -->
+		<BejamasContactSection />
 		</main>
 		
 		<!-- 网站底部 -->
-		<Footer />
+		<BejamasFooter />
 		
 		<!-- 全局样式 -->
 		<style>

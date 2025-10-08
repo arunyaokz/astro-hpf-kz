@@ -3,8 +3,11 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { render } from 'astro:content';
 
-export async function getStaticPaths() {
+// 使用5.14新特性：routePattern
+export async function getStaticPaths({ routePattern }) {
 	const posts = await getCollection('blog');
+	// 打印路由模式用于调试
+	console.log('当前路由模式:', routePattern);
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: post,

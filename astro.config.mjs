@@ -2,16 +2,30 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import react from "@astrojs/react";
 
 import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap({
+    // 5.14新特性：Sitemap命名空间配置
+    namespaces: {
+      news: false,
+      xhtml: false,
+      image: false,
+      video: false,
+    }
+  }), react()],
   adapter: cloudflare({
     platformProxy: {
       enabled: true,
     },
   }),
+  // 5.14新特性：路由冲突警告
+  experimental: {
+    // 启用路由冲突时的构建失败警告
+    failOnPrerenderConflict: true,
+  },
 });
