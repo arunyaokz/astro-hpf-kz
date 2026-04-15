@@ -28,12 +28,6 @@ export default defineConfig({
     },
   }),
 
-  // 5.14新特性：路由冲突警告
-  experimental: {
-    // 启用路由冲突时的构建失败警告
-    failOnPrerenderConflict: true,
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
