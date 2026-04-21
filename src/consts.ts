@@ -2,14 +2,14 @@
 // Multi-language support and brand constants
 
 export const SITE_TITLE = "HPF.kz";
-export const SITE_DESCRIPTION = "静水深流的跨境确定性 | 不与万物争位，唯与时间较真";
+export const SITE_DESCRIPTION = "跨里海中间走廊的智能物流平台 | 更快、更透明、更可靠";
 
 // Company Information
 export const COMPANY_NAME = "HPF.kz";
-export const COMPANY_TAGLINE = "静水深流的跨境确定性";
-export const COMPANY_TAGLINE_EN = "Move quietly, deliver surely.";
-export const COMPANY_HERO_TITLE = "行稳致远，润物有声";
-export const COMPANY_HERO_SUBTITLE = "把复杂留给系统，把简单留给客户。我们以“少即是多、柔能制刚”的运营哲学，贯通跨里海通道，交付低摩擦的跨境确定性。";
+export const COMPANY_TAGLINE = "连接中亚，通达世界";
+export const COMPANY_TAGLINE_EN = "Connecting Central Asia to the World";
+export const COMPANY_HERO_TITLE = "重新定义跨境物流";
+export const COMPANY_HERO_SUBTITLE = "通过数字化平台和智能供应链网络，我们为您提供跨里海中间走廊最快速、最透明、最可靠的端到端物流解决方案。";
 
 // Multi-language Content
 export const TRANSLATIONS = {
@@ -23,63 +23,63 @@ export const TRANSLATIONS = {
     contact: "联系方式",
     
     // Hero Section
-    heroTitle: "行稳致远，润物有声",
-    heroSubtitle: "把复杂留给系统，把简单留给客户。我们以“少即是多、柔能制刚”的运营哲学，贯通跨里海通道，交付低摩擦的跨境确定性。",
-    value1: "可解释的时效",
-    value1Desc: "承诺以SLA为锚，路径、缓冲与口岸波动参数透明呈现",
-    value2: "系统化合规", 
-    value2Desc: "合规不是额外工作，而是流程默认；一次性设计优先于事后补救",
-    value3: "生态协同",
-    value3Desc: "以接口为纽带联接港口、机场、铁路、车队、保险与金融伙伴",
+    heroTitle: "重新定义跨境物流",
+    heroSubtitle: "通过数字化平台和智能供应链网络，我们为您提供跨里海中间走廊最快速、最透明、最可靠的端到端物流解决方案。",
+    value1: "实时可视化",
+    value1Desc: "全程追踪每一个货物，透明化每一个环节，让物流状态尽在掌握",
+    value2: "极速通关",
+    value2Desc: "库雷克港绿色通道，专业清关团队，平均节省40%时效",
+    value3: "智能调度",
+    value3Desc: "AI驱动的路线优化，多式联运智能切换，确保最优成本和时效",
     
     // CTA Buttons
-    getGreenChannel: "预约路径评估",
-    scheduleDemo: "获取绿通名额", 
-    apiIntegration: "平台演示 / API 对接",
-    downloadWhitepaper: "下载白皮书",
+    getGreenChannel: "免费咨询",
+    scheduleDemo: "立即体验",
+    apiIntegration: "预约演示",
+    downloadWhitepaper: "下载方案",
     
     // Products
-    productsTitle: "能力与产品",
-    kurekGreen: "库雷克绿通",
-    kurekGreenDesc: "跨里海关键节点的优先通行方案",
-    customsClearance: "清关合规",
-    customsClearanceDesc: "哈萨克斯坦&EAEU技术法规对接",
-    warehousing: "仓储分拨",
-    warehousingDesc: "保税/普通/温控，SKU级可视化",
-    transport: "干线联运",
-    transportDesc: "海/铁/公/空多式联运协同",
-    lastMile: "最后一公里",
-    lastMileDesc: "B2B配送与电商逆向闭环",
-    financial: "金融增值",
-    financialDesc: "保险、结算、资金流优化",
+    productsTitle: "核心服务",
+    kurekGreen: "库雷克绿色通道",
+    kurekGreenDesc: "跨里海核心港口优先通行，缩短40%中转时间",
+    customsClearance: "一站式清关",
+    customsClearanceDesc: "哈萨克斯坦&EAEU全境专业清关服务",
+    warehousing: "智能仓储",
+    warehousingDesc: "多温区仓储网络，实时库存可视化管理",
+    transport: "多式联运",
+    transportDesc: "海运/铁路/公路/空运智能组合，最优成本时效",
+    lastMile: "终端配送",
+    lastMileDesc: "覆盖中亚全境的最后一公里配送网络",
+    financial: "供应链金融",
+    financialDesc: "灵活的支付方案、货运保险、资金优化服务",
     
-    // Solutions  
-    solutionsTitle: "行业方案",
+    // Solutions
+    solutionsTitle: "行业解决方案",
     manufacturing: "制造业",
-    manufacturingDesc: "超尺与项目物流策划，直达工地",
-    mining: "矿产与能源",
-    miningDesc: "危/特品合规与多节点安全",
-    automotive: "汽车与零部件",
-    automotiveDesc: "整机/CKD/SKD差异化方案",
+    manufacturingDesc: "大型设备和项目物流，精准送达施工现场",
+    mining: "矿产能源",
+    miningDesc: "危险品与特种货物专业运输，全程合规保障",
+    automotive: "汽车行业",
+    automotiveDesc: "整车及零部件进口，CKD/SKD定制化物流方案",
     ecommerce: "跨境电商",
-    ecommerceDesc: "中高价值SKU时效与成本平衡",
+    ecommerceDesc: "快速清关、灵活配送，助力电商出海中亚",
     retail: "快消零售",
-    retailDesc: "高频补货、温控协同、库存健康",
+    retailDesc: "温控仓储、高频配送、库存智能管理",
     
     // Philosophy
-    philosophyTitle: "经营底层",
-    dao: "道",
-    daoTitle: "价值与取舍",
-    daoDesc: "成果归客户，长期主义，节制增长",
-    fa: "法", 
-    faTitle: "治理与约束",
-    faDesc: "三线治理，指标为纲，可审计",
-    shu: "术",
-    shuTitle: "方法与路径",
-    shuDesc: "顺势设计，少而精，标准化",
-    qi: "器",
-    qiTitle: "平台与基础设施",
-    qiDesc: "可观测性，数据API，AI运营助手",
+    philosophyTitle: "我们的优势",
+    dao: "数字化",
+    daoTitle: "全程可视化",
+    daoDesc: "实时追踪、数据透明、智能预警，让物流状态一目了然",
+    fa: "专业化",
+    faTitle: "深耕中亚",
+    faDesc: "多年深耕中亚市场，本地化团队，熟悉政策法规",
+    shu: "标准化",
+    shuTitle: "稳定可靠",
+    shuDesc: "SOP标准作业流程，确保服务质量始终如一",
+    qi: "智能化",
+    qiTitle: "AI驱动",
+    qiDesc: "智能路线规划、动态调度优化、预测性维护",
     
     // KPIs
     ontimeDelivery: "准时达率",
@@ -89,10 +89,10 @@ export const TRANSLATIONS = {
     satisfaction: "客户体验(NPS)",
     
     // About
-    aboutTitle: "关于HPF.kz",
-    mission: "用系统化确定性，为客户创造长期价值",
-    vision: "成为跨里海通道最可信赖的端到端物流平台",
-    values: "坦诚透明｜长期主义｜合规先行｜以客户成功为北极星",
+    aboutTitle: "关于我们",
+    mission: "通过技术创新和专业服务，为客户创造卓越价值",
+    vision: "成为跨里海中间走廊最值得信赖的智能物流平台",
+    values: "透明诚信 | 专业高效 | 持续创新 | 客户至上",
     
     // Resources
     resourcesTitle: "资源中心",
@@ -101,11 +101,11 @@ export const TRANSLATIONS = {
     complianceGuide: "合规指南",
     
     // Contact
-    contactTitle: "联系与CTA",
+    contactTitle: "联系我们",
     contactEmail: "contact@hpf.kz",
     businessEmail: "bd@hpf.kz",
     location: "哈萨克斯坦 · 阿拉木图",
-    getInTouch: "预约路径评估",
+    getInTouch: "立即咨询",
     
     // Route Tracking
     routeTrackingTitle: "实时路线追踪",
@@ -136,33 +136,44 @@ export const TRANSLATIONS = {
     
     // Hero Section
     heroTitle: "Redefining Cross-border Logistics",
-    heroSubtitle: "Leave complexity to systems, simplicity to customers. Build frictionless cross-border logistics networks with ultimate certainty.",
-    value1: "Explainable Timeliness",
-    value1Desc: "SLA-driven promises with transparent path, buffer and port volatility parameters",
-    value2: "Systematic Compliance", 
-    value2Desc: "Compliance is not extra work but default process; design-first over remedial fixes",
-    value3: "Ecosystem Collaboration",
-    value3Desc: "Connect ports, airports, railways, fleets, insurance and financial partners via interfaces",
-    getGreenChannel: "Schedule Route Assessment",
-    scheduleDemo: "Get Green Channel Access", 
-    apiIntegration: "Platform Demo / API Integration",
+    heroSubtitle: "Through our digital platform and intelligent supply chain network, we deliver the fastest, most transparent, and most reliable end-to-end logistics solutions across the Trans-Caspian Middle Corridor.",
+    value1: "Real-time Visibility",
+    value1Desc: "Track every shipment, visualize every step, stay in control of your logistics",
+    value2: "Express Clearance",
+    value2Desc: "Kuryk Port green channel, professional customs team, save 40% transit time on average",
+    value3: "Smart Routing",
+    value3Desc: "AI-powered route optimization, intelligent multimodal switching for optimal cost and speed",
+    getGreenChannel: "Free Consultation",
+    scheduleDemo: "Get Started",
+    apiIntegration: "Book a Demo",
     
     // Products
-    productsTitle: "Core Products",
-    kurekGreen: "Kurek Green Channel",
-    customsClearance: "Customs Clearance",
-    warehousing: "Warehousing & Distribution",
+    productsTitle: "Core Services",
+    kurekGreen: "Kuryk Green Channel",
+    kurekGreenDesc: "Priority access at key Trans-Caspian ports, reduce transit time by 40%",
+    customsClearance: "One-stop Customs",
+    customsClearanceDesc: "Professional customs clearance across Kazakhstan & EAEU",
+    warehousing: "Smart Warehousing",
+    warehousingDesc: "Multi-temperature warehouse network with real-time inventory visibility",
     transport: "Multimodal Transport",
-    lastMile: "Last Mile Delivery", 
-    financial: "Financial Services",
+    transportDesc: "Sea/Rail/Road/Air intelligent combination for optimal cost and speed",
+    lastMile: "Final Mile Delivery",
+    lastMileDesc: "Comprehensive last-mile delivery network covering all Central Asia",
+    financial: "Supply Chain Finance",
+    financialDesc: "Flexible payment solutions, cargo insurance, and capital optimization",
     
     // Solutions
     solutionsTitle: "Industry Solutions",
     manufacturing: "Manufacturing",
+    manufacturingDesc: "Heavy equipment and project logistics, delivered precisely to construction sites",
     mining: "Mining & Energy",
-    automotive: "Automotive & Parts",
-    ecommerce: "Cross-border E-commerce", 
+    miningDesc: "Professional transport for hazardous and special cargo, full compliance guaranteed",
+    automotive: "Automotive",
+    automotiveDesc: "Complete vehicles and parts import, customized CKD/SKD logistics solutions",
+    ecommerce: "Cross-border E-commerce",
+    ecommerceDesc: "Fast customs clearance, flexible delivery, empowering e-commerce in Central Asia",
     retail: "FMCG & Retail",
+    retailDesc: "Temperature-controlled warehousing, high-frequency distribution, intelligent inventory management",
     
     // KPIs
     ontimeDelivery: "On-time Delivery",
@@ -172,11 +183,15 @@ export const TRANSLATIONS = {
     
     // About
     aboutTitle: "About Us",
-    mission: "Create long-term value for customers through systematic certainty",
-    vision: "Become the most trusted end-to-end logistics platform across the Trans-Caspian Middle Corridor",
+    mission: "Create exceptional value for customers through technological innovation and professional services",
+    vision: "Become the most trusted intelligent logistics platform across the Trans-Caspian Middle Corridor",
+    values: "Transparent & Honest | Professional & Efficient | Continuous Innovation | Customer First",
     
     // Contact
     contactTitle: "Contact Us",
+    contactEmail: "contact@hpf.kz",
+    businessEmail: "bd@hpf.kz",
+    location: "Almaty, Kazakhstan",
     getInTouch: "Get In Touch",
     
     // Route Tracking
@@ -210,17 +225,17 @@ export const TRANSLATIONS = {
     contact: "Контакты",
     
     // Hero Section
-    heroTitle: "Переосмысляем трансграничную логистику",
-    heroSubtitle: "Оставьте сложность системам, простоту - клиентам. Создайте беспрепятственные трансграничные логистические сети с максимальной определенностью.",
-    value1: "Объяснимая своевременность",
-    value1Desc: "Обещания на основе SLA с прозрачными параметрами пути, буфера и волатильности портов",
-    value2: "Систематическое соответствие",
-    value2Desc: "Соответствие - это не дополнительная работа, а процесс по умолчанию; проектирование-в-первую-очередь",
-    value3: "Экосистемное сотрудничество",
-    value3Desc: "Соединение портов, аэропортов, железных дорог, флотов, страхования и финансовых партнеров",
-    getGreenChannel: "Запланировать оценку маршрута",
-    scheduleDemo: "Получить доступ к зеленому каналу",
-    apiIntegration: "Демонстрация платформы / Интеграция API",
+    heroTitle: "Переопределяем трансграничную логистику",
+    heroSubtitle: "Через нашу цифровую платформу и интеллектуальную сеть поставок мы предоставляем самые быстрые, прозрачные и надежные комплексные логистические решения через Транскаспийский Средний коридор.",
+    value1: "Видимость в реальном времени",
+    value1Desc: "Отслеживайте каждую отправку, визуализируйте каждый этап, контролируйте вашу логистику",
+    value2: "Экспресс-таможня",
+    value2Desc: "Зеленый канал порта Курык, профессиональная таможенная команда, экономия 40% времени транзита",
+    value3: "Умная маршрутизация",
+    value3Desc: "Оптимизация маршрутов на базе ИИ, интеллектуальное мультимодальное переключение для оптимальной стоимости и скорости",
+    getGreenChannel: "Бесплатная консультация",
+    scheduleDemo: "Начать сейчас",
+    apiIntegration: "Заказать демо",
     
     // Products
     productsTitle: "Основные продукты", 
@@ -276,42 +291,62 @@ export const TRANSLATIONS = {
   }
 };
 
-// Operating Principles (Philosophy without religious references)
+// Operating Principles (Core Advantages)
 export const OPERATING_PRINCIPLES = [
   {
-    name: "成果归客户",
-    nameEn: "Customer Success First",
-    nameRu: "Успех клиента превыше всего", 
-    description: "让成就留在客户品牌之上，我们专注稳定交付与复用能力",
-    descriptionEn: "Let achievements stay with customer brands, we focus on stable delivery and reusable capabilities",
-    descriptionRu: "Пусть достижения остаются с брендами клиентов, мы сосредоточены на стабильной доставке и повторно используемых возможностях"
+    name: "数字化",
+    nameEn: "Digital",
+    nameRu: "Цифровизация",
+    title: "全程可视化",
+    titleEn: "Full Visibility",
+    titleRu: "Полная видимость",
+    description: "实时追踪、数据透明、智能预警，让物流状态一目了然",
+    descriptionEn: "Real-time tracking, data transparency, smart alerts, keep logistics status at your fingertips",
+    descriptionRu: "Отслеживание в реальном времени, прозрачность данных, интеллектуальные предупреждения"
   },
   {
-    name: "顺势设计",
-    nameEn: "Strategic Design", 
-    nameRu: "Стратегический дизайн",
-    description: "尊重地理、运能与政策的客观规律，以系统化手段处理不确定性",
-    descriptionEn: "Respect the objective laws of geography, capacity and policy, handle uncertainty with systematic approaches",
-    descriptionRu: "Уважать объективные законы географии, мощности и политики, справляться с неопределенностью системными подходами"
+    name: "专业化",
+    nameEn: "Professional",
+    nameRu: "Профессионализм",
+    title: "深耕中亚",
+    titleEn: "Central Asia Expertise",
+    titleRu: "Экспертиза Центральной Азии",
+    description: "多年深耕中亚市场，本地化团队，熟悉政策法规",
+    descriptionEn: "Years of experience in Central Asian markets, localized teams, familiar with policies and regulations",
+    descriptionRu: "Многолетний опыт на рынках Центральной Азии, локализованные команды, знание политик и правил"
   },
   {
-    name: "节制增长",
-    nameEn: "Sustainable Growth",
-    nameRu: "Устойчивый рост", 
-    description: "拒绝一次性奇迹，以可持续SLA与健康KPI构筑复利",
-    descriptionEn: "Reject one-time miracles, build compound growth with sustainable SLA and healthy KPIs",
-    descriptionRu: "Отказаться от одноразовых чудес, строить сложный рост с устойчивым SLA и здоровыми KPI"
+    name: "标准化",
+    nameEn: "Standardized",
+    nameRu: "Стандартизация",
+    title: "稳定可靠",
+    titleEn: "Stable & Reliable",
+    titleRu: "Стабильный и надежный",
+    description: "SOP标准作业流程，确保服务质量始终如一",
+    descriptionEn: "SOP standard operating procedures ensure consistent service quality",
+    descriptionRu: "Стандартные операционные процедуры обеспечивают стабильное качество обслуживания"
+  },
+  {
+    name: "智能化",
+    nameEn: "Intelligent",
+    nameRu: "Интеллектуализация",
+    title: "AI驱动",
+    titleEn: "AI-Powered",
+    titleRu: "На базе ИИ",
+    description: "智能路线规划、动态调度优化、预测性维护",
+    descriptionEn: "Intelligent route planning, dynamic scheduling optimization, predictive maintenance",
+    descriptionRu: "Интеллектуальное планирование маршрутов, динамическая оптимизация расписания, прогнозное обслуживание"
   }
 ];
 
 // Brand Values
-export const COMPANY_MISSION = "用系统化确定性，为客户创造长期价值";
-export const COMPANY_VISION = "成为跨里海中间走廊最可信赖的端到端物流平台";
+export const COMPANY_MISSION = "通过技术创新和专业服务，为客户创造卓越价值";
+export const COMPANY_VISION = "成为跨里海中间走廊最值得信赖的智能物流平台";
 export const COMPANY_VALUES = [
-  "坦诚透明",
-  "长期主义",
-  "合规先行", 
-  "以客户成功为北极星"
+  "透明诚信",
+  "专业高效",
+  "持续创新",
+  "客户至上"
 ];
 
 // Contact Information
