@@ -2,14 +2,14 @@
 // Multi-language support and brand constants
 
 export const SITE_TITLE = "HPF.kz";
-export const SITE_DESCRIPTION = "低调确定性的跨境效率 | 让货流与价值悄然抵达";
+export const SITE_DESCRIPTION = "确定性驱动的跨境物流价值传递 | 让每一次交付都有可预期的价值回报";
 
 // Company Information
 export const COMPANY_NAME = "HPF.kz";
-export const COMPANY_TAGLINE = "低调确定性的跨境效率";
-export const COMPANY_TAGLINE_EN = "Move quietly, deliver surely.";
-export const COMPANY_HERO_TITLE = "重新定义跨境物流";
-export const COMPANY_HERO_SUBTITLE = "把复杂留给系统，把简单留给客户。以极致确定性构建无摩擦的跨境物流网络。";
+export const COMPANY_TAGLINE = "确定性驱动的跨境物流价值传递";
+export const COMPANY_TAGLINE_EN = "Certainty-driven cross-border logistics value delivery.";
+export const COMPANY_HERO_TITLE = "让确定性成为跨境物流的默认标准";
+export const COMPANY_HERO_SUBTITLE = "以系统化确定性，为您的全球业务保驾护航。通过数据驱动的智能决策系统，将跨境物流的不确定性转化为可预期的商业价值。";
 
 // Multi-language Content
 export const TRANSLATIONS = {
@@ -67,11 +67,7 @@ export const TRANSLATIONS = {
     shipmentStatus: "货物状态",
     currentLocation: "当前位置",
     estimatedArrival: "预计到达",
-    trackingHistory: "追踪历史",
-    
-    // Customer Reviews
-    customerReviewsTitle: "客户评价",
-    seeMoreReviews: "查看更多评价"
+    trackingHistory: "追踪历史"
   },
   
   en: {
@@ -83,8 +79,8 @@ export const TRANSLATIONS = {
     contact: "Contact",
     
     // Hero Section
-    heroTitle: "Redefining Cross-border Logistics",
-    heroSubtitle: "Leave complexity to systems, simplicity to customers. Build frictionless cross-border logistics networks with ultimate certainty.",
+    heroTitle: "Making Certainty the Default Standard in Cross-border Logistics",
+    heroSubtitle: "From unpredictable to reliably certain, transform cross-border logistics uncertainty into predictable business value through data-driven intelligent decision systems.",
     getGreenChannel: "Get Green Channel Access",
     scheduleDemo: "Schedule Demo",
     
@@ -128,11 +124,7 @@ export const TRANSLATIONS = {
     shipmentStatus: "Shipment Status",
     currentLocation: "Current Location",
     estimatedArrival: "Estimated Arrival",
-    trackingHistory: "Tracking History",
-    
-    // Customer Reviews
-    customerReviewsTitle: "Customer Reviews",
-    seeMoreReviews: "See More Reviews"
+    trackingHistory: "Tracking History"
   },
   
   ru: {
@@ -144,8 +136,8 @@ export const TRANSLATIONS = {
     contact: "Контакты",
     
     // Hero Section
-    heroTitle: "Переосмысляем трансграничную логистику",
-    heroSubtitle: "Оставьте сложность системам, простоту - клиентам. Создайте беспрепятственные трансграничные логистические сети с максимальной определенностью.",
+    heroTitle: "Делаем определенность стандартом в трансграничной логистике",
+    heroSubtitle: "От непредсказуемости к гарантированной определенности, превращаем неопределенность трансграничной логистики в предсказуемую бизнес-ценность через системы интеллектуального принятия решений на основе данных.",
     getGreenChannel: "Получить доступ к зеленому каналу",
     scheduleDemo: "Запланировать демо",
     
@@ -189,11 +181,7 @@ export const TRANSLATIONS = {
     shipmentStatus: "Статус груза",
     currentLocation: "Текущее местоположение",
     estimatedArrival: "Ожидаемое прибытие",
-    trackingHistory: "История отслеживания",
-    
-    // Customer Reviews
-    customerReviewsTitle: "Отзывы клиентов",
-    seeMoreReviews: "Посмотреть больше отзывов"
+    trackingHistory: "История отслеживания"
   }
 };
 
@@ -252,6 +240,300 @@ export const KPI_DATA = {
   responseTime: { value: 2, unit: "H" },
   satisfaction: { value: 95, unit: "%+" }
 };
+
+export const HOMEPAGE_CONTENT = {
+  zh: {
+    eyebrow: "HPF.kz | 哈萨克斯坦跨境物流中枢",
+    headline: "把中哈欧链路做成可计划、可追踪、可复盘的确定性交付",
+    subhead:
+      "我们连接中国贸易商、哈萨克斯坦本地履约网络与欧洲收货方，把路线、清关、仓储、干线与交付节点整合为一套可执行的运营系统。",
+    primaryCta: "配置我的路线",
+    secondaryCta: "查看服务舱",
+    nav: {
+      services: "服务舱",
+      routes: "路线网络",
+      industries: "行业方案",
+      platform: "平台能力",
+      contact: "联系"
+    },
+    stats: [
+      { value: "10-12天", label: "中间走廊确定性时效" },
+      { value: "99.2%", label: "节点完整追踪目标" },
+      { value: "3语", label: "中英俄协同交付" },
+      { value: "T+0", label: "异常预警与处置" }
+    ],
+    tabsTitle: "点击栏目，查看可执行内容",
+    tabsLead:
+      "官网不再只讲概念。每个栏目都对应客户真正会问的问题：走哪条线、谁负责清关、库存放哪里、异常怎么处理。",
+    tabs: [
+      {
+        id: "services",
+        label: "服务舱",
+        title: "从货物出厂到末端签收，一票到底",
+        summary:
+          "把清关、港口、仓储、干线、末端配送拆成可组合模块，按客户货类、时效与预算形成交付方案。",
+        points: [
+          "库雷克绿通：前置排期、港口协同、跨里海节点可视化",
+          "EAEU合规：税则归类、资料校验、证书与原产地文件管理",
+          "仓储分拨：阿拉木图仓配、SKU级库存、贴标分拣与逆向处理",
+          "干线联运：铁路、公路、里海海运、TIR与空运备选方案"
+        ],
+        metric: "1票多段",
+        metricLabel: "统一运营台账"
+      },
+      {
+        id: "routes",
+        label: "路线网络",
+        title: "中哈欧走廊：先确定边界，再承诺时效",
+        summary:
+          "我们以中国集货、哈萨克斯坦枢纽、里海通道、外高加索与欧洲目的地为主线，为每条路线设置容量、风险与备选预案。",
+        points: [
+          "中国集货至阿拉木图：工厂提货、集拼、出口文件核验",
+          "阿拉木图至库雷克港：铁路/公路切换，避免单一路径锁死",
+          "库雷克至巴库：舱位排期、装船窗口与异常预警",
+          "巴库/格鲁吉亚/土耳其至欧洲：转关、分拨与收货方预约"
+        ],
+        metric: "4段",
+        metricLabel: "路线风险分层"
+      },
+      {
+        id: "industries",
+        label: "行业方案",
+        title: "不同货类，不用同一套话术和同一张报价表",
+        summary:
+          "工程机械、汽车零配件、电商SKU、矿产能源和快消零售的风险完全不同。方案从货类约束开始，而不是从线路价格开始。",
+        points: [
+          "工程机械：超限许可、吊装计划、项目节点交付",
+          "汽车零配件：VIN/批次管理、售后备件、CKD/SKD协同",
+          "跨境电商：SKU可视化、退换逆向、平台系统对接",
+          "矿产能源：危特品合规、检验检疫、多节点安全交接"
+        ],
+        metric: "5类",
+        metricLabel: "重点行业模板"
+      },
+      {
+        id: "platform",
+        label: "平台能力",
+        title: "把物流经验沉淀成客户能看见的数据面板",
+        summary:
+          "HPF.kz的核心不是单点运输，而是把报价、文件、节点、库存、异常和复盘放进同一个运营视图。",
+        points: [
+          "路线报价：按时效、风险、成本生成对比方案",
+          "文件中台：报关资料、证书、提单与签收文件统一留痕",
+          "节点追踪：关键节点状态、预计到达与异常原因透明展示",
+          "复盘报告：准时率、破损率、异常类型与成本偏差可追溯"
+        ],
+        metric: "6类",
+        metricLabel: "运营数据资产"
+      }
+    ],
+    processTitle: "一条货的确定性旅程",
+    process: [
+      { step: "01", title: "诊断", text: "确认货类、目的地、时效边界、合规风险与预算约束。" },
+      { step: "02", title: "配置", text: "生成主路线、备用路线、清关方案、仓储节点和SLA。" },
+      { step: "03", title: "执行", text: "以节点台账推进取货、出口、入境、转运、仓配和签收。" },
+      { step: "04", title: "复盘", text: "输出异常、时效、费用、文件完整性的可复用报告。" }
+    ],
+    contactTitle: "把下一票货先做成一张可执行路线图",
+    contactText: "告诉我们货类、起运地、目的地、重量体积和期望到达时间，我们会返回可落地的路线建议。",
+    contactFields: ["货类", "起运地", "目的地", "期望时效"],
+    contactButton: "发送路线需求"
+  },
+  en: {
+    eyebrow: "HPF.kz | Kazakhstan cross-border logistics hub",
+    headline: "Turn China-Kazakhstan-Europe logistics into planned, tracked, and reviewable delivery",
+    subhead:
+      "We connect Chinese traders, Kazakhstan fulfillment capacity, and European consignees through one operating system for routes, customs, warehousing, linehaul, and final delivery.",
+    primaryCta: "Configure my route",
+    secondaryCta: "Explore service pods",
+    nav: {
+      services: "Services",
+      routes: "Routes",
+      industries: "Industries",
+      platform: "Platform",
+      contact: "Contact"
+    },
+    stats: [
+      { value: "10-12d", label: "Middle Corridor target transit" },
+      { value: "99.2%", label: "node visibility target" },
+      { value: "3 langs", label: "ZH/EN/RU coordination" },
+      { value: "T+0", label: "exception response" }
+    ],
+    tabsTitle: "Click a pillar to inspect the operating content",
+    tabsLead:
+      "This site is built around the questions customers actually ask: which route, who handles customs, where inventory sits, and how exceptions are resolved.",
+    tabs: [
+      {
+        id: "services",
+        label: "Services",
+        title: "From factory pickup to final POD, one accountable shipment",
+        summary:
+          "Customs, port coordination, warehousing, linehaul, and final delivery are built as modular pods around cargo type, time promise, and budget.",
+        points: [
+          "Kuryk Green Channel: booking windows, port coordination, and Trans-Caspian node visibility",
+          "EAEU compliance: HS classification, document checks, certificates, and origin files",
+          "Warehousing: Almaty fulfillment, SKU inventory, labeling, sorting, and reverse logistics",
+          "Multimodal linehaul: rail, road, Caspian sea freight, TIR, and air fallback"
+        ],
+        metric: "1 file",
+        metricLabel: "multi-leg operations ledger"
+      },
+      {
+        id: "routes",
+        label: "Routes",
+        title: "China-Kazakhstan-Europe: define boundaries before promising time",
+        summary:
+          "Each lane is planned around capacity, risk, and fallback options across China origin, Kazakhstan hubs, the Caspian link, the Caucasus, and Europe.",
+        points: [
+          "China to Almaty: pickup, consolidation, export document checks",
+          "Almaty to Kuryk: rail/road switching to avoid single-path exposure",
+          "Kuryk to Baku: sailing windows, vessel loading, and exception alerts",
+          "Baku/Georgia/Turkey to Europe: transit customs, distribution, and consignee appointments"
+        ],
+        metric: "4 legs",
+        metricLabel: "risk-layered routing"
+      },
+      {
+        id: "industries",
+        label: "Industries",
+        title: "Different cargo deserves different playbooks",
+        summary:
+          "Heavy equipment, auto parts, e-commerce SKUs, mining cargo, and retail goods carry different constraints. Planning starts with cargo reality, not a generic rate sheet.",
+        points: [
+          "Construction machinery: permits, lifting plans, project milestone delivery",
+          "Automotive parts: VIN/batch control, spare parts, CKD/SKD coordination",
+          "E-commerce: SKU visibility, returns, marketplace system integration",
+          "Mining and energy: regulated cargo, inspections, secure node handover"
+        ],
+        metric: "5",
+        metricLabel: "industry playbooks"
+      },
+      {
+        id: "platform",
+        label: "Platform",
+        title: "Turn logistics know-how into a customer-visible control panel",
+        summary:
+          "HPF.kz is not a single transport vendor. It is an operating view for quotes, documents, milestones, inventory, exceptions, and post-shipment reviews.",
+        points: [
+          "Route quotation: compare time, risk, and cost scenarios",
+          "Document center: customs files, certificates, bills, and PODs",
+          "Milestone tracking: status, ETA, and exception reason by node",
+          "Review reports: punctuality, damage, exception types, and cost variance"
+        ],
+        metric: "6",
+        metricLabel: "operating data assets"
+      }
+    ],
+    processTitle: "A deterministic shipment journey",
+    process: [
+      { step: "01", title: "Diagnose", text: "Confirm cargo type, destination, time boundary, compliance risk, and budget." },
+      { step: "02", title: "Configure", text: "Build primary route, fallback route, customs plan, warehouse node, and SLA." },
+      { step: "03", title: "Execute", text: "Move pickup, export, import, transfer, fulfillment, and POD through a node ledger." },
+      { step: "04", title: "Review", text: "Report exceptions, transit time, cost, document integrity, and reusable learnings." }
+    ],
+    contactTitle: "Turn the next shipment into an executable route map",
+    contactText: "Share cargo type, origin, destination, weight/volume, and target arrival. We will return a route recommendation that can actually be operated.",
+    contactFields: ["Cargo", "Origin", "Destination", "Target time"],
+    contactButton: "Send route request"
+  },
+  ru: {
+    eyebrow: "HPF.kz | Казахстанский хаб трансграничной логистики",
+    headline: "Превращаем маршрут Китай-Казахстан-Европа в планируемую и контролируемую доставку",
+    subhead:
+      "Мы соединяем китайских отправителей, казахстанскую сеть исполнения и европейских получателей в единую операционную систему маршрутов, таможни, склада и доставки.",
+    primaryCta: "Настроить маршрут",
+    secondaryCta: "Посмотреть сервисы",
+    nav: {
+      services: "Сервисы",
+      routes: "Маршруты",
+      industries: "Отрасли",
+      platform: "Платформа",
+      contact: "Контакты"
+    },
+    stats: [
+      { value: "10-12д", label: "ориентир Среднего коридора" },
+      { value: "99.2%", label: "цель видимости узлов" },
+      { value: "3 языка", label: "ZH/EN/RU координация" },
+      { value: "T+0", label: "реакция на исключения" }
+    ],
+    tabsTitle: "Нажмите на раздел и посмотрите операционное содержание",
+    tabsLead:
+      "Сайт отвечает на практические вопросы клиента: какой маршрут, кто ведет таможню, где хранится товар и как устраняются отклонения.",
+    tabs: [
+      {
+        id: "services",
+        label: "Сервисы",
+        title: "От забора на фабрике до подтверждения доставки в одной ответственности",
+        summary:
+          "Таможня, порт, склад, магистраль и последняя миля собираются в модульное решение по типу груза, срокам и бюджету.",
+        points: [
+          "Зеленый канал Курык: окна бронирования, портовая координация, видимость Транскаспийских узлов",
+          "EAEU compliance: классификация ТН ВЭД, проверка документов, сертификаты и происхождение",
+          "Склад: исполнение в Алматы, SKU-учет, маркировка, сортировка и возвраты",
+          "Мультимодальная магистраль: ЖД, авто, Каспийское море, TIR и авиа-резерв"
+        ],
+        metric: "1 рейс",
+        metricLabel: "единый операционный журнал"
+      },
+      {
+        id: "routes",
+        label: "Маршруты",
+        title: "Китай-Казахстан-Европа: сначала границы, потом обещание срока",
+        summary:
+          "Каждый коридор проектируется через емкость, риски и резервные варианты от Китая до Казахстана, Каспия, Кавказа и Европы.",
+        points: [
+          "Китай - Алматы: забор, консолидация, проверка экспортных документов",
+          "Алматы - Курык: переключение ЖД/авто для снижения зависимости от одного пути",
+          "Курык - Баку: расписание судов, погрузочные окна и предупреждения",
+          "Баку/Грузия/Турция - Европа: транзит, распределение и запись получателя"
+        ],
+        metric: "4 этапа",
+        metricLabel: "маршрут с уровнями риска"
+      },
+      {
+        id: "industries",
+        label: "Отрасли",
+        title: "Разные грузы требуют разных сценариев",
+        summary:
+          "Спецтехника, автозапчасти, e-commerce SKU, сырье и ритейл имеют разные ограничения. План начинается с реальности груза, а не с общей ставки.",
+        points: [
+          "Строительная техника: разрешения, погрузка, доставка к этапу проекта",
+          "Автозапчасти: VIN/партии, запасные части, CKD/SKD координация",
+          "E-commerce: SKU-видимость, возвраты, интеграция с платформами",
+          "Горнодобыча и энергетика: специальные грузы, инспекции, безопасная передача"
+        ],
+        metric: "5",
+        metricLabel: "отраслевых сценариев"
+      },
+      {
+        id: "platform",
+        label: "Платформа",
+        title: "Логистический опыт становится видимой панелью управления",
+        summary:
+          "HPF.kz - это не один перевозчик, а операционный вид для ставок, документов, узлов, склада, исключений и итогового анализа.",
+        points: [
+          "Расчет маршрута: сравнение срока, риска и стоимости",
+          "Документы: таможенные файлы, сертификаты, коносаменты и POD",
+          "Отслеживание: статус, ETA и причина исключения по каждому узлу",
+          "Отчеты: срок, повреждения, типы исключений и отклонение затрат"
+        ],
+        metric: "6",
+        metricLabel: "типов операционных данных"
+      }
+    ],
+    processTitle: "Путь груза с определенностью",
+    process: [
+      { step: "01", title: "Диагностика", text: "Тип груза, пункт назначения, срок, комплаенс-риски и бюджет." },
+      { step: "02", title: "Конфигурация", text: "Основной маршрут, резервный маршрут, таможенный план, склад и SLA." },
+      { step: "03", title: "Исполнение", text: "Забор, экспорт, импорт, транзит, склад и POD через журнал узлов." },
+      { step: "04", title: "Анализ", text: "Исключения, сроки, стоимость, документы и выводы для следующих отправок." }
+    ],
+    contactTitle: "Сделаем следующий груз исполнимой маршрутной картой",
+    contactText: "Укажите тип груза, отправление, назначение, вес/объем и желаемый срок. Мы вернем маршрутную рекомендацию.",
+    contactFields: ["Груз", "Отправление", "Назначение", "Срок"],
+    contactButton: "Отправить запрос"
+  }
+} as const;
 
 // Apple-inspired Color Scheme
 export const COLORS = {
@@ -312,72 +594,3 @@ export const TRACKING_DATA = {
     ]
   }
 };
-
-// Customer Reviews Data
-export const CUSTOMER_REVIEWS = [
-  {
-    id: "review_001",
-    name: { zh: "张总", en: "Mr. Zhang", ru: "Г-н Чжан" },
-    company: { zh: "北方工程机械", en: "Northern Engineering", ru: "Северная Инженерия" },
-    industry: { zh: "机械制造", en: "Manufacturing", ru: "Производство" },
-    rating: 5,
-    content: {
-      zh: "HPF的绿通服务真正解决了我们的痛点，从阿拉木图到伊斯坦布尔的运输时间缩短了40%，而且全程透明可控。",
-      en: "HPF's Green Channel service truly solved our pain points. Transit time from Almaty to Istanbul was reduced by 40%, with full transparency and control.",
-      ru: "Услуга «Зеленый канал» HPF действительно решила наши проблемы. Время доставки из Алматы в Стамбул сократилось на 40% при полной прозрачности и контроле."
-    },
-    date: "2024-07-15"
-  },
-  {
-    id: "review_002", 
-    name: { zh: "李经理", en: "Manager Li", ru: "Менеджер Ли" },
-    company: { zh: "中亚贸易集团", en: "Central Asia Trading", ru: "Центральная Азия Трейдинг" },
-    industry: { zh: "跨境贸易", en: "Cross-border Trade", ru: "Трансграничная торговля" },
-    rating: 5,
-    content: {
-      zh: "选择HPF是我们今年最正确的决定。专业的团队，稳定的服务，让我们在TMTM走廊的业务拓展非常顺利。",
-      en: "Choosing HPF was our best decision this year. Professional team and stable service made our TMTM corridor business expansion very smooth.",
-      ru: "Выбор HPF был нашим лучшим решением в этом году. Профессиональная команда и стабильный сервис обеспечили плавное развитие нашего бизнеса в коридоре ТМТМ."
-    },
-    date: "2024-08-01"
-  },
-  {
-    id: "review_003",
-    name: { zh: "Dmitri", en: "Dmitri", ru: "Дмитрий" },
-    company: { zh: "欧亚物流", en: "Eurasia Logistics", ru: "Евразия Логистика" },
-    industry: { zh: "物流服务", en: "Logistics Services", ru: "Логистические услуги" },
-    rating: 5,
-    content: {
-      zh: "HPF的数字化平台让我们实现了全链路可视化管理，客户满意度显著提升，强烈推荐！",
-      en: "HPF's digital platform enabled full supply chain visibility management. Customer satisfaction improved significantly. Highly recommended!",
-      ru: "Цифровая платформа HPF обеспечила полную прозрачность управления цепочкой поставок. Удовлетворенность клиентов значительно повысилась. Настоятельно рекомендую!"
-    },
-    date: "2024-08-10"
-  },
-  {
-    id: "review_004",
-    name: { zh: "王董", en: "Chairman Wang", ru: "Председатель Ван" },
-    company: { zh: "新疆矿业", en: "Xinjiang Mining", ru: "Синьцзян Майнинг" },
-    industry: { zh: "矿产开采", en: "Mining", ru: "Добыча полезных ископаемых" },
-    rating: 4,
-    content: {
-      zh: "与HPF合作三个月来，运输效率和成本控制都超出预期，期待更深入的合作。",
-      en: "Three months of cooperation with HPF exceeded expectations in both efficiency and cost control. Looking forward to deeper collaboration.",
-      ru: "Три месяца сотрудничества с HPF превзошли ожидания как по эффективности, так и по контролю затрат. С нетерпением ждем более глубокого сотрудничества."
-    },
-    date: "2024-07-28"
-  },
-  {
-    id: "review_005",
-    name: { zh: "陈总监", en: "Director Chen", ru: "Директор Чен" },
-    company: { zh: "丝路电商", en: "Silk Road E-commerce", ru: "Шелковый путь Электронная коммерция" },
-    industry: { zh: "电子商务", en: "E-commerce", ru: "Электронная коммерция" },
-    rating: 5,
-    content: {
-      zh: "HPF的最后一公里服务覆盖了我们大部分目标市场，交付时效和完损率都达到了行业领先水平。",
-      en: "HPF's last-mile service covers most of our target markets, with industry-leading delivery times and intact rates.",
-      ru: "Услуга «последней мили» HPF покрывает большинство наших целевых рынков с лидирующими в отрасли временем доставки и показателями сохранности."
-    },
-    date: "2024-08-05"
-  }
-];

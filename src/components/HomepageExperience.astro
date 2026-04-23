@@ -1,0 +1,811 @@
+---
+import { CONTACT_INFO, HOMEPAGE_CONTENT } from '../consts';
+
+const defaultLang = 'zh';
+const content = HOMEPAGE_CONTENT[defaultLang];
+---
+
+<section class="hpf-shell" data-homepage>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow" data-copy="eyebrow">{content.eyebrow}</div>
+      <h1 data-copy="headline">{content.headline}</h1>
+      <p class="hero-lead" data-copy="subhead">{content.subhead}</p>
+
+      <div class="hero-actions">
+        <a class="primary-action" href="#contact" data-copy="primaryCta">{content.primaryCta}</a>
+        <a class="secondary-action" href="#operating-system" data-copy="secondaryCta">{content.secondaryCta}</a>
+      </div>
+    </div>
+
+    <div class="route-board" aria-label="HPF.kz route control panel">
+      <div class="board-topline">
+        <span>KAZAKHSTAN HUB</span>
+        <strong>HPF.KZ</strong>
+      </div>
+      <div class="route-canvas">
+        <div class="route-node origin">
+          <span>CN</span>
+          <strong>Factory</strong>
+        </div>
+        <div class="route-node hub">
+          <span>KZ</span>
+          <strong>Almaty</strong>
+        </div>
+        <div class="route-node port">
+          <span>Kuryk</span>
+          <strong>Caspian</strong>
+        </div>
+        <div class="route-node destination">
+          <span>EU</span>
+          <strong>Consignee</strong>
+        </div>
+        <div class="route-pulse"></div>
+      </div>
+      <div class="board-metrics" data-stats>
+        {content.stats.map((stat) => (
+          <div class="board-metric">
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="language-strip" aria-label="Language selector">
+    <button class="lang-button active" type="button" data-lang="zh">中文</button>
+    <button class="lang-button" type="button" data-lang="en">EN</button>
+    <button class="lang-button" type="button" data-lang="ru">RU</button>
+  </div>
+
+  <section class="content-system" id="operating-system">
+    <div class="section-intro">
+      <p class="section-kicker">OPERATING SYSTEM</p>
+      <h2 data-copy="tabsTitle">{content.tabsTitle}</h2>
+      <p data-copy="tabsLead">{content.tabsLead}</p>
+    </div>
+
+    <div class="pillar-layout">
+      <div class="pillar-tabs" role="tablist" aria-label="HPF.kz content pillars" data-tabs>
+        {content.tabs.map((tab, index) => (
+          <button
+            class:list={['pillar-tab', { active: index === 0 }]}
+            type="button"
+            role="tab"
+            aria-selected={index === 0 ? 'true' : 'false'}
+            aria-controls={`panel-${tab.id}`}
+            data-tab={tab.id}
+          >
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{tab.label}</strong>
+          </button>
+        ))}
+      </div>
+
+      <article class="pillar-panel" data-panel id={`panel-${content.tabs[0].id}`} role="tabpanel">
+        <div class="panel-copy">
+          <p class="panel-label" data-panel-label>{content.tabs[0].label}</p>
+          <h3 data-panel-title>{content.tabs[0].title}</h3>
+          <p data-panel-summary>{content.tabs[0].summary}</p>
+          <ul data-panel-points>
+            {content.tabs[0].points.map((point) => <li>{point}</li>)}
+          </ul>
+        </div>
+        <div class="panel-metric">
+          <strong data-panel-metric>{content.tabs[0].metric}</strong>
+          <span data-panel-metric-label>{content.tabs[0].metricLabel}</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="process-section" aria-labelledby="process-title">
+    <div class="section-intro compact">
+      <p class="section-kicker">METHOD</p>
+      <h2 id="process-title" data-copy="processTitle">{content.processTitle}</h2>
+    </div>
+
+    <div class="process-grid" data-process>
+      {content.process.map((item) => (
+        <article class="process-card">
+          <span>{item.step}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="contact-panel" id="contact">
+    <div>
+      <p class="section-kicker">ROUTE REQUEST</p>
+      <h2 data-copy="contactTitle">{content.contactTitle}</h2>
+      <p data-copy="contactText">{content.contactText}</p>
+      <div class="contact-lines">
+        <a href={`mailto:${CONTACT_INFO.business}`}>{CONTACT_INFO.business}</a>
+        <span>{CONTACT_INFO.location} / {CONTACT_INFO.locationEn}</span>
+      </div>
+    </div>
+
+    <form class="route-form">
+      <div class="field-grid" data-contact-fields>
+        {content.contactFields.map((field) => (
+          <label>
+            <span>{field}</span>
+            <input type="text" name={field} />
+          </label>
+        ))}
+      </div>
+      <label class="wide-field">
+        <span>Message</span>
+        <textarea name="message" rows="4"></textarea>
+      </label>
+      <button type="submit" data-copy="contactButton">{content.contactButton}</button>
+    </form>
+  </section>
+</section>
+
+<script define:vars={{ HOMEPAGE_CONTENT }}>
+  const homepage = document.querySelector('[data-homepage]');
+  const data = HOMEPAGE_CONTENT;
+  let currentLang = 'zh';
+  let currentTab = 'services';
+
+  const setText = (selector, value) => {
+    const node = homepage?.querySelector(selector);
+    if (node) node.textContent = value;
+  };
+
+  const renderStats = (content) => {
+    const stats = homepage?.querySelector('[data-stats]');
+    if (!stats) return;
+    stats.innerHTML = content.stats
+      .map((stat) => `<div class="board-metric"><strong>${stat.value}</strong><span>${stat.label}</span></div>`)
+      .join('');
+  };
+
+  const renderProcess = (content) => {
+    const process = homepage?.querySelector('[data-process]');
+    if (!process) return;
+    process.innerHTML = content.process
+      .map((item) => `<article class="process-card"><span>${item.step}</span><h3>${item.title}</h3><p>${item.text}</p></article>`)
+      .join('');
+  };
+
+  const renderContactFields = (content) => {
+    const fields = homepage?.querySelector('[data-contact-fields]');
+    if (!fields) return;
+    fields.innerHTML = content.contactFields
+      .map((field) => `<label><span>${field}</span><input type="text" name="${field}" /></label>`)
+      .join('');
+  };
+
+  const renderTabs = (content) => {
+    const tabs = homepage?.querySelector('[data-tabs]');
+    if (!tabs) return;
+    tabs.innerHTML = content.tabs
+      .map((tab, index) => {
+        const active = tab.id === currentTab || (!content.tabs.some((item) => item.id === currentTab) && index === 0);
+        return `<button class="pillar-tab ${active ? 'active' : ''}" type="button" role="tab" aria-selected="${active}" aria-controls="panel-${tab.id}" data-tab="${tab.id}"><span>${String(index + 1).padStart(2, '0')}</span><strong>${tab.label}</strong></button>`;
+      })
+      .join('');
+  };
+
+  const renderPanel = (content) => {
+    const tab = content.tabs.find((item) => item.id === currentTab) || content.tabs[0];
+    currentTab = tab.id;
+    const panel = homepage?.querySelector('[data-panel]');
+    if (panel) panel.id = `panel-${tab.id}`;
+    setText('[data-panel-label]', tab.label);
+    setText('[data-panel-title]', tab.title);
+    setText('[data-panel-summary]', tab.summary);
+    setText('[data-panel-metric]', tab.metric);
+    setText('[data-panel-metric-label]', tab.metricLabel);
+    const points = homepage?.querySelector('[data-panel-points]');
+    if (points) points.innerHTML = tab.points.map((point) => `<li>${point}</li>`).join('');
+  };
+
+  const renderLanguage = () => {
+    const content = data[currentLang];
+    setText('[data-copy="eyebrow"]', content.eyebrow);
+    setText('[data-copy="headline"]', content.headline);
+    setText('[data-copy="subhead"]', content.subhead);
+    setText('[data-copy="primaryCta"]', content.primaryCta);
+    setText('[data-copy="secondaryCta"]', content.secondaryCta);
+    setText('[data-copy="tabsTitle"]', content.tabsTitle);
+    setText('[data-copy="tabsLead"]', content.tabsLead);
+    setText('[data-copy="processTitle"]', content.processTitle);
+    setText('[data-copy="contactTitle"]', content.contactTitle);
+    setText('[data-copy="contactText"]', content.contactText);
+    setText('[data-copy="contactButton"]', content.contactButton);
+    renderStats(content);
+    renderTabs(content);
+    renderPanel(content);
+    renderProcess(content);
+    renderContactFields(content);
+  };
+
+  homepage?.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const langButton = target.closest('[data-lang]');
+    if (langButton) {
+      currentLang = langButton.getAttribute('data-lang') || currentLang;
+      homepage.querySelectorAll('[data-lang]').forEach((button) => button.classList.toggle('active', button === langButton));
+      renderLanguage();
+      return;
+    }
+
+    const tabButton = target.closest('[data-tab]');
+    if (tabButton) {
+      currentTab = tabButton.getAttribute('data-tab') || currentTab;
+      homepage.querySelectorAll('[data-tab]').forEach((button) => {
+        const active = button === tabButton;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-selected', String(active));
+      });
+      renderPanel(data[currentLang]);
+    }
+  });
+
+  homepage?.querySelector('.route-form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const button = event.currentTarget.querySelector('button');
+    if (button) {
+      const original = button.textContent;
+      button.textContent = currentLang === 'zh' ? '已记录需求' : currentLang === 'ru' ? 'Запрос сохранен' : 'Request captured';
+      setTimeout(() => {
+        button.textContent = original;
+      }, 1800);
+    }
+  });
+</script>
+
+<style>
+  .hpf-shell {
+    --ink: #111318;
+    --muted: #5a6270;
+    --line: #dfe4ea;
+    --paper: #f7f8f6;
+    --signal: #d81324;
+    --signal-dark: #9c0f1b;
+    --night: #10141d;
+    background:
+      linear-gradient(90deg, rgba(16, 20, 29, 0.05) 1px, transparent 1px),
+      linear-gradient(180deg, #ffffff 0%, #f4f6f3 56%, #ffffff 100%);
+    background-size: 48px 48px, auto;
+    color: var(--ink);
+    padding: 112px min(5vw, 72px) 72px;
+  }
+
+  .hero-grid,
+  .content-system,
+  .process-section,
+  .contact-panel {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.78fr);
+    gap: 48px;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+  }
+
+  .eyebrow,
+  .section-kicker,
+  .panel-label {
+    color: var(--signal);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .hero-copy h1 {
+    max-width: 880px;
+    margin: 18px 0 24px;
+    color: var(--ink);
+    font-size: clamp(46px, 7vw, 88px);
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .hero-lead {
+    max-width: 760px;
+    color: var(--muted);
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .primary-action,
+  .secondary-action,
+  .route-form button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 22px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .primary-action,
+  .route-form button {
+    border: 1px solid var(--signal);
+    background: var(--signal);
+    color: #fff;
+  }
+
+  .secondary-action {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--ink);
+  }
+
+  .route-board {
+    border: 1px solid rgba(16, 20, 29, 0.12);
+    border-radius: 8px;
+    background: var(--night);
+    color: #fff;
+    box-shadow: 0 28px 80px rgba(16, 20, 29, 0.2);
+    overflow: hidden;
+  }
+
+  .board-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 18px 20px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .board-topline strong {
+    color: #fff;
+  }
+
+  .route-canvas {
+    position: relative;
+    min-height: 360px;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 38px 38px;
+  }
+
+  .route-canvas::before {
+    content: "";
+    position: absolute;
+    inset: 47% 9% auto;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, var(--signal), #fff);
+  }
+
+  .route-node {
+    position: absolute;
+    width: 118px;
+    min-height: 74px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 13px;
+    backdrop-filter: blur(12px);
+  }
+
+  .route-node span,
+  .route-node strong {
+    display: block;
+  }
+
+  .route-node span {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .route-node strong {
+    margin-top: 6px;
+    font-size: 17px;
+  }
+
+  .origin { left: 7%; top: 36%; }
+  .hub { left: 33%; top: 18%; }
+  .port { right: 30%; bottom: 18%; }
+  .destination { right: 7%; top: 36%; }
+
+  .route-pulse {
+    position: absolute;
+    top: calc(47% - 6px);
+    left: 8%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 0 8px rgba(216, 19, 36, 0.22);
+    animation: routeMove 7s linear infinite;
+  }
+
+  .board-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .board-metric {
+    min-height: 112px;
+    padding: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .board-metric strong {
+    display: block;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .board-metric span {
+    display: block;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+  }
+
+  .language-strip {
+    position: sticky;
+    top: 76px;
+    z-index: 20;
+    display: flex;
+    max-width: 1240px;
+    margin: -8px auto 92px;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .lang-button {
+    min-width: 64px;
+    min-height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--muted);
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .lang-button.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .section-intro {
+    max-width: 760px;
+    margin-bottom: 34px;
+  }
+
+  .section-intro.compact {
+    margin-top: 96px;
+  }
+
+  .section-intro h2,
+  .contact-panel h2 {
+    margin: 10px 0 14px;
+    color: var(--ink);
+    font-size: clamp(34px, 5vw, 62px);
+    line-height: 1.04;
+  }
+
+  .section-intro p:not(.section-kicker),
+  .contact-panel p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .pillar-layout {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .pillar-tabs {
+    display: grid;
+    gap: 10px;
+  }
+
+  .pillar-tab {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    align-items: center;
+    min-height: 76px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .pillar-tab span {
+    color: var(--signal);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .pillar-tab strong {
+    font-size: 18px;
+  }
+
+  .pillar-tab.active {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: #fff;
+  }
+
+  .pillar-tab.active span {
+    color: #fff;
+  }
+
+  .pillar-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 32px;
+    min-height: 390px;
+    border: 1px solid rgba(16, 20, 29, 0.12);
+    border-radius: 8px;
+    background: #fff;
+    padding: clamp(24px, 4vw, 44px);
+    box-shadow: 0 18px 54px rgba(16, 20, 29, 0.08);
+  }
+
+  .panel-copy h3 {
+    margin: 10px 0 16px;
+    color: var(--ink);
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.08;
+  }
+
+  .panel-copy p:not(.panel-label) {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .panel-copy ul {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .panel-copy li {
+    position: relative;
+    padding-left: 26px;
+    color: #27303c;
+    line-height: 1.55;
+  }
+
+  .panel-copy li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 10px;
+    height: 2px;
+    background: var(--signal);
+  }
+
+  .panel-metric {
+    align-self: end;
+    border-radius: 8px;
+    background: var(--paper);
+    padding: 24px;
+  }
+
+  .panel-metric strong {
+    display: block;
+    color: var(--signal);
+    font-size: 54px;
+    line-height: 0.95;
+  }
+
+  .panel-metric span {
+    display: block;
+    margin-top: 14px;
+    color: var(--muted);
+    font-weight: 800;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .process-card {
+    min-height: 230px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.74);
+    padding: 24px;
+  }
+
+  .process-card span {
+    color: var(--signal);
+    font-weight: 900;
+  }
+
+  .process-card h3 {
+    margin: 34px 0 12px;
+    color: var(--ink);
+    font-size: 24px;
+  }
+
+  .process-card p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .contact-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(420px, 1fr);
+    gap: 44px;
+    margin-top: 96px;
+    border-radius: 8px;
+    background: var(--night);
+    color: #fff;
+    padding: clamp(28px, 5vw, 56px);
+  }
+
+  .contact-panel h2 {
+    color: #fff;
+  }
+
+  .contact-panel p {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .contact-lines {
+    display: grid;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .contact-lines a,
+  .contact-lines span {
+    color: #fff;
+    font-weight: 800;
+  }
+
+  .route-form {
+    display: grid;
+    gap: 14px;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .route-form label {
+    display: grid;
+    gap: 8px;
+  }
+
+  .route-form span {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .route-form input,
+  .route-form textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font: inherit;
+    padding: 14px 16px;
+  }
+
+  .route-form button {
+    width: fit-content;
+    cursor: pointer;
+  }
+
+  @keyframes routeMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(360px); }
+  }
+
+  @media (max-width: 980px) {
+    .hpf-shell {
+      padding: 98px 22px 48px;
+    }
+
+    .hero-grid,
+    .pillar-layout,
+    .pillar-panel,
+    .contact-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+      min-height: auto;
+    }
+
+    .route-board {
+      max-width: 620px;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .language-strip {
+      top: 66px;
+      margin: 22px auto 64px;
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .hero-copy h1 {
+      font-size: 42px;
+    }
+
+    .route-canvas {
+      min-height: 300px;
+    }
+
+    .route-node {
+      width: 104px;
+    }
+
+    .hub { left: 30%; }
+    .port { right: 24%; }
+
+    .board-metrics,
+    .process-grid,
+    .field-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pillar-tab {
+      min-height: 64px;
+    }
+
+    .panel-metric strong {
+      font-size: 42px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .route-pulse {
+      animation: none;
+    }
+  }
+</style>

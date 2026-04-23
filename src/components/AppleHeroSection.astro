@@ -2,336 +2,508 @@
 import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
 ---
 
-<section class="apple-hero">
+<section class="clean-hero">
   <div class="hero-container">
     
-    <!-- Main Hero Content -->
+    <!-- 主要内容区域 -->
     <div class="hero-content">
-      <div class="hero-eyebrow" data-i18n="heroEyebrow">
-        <span class="eyebrow-text">HPF.kz</span>
+      
+      <!-- 品牌标识 -->
+      <div class="brand-badge animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="badge-content">
+          <span class="badge-icon">🚀</span>
+          <span class="badge-text">{COMPANY_NAME}</span>
+        </div>
       </div>
       
-      <h1 class="hero-title" data-i18n="heroTitle">
-        重新定义<br />跨境物流
+      <!-- 主标题 -->
+      <!-- 主标题 -->
+      <h1 class="hero-title animate-fade-in-up" style="animation-delay: 0.4s;">
+        <span class="title-line">让确定性成为</span>
+        <span class="title-line gradient-text">跨境物流的默认标准</span>
       </h1>
       
-      <p class="hero-description" data-i18n="heroDescription">
-        把复杂留给系统，把简单留给客户。<br />
-        以极致确定性构建无摩擦的跨境物流网络。
+      <!-- 副标题 -->
+      <p class="hero-subtitle animate-fade-in-up" style="animation-delay: 0.6s;">
+        从不可预测到确定可控
       </p>
       
-      <div class="hero-actions">
-        <button class="btn-primary" data-i18n="getGreenChannel">
-          获取绿通名额
+      <!-- 描述 -->
+      <p class="hero-description animate-fade-in-up" style="animation-delay: 0.8s;">
+        通过数据驱动的智能决策系统，将跨境物流的不确定性转化为可预期的商业价值，让每一次交付都成为长期合作的信任基石
+      </p>
+      
+      <!-- 行动按钮 -->
+      <div class="hero-actions animate-fade-in-up" style="animation-delay: 1s;">
+        <button class="btn btn-primary btn-large">
+          <span class="btn-text">获取绿通名额</span>
+          <span class="btn-icon">→</span>
         </button>
-        <button class="btn-secondary" data-i18n="scheduleDemo">
-          预约演示
+        <button class="btn btn-secondary btn-large">
+          <span class="btn-text">预约演示</span>
+          <span class="btn-icon">▶</span>
         </button>
+      </div>
+      
+      <!-- 信任标识 -->
+      <div class="trust-indicators animate-fade-in-up" style="animation-delay: 1.2s;">
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span class="trust-text">ISO认证</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span class="trust-text">全球网络</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span class="trust-text">24/7支持</span>
+        </div>
       </div>
     </div>
     
-    <!-- Animated KPI Section -->
-    <div class="kpi-showcase">
-      <div class="kpi-grid">
-        <div class="kpi-item" data-kpi="ontimeDelivery">
-          <div class="kpi-value">
+    <!-- 运营确定性指标 -->
+    <div class="hero-stats animate-fade-in-up" style="animation-delay: 1.4s;">
+      <div class="stats-grid">
+        <div class="stat-item" data-stat="ontime">
+          <div class="stat-value">
             <span class="animated-number" data-target="98.5">0</span>
-            <span class="kpi-unit">%</span>
+            <span class="stat-unit">%</span>
           </div>
-          <div class="kpi-label" data-i18n="ontimeDelivery">准时达率</div>
+          <div class="stat-label">准时交付保障</div>
+          <div class="stat-sublabel">行业领先水准</div>
+          <div class="stat-progress">
+            <div class="progress-bar" style="width: 98.5%"></div>
+          </div>
         </div>
         
-        <div class="kpi-item" data-kpi="intactRate">
-          <div class="kpi-value">
+        <div class="stat-item" data-stat="intact">
+          <div class="stat-value">
             <span class="animated-number" data-target="99.2">0</span>
-            <span class="kpi-unit">%</span>
+            <span class="stat-unit">%</span>
           </div>
-          <div class="kpi-label" data-i18n="intactRate">完损率</div>
+          <div class="stat-label">货物完损保护</div>
+          <div class="stat-sublabel">全程可视化监控</div>
+          <div class="stat-progress">
+            <div class="progress-bar" style="width: 99.2%"></div>
+          </div>
         </div>
         
-        <div class="kpi-item" data-kpi="responseTime">
-          <div class="kpi-value">
-            <span class="kpi-prefix">&lt;</span>
+        <div class="stat-item" data-stat="response">
+          <div class="stat-value">
+            <span class="stat-prefix">&lt;</span>
             <span class="animated-number" data-target="2">0</span>
-            <span class="kpi-unit">H</span>
+            <span class="stat-unit">H</span>
           </div>
-          <div class="kpi-label" data-i18n="responseTime">响应时间</div>
+          <div class="stat-label">异常响应速度</div>
+          <div class="stat-sublabel">T+0预警机制</div>
+          <div class="stat-progress">
+            <div class="progress-bar" style="width: 85%"></div>
+          </div>
         </div>
         
-        <div class="kpi-item" data-kpi="satisfaction">
-          <div class="kpi-value">
+        <div class="stat-item" data-stat="satisfaction">
+          <div class="stat-value">
             <span class="animated-number" data-target="95">0</span>
-            <span class="kpi-unit">%+</span>
+            <span class="stat-unit">%+</span>
           </div>
-          <div class="kpi-label" data-i18n="satisfaction">客户满意度</div>
+          <div class="stat-label">客户信任度</div>
+          <div class="stat-sublabel">长期合作伙伴关系</div>
+          <div class="stat-progress">
+            <div class="progress-bar" style="width: 95%"></div>
+          </div>
         </div>
       </div>
     </div>
     
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-      <div class="scroll-text" data-i18n="scrollToExplore">滚动探索更多</div>
+    <!-- 滚动指示器 -->
+    <div class="scroll-indicator animate-fade-in" style="animation-delay: 2s;">
+      <div class="scroll-text">探索更多</div>
       <div class="scroll-arrow">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
     </div>
     
   </div>
-  
-  <!-- Background Elements -->
-  <div class="hero-background">
-    <div class="gradient-orb gradient-orb-1"></div>
-    <div class="gradient-orb gradient-orb-2"></div>
-    <div class="gradient-orb gradient-orb-3"></div>
-  </div>
 </section>
 
 <style>
-  .apple-hero {
-    height: 100vh;
-    min-height: 800px;
+  .clean-hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F7 100%);
+    background: var(--bg-primary);
+    padding: var(--space-24) 0;
   }
   
   .hero-container {
     max-width: 1200px;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 var(--space-6);
     text-align: center;
     position: relative;
     z-index: 10;
   }
   
-  /* Hero Content */
-  .hero-eyebrow {
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  /* 品牌标识 */
+  .brand-badge {
+    margin-bottom: var(--space-8);
   }
   
-  .eyebrow-text {
-    display: inline-block;
-    font-size: 18px;
-    font-weight: 600;
-    color: #007AFF;
-    letter-spacing: 0.02em;
-    padding: 8px 16px;
-    background: rgba(0, 122, 255, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
+  .badge-content {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: transparent;
+    color: var(--color-yin);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 300;
+    border: 1px solid rgba(26, 26, 26, 0.1);
   }
   
+  .badge-icon {
+    font-size: var(--text-lg);
+  }
+  
+  /* 主标题 */
   .hero-title {
-    font-size: clamp(48px, 8vw, 96px);
-    font-weight: 700;
+    margin-bottom: var(--space-8);
     line-height: 1.1;
+  }
+  
+  .title-line {
+    display: block;
+    font-size: clamp(36px, 6vw, var(--text-6xl));
+    font-weight: 200;
+    color: var(--color-yin);
     letter-spacing: -0.02em;
-    color: #1D1D1F;
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    margin-bottom: var(--space-2);
+    line-height: 1.1;
   }
   
-  .hero-description {
-    font-size: clamp(18px, 2.5vw, 24px);
+  .title-line.gradient-text {
+    background: linear-gradient(135deg, #ff0000 0%, #ff4757 50%, #ff6b7a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    position: relative;
+  }
+  
+  .title-line.gradient-text::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underlineExpand 2s ease-out forwards;
+    animation-delay: 1.5s;
+  }
+  
+  @keyframes underlineExpand {
+    to {
+      transform: scaleX(1);
+    }
+  }
+  
+  /* 副标题 - 精密工程质感 */
+  .hero-subtitle {
+    font-size: clamp(18px, 3vw, var(--text-xl));
     font-weight: 400;
-    line-height: 1.5;
-    color: #86868B;
-    margin-bottom: 48px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    color: var(--color-metal);
+    margin-bottom: var(--space-4);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.8;
+    position: relative;
   }
   
-  /* Hero Actions */
+  .hero-subtitle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-metal));
+    transform: translateY(-50%);
+  }
+  
+  .hero-subtitle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-metal), transparent);
+    transform: translateY(-50%);
+  }
+  
+  /* 描述 - 精密工程叙述 */
+  .hero-description {
+    font-size: clamp(16px, 2vw, var(--text-lg));
+    color: var(--color-neutral-600);
+    max-width: 700px;
+    margin: 0 auto var(--space-8);
+    line-height: 1.8;
+    font-weight: 300;
+    position: relative;
+    padding: var(--space-4) var(--space-8);
+    border-left: 2px solid rgba(255, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.02), transparent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  
+  .hero-description::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 2px;
+    height: 0;
+    background: linear-gradient(180deg, #ff0000, #ff6b7a);
+    animation: descriptionLine 1.5s ease-out forwards;
+    animation-delay: 1.8s;
+  }
+  
+  @keyframes descriptionLine {
+    to {
+      height: 100%;
+    }
+  }
+  
+  /* 行动按钮 */
   .hero-actions {
     display: flex;
-    gap: 24px;
+    gap: var(--space-6);
     justify-content: center;
-    margin-bottom: 80px;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.8s forwards;
+    margin-bottom: var(--space-16);
+    flex-wrap: wrap;
   }
   
-  .btn-primary,
-  .btn-secondary {
-    padding: 16px 32px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  .btn {
+    position: relative;
+    overflow: hidden;
     min-width: 180px;
   }
   
   .btn-primary {
-    background: #1D1D1F;
-    color: #FFFFFF;
-    box-shadow: 0 4px 16px rgba(29, 29, 31, 0.2);
+    background: #ff0000;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
   }
   
   .btn-primary:hover {
-    background: #007AFF;
+    background: #e60000;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
   }
   
   .btn-secondary {
     background: transparent;
-    color: #007AFF;
-    border: 2px solid #007AFF;
+    color: #ff0000;
+    border: 1px solid #ff0000;
   }
   
   .btn-secondary:hover {
-    background: #007AFF;
-    color: #FFFFFF;
+    background: #ff0000;
+    color: white;
     transform: translateY(-2px);
   }
   
-  /* KPI Showcase */
-  .kpi-showcase {
-    margin-bottom: 60px;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 1s forwards;
+  .btn-text {
+    font-weight: 300;
+    font-size: var(--text-base);
   }
   
-  .kpi-grid {
+  .btn-icon {
+    font-size: var(--text-sm);
+    transition: transform 0.3s ease;
+  }
+  
+  .btn:hover .btn-icon {
+    transform: translateX(4px);
+  }
+  
+  /* 信任标识 */
+  .trust-indicators {
+    display: flex;
+    gap: var(--space-8);
+    justify-content: center;
+    margin-bottom: var(--space-16);
+    flex-wrap: wrap;
+  }
+  
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-metal);
+    font-size: var(--text-sm);
+    font-weight: 300;
+    padding: var(--space-2) var(--space-4);
+    background: transparent;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(26, 26, 26, 0.1);
+  }
+  
+  .trust-icon {
+    color: var(--color-success);
+    font-weight: bold;
+  }
+  
+  /* 数据统计 */
+  .hero-stats {
+    margin-bottom: var(--space-16);
+  }
+  
+  .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    max-width: 900px;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    max-width: 400px;
     margin: 0 auto;
   }
   
-  .kpi-item {
+  /* 统计项目 - 精密数据仪表 */
+  .stat-item {
     text-align: center;
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    background: var(--bg-primary);
+    border: 1px solid var(--color-neutral-200);
+    transition: all var(--duration-medium) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
   }
-  
-  .kpi-value {
-    font-size: clamp(36px, 5vw, 48px);
-    font-weight: 700;
-    color: #1D1D1F;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 4px;
-  }
-  
-  .kpi-unit,
-  .kpi-prefix {
-    font-size: 0.6em;
-    color: #007AFF;
-  }
-  
-  .animated-number {
-    font-variant-numeric: tabular-nums;
-  }
-  
-  .kpi-label {
-    font-size: 16px;
-    font-weight: 500;
-    color: #86868B;
-    letter-spacing: 0.01em;
-  }
-  
-  /* Scroll Indicator */
-  .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 1s ease-out 1.5s forwards;
-  }
-  
-  .scroll-text {
-    font-size: 14px;
-    color: #86868B;
-    margin-bottom: 12px;
-  }
-  
-  .scroll-arrow {
-    color: #86868B;
-    animation: bounce 2s infinite;
-  }
-  
-  /* Background Elements */
-  .hero-background {
+
+  .stat-item::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.03), transparent);
+    opacity: 0;
+    transition: opacity var(--duration-medium) var(--ease-out);
+  }
+
+  .stat-item:hover::before {
+    opacity: 1;
+  }
+
+  .stat-item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255, 0, 0, 0.1);
+  .stat-number {
+    font-size: clamp(32px, 4vw, var(--text-4xl));
+    font-weight: 700;
+    color: var(--color-yin);
+    margin-bottom: var(--space-2);
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    background: linear-gradient(135deg, var(--color-yin), var(--color-neutral-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  .gradient-orb {
+  .stat-number::after {
+    content: '';
     position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.3;
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .gradient-orb-1 {
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(135deg, #007AFF, #00D4FF);
-    top: 10%;
-    right: 10%;
-    animation-delay: 0s;
-  }
-  
-  .gradient-orb-2 {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
-    bottom: 20%;
-    left: 10%;
-    animation-delay: -2s;
-  }
-  
-  .gradient-orb-3 {
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(135deg, #4ECDC4, #44A08D);
-    top: 50%;
+    bottom: -8px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    animation-delay: -4s;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    opacity: 0.6;
+  }   display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: var(--space-1);
   }
   
-  /* Animations */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .stat-unit,
+  .stat-prefix {
+    font-size: 0.6em;
+    color: #ff0000;
+    font-weight: 400;
   }
   
-  @keyframes fadeIn {
+  .stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-yin);
+    font-weight: 300;
+    margin-bottom: var(--space-1);
+  }
+  
+  .stat-sublabel {
+    font-size: var(--text-xs);
+    color: var(--color-metal);
+    font-weight: 300;
+    margin-bottom: var(--space-4);
+  }
+  
+  .stat-progress {
+    width: 100%;
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background: #ff0000;
+    border-radius: 2px;
+    animation: progressFill 2s ease-out forwards;
+  }
+  
+  /* 滚动指示器 */
+  .scroll-indicator {
+     position: absolute;
+     bottom: var(--space-8);
+     left: 50%;
+     transform: translateX(-50%);
+     text-align: center;
+     color: var(--color-metal);
+   }
+  
+  .scroll-text {
+    font-size: var(--text-sm);
+    font-weight: 300;
+    margin-bottom: var(--space-3);
+    opacity: 0.6;
+  }
+  
+  .scroll-arrow {
+    animation: bounce 2s infinite;
+  }
+  
+  /* 动画 */
+  @keyframes progressFill {
     from {
-      opacity: 0;
+      width: 0%;
     }
     to {
-      opacity: 1;
+      width: var(--progress-width);
     }
   }
   
@@ -340,81 +512,71 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
       transform: translateY(0);
     }
     40% {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
     }
     60% {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
   }
   
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    33% {
-      transform: translateY(-20px) rotate(1deg);
-    }
-    66% {
-      transform: translateY(10px) rotate(-1deg);
-    }
-  }
-  
-  /* Responsive Design */
+  /* 响应式设计 */
   @media (max-width: 768px) {
-    .apple-hero {
-      min-height: 700px;
-      padding: 60px 0;
+    .clean-hero {
+      min-height: auto;
+      padding: var(--space-16) 0;
     }
     
     .hero-container {
-      padding: 0 20px;
-    }
-    
-    .hero-title {
-      margin-bottom: 24px;
-    }
-    
-    .hero-description {
-      margin-bottom: 32px;
+      padding: 0 var(--space-4);
     }
     
     .hero-actions {
       flex-direction: column;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 60px;
+      gap: var(--space-4);
+      margin-bottom: var(--space-12);
     }
     
-    .btn-primary,
-    .btn-secondary {
+    .btn {
       width: 100%;
       max-width: 280px;
     }
     
-    .kpi-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    .trust-indicators {
+      gap: var(--space-4);
+      margin-bottom: var(--space-12);
     }
     
-    .gradient-orb {
-      transform: scale(0.7);
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+    
+    .stat-item {
+      padding: var(--space-6);
     }
   }
   
   @media (max-width: 480px) {
-    .kpi-grid {
+    .stats-grid {
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: var(--space-4);
     }
     
-    .kpi-value {
-      font-size: 32px;
+    .trust-indicators {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    
+    .title-line {
+      font-size: clamp(36px, 12vw, var(--text-6xl));
     }
   }
   
-  /* Reduced motion support */
+  /* 减少动画偏好 */
   @media (prefers-reduced-motion: reduce) {
-    .apple-hero * {
+    .clean-hero * {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -423,22 +585,24 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
 </style>
 
 <script>
-  class AppleHero {
+  class CleanHero {
     constructor() {
       this.animatedNumbers = document.querySelectorAll('.animated-number');
+      this.progressBars = document.querySelectorAll('.progress-bar');
       this.init();
     }
     
     init() {
       this.animateNumbers();
       this.setupIntersectionObserver();
+      this.setupScrollIndicator();
     }
     
     animateNumbers() {
       this.animatedNumbers.forEach((element, index) => {
         const target = parseFloat(element.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const startDelay = 1200 + (index * 200); // Stagger the animations
+        const duration = 2000;
+        const startDelay = 1500 + (index * 200);
         
         setTimeout(() => {
           this.animateValue(element, 0, target, duration);
@@ -454,7 +618,6 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        // Use easeOutCubic for smooth animation
         const easeProgress = 1 - Math.pow(1 - progress, 3);
         const current = start + (end - start) * easeProgress;
         
@@ -489,31 +652,29 @@ import { COMPANY_NAME, TRANSLATIONS, KPI_DATA } from '../consts';
         });
       }, options);
       
-      // Observe animated elements
-      document.querySelectorAll('.kpi-item').forEach(item => {
+      document.querySelectorAll('.stat-item').forEach(item => {
         observer.observe(item);
       });
     }
+    
+    setupScrollIndicator() {
+      const scrollIndicator = document.querySelector('.scroll-indicator');
+      if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+          const nextSection = document.querySelector('.clean-hero').nextElementSibling;
+          if (nextSection) {
+            nextSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start' 
+            });
+          }
+        });
+      }
+    }
   }
   
-  // Initialize when DOM is loaded
+  // 初始化
   document.addEventListener('DOMContentLoaded', () => {
-    new AppleHero();
-  });
-  
-  // Handle scroll to next section
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-      scrollIndicator.addEventListener('click', () => {
-        const nextSection = document.querySelector('.apple-hero').nextElementSibling;
-        if (nextSection) {
-          nextSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start' 
-          });
-        }
-      });
-    }
+    new CleanHero();
   });
 </script>

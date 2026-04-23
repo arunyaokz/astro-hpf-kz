@@ -1,7 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "include": [
+    ".astro/types.d.ts",
+    "astro.config.mjs",
+    "src/**/*",
+    "worker-configuration.d.ts"
+  ],
+  "exclude": ["dist", "astro-hpf-kz", "astro-hpf-kz-1", "node_modules"],
   "compilerOptions": {
     "strictNullChecks": true
   }

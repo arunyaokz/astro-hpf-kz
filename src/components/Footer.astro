@@ -1,405 +1,133 @@
 ---
-import { COMPANY_NAME, COMPANY_TAGLINE, COMPANY_TAGLINE_EN } from '../consts';
-const today = new Date();
+import { COMPANY_NAME, CONTACT_INFO } from '../consts';
 ---
 
 <footer class="site-footer">
-  <div class="container">
-    
-    <!-- 主要内容区域 -->
-    <div class="footer-content grid grid-4 gap-xl mb-5xl">
-      
-      <!-- 品牌信息 -->
-      <div class="footer-brand">
-        <div class="brand-logo mb-lg">
-          <span class="logo-symbol chinese-text">{COMPANY_TAGLINE}</span>
-          <div class="brand-info">
-            <h3 class="brand-name chinese-text font-bold">{COMPANY_NAME}</h3>
-            <p class="brand-tagline english-text small-element opacity-70">
-              {COMPANY_TAGLINE_EN}
-            </p>
-          </div>
-        </div>
-        <p class="brand-description chinese-text opacity-80 mb-lg">
-          以道德经「和光同尘」为指导思想，在浮华世界中保持本真，以包容与智慧创造持久价值。
-        </p>
-        <div class="contact-info">
-          <div class="contact-item mb-sm">
-            <span class="chinese-text font-medium">联系邮箱：</span>
-            <a href="mailto:info@hpfkz.com" class="contact-link">info@hpfkz.com</a>
-          </div>
-          <div class="contact-item">
-            <span class="chinese-text font-medium">合作热线：</span>
-            <a href="tel:+8618888888888" class="contact-link">+86 188 8888 8888</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 服务项目 -->
-      <div class="footer-section">
-        <h4 class="section-title chinese-text font-bold mb-lg">核心服务</h4>
-        <ul class="footer-links">
-          <li><a href="#services" class="footer-link chinese-text">战略咨询</a></li>
-          <li><a href="#services" class="footer-link chinese-text">技术创新</a></li>
-          <li><a href="#services" class="footer-link chinese-text">文化融合</a></li>
-          <li><a href="#services" class="footer-link chinese-text">数字化转型</a></li>
-        </ul>
-      </div>
-      
-      <!-- 公司信息 -->
-      <div class="footer-section">
-        <h4 class="section-title chinese-text font-bold mb-lg">了解我们</h4>
-        <ul class="footer-links">
-          <li><a href="#about" class="footer-link chinese-text">关于我们</a></li>
-          <li><a href="#about" class="footer-link chinese-text">企业文化</a></li>
-          <li><a href="#about" class="footer-link chinese-text">发展历程</a></li>
-          <li><a href="#contact" class="footer-link chinese-text">联系我们</a></li>
-        </ul>
-      </div>
-      
-      <!-- 联系方式 -->
-      <div class="footer-section">
-        <h4 class="section-title chinese-text font-bold mb-lg">联系我们</h4>
-        <div class="contact-methods">
-          <div class="contact-method mb-md">
-            <div class="method-icon">📧</div>
-            <div class="method-info">
-              <div class="chinese-text font-medium">邮箱联系</div>
-              <a href="mailto:info@hpfkz.com" class="contact-link small-element">
-                info@hpfkz.com
-              </a>
-            </div>
-          </div>
-          <div class="contact-method mb-md">
-            <div class="method-icon">📱</div>
-            <div class="method-info">
-              <div class="chinese-text font-medium">电话咨询</div>
-              <a href="tel:+8618888888888" class="contact-link small-element">
-                +86 188 8888 8888
-              </a>
-            </div>
-          </div>
-          <div class="contact-method">
-            <div class="method-icon">💬</div>
-            <div class="method-info">
-              <div class="chinese-text font-medium">微信咨询</div>
-              <span class="contact-text small-element">HPFKZ2024</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <strong>{COMPANY_NAME}</strong>
+      <p>
+        确定性驱动的跨境物流价值传递。连接中国、哈萨克斯坦与欧洲，让路线、文件、库存和交付状态保持在同一张运营台账里。
+      </p>
     </div>
-    
-    <!-- 底部分割线 -->
-    <div class="footer-divider mb-xl"></div>
-    
-    <!-- 底部信息 -->
-    <div class="footer-bottom">
-      <div class="footer-bottom-content flex justify-between items-center">
-        
-        <!-- 版权信息 -->
-        <div class="copyright">
-          <p class="chinese-text opacity-70">
-            &copy; {today.getFullYear()} {COMPANY_NAME}. 保留所有权利
-          </p>
-          <p class="english-text small-element opacity-60">
-            All rights reserved. Powered by ancient wisdom and modern innovation.
-          </p>
-        </div>
-        
-        <!-- 道德经名句 -->
-        <div class="philosophy-quote">
-          <blockquote class="chinese-text font-medium opacity-80">
-            「和其光，同其尘」
-          </blockquote>
-          <cite class="english-text small-element opacity-60">
-            — 道德经
-          </cite>
-        </div>
-        
-      </div>
+
+    <div class="footer-column">
+      <h2>服务</h2>
+      <a href="#operating-system">库雷克绿通</a>
+      <a href="#operating-system">EAEU合规</a>
+      <a href="#operating-system">仓储分拨</a>
+      <a href="#operating-system">多式联运</a>
     </div>
-    
+
+    <div class="footer-column">
+      <h2>路线</h2>
+      <a href="#operating-system">中国至阿拉木图</a>
+      <a href="#operating-system">阿拉木图至库雷克</a>
+      <a href="#operating-system">库雷克至巴库</a>
+      <a href="#operating-system">欧洲末端交付</a>
+    </div>
+
+    <div class="footer-column">
+      <h2>联系</h2>
+      <a href={`mailto:${CONTACT_INFO.business}`}>{CONTACT_INFO.business}</a>
+      <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
+      <span>{CONTACT_INFO.locationEn}</span>
+      <span>{CONTACT_INFO.locationRu}</span>
+    </div>
   </div>
-  
-  <!-- 背景装饰 -->
-  <div class="footer-decorations">
-    <div class="decoration decoration-1"></div>
-    <div class="decoration decoration-2"></div>
+
+  <div class="footer-bottom">
+    <span>© 2026 {COMPANY_NAME}. All rights reserved.</span>
+    <a href="#contact">Route request</a>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    background: 
-      linear-gradient(135deg, rgba(22, 22, 21, 0.02) 0%, rgba(87, 81, 213, 0.03) 100%),
-      radial-gradient(circle at 30% 70%, rgba(87, 81, 213, 0.05) 0%, transparent 50%);
-    border-top: 1px solid rgba(22, 22, 21, 0.1);
-    padding: var(--spacing-5xl) 0 var(--spacing-3xl);
-    position: relative;
-    overflow: hidden;
+    background: #10141d;
+    color: #fff;
+    padding: 58px min(5vw, 72px) 28px;
   }
-  
-  .footer-content {
-    margin-bottom: var(--spacing-4xl);
+
+  .footer-grid,
+  .footer-bottom {
+    max-width: 1240px;
+    margin: 0 auto;
   }
-  
-  /* 品牌信息 */
-  .footer-brand {
-    grid-column: span 2;
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.5fr) repeat(3, 1fr);
+    gap: 34px;
   }
-  
-  .brand-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-  }
-  
-  .logo-symbol {
-    font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--accent-primary);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 2px solid var(--accent-primary);
-    border-radius: 6px;
+
+  .footer-brand strong {
+    display: block;
+    font-size: 28px;
     line-height: 1;
   }
-  
-  .brand-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-  
-  .brand-name {
-    font-size: var(--text-lg);
-    color: var(--text-primary);
-    line-height: 1;
-  }
-  
-  .brand-tagline {
-    line-height: 1;
-    letter-spacing: 0.05em;
-  }
-  
-  .brand-description {
+
+  .footer-brand p {
+    max-width: 470px;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.64);
     line-height: 1.7;
-    margin-bottom: var(--spacing-lg);
   }
-  
-  .contact-info {
-    margin-top: var(--spacing-lg);
+
+  .footer-column {
+    display: grid;
+    align-content: start;
+    gap: 10px;
   }
-  
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+
+  .footer-column h2 {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 900;
   }
-  
-  .contact-link {
-    color: var(--accent-primary);
+
+  .footer-column a,
+  .footer-column span,
+  .footer-bottom,
+  .footer-bottom a {
+    color: rgba(255, 255, 255, 0.64);
     text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
   }
-  
-  .contact-link:hover {
-    opacity: 0.8;
+
+  .footer-column a:hover,
+  .footer-bottom a:hover {
+    color: #fff;
   }
-  
-  /* 章节样式 */
-  .footer-section {
+
+  .footer-bottom {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 52px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 24px;
+    font-size: 14px;
   }
-  
-  .section-title {
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-lg);
-  }
-  
-  .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-links li {
-    margin-bottom: var(--spacing-sm);
-  }
-  
-  .footer-link {
-    color: var(--text-primary);
-    text-decoration: none;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    font-weight: 400;
-  }
-  
-  .footer-link:hover {
-    color: var(--accent-primary);
-    opacity: 1;
-    transform: translateX(4px);
-  }
-  
-  /* 联系方式样式 */
-  .contact-methods {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-  
-  .contact-method {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-md);
-  }
-  
-  .method-icon {
-    font-size: var(--text-xl);
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(87, 81, 213, 0.1);
-    border-radius: 8px;
-    flex-shrink: 0;
-  }
-  
-  .method-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-  
-  .contact-text {
-    color: var(--text-secondary);
-  }
-  
-  /* 分割线 */
-  .footer-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(22, 22, 21, 0.2) 50%, transparent 100%);
-  }
-  
-  /* 底部信息 */
-  .footer-bottom-content {
-    align-items: flex-start;
-  }
-  
-  .copyright {
-    flex: 1;
-  }
-  
-  .philosophy-quote {
-    text-align: right;
-    max-width: 300px;
-  }
-  
-  .philosophy-quote blockquote {
-    margin: 0 0 var(--spacing-xs) 0;
-    font-size: var(--text-lg);
-    line-height: 1.4;
-  }
-  
-  /* 装饰性元素 */
-  .footer-decorations {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  .decoration {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(87, 81, 213, 0.08) 0%, rgba(22, 22, 21, 0.03) 100%);
-    filter: blur(40px);
-  }
-  
-  .decoration-1 {
-    width: 300px;
-    height: 300px;
-    top: 20%;
-    right: 10%;
-    animation: aurora-float 20s ease-in-out infinite;
-  }
-  
-  .decoration-2 {
-    width: 200px;
-    height: 200px;
-    bottom: 10%;
-    left: 15%;
-    animation: aurora-float 25s ease-in-out infinite reverse;
-  }
-  
-  /* 响应式设计 */
-  @media (max-width: 1024px) {
-    .footer-content {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-2xl);
-    }
-    
-    .footer-brand {
-      grid-column: span 2;
-      margin-bottom: var(--spacing-xl);
+
+  @media (max-width: 860px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
-  
-  @media (max-width: 768px) {
-    .footer-content {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-2xl);
-    }
-    
-    .footer-brand {
-      grid-column: span 1;
-      margin-bottom: var(--spacing-lg);
-    }
-    
-    .footer-bottom-content {
-      flex-direction: column;
-      gap: var(--spacing-xl);
-      text-align: center;
-    }
-    
-    .philosophy-quote {
-      text-align: center;
-      max-width: none;
-    }
-    
-    .brand-logo {
-      flex-direction: column;
-      text-align: center;
-      gap: var(--spacing-sm);
-    }
-  }
-  
-  @media (max-width: 480px) {
+
+  @media (max-width: 560px) {
     .site-footer {
-      padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+      padding-inline: 22px;
     }
-    
-    .brand-info {
-      display: none;
+
+    .footer-grid,
+    .footer-bottom {
+      grid-template-columns: 1fr;
     }
-    
-    .logo-symbol {
-      font-size: var(--text-base);
-      padding: var(--spacing-xs) var(--spacing-sm);
-    }
-    
-    .contact-method {
-      flex-direction: column;
-      text-align: center;
-      gap: var(--spacing-sm);
+
+    .footer-bottom {
+      display: grid;
     }
   }
 </style>

@@ -1,0 +1,331 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title="2025潘通色彩系统 - HPF.kz" description="展示2025年潘通流行色Peach Fuzz及其配套色彩系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#ffb5a7">
+	</head>
+	<body>
+		<Header />
+		
+		<main class="colors-showcase">
+			<div class="container">
+				<header class="showcase-header">
+					<h1 class="showcase-title">2025潘通色彩系统</h1>
+					<p class="showcase-subtitle">Inspired by Pantone Color of the Year 2025: Peach Fuzz</p>
+					<p class="showcase-description">
+						温暖、滋养、包容的设计调色板，体现2025年的设计趋势
+					</p>
+				</header>
+				
+				<section class="color-section">
+					<h2 class="section-title">主色调 - Peach Fuzz</h2>
+					<div class="color-grid">
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-accent);"></div>
+							<div class="color-info">
+								<h3>Peach Fuzz</h3>
+								<p class="color-hex">#ffb5a7</p>
+								<p class="color-desc">潘通2025年度色彩</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-accent-light);"></div>
+							<div class="color-info">
+								<h3>Light Peach</h3>
+								<p class="color-hex">#ffc4b8</p>
+								<p class="color-desc">浅桃色</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-accent-dark);"></div>
+							<div class="color-info">
+								<h3>Dark Peach</h3>
+								<p class="color-hex">#e69a8c</p>
+								<p class="color-desc">深桃色</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-accent-warm);"></div>
+							<div class="color-info">
+								<h3>Warm Peach</h3>
+								<p class="color-hex">#ff9f7a</p>
+								<p class="color-desc">暖桃色</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				<section class="color-section">
+					<h2 class="section-title">背景色彩</h2>
+					<div class="color-grid">
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--bg-primary); border: 1px solid #e5e5e5;"></div>
+							<div class="color-info">
+								<h3>Primary White</h3>
+								<p class="color-hex">#ffffff</p>
+								<p class="color-desc">主背景色</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--bg-secondary);"></div>
+							<div class="color-info">
+								<h3>Warm White</h3>
+								<p class="color-hex">#fefcf9</p>
+								<p class="color-desc">暖白色</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--bg-tertiary);"></div>
+							<div class="color-info">
+								<h3>Soft Cream</h3>
+								<p class="color-hex">#faf7f2</p>
+								<p class="color-desc">软奶油色</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--bg-accent);"></div>
+							<div class="color-info">
+								<h3>Peach Tint</h3>
+								<p class="color-hex">#fff5f0</p>
+								<p class="color-desc">桃色调</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				<section class="color-section">
+					<h2 class="section-title">功能色彩</h2>
+					<div class="color-grid">
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-success);"></div>
+							<div class="color-info">
+								<h3>Sage Green</h3>
+								<p class="color-hex">#7fb069</p>
+								<p class="color-desc">成功状态</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-warning);"></div>
+							<div class="color-info">
+								<h3>Warm Orange</h3>
+								<p class="color-hex">#f4a261</p>
+								<p class="color-desc">警告状态</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-error);"></div>
+							<div class="color-info">
+								<h3>Coral Red</h3>
+								<p class="color-hex">#e76f51</p>
+								<p class="color-desc">错误状态</p>
+							</div>
+						</div>
+						<div class="color-card">
+							<div class="color-swatch" style="background: var(--color-purple);"></div>
+							<div class="color-info">
+								<h3>Soft Teal</h3>
+								<p class="color-hex">#a8dadc</p>
+								<p class="color-desc">辅助色彩</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				<section class="color-section">
+					<h2 class="section-title">渐变效果</h2>
+					<div class="gradient-grid">
+						<div class="gradient-card">
+							<div class="gradient-swatch" style="background: var(--gradient-primary);"></div>
+							<div class="gradient-info">
+								<h3>Primary Gradient</h3>
+								<p class="gradient-desc">Peach Fuzz 主渐变</p>
+							</div>
+						</div>
+						<div class="gradient-card">
+							<div class="gradient-swatch" style="background: var(--gradient-secondary);"></div>
+							<div class="gradient-info">
+								<h3>Secondary Gradient</h3>
+								<p class="gradient-desc">软青色到鼠尾草绿</p>
+							</div>
+						</div>
+						<div class="gradient-card">
+							<div class="gradient-swatch" style="background: var(--gradient-accent);"></div>
+							<div class="gradient-info">
+								<h3>Accent Gradient</h3>
+								<p class="gradient-desc">浅桃色渐变</p>
+							</div>
+						</div>
+						<div class="gradient-card">
+							<div class="gradient-swatch" style="background: var(--gradient-warm);"></div>
+							<div class="gradient-info">
+								<h3>Warm Gradient</h3>
+								<p class="gradient-desc">温暖背景渐变</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		
+		<Footer />
+		
+		<style>
+			.colors-showcase {
+				padding: var(--space-48) 0;
+				background: var(--bg-secondary);
+				min-height: 100vh;
+			}
+			
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 var(--space-6);
+			}
+			
+			.showcase-header {
+				text-align: center;
+				margin-bottom: var(--space-48);
+			}
+			
+			.showcase-title {
+				font-size: var(--text-5xl);
+				font-weight: 800;
+				background: var(--gradient-primary);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				margin-bottom: var(--space-6);
+			}
+			
+			.showcase-subtitle {
+				font-size: var(--text-xl);
+				color: var(--color-secondary);
+				margin-bottom: var(--space-4);
+				font-style: italic;
+			}
+			
+			.showcase-description {
+				font-size: var(--text-lg);
+				color: var(--color-primary);
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			
+			.color-section {
+				margin-bottom: var(--space-48);
+			}
+			
+			.section-title {
+				font-size: var(--text-3xl);
+				font-weight: 700;
+				color: var(--color-primary);
+				margin-bottom: var(--space-12);
+				text-align: center;
+			}
+			
+			.color-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: var(--space-8);
+			}
+			
+			.color-card {
+				background: var(--bg-primary);
+				border-radius: var(--radius-xl);
+				padding: var(--space-8);
+				box-shadow: var(--shadow-md);
+				border: 1px solid rgba(255, 181, 167, 0.1);
+				transition: all 0.3s ease;
+			}
+			
+			.color-card:hover {
+				transform: translateY(-4px);
+				box-shadow: var(--shadow-lg);
+			}
+			
+			.color-swatch {
+				width: 100%;
+				height: 120px;
+				border-radius: var(--radius-lg);
+				margin-bottom: var(--space-6);
+			}
+			
+			.color-info h3 {
+				font-size: var(--text-lg);
+				font-weight: 600;
+				color: var(--color-primary);
+				margin-bottom: var(--space-2);
+			}
+			
+			.color-hex {
+				font-family: 'Courier New', monospace;
+				font-size: var(--text-sm);
+				color: var(--color-accent);
+				font-weight: 600;
+				margin-bottom: var(--space-2);
+			}
+			
+			.color-desc {
+				font-size: var(--text-sm);
+				color: var(--color-secondary);
+			}
+			
+			.gradient-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: var(--space-8);
+			}
+			
+			.gradient-card {
+				background: var(--bg-primary);
+				border-radius: var(--radius-xl);
+				padding: var(--space-8);
+				box-shadow: var(--shadow-md);
+				border: 1px solid rgba(255, 181, 167, 0.1);
+				transition: all 0.3s ease;
+			}
+			
+			.gradient-card:hover {
+				transform: translateY(-4px);
+				box-shadow: var(--shadow-lg);
+			}
+			
+			.gradient-swatch {
+				width: 100%;
+				height: 120px;
+				border-radius: var(--radius-lg);
+				margin-bottom: var(--space-6);
+			}
+			
+			.gradient-info h3 {
+				font-size: var(--text-lg);
+				font-weight: 600;
+				color: var(--color-primary);
+				margin-bottom: var(--space-2);
+			}
+			
+			.gradient-desc {
+				font-size: var(--text-sm);
+				color: var(--color-secondary);
+			}
+			
+			@media (max-width: 768px) {
+				.showcase-title {
+					font-size: var(--text-4xl);
+				}
+				
+				.color-grid,
+				.gradient-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</body>
+</html>
