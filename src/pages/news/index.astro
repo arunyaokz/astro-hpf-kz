@@ -1,0 +1,188 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { SITE_LANGS, type SiteLang } from "../../site-content";
+
+const entries = (await getCollection("news", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const copy: Record<SiteLang, { title: string; lead: string; empty: string; source: string }> = {
+  zh: {
+    title: "来自路线现场的动态与判断",
+    lead: "公司进展、路线变化与中亚市场观察。每一篇内容保留来源、核验状态和三语版本。",
+    empty: "第一批动态正在核验。我们宁可晚一点发布，也不发布无法确认的数字。",
+    source: "核验状态",
+  },
+  en: {
+    title: "Updates and judgement from the route",
+    lead: "Company progress, route changes and Central Asia market observations. Every story retains sources, verification status and three language versions.",
+    empty: "The first updates are being verified. We publish later rather than publish a number we cannot support.",
+    source: "Verification",
+  },
+  ru: {
+    title: "Новости и выводы с маршрута",
+    lead: "Развитие компании, изменения маршрутов и наблюдения за рынком Центральной Азии. У каждой публикации есть источники, статус проверки и три языковые версии.",
+    empty: "Первые материалы проходят проверку. Лучше опубликовать позже, чем дать неподтвержденные цифры.",
+    source: "Проверка",
+  },
+};
+---
+
+<SiteLayout
+  title="News | HPF.kz"
+  description="HPF.kz company updates, route intelligence and Central Asia logistics analysis."
+  active="news"
+>
+  <div class="news-index">
+    {SITE_LANGS.map((lang) => {
+      const localized = entries.filter((entry) => entry.data.lang === lang);
+      const text = copy[lang];
+
+      return (
+        <article class:list={["localized-page", { active: lang === "zh" }]} data-lang-panel={lang}>
+          <header class="news-hero page-shell">
+            <p class="overline">HPF.KZ / EDITORIAL LEDGER</p>
+            <h1 class="display-title">{text.title}</h1>
+            <p class="body-copy">{text.lead}</p>
+          </header>
+
+          <section class="news-list page-shell" aria-live="polite">
+            {localized.length === 0 ? (
+              <div class="empty-state">
+                <span>—</span>
+                <p>{text.empty}</p>
+              </div>
+            ) : (
+              localized.map((entry, index) => (
+                <a class="news-row" href={`/news/${entry.id}/`}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h2>{entry.data.title}</h2>
+                    <p>{entry.data.description}</p>
+                  </div>
+                  <div class="news-meta">
+                    <time datetime={entry.data.pubDate.toISOString()}>
+                      {entry.data.pubDate.toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : "en-GB")}
+                    </time>
+                    <span>{text.source}: {entry.data.verificationStatus}</span>
+                  </div>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))
+            )}
+          </section>
+        </article>
+      );
+    })}
+  </div>
+</SiteLayout>
+
+<style>
+  .news-index {
+    min-height: 70svh;
+    background: var(--color-paper);
+  }
+
+  .news-hero {
+    display: grid;
+    min-height: 64svh;
+    align-content: end;
+    gap: var(--space-lg);
+    padding-block: var(--space-3xl);
+    border-bottom: var(--rule-hair) solid var(--color-ink);
+  }
+
+  .news-hero .display-title {
+    max-width: 14ch;
+  }
+
+  .news-list {
+    padding-block: var(--space-3xl) var(--space-5xl);
+  }
+
+  .empty-state {
+    display: grid;
+    min-height: 18rem;
+    grid-template-columns: 3rem minmax(0, 42rem);
+    align-content: center;
+    gap: var(--space-lg);
+    border-bottom: var(--rule-hair) solid var(--color-rule);
+  }
+
+  .empty-state span {
+    color: var(--color-accent);
+  }
+
+  .empty-state p {
+    margin: 0;
+    color: var(--color-muted);
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    line-height: 1.1;
+  }
+
+  .news-row {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: 3rem minmax(0, 1fr) minmax(10rem, 0.35fr) auto;
+    align-items: start;
+    gap: var(--space-xl);
+    padding-block: var(--space-xl);
+    border-bottom: var(--rule-hair) solid var(--color-rule);
+    transition: color var(--dur-fast) var(--ease-out), transform var(--dur-medium) var(--ease-out);
+  }
+
+  .news-row:hover {
+    color: var(--color-accent-deep);
+    transform: translateX(var(--space-xs));
+  }
+
+  .news-row > span,
+  .news-meta {
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+  }
+
+  .news-row h2 {
+    min-width: 0;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+
+  .news-row p {
+    max-width: 58ch;
+    margin: var(--space-sm) 0 0;
+    color: var(--color-muted);
+  }
+
+  .news-meta {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  @media (max-width: 47.99rem) {
+    .news-hero {
+      min-height: 70svh;
+      padding-block: var(--space-2xl);
+    }
+
+    .news-list {
+      padding-block: var(--space-xl) var(--space-4xl);
+    }
+
+    .news-row {
+      grid-template-columns: 2rem minmax(0, 1fr) auto;
+      gap: var(--space-md);
+    }
+
+    .news-meta {
+      grid-column: 2;
+    }
+  }
+</style>

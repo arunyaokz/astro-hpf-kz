@@ -1,0 +1,65 @@
+/* Hallmark · genre: editorial · macrostructure: Map / Diagram · theme: Atelier · enrichment: tier-B SVG · nav: N9 · footer: Ft5 · contrast: pass (40–41) · slop: pass (42–49) · mobile: pass (34, 49–57) */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap");
+
+:root {
+  --color-paper: oklch(96.5% 0.018 83);
+  --color-paper-deep: oklch(91.5% 0.028 78);
+  --color-paper-soft: oklch(98.3% 0.009 82);
+  --color-ink: oklch(21% 0.018 62);
+  --color-ink-soft: oklch(35% 0.018 62);
+  --color-muted: oklch(49% 0.018 65);
+  --color-faint: oklch(70% 0.016 72);
+  --color-rule: oklch(80% 0.025 74);
+  --color-accent: oklch(58% 0.105 58);
+  --color-accent-deep: oklch(45% 0.09 55);
+  --color-accent-ink: var(--color-paper-soft);
+  --color-focus: oklch(47% 0.13 245);
+  --color-success: oklch(47% 0.085 158);
+  --color-error: oklch(50% 0.16 28);
+  --color-overlay: oklch(18% 0.016 62 / 0.54);
+
+  --font-display: "Cormorant Garamond", "Songti SC", "STSong", serif;
+  --font-body: "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 7rem;
+  --space-5xl: 10rem;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 3rem;
+  --text-display-s: clamp(3rem, 7vw, 6.5rem);
+  --text-display: clamp(3.75rem, 9vw, 8.5rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 140ms;
+  --dur-medium: 280ms;
+  --dur-slow: 520ms;
+
+  --rule-hair: 1px;
+  --rule-strong: 2px;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-round: 999px;
+
+  --page-gutter: clamp(1rem, 4vw, 4.5rem);
+  --page-max: 100rem;
+  --banner-height: 5rem;
+  --z-sticky: 20;
+  --z-sticky-nav: 40;
+  --z-dialog: 80;
+}

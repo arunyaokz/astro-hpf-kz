@@ -535,18 +535,24 @@ export const HOMEPAGE_CONTENT = {
   }
 } as const;
 
-// Apple-inspired Color Scheme
+// Editorial logistics design system: route atlas, ink, copper, Caspian green.
 export const COLORS = {
-  background: '#FFFFFF',
-  backgroundSecondary: '#F5F5F7', 
-  text: '#1D1D1F',
-  textSecondary: '#86868B',
-  accent: '#007AFF', // Apple Blue
-  accentHover: '#0056CC',
-  border: '#E5E5E7',
-  success: '#34C759',
-  warning: '#FF9500', 
-  error: '#FF3B30'
+  white: '#FFFAF1',
+  paper: '#F3EADB',
+  paper300: '#EBE0CD',
+  paper400: '#D5C7B2',
+  paper500: '#BAAA91',
+  primary: '#E45B24',
+  primaryLight: '#F07A4B',
+  primaryDark: '#171714',
+  secondary: '#171714',
+  muted: 'rgba(23, 23, 20, 0.66)',
+  mutedLight: 'rgba(23, 23, 20, 0.48)',
+  accent: '#0E7C75',
+  success: '#0E7C75',
+  error: '#C93420',
+  border: 'rgba(23, 23, 20, 0.14)',
+  borderMedium: 'rgba(23, 23, 20, 0.24)',
 };
 
 // Route Tracking Data

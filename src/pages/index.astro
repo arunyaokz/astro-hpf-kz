@@ -1,41 +1,11 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import HomepageExperience from '../components/HomepageExperience.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import SitePage from "../components/SitePage.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { SITE_PAGES } from "../site-content";
+
+const page = SITE_PAGES.home.zh;
 ---
 
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <meta name="theme-color" content="#10141d" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "HPF.kz",
-        "description": "Certainty-driven cross-border logistics between China, Kazakhstan and Europe.",
-        "url": "https://hpf.kz",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Almaty",
-          "addressCountry": "KZ"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "business development",
-          "email": "bd@hpf.kz"
-        }
-      }
-    </script>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <HomepageExperience />
-    </main>
-    <Footer />
-  </body>
-</html>
+<SiteLayout title={page.metaTitle} description={page.metaDescription} active="home">
+  <SitePage pageKey="home" />
+</SiteLayout>

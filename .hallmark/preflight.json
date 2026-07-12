@@ -1,0 +1,12 @@
+{
+  "scanned_at": "2026-07-13",
+  "framework": "Astro 7.0.7",
+  "deployment": "Cloudflare adapter 14.1.2",
+  "css": "Native CSS custom properties; Tailwind not installed",
+  "font_stack": "Inter/system sans variables with SF Mono fallback; no hosted font package detected",
+  "palette": "Existing hex custom properties in src/styles/global.css",
+  "motion": "motion-cut; no animation library detected",
+  "spacing": "4px-derived custom property scale",
+  "design_preservation": "Visual system intentionally not preserved at user request; preserve routes, multilingual content, brand mark, and factual claims",
+  "brand_reference": "_context/hpf-brand-spec.md (AGENTS.md referenced brand-voice.md is absent)"
+}

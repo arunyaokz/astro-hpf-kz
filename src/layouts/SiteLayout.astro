@@ -1,0 +1,36 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import type { NavKey } from "../site-content";
+import "../styles/hallmark.css";
+
+interface Props {
+  title: string;
+  description: string;
+  active: NavKey;
+}
+
+const { title, description, active } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header active={active} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import "../scripts/language";
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  main { min-width: 0; }
+</style>

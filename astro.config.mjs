@@ -7,7 +7,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://hpf.kz",
   integrations: [mdx(), sitemap()],
   adapter: cloudflare({
     configPath: "./.wrangler-build.json",
