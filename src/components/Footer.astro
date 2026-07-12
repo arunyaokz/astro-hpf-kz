@@ -1,100 +1,61 @@
 ---
 import { CONTACT_INFO } from "../consts";
+const year = new Date().getFullYear();
 ---
 
-<footer class="statement-footer">
-  <div class="page-shell footer-inner">
-    <p
-      class="footer-statement"
-      data-label-zh="真正高级的物流，是让复杂从客户的视野里消失。"
-      data-label-en="The finest logistics makes complexity disappear from the customer’s view."
-      data-label-ru="Лучшая логистика скрывает сложность от клиента."
-    >
-      真正高级的物流，是让复杂从客户的视野里消失。
-    </p>
-
-    <div class="footer-meta">
-      <div>
-        <strong>HPF.KZ</strong>
-        <span
-          data-label-zh="中国—哈萨克斯坦—欧洲"
-          data-label-en="China—Kazakhstan—Europe"
-          data-label-ru="Китай—Казахстан—Европа"
-        >中国—哈萨克斯坦—欧洲</span>
-      </div>
-      <div class="footer-contact">
-        <a href={`mailto:${CONTACT_INFO.business}`}>{CONTACT_INFO.business}</a>
-        <span>{CONTACT_INFO.locationEn}</span>
-      </div>
-      <span>© {new Date().getFullYear()} HPF.kz</span>
+<footer class="corporate-footer">
+  <div class="page-shell footer-main">
+    <div class="footer-brand">
+      <img src="/brand/hpf-mark.svg" alt="HPF KZ" width="160" height="64" />
+      <p data-label-zh="扎根哈萨克斯坦，连接中国与欧洲的跨境物流运营商。" data-label-en="A cross-border logistics operator based in Kazakhstan, connecting China and Europe." data-label-ru="Трансграничный логистический оператор в Казахстане, соединяющий Китай и Европу.">扎根哈萨克斯坦，连接中国与欧洲的跨境物流运营商。</p>
+      <a href={`mailto:${CONTACT_INFO.business}`}>{CONTACT_INFO.business}</a>
     </div>
+    <div class="footer-index">
+      <div>
+        <strong data-label-zh="运输与履约" data-label-en="Transport" data-label-ru="Перевозки">运输与履约</strong>
+        <a href="/services/" data-label-zh="服务能力" data-label-en="Capabilities" data-label-ru="Возможности">服务能力</a>
+        <a href="/routes/" data-label-zh="路线网络" data-label-en="Route network" data-label-ru="Маршруты">路线网络</a>
+        <a href="/industries/" data-label-zh="行业方案" data-label-en="Industries" data-label-ru="Отрасли">行业方案</a>
+      </div>
+      <div>
+        <strong data-label-zh="运营与公司" data-label-en="Operations" data-label-ru="Операции">运营与公司</strong>
+        <a href="/platform/" data-label-zh="运营平台" data-label-en="Operating platform" data-label-ru="Платформа">运营平台</a>
+        <a href="/news/" data-label-zh="新闻动态" data-label-en="News & updates" data-label-ru="Новости">新闻动态</a>
+        <a href="/about/" data-label-zh="关于 HPF.kz" data-label-en="About HPF.kz" data-label-ru="О HPF.kz">关于 HPF.kz</a>
+      </div>
+      <div>
+        <strong data-label-zh="业务联系" data-label-en="Business contact" data-label-ru="Деловые контакты">业务联系</strong>
+        <a href="/contact/" data-label-zh="提交货运需求" data-label-en="Submit freight request" data-label-ru="Отправить запрос">提交货运需求</a>
+        <span data-label-zh="阿拉木图 · 哈萨克斯坦" data-label-en="Almaty · Kazakhstan" data-label-ru="Алматы · Казахстан">阿拉木图 · 哈萨克斯坦</span>
+        <a href={`mailto:${CONTACT_INFO.business}`}>{CONTACT_INFO.business}</a>
+      </div>
+    </div>
+  </div>
+  <div class="page-shell footer-bottom">
+    <p data-label-zh="HPF.kz｜让货走得远，让生意走得稳。" data-label-en="HPF.kz | Cargo goes farther. Business stays steady." data-label-ru="HPF.kz | Груз идёт дальше. Бизнес остаётся устойчивым.">HPF.kz｜让货走得远，让生意走得稳。</p>
+    <span>© {year} HPF.kz</span>
   </div>
 </footer>
 
 <style>
-  .statement-footer {
-    border-top: var(--rule-hair) solid var(--color-rule);
-    background: var(--color-ink);
-    color: var(--color-paper);
-  }
-
-  .footer-inner {
-    display: grid;
-    gap: var(--space-4xl);
-    padding-block: var(--space-4xl) var(--space-xl);
-  }
-
-  .footer-statement {
-    max-width: 20ch;
-    margin: 0;
-    color: var(--color-paper);
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 7.5rem);
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: -0.045em;
-    line-height: 0.92;
-    overflow-wrap: anywhere;
-  }
-
-  .footer-meta {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
-    align-items: end;
-    gap: var(--space-xl);
-    padding-top: var(--space-md);
-    border-top: var(--rule-hair) solid var(--color-ink-soft);
-    color: var(--color-faint);
-    font-size: var(--text-sm);
-  }
-
-  .footer-meta div {
-    display: grid;
-    gap: var(--space-2xs);
-  }
-
-  .footer-meta strong,
-  .footer-meta a {
-    color: var(--color-paper-soft);
-  }
-
-  .footer-contact {
-    justify-self: center;
-  }
-
+  .corporate-footer { background: var(--color-ink); color: var(--color-paper); }
+  .footer-main { display: grid; grid-template-columns: minmax(16rem, .75fr) minmax(0, 1.25fr); gap: var(--space-3xl); padding-block: var(--space-3xl); }
+  .footer-brand { display: grid; align-content: start; justify-items: start; gap: var(--space-lg); }
+  .footer-brand img { width: 6.5rem; height: auto; filter: brightness(0) invert(1); }
+  .footer-brand p { max-width: 32ch; margin: 0; color: var(--color-faint); }
+  .footer-brand a { border-bottom: var(--rule-hair) solid var(--color-muted); }
+  .footer-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xl); }
+  .footer-index > div { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
+  .footer-index strong { margin-block-end: var(--space-sm); color: var(--color-paper); font-size: var(--text-sm); }
+  .footer-index a, .footer-index span { color: var(--color-faint); font-size: var(--text-sm); }
+  .footer-index a { white-space: nowrap; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); padding-block: var(--space-lg); border-top: var(--rule-hair) solid var(--color-ink-2); color: var(--color-faint); font-size: var(--text-xs); }
+  .footer-bottom p { margin: 0; }
+  @media (hover: hover) and (pointer: fine) { .footer-index a:hover, .footer-brand a:hover { color: var(--color-paper); } }
   @media (max-width: 47.99rem) {
-    .footer-inner {
-      gap: var(--space-3xl);
-      padding-block-start: var(--space-3xl);
-    }
-
-    .footer-meta {
-      grid-template-columns: minmax(0, 1fr);
-      align-items: start;
-    }
-
-    .footer-contact {
-      justify-self: start;
-    }
+    .footer-main { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xl); }
+    .footer-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer-bottom { align-items: flex-start; flex-direction: column; }
   }
+  @media (max-width: 24rem) { .footer-index { grid-template-columns: minmax(0, 1fr); } }
 </style>

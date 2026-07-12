@@ -1,0 +1,245 @@
+---
+import { HOME_V2 } from "../corporate-content";
+import { SITE_LANGS } from "../site-content";
+import RouteDiagram from "./RouteDiagram.astro";
+---
+
+<div class="corporate-home" data-language-root="home">
+  {SITE_LANGS.map((lang) => {
+    const page = HOME_V2[lang];
+    return (
+      <article class:list={["localized-page", { active: lang === "zh" }]} data-lang-panel={lang} data-page-key="home">
+        <section class="home-hero page-shell">
+          <div class="home-hero__copy">
+            <p class="hero-eyebrow">{page.eyebrow}</p>
+            <h1 class="display-title">{page.title}</h1>
+            <p class="body-copy">{page.lead}</p>
+            <div class="action-row">
+              <a class="button button--primary" href="/contact/">{page.primary}</a>
+              <a class="button button--secondary" href="/routes/">{page.secondary}</a>
+            </div>
+            <p class="hero-strap">{page.short}</p>
+          </div>
+          <figure class="home-hero__photo">
+            <img src="/images/corporate/truck-mountains.jpg" alt={page.imageAlt} width="1800" height="2700" fetchpriority="high" decoding="async" />
+            <figcaption>{page.imageNote} · Unsplash / Darya Min</figcaption>
+          </figure>
+        </section>
+
+        <section class="trust-block page-shell">
+          <header class="section-intro section-intro--wide">
+            <h2>{page.trust.title}</h2>
+            <p>{page.trust.body}</p>
+          </header>
+          <div class="evidence-ledger">
+            {page.trust.items.map((item, index) => (
+              <div class="evidence-row">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.value}</strong>
+                <p>{item.label}</p>
+              </div>
+            ))}
+          </div>
+          <p class="evidence-note">{page.trust.note}</p>
+        </section>
+
+        <section class="problem-block">
+          <div class="page-shell problem-layout">
+            <header class="section-intro">
+              <h2>{page.problem.title}</h2>
+              <p>{page.problem.body}</p>
+            </header>
+            <div class="judgement-list">
+              {page.problem.items.map((item) => (
+                <article>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="method-block">
+          <div class="page-shell method-layout">
+            <header class="section-intro section-intro--inverse">
+              <h2>{page.method.title}</h2>
+              <p>{page.method.body}</p>
+              <strong>{page.method.definition}</strong>
+            </header>
+            <ol class="method-list">
+              {page.method.items.map((item, index) => (
+                <li>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section class="services-block page-shell">
+          <header class="section-intro section-intro--wide">
+            <h2>{page.services.title}</h2>
+            <p>{page.services.intro}</p>
+          </header>
+          <div class="services-layout">
+            <figure class="service-photo">
+              <img src="/images/corporate/warehouse-operations.jpg" alt={page.imageNote} width="1600" height="1067" loading="lazy" decoding="async" />
+              <figcaption>{page.imageNote} · Unsplash / Adrian Sulyok</figcaption>
+            </figure>
+            <div class="service-index">
+              {page.services.items.map((item, index) => (
+                <a href={item.href}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div><h3>{item.title}</h3><p>{item.text}</p></div>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="route-block">
+          <div class="page-shell route-layout">
+            <header class="section-intro">
+              <h2>{page.route.title}</h2>
+              <p>{page.route.body}</p>
+              <p>{page.route.detail}</p>
+              <a class="button button--secondary" href="/routes/">{page.route.button}</a>
+            </header>
+            <RouteDiagram lang={lang} direction={page.route.direction} />
+          </div>
+        </section>
+
+        <section class="process-block page-shell">
+          <header class="section-intro"><h2>{page.process.title}</h2></header>
+          <ol class="process-list">
+            {page.process.items.map((item) => (
+              <li>
+                <span>{item.no}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section class="final-block">
+          <div class="page-shell final-layout">
+            <div>
+              <h2>{page.final.title}</h2>
+              <p>{page.final.body}</p>
+            </div>
+            <a class="button button--light" href="/contact/">{page.final.button}</a>
+            <p class="final-signoff">{page.final.signoff}</p>
+          </div>
+        </section>
+      </article>
+    );
+  })}
+</div>
+
+<style>
+  .home-hero { display: grid; min-width: 0; grid-template-columns: minmax(0, 7fr) minmax(22rem, 5fr); gap: clamp(var(--space-xl), 5vw, var(--space-3xl)); align-items: stretch; padding-block: var(--space-xl) var(--space-2xl); }
+  .home-hero__copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; align-items: flex-start; padding-block: var(--space-md); }
+  .hero-eyebrow { margin: 0 0 var(--space-lg); color: var(--color-accent-deep); font-family: var(--font-outlier); font-size: var(--text-sm); letter-spacing: .06em; }
+  .home-hero .display-title { max-width: 9ch; }
+  .home-hero .body-copy { max-width: 38rem; margin-block-start: var(--space-xl); }
+  .action-row { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-block-start: var(--space-xl); }
+  .hero-strap { margin: auto 0 0; padding-block-start: var(--space-2xl); color: var(--color-muted); font-size: var(--text-sm); }
+  .home-hero__photo { position: relative; min-width: 0; min-height: 34rem; margin: 0; overflow: hidden; background: var(--color-paper-2); }
+  .home-hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 73%; }
+  figure figcaption { padding-block-start: var(--space-xs); color: var(--color-muted); font-size: var(--text-xs); line-height: 1.4; }
+
+  .trust-block { padding-block: var(--space-4xl) var(--space-3xl); }
+  .section-intro { display: grid; max-width: 48rem; gap: var(--space-lg); }
+  .section-intro--wide { grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .75fr); max-width: none; align-items: end; }
+  .section-intro h2 { margin: 0; font-size: clamp(2.25rem, 4.5vw, 4.75rem); line-height: 1.08; letter-spacing: -.035em; }
+  .section-intro p { max-width: 62ch; margin: 0; color: var(--color-muted); }
+  .evidence-ledger { margin-block-start: var(--space-2xl); border-top: var(--rule-strong) solid var(--color-ink); }
+  .evidence-row { display: grid; grid-template-columns: 3rem minmax(13rem, .75fr) minmax(0, 1fr); gap: var(--space-lg); align-items: baseline; padding-block: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-rule); }
+  .evidence-row > span { color: var(--color-accent-deep); font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+  .evidence-row strong { font-size: var(--text-lg); }
+  .evidence-row p { margin: 0; color: var(--color-muted); }
+  .evidence-note { max-width: 58rem; margin: var(--space-lg) 0 0 auto; color: var(--color-muted); font-size: var(--text-sm); }
+
+  .problem-block { background: var(--color-paper-2); }
+  .problem-layout { display: grid; grid-template-columns: minmax(17rem, .75fr) minmax(0, 1.25fr); gap: var(--space-3xl); padding-block: var(--space-4xl); }
+  .judgement-list { border-top: var(--rule-strong) solid var(--color-ink); }
+  .judgement-list article { display: grid; grid-template-columns: minmax(12rem, .65fr) minmax(0, 1fr); gap: var(--space-lg); padding-block: var(--space-xl); border-bottom: var(--rule-hair) solid var(--color-rule); }
+  .judgement-list h3, .judgement-list p { margin: 0; }
+  .judgement-list h3 { font-size: var(--text-lg); }
+  .judgement-list p { color: var(--color-muted); }
+
+  .method-block { background: var(--color-ink); color: var(--color-paper); }
+  .method-layout { display: grid; grid-template-columns: minmax(18rem, .8fr) minmax(0, 1.2fr); gap: var(--space-3xl); padding-block: var(--space-4xl); }
+  .section-intro--inverse { align-content: start; }
+  .section-intro--inverse h2 { color: var(--color-paper); }
+  .section-intro--inverse p { color: var(--color-faint); }
+  .section-intro--inverse strong { color: var(--color-paper); font-weight: 600; }
+  .method-list { margin: 0; padding: 0; border-top: var(--rule-hair) solid var(--color-muted); list-style: none; }
+  .method-list li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: var(--space-lg); padding-block: var(--space-xl); border-bottom: var(--rule-hair) solid var(--color-ink-2); }
+  .method-list li > span { color: var(--color-accent); font-variant-numeric: tabular-nums; }
+  .method-list h3, .method-list p { margin: 0; }
+  .method-list h3 { color: var(--color-paper); font-size: var(--text-lg); }
+  .method-list p { margin-block-start: var(--space-sm); color: var(--color-faint); }
+
+  .services-block { padding-block: var(--space-4xl); }
+  .services-layout { display: grid; grid-template-columns: minmax(18rem, .8fr) minmax(0, 1.2fr); gap: var(--space-2xl); margin-block-start: var(--space-3xl); }
+  .service-photo { min-width: 0; margin: 0; }
+  .service-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .service-index { border-top: var(--rule-strong) solid var(--color-ink); }
+  .service-index a { display: grid; min-width: 0; grid-template-columns: 2.5rem minmax(0, 1fr) auto; gap: var(--space-lg); padding-block: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-rule); }
+  .service-index a > span { color: var(--color-accent-deep); font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+  .service-index h3, .service-index p { margin: 0; }
+  .service-index h3 { font-size: var(--text-lg); }
+  .service-index p { margin-block-start: var(--space-sm); color: var(--color-muted); }
+
+  .route-block { background: var(--color-paper-2); }
+  .route-layout { display: grid; grid-template-columns: minmax(18rem, .6fr) minmax(0, 1.4fr); gap: var(--space-2xl); align-items: center; padding-block: var(--space-4xl); }
+  .route-layout .button { justify-self: start; margin-block-start: var(--space-sm); }
+
+  .process-block { display: grid; grid-template-columns: minmax(16rem, .6fr) minmax(0, 1.4fr); gap: var(--space-3xl); padding-block: var(--space-4xl); }
+  .process-list { margin: 0; padding: 0; border-top: var(--rule-strong) solid var(--color-ink); list-style: none; }
+  .process-list li { display: grid; grid-template-columns: 3rem minmax(10rem, .55fr) minmax(0, 1fr); gap: var(--space-lg); padding-block: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-rule); }
+  .process-list span { color: var(--color-accent-deep); font-variant-numeric: tabular-nums; }
+  .process-list h3, .process-list p { margin: 0; }
+  .process-list p { color: var(--color-muted); }
+
+  .final-block { background: var(--color-ink); color: var(--color-paper); }
+  .final-layout { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-xl); align-items: end; padding-block: var(--space-3xl); }
+  .final-layout h2 { max-width: 15ch; margin: 0; font-size: clamp(2.5rem, 5vw, 5.25rem); line-height: 1.05; letter-spacing: -.035em; }
+  .final-layout p { max-width: 52ch; margin: var(--space-lg) 0 0; }
+  .final-signoff { grid-column: 1 / -1; padding-block-start: var(--space-xl); border-top: var(--rule-hair) solid var(--color-focus); font-size: var(--text-sm); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .service-index a:hover h3 { color: var(--color-accent-deep); }
+    .service-index a:hover > span:last-child { transform: translate(2px, -2px); }
+  }
+  @media (min-width: 60rem) { .home-hero .display-title { font-size: clamp(3.4rem, 4.4vw, 4.75rem); } }
+  @media (max-width: 59.99rem) {
+    .home-hero { grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr); }
+    .problem-layout, .method-layout, .services-layout, .route-layout, .process-block { grid-template-columns: minmax(0, 1fr); }
+    .section-intro--wide { grid-template-columns: minmax(0, 1fr); align-items: start; }
+    .route-layout { align-items: start; }
+  }
+  @media (max-width: 39.99rem) {
+    .home-hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-lg) var(--space-2xl); }
+    .home-hero__copy { padding-block-end: 0; }
+    .home-hero__photo { min-height: 25rem; }
+    .hero-strap { margin-block-start: var(--space-2xl); }
+    .trust-block, .services-block, .process-block { padding-block: var(--space-3xl); }
+    .problem-layout, .method-layout, .route-layout { padding-block: var(--space-3xl); }
+    .evidence-row { grid-template-columns: 2.25rem minmax(0, 1fr); }
+    .evidence-row p { grid-column: 2; }
+    .judgement-list article { grid-template-columns: minmax(0, 1fr); }
+    .service-index a { grid-template-columns: 2rem minmax(0, 1fr) auto; }
+    .process-list li { grid-template-columns: 2.25rem minmax(0, 1fr); }
+    .process-list p { grid-column: 2; }
+    .final-layout { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  }
+</style>

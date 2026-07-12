@@ -42,7 +42,7 @@ const copy: Record<SiteLang, { title: string; lead: string; empty: string; sourc
       return (
         <article class:list={["localized-page", { active: lang === "zh" }]} data-lang-panel={lang}>
           <header class="news-hero page-shell">
-            <p class="overline">HPF.KZ / EDITORIAL LEDGER</p>
+            <p class="overline" data-label-zh="HPF.kz · 公司与路线动态" data-label-en="HPF.kz · Company and route updates" data-label-ru="HPF.kz · Новости компании и маршрутов">HPF.kz · 公司与路线动态</p>
             <h1 class="display-title">{text.title}</h1>
             <p class="body-copy">{text.lead}</p>
           </header>
@@ -86,11 +86,10 @@ const copy: Record<SiteLang, { title: string; lead: string; empty: string; sourc
 
   .news-hero {
     display: grid;
-    min-height: 64svh;
-    align-content: end;
+    align-content: start;
     gap: var(--space-lg);
-    padding-block: var(--space-3xl);
-    border-bottom: var(--rule-hair) solid var(--color-ink);
+    padding-block: var(--space-3xl) var(--space-2xl);
+    border-bottom: var(--rule-strong) solid var(--color-ink);
   }
 
   .news-hero .display-title {
@@ -130,7 +129,7 @@ const copy: Record<SiteLang, { title: string; lead: string; empty: string; sourc
     gap: var(--space-xl);
     padding-block: var(--space-xl);
     border-bottom: var(--rule-hair) solid var(--color-rule);
-    transition: color var(--dur-fast) var(--ease-out), transform var(--dur-medium) var(--ease-out);
+    transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
   }
 
   .news-row:hover {
@@ -168,8 +167,7 @@ const copy: Record<SiteLang, { title: string; lead: string; empty: string; sourc
 
   @media (max-width: 47.99rem) {
     .news-hero {
-      min-height: 70svh;
-      padding-block: var(--space-2xl);
+      padding-block: var(--space-2xl) var(--space-xl);
     }
 
     .news-list {

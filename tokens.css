@@ -1,26 +1,30 @@
-/* Hallmark · genre: editorial · macrostructure: Map / Diagram · theme: Atelier · enrichment: tier-B SVG · nav: N9 · footer: Ft5 · contrast: pass (40–41) · slop: pass (42–49) · mobile: pass (34, 49–57) */
-/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap");
+/* Hallmark · genre: modern-enterprise · macrostructure: Split Studio · theme: custom corporate · nav: N11 · footer: Ft3 */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap");
 
 :root {
-  --color-paper: oklch(96.5% 0.018 83);
-  --color-paper-deep: oklch(91.5% 0.028 78);
-  --color-paper-soft: oklch(98.3% 0.009 82);
-  --color-ink: oklch(21% 0.018 62);
-  --color-ink-soft: oklch(35% 0.018 62);
-  --color-muted: oklch(49% 0.018 65);
-  --color-faint: oklch(70% 0.016 72);
-  --color-rule: oklch(80% 0.025 74);
-  --color-accent: oklch(58% 0.105 58);
-  --color-accent-deep: oklch(45% 0.09 55);
-  --color-accent-ink: var(--color-paper-soft);
-  --color-focus: oklch(47% 0.13 245);
+  --color-paper: oklch(98% 0.006 238);
+  --color-paper-2: oklch(95% 0.010 235);
+  --color-paper-3: oklch(91% 0.014 232);
+  --color-paper-deep: var(--color-paper-2);
+  --color-paper-soft: var(--color-paper);
+  --color-ink: oklch(20% 0.036 247);
+  --color-ink-2: oklch(31% 0.032 245);
+  --color-ink-soft: var(--color-ink-2);
+  --color-muted: oklch(49% 0.022 240);
+  --color-faint: oklch(65% 0.018 238);
+  --color-rule: oklch(84% 0.018 235);
+  --color-rule-2: oklch(72% 0.022 237);
+  --color-accent: oklch(48% 0.095 186);
+  --color-accent-deep: oklch(39% 0.082 187);
+  --color-accent-ink: oklch(98% 0.006 238);
+  --color-focus: oklch(57% 0.14 190);
   --color-success: oklch(47% 0.085 158);
   --color-error: oklch(50% 0.16 28);
-  --color-overlay: oklch(18% 0.016 62 / 0.54);
+  --color-overlay: oklch(16% 0.030 247 / 0.48);
 
-  --font-display: "Cormorant Garamond", "Songti SC", "STSong", serif;
-  --font-body: "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-display: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-body: "Noto Sans SC", "IBM Plex Sans", "PingFang SC", sans-serif;
+  --font-outlier: "IBM Plex Mono", ui-monospace, monospace;
 
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -40,25 +44,32 @@
   --text-xl: 1.625rem;
   --text-2xl: 2.125rem;
   --text-3xl: 3rem;
-  --text-display-s: clamp(3rem, 7vw, 6.5rem);
-  --text-display: clamp(3.75rem, 9vw, 8.5rem);
+  --text-display-s: clamp(2.6rem, 5.2vw, 5.25rem);
+  --text-display: clamp(3rem, 6vw, 5.5rem);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 140ms;
-  --dur-medium: 280ms;
-  --dur-slow: 520ms;
+  --dur-micro: 120ms;
+  --dur-fast: 180ms;
+  --dur-short: 220ms;
+  --dur-medium: 260ms;
+  --dur-long: 420ms;
+  --dur-slow: 420ms;
 
   --rule-hair: 1px;
   --rule-strong: 2px;
-  --radius-sm: 0.125rem;
-  --radius-md: 0.25rem;
-  --radius-round: 999px;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-card: 0.375rem;
+  --radius-input: 0.25rem;
+  --radius-pill: 999px;
+  --radius-round: var(--radius-pill);
 
   --page-gutter: clamp(1rem, 4vw, 4.5rem);
-  --page-max: 100rem;
-  --banner-height: 5rem;
+  --page-max: 92rem;
+  --banner-height: 4.75rem;
+  --utility-height: 2rem;
   --z-sticky: 20;
   --z-sticky-nav: 40;
   --z-dialog: 80;

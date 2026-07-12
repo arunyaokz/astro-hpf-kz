@@ -1,11 +1,12 @@
 ---
-import SitePage from "../components/SitePage.astro";
+import HomePage from "../components/HomePage.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { SITE_PAGES } from "../site-content";
-
-const page = SITE_PAGES.home.zh;
 ---
 
-<SiteLayout title={page.metaTitle} description={page.metaDescription} active="home">
-  <SitePage pageKey="home" />
+<SiteLayout
+  title="HPF.kz｜中哈欧跨境物流与哈萨克斯坦本地履约"
+  description="HPF.kz 扎根哈萨克斯坦，为中国企业、中亚客户与欧洲收货方提供跨境运输、清关、仓储、分拨及末端交付服务。"
+  active="home"
+>
+  <HomePage />
 </SiteLayout>
