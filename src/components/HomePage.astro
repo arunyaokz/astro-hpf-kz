@@ -81,6 +81,27 @@ import RouteDiagram from "./RouteDiagram.astro";
           </div>
         </section>
 
+        <section class="customs-block">
+          <div class="page-shell customs-layout">
+            <header class="customs-intro">
+              <p class="overline">{page.customs.eyebrow}</p>
+              <h2>{page.customs.title}</h2>
+              <p>{page.customs.body}</p>
+              <strong>{page.customs.boundary}</strong>
+              <a class="button button--primary" href="/services/#customs">{page.customs.button}</a>
+            </header>
+            <ol class="customs-ledger">
+              {page.customs.stages.map((stage, index) => (
+                <li>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{stage.phase}</p>
+                  <div><h3>{stage.title}</h3><p>{stage.text}</p></div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         <section class="services-block page-shell">
           <header class="section-intro section-intro--wide">
             <h2>{page.services.title}</h2>
@@ -188,6 +209,22 @@ import RouteDiagram from "./RouteDiagram.astro";
   .method-list h3 { color: var(--color-paper); font-size: var(--text-lg); }
   .method-list p { margin-block-start: var(--space-sm); color: var(--color-faint); }
 
+  .customs-block { border-top: var(--space-xs) solid var(--color-accent); background: var(--color-paper-3); color: var(--color-ink); }
+  .customs-layout { display: grid; grid-template-columns: minmax(18rem, .78fr) minmax(0, 1.22fr); gap: var(--space-3xl); padding-block: var(--space-4xl); }
+  .customs-intro { display: grid; align-content: start; justify-items: start; gap: var(--space-lg); }
+  .customs-intro .overline { color: var(--color-accent-deep); }
+  .customs-intro h2 { min-width: 0; max-width: 10ch; margin: 0; color: var(--color-ink); font-size: clamp(2.6rem, 5vw, 5.2rem); line-height: 1.02; letter-spacing: -.045em; overflow-wrap: anywhere; }
+  .customs-intro > p:not(.overline) { max-width: 58ch; margin: 0; color: var(--color-muted); }
+  .customs-intro > strong { max-width: 58ch; padding-block-start: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule-2); font-weight: 600; }
+  .customs-intro .button { margin-block-start: var(--space-sm); }
+  .customs-ledger { margin: 0; padding: 0; border-top: var(--rule-strong) solid var(--color-accent); list-style: none; }
+  .customs-ledger li { display: grid; grid-template-columns: 2.5rem minmax(7rem, .35fr) minmax(0, 1fr); gap: var(--space-lg); padding-block: var(--space-xl); border-bottom: var(--rule-hair) solid var(--color-rule-2); }
+  .customs-ledger li > span { color: var(--color-accent-deep); font-size: var(--text-sm); font-weight: 600; }
+  .customs-ledger li > p { margin: 0; font-size: var(--text-sm); font-weight: 600; }
+  .customs-ledger h3, .customs-ledger div p { margin: 0; }
+  .customs-ledger h3 { color: var(--color-ink); font-size: var(--text-xl); line-height: 1.2; }
+  .customs-ledger div p { margin-block-start: var(--space-sm); color: var(--color-muted); }
+
   .services-block { padding-block: var(--space-4xl); }
   .services-layout { display: grid; grid-template-columns: minmax(18rem, .8fr) minmax(0, 1.2fr); gap: var(--space-2xl); margin-block-start: var(--space-3xl); }
   .service-photo { min-width: 0; margin: 0; }
@@ -223,7 +260,7 @@ import RouteDiagram from "./RouteDiagram.astro";
   @media (min-width: 60rem) { .home-hero .display-title { font-size: clamp(3.4rem, 4.4vw, 4.75rem); } }
   @media (max-width: 59.99rem) {
     .home-hero { grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr); }
-    .problem-layout, .method-layout, .services-layout, .route-layout, .process-block { grid-template-columns: minmax(0, 1fr); }
+    .problem-layout, .method-layout, .customs-layout, .services-layout, .route-layout, .process-block { grid-template-columns: minmax(0, 1fr); }
     .section-intro--wide { grid-template-columns: minmax(0, 1fr); align-items: start; }
     .route-layout { align-items: start; }
   }
@@ -233,10 +270,13 @@ import RouteDiagram from "./RouteDiagram.astro";
     .home-hero__photo { min-height: 25rem; }
     .hero-strap { margin-block-start: var(--space-2xl); }
     .trust-block, .services-block, .process-block { padding-block: var(--space-3xl); }
-    .problem-layout, .method-layout, .route-layout { padding-block: var(--space-3xl); }
+    .problem-layout, .method-layout, .customs-layout, .route-layout { padding-block: var(--space-3xl); }
     .evidence-row { grid-template-columns: 2.25rem minmax(0, 1fr); }
     .evidence-row p { grid-column: 2; }
     .judgement-list article { grid-template-columns: minmax(0, 1fr); }
+    .customs-ledger li { grid-template-columns: 2rem minmax(0, 1fr); }
+    .customs-ledger li > p { grid-column: 2; }
+    .customs-ledger li > div { grid-column: 2; }
     .service-index a { grid-template-columns: 2rem minmax(0, 1fr) auto; }
     .process-list li { grid-template-columns: 2.25rem minmax(0, 1fr); }
     .process-list p { grid-column: 2; }

@@ -7,7 +7,7 @@ defers to it. Amend intentionally; this file is the rule.
 - Genre · modern enterprise / industrial corporate
 - Macrostructure · Split Studio for marketing pages; Workbench for platform; Long Document for news
 - Theme · custom (vibe: "calm logistics authority, evidence first")
-- Axes · cool-white paper / engineered sans / Caspian teal signal
+- Axes · cool-blue paper / engineered sans / saturated cobalt signal
 - Navigation · corporate utility rail + N11 grouped mega-menu; mobile disclosure drawer
 - Footer · genuine site index with operating contact, not a generic SaaS directory
 
@@ -17,20 +17,21 @@ defers to it. Amend intentionally; this file is the rule.
 - Route diagrams are geographically ordered west-to-east from left to right: Europe on the left, Central Asia in the middle, China on the right. China-to-Europe cargo direction therefore reads right-to-left.
 - No ornamental maps, giant luxury serif, floating AI graphics, glass panels, gradient text, or equal three-card feature grids.
 - Chinese, English, and Russian share structure and interaction; allow 40% expansion for Russian.
+- The brand is a blue system: navy carries trust, cool paper carries density, saturated cobalt marks decisions and operating status. Cobalt is an accent, not a full-screen wash.
 
 ## Tokens (canonical · `tokens.css` is the source of truth)
 ```css
 :root {
-  --color-paper: oklch(98% 0.006 238);
-  --color-paper-2: oklch(95% 0.010 235);
-  --color-paper-3: oklch(91% 0.014 232);
-  --color-ink: oklch(20% 0.036 247);
-  --color-ink-2: oklch(31% 0.032 245);
-  --color-rule: oklch(84% 0.018 235);
-  --color-muted: oklch(49% 0.022 240);
-  --color-accent: oklch(48% 0.095 186);
-  --color-accent-ink: oklch(98% 0.006 238);
-  --color-focus: oklch(57% 0.14 190);
+  --color-paper: oklch(98% 0.008 252);
+  --color-paper-2: oklch(95% 0.018 250);
+  --color-paper-3: oklch(91% 0.030 248);
+  --color-ink: oklch(19% 0.060 258);
+  --color-ink-2: oklch(30% 0.055 256);
+  --color-rule: oklch(84% 0.034 248);
+  --color-muted: oklch(48% 0.040 252);
+  --color-accent: oklch(52% 0.235 258);
+  --color-accent-ink: oklch(98% 0.008 252);
+  --color-focus: oklch(76% 0.155 242);
   --font-display: "IBM Plex Sans", "Noto Sans SC", sans-serif;
   --font-body: "Noto Sans SC", "IBM Plex Sans", sans-serif;
   --font-outlier: "IBM Plex Mono", monospace;
@@ -55,15 +56,15 @@ defers to it. Amend intentionally; this file is the rule.
 ### Tailwind v4 `@theme`
 ```css
 @theme {
-  --color-paper: oklch(98% 0.006 238);
-  --color-paper-2: oklch(95% 0.010 235);
-  --color-paper-3: oklch(91% 0.014 232);
-  --color-ink: oklch(20% 0.036 247);
-  --color-ink-2: oklch(31% 0.032 245);
-  --color-rule: oklch(84% 0.018 235);
-  --color-muted: oklch(49% 0.022 240);
-  --color-accent: oklch(48% 0.095 186);
-  --color-focus: oklch(57% 0.14 190);
+  --color-paper: oklch(98% 0.008 252);
+  --color-paper-2: oklch(95% 0.018 250);
+  --color-paper-3: oklch(91% 0.030 248);
+  --color-ink: oklch(19% 0.060 258);
+  --color-ink-2: oklch(30% 0.055 256);
+  --color-rule: oklch(84% 0.034 248);
+  --color-muted: oklch(48% 0.040 252);
+  --color-accent: oklch(52% 0.235 258);
+  --color-focus: oklch(76% 0.155 242);
   --font-display: "IBM Plex Sans", "Noto Sans SC", sans-serif;
   --font-body: "Noto Sans SC", "IBM Plex Sans", sans-serif;
   --font-outlier: "IBM Plex Mono", monospace;
@@ -80,11 +81,11 @@ defers to it. Amend intentionally; this file is the rule.
 {
   "$schema": "https://design-tokens.github.io/community-group/format/",
   "color": {
-    "paper": { "$value": "oklch(98% 0.006 238)", "$type": "color" },
-    "paper-2": { "$value": "oklch(95% 0.010 235)", "$type": "color" },
-    "ink": { "$value": "oklch(20% 0.036 247)", "$type": "color" },
-    "accent": { "$value": "oklch(48% 0.095 186)", "$type": "color" },
-    "focus": { "$value": "oklch(57% 0.14 190)", "$type": "color" }
+    "paper": { "$value": "oklch(98% 0.008 252)", "$type": "color" },
+    "paper-2": { "$value": "oklch(95% 0.018 250)", "$type": "color" },
+    "ink": { "$value": "oklch(19% 0.060 258)", "$type": "color" },
+    "accent": { "$value": "oklch(52% 0.235 258)", "$type": "color" },
+    "focus": { "$value": "oklch(76% 0.155 242)", "$type": "color" }
   },
   "font": {
     "display": { "$value": "IBM Plex Sans, Noto Sans SC, sans-serif", "$type": "fontFamily" },
@@ -102,14 +103,14 @@ defers to it. Amend intentionally; this file is the rule.
 ### shadcn/ui variables
 ```css
 :root {
-  --background: 98% 0.006 238; --foreground: 20% 0.036 247;
-  --card: 95% 0.010 235; --card-foreground: 20% 0.036 247;
-  --popover: 98% 0.006 238; --popover-foreground: 20% 0.036 247;
-  --primary: 20% 0.036 247; --primary-foreground: 98% 0.006 238;
-  --secondary: 91% 0.014 232; --secondary-foreground: 31% 0.032 245;
-  --muted: 91% 0.014 232; --muted-foreground: 49% 0.022 240;
-  --accent: 48% 0.095 186; --accent-foreground: 98% 0.006 238;
-  --border: 84% 0.018 235; --input: 84% 0.018 235; --ring: 57% 0.14 190;
+  --background: 98% 0.008 252; --foreground: 19% 0.060 258;
+  --card: 95% 0.018 250; --card-foreground: 19% 0.060 258;
+  --popover: 98% 0.008 252; --popover-foreground: 19% 0.060 258;
+  --primary: 19% 0.060 258; --primary-foreground: 98% 0.008 252;
+  --secondary: 91% 0.030 248; --secondary-foreground: 30% 0.055 256;
+  --muted: 91% 0.030 248; --muted-foreground: 48% 0.040 252;
+  --accent: 52% 0.235 258; --accent-foreground: 98% 0.008 252;
+  --border: 84% 0.034 248; --input: 84% 0.034 248; --ring: 76% 0.155 242;
   --radius: 0.375rem;
 }
 ```

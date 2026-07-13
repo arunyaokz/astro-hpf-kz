@@ -2,25 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap");
 
 :root {
-  --color-paper: oklch(98% 0.006 238);
-  --color-paper-2: oklch(95% 0.010 235);
-  --color-paper-3: oklch(91% 0.014 232);
+  --color-paper: oklch(98% 0.008 252);
+  --color-paper-2: oklch(95% 0.018 250);
+  --color-paper-3: oklch(91% 0.030 248);
   --color-paper-deep: var(--color-paper-2);
   --color-paper-soft: var(--color-paper);
-  --color-ink: oklch(20% 0.036 247);
-  --color-ink-2: oklch(31% 0.032 245);
+  --color-ink: oklch(19% 0.060 258);
+  --color-ink-2: oklch(30% 0.055 256);
   --color-ink-soft: var(--color-ink-2);
-  --color-muted: oklch(49% 0.022 240);
-  --color-faint: oklch(65% 0.018 238);
-  --color-rule: oklch(84% 0.018 235);
-  --color-rule-2: oklch(72% 0.022 237);
-  --color-accent: oklch(48% 0.095 186);
-  --color-accent-deep: oklch(39% 0.082 187);
-  --color-accent-ink: oklch(98% 0.006 238);
-  --color-focus: oklch(57% 0.14 190);
+  --color-muted: oklch(48% 0.040 252);
+  --color-faint: oklch(68% 0.032 250);
+  --color-rule: oklch(84% 0.034 248);
+  --color-rule-2: oklch(70% 0.050 250);
+  --color-accent: oklch(52% 0.235 258);
+  --color-accent-deep: oklch(40% 0.185 258);
+  --color-accent-ink: oklch(98% 0.008 252);
+  --color-focus: oklch(76% 0.155 242);
   --color-success: oklch(47% 0.085 158);
   --color-error: oklch(50% 0.16 28);
-  --color-overlay: oklch(16% 0.030 247 / 0.48);
+  --color-overlay: oklch(14% 0.055 258 / 0.52);
 
   --font-display: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", sans-serif;
   --font-body: "Noto Sans SC", "IBM Plex Sans", "PingFang SC", sans-serif;

@@ -12,6 +12,14 @@ type HomeContent = {
   trust: { title: string; body: string; note: string; items: Array<{ value: string; label: string }> };
   problem: { title: string; body: string; items: Array<{ title: string; text: string }> };
   method: { title: string; body: string; definition: string; items: Array<{ title: string; text: string }> };
+  customs: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    boundary: string;
+    button: string;
+    stages: Array<{ phase: string; title: string; text: string }>;
+  };
   services: { title: string; intro: string; items: Array<{ title: string; text: string; href: string }> };
   route: { title: string; body: string; detail: string; button: string; direction: string };
   process: { title: string; items: Array<{ no: string; title: string; text: string }> };
@@ -60,12 +68,24 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
         { title: "每一票，都为下一票留下经验", text: "时效、费用、文件与异常被记录下来。走过的路，不必每一次都重新摸索。" },
       ],
     },
+    customs: {
+      eyebrow: "清关与合规",
+      title: "清关，不是到口岸才开始。",
+      body: "真正影响通关节奏的工作，往往发生在发车之前。HPF.kz 从品名、HS 编码、申报要素、合同发票、装箱资料、证书与 EAEU 要求入手，先核对货、单、证是否彼此一致，再衔接中国出口、哈萨克斯坦进口与转关节点。",
+      boundary: "我们不承诺不存在的“保证通关”。我们把能够前置的问题前置，把必须现场处理的问题明确到责任人。",
+      button: "查看清关与合规能力",
+      stages: [
+        { phase: "发运前", title: "货物与单证预审", text: "核对品名、用途、材质、品牌型号、HS 编码、申报要素及贸易文件的一致性。" },
+        { phase: "口岸中", title: "申报与查验协同", text: "衔接出口、进口与转关节点；需要补件、改单或查验时，明确当前状态与下一责任人。" },
+        { phase: "放行后", title: "文件归档与复盘", text: "留存关键单证、放行节点与异常记录，让本票结果成为下一票的可用经验。" },
+      ],
+    },
     services: {
       title: "车、关、仓、配，不让客户自己拼起来。",
       intro: "跨境交付不是几个服务名称的相加，而是前后衔接的一套次序。HPF.kz 将关键环节放进同一条运营链，让上一程的结果，成为下一程的起点。",
       items: [
+        { title: "清关与合规协同", text: "从文件、税则与证书入手，把风险尽量前移。不是等货到口岸再找答案，而是在出发前把问题问完。", href: "/services/#customs" },
         { title: "跨境 TIR 与干线运输", text: "依托集团车队资源与哈萨克斯坦本地调度能力，组织中哈欧跨境公路运输，并按货物、时效与通关条件组合铁路、海运或空运方案。", href: "/services/" },
-        { title: "清关与合规协同", text: "从文件、税则与证书入手，把风险尽量前移。不是等货到口岸再找答案，而是在出发前把问题问完。", href: "/services/" },
         { title: "阿拉木图仓储与分拨", text: "从到货、质检、上架，到贴标、分拣、出库与退换处理，让库存状态与交付节奏彼此看得见。", href: "/services/" },
         { title: "哈萨克斯坦本地交付", text: "协调车辆、预约、卸货与签收，把跨境路线的最后一程，真正落到仓库、门店或项目现场。", href: "/services/" },
       ],
@@ -134,12 +154,24 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
         { title: "Keep the learning from every load", text: "Time, cost, documents and exceptions are recorded so the next shipment does not start over." },
       ],
     },
+    customs: {
+      eyebrow: "Customs & compliance",
+      title: "Customs does not begin at the border.",
+      body: "The work that shapes clearance usually happens before departure. HPF.kz reviews the commodity description, HS code, declaration data, contract, invoice, packing documents, certificates and EAEU requirements, then coordinates China export, Kazakhstan import and transit-customs milestones.",
+      boundary: "We do not promise an unrealistic ‘guaranteed clearance’. We move preventable issues upstream and assign a named owner to issues that must be handled at the border.",
+      button: "View customs capability",
+      stages: [
+        { phase: "Before departure", title: "Cargo and document review", text: "Check description, use, material, model, HS code, declaration elements and consistency across trade documents." },
+        { phase: "At the border", title: "Declaration and inspection coordination", text: "Connect export, import and transit nodes; when files, amendments or inspection are required, state the current status and next owner." },
+        { phase: "After release", title: "Archive and review", text: "Retain key files, release milestones and exception records so one shipment improves the next." },
+      ],
+    },
     services: {
       title: "Road, customs, warehouse and delivery—one operating order.",
       intro: "Cross-border delivery is not a list of services. HPF.kz connects the key stages so the result of one leg becomes the starting point of the next.",
       items: [
+        { title: "Customs and compliance coordination", text: "Files, tariffs and certificates are reviewed early so questions are answered before the truck reaches the border.", href: "/services/#customs" },
         { title: "Cross-border TIR and linehaul", text: "We organise China–Kazakhstan–Europe road freight with group fleet resources and local dispatch, combining rail, sea or air where cargo and customs conditions require it.", href: "/services/" },
-        { title: "Customs and compliance coordination", text: "Files, tariffs and certificates are reviewed early so questions are answered before the truck reaches the border.", href: "/services/" },
         { title: "Almaty warehousing and distribution", text: "Receiving, inspection, put-away, labelling, picking, dispatch and returns keep inventory and delivery cadence visible.", href: "/services/" },
         { title: "Kazakhstan local delivery", text: "Vehicle coordination, appointments, unloading and proof of delivery bring the final leg to warehouses, stores and project sites.", href: "/services/" },
       ],
@@ -208,12 +240,24 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
         { title: "Каждая перевозка оставляет опыт", text: "Сроки, расходы, документы и отклонения фиксируются, чтобы не начинать заново." },
       ],
     },
+    customs: {
+      eyebrow: "Таможня и соответствие",
+      title: "Таможня начинается не на границе.",
+      body: "Работа, от которой зависит ритм оформления, начинается до отправки. HPF.kz проверяет описание товара, код ТН ВЭД, сведения для декларации, контракт, инвойс, упаковочные документы, сертификаты и требования ЕАЭС, а затем координирует экспорт из Китая, импорт в Казахстан и транзитные узлы.",
+      boundary: "Мы не обещаем нереальную «гарантию оформления». Предотвратимые вопросы решаем заранее, а пограничные задачи закрепляем за конкретным ответственным.",
+      button: "Смотреть возможности таможни",
+      stages: [
+        { phase: "До отправки", title: "Проверка груза и документов", text: "Сверяем наименование, назначение, материал, модель, код ТН ВЭД, сведения декларации и торговые документы." },
+        { phase: "На границе", title: "Декларирование и досмотр", text: "Связываем экспорт, импорт и транзит; при дополнении, корректировке или досмотре сообщаем статус и следующего ответственного." },
+        { phase: "После выпуска", title: "Архив и разбор", text: "Сохраняем ключевые документы, этапы выпуска и отклонения, чтобы результат одной перевозки помогал следующей." },
+      ],
+    },
     services: {
       title: "Транспорт, таможня, склад и доставка — в одном порядке.",
       intro: "Трансграничная доставка — это не перечень услуг. HPF.kz соединяет этапы так, чтобы результат одного становился началом следующего.",
       items: [
+        { title: "Таможня и соответствие требованиям", text: "Проверяем документы, тарифы и сертификаты заранее, чтобы вопросы были решены до прибытия на границу.", href: "/services/#customs" },
         { title: "TIR и магистральные перевозки", text: "Организуем автоперевозки Китай–Казахстан–Европа с ресурсами группы и местной диспетчеризацией, при необходимости сочетая железную дорогу, море или авиацию.", href: "/services/" },
-        { title: "Таможня и соответствие требованиям", text: "Проверяем документы, тарифы и сертификаты заранее, чтобы вопросы были решены до прибытия на границу.", href: "/services/" },
         { title: "Склад и распределение в Алматы", text: "Приёмка, проверка, размещение, маркировка, комплектация, отгрузка и возвраты делают запас и ритм доставки видимыми.", href: "/services/" },
         { title: "Доставка по Казахстану", text: "Координируем транспорт, время приёмки, разгрузку и POD до склада, магазина или площадки проекта.", href: "/services/" },
       ],

@@ -10,14 +10,14 @@ const actionHref = pageKey === "contact" ? `mailto:${CONTACT_INFO.business}` : "
 const image = pageKey === "services" || pageKey === "platform" ? "/images/corporate/warehouse-operations.jpg" : "/images/corporate/truck-mountains.jpg";
 const imageSize = image.includes("warehouse") ? { width: 1600, height: 1067 } : { width: 1800, height: 2700 };
 
-const ui: Record<SiteLang, { foundation: string; scope: string; process: string; imageNote: string; routeDirection: string; contact: string }> = {
-  zh: { foundation: "运营基础", scope: "能力范围", process: "工作次序", imageNote: "行业场景图，不代表 HPF.kz 自有资产", routeDirection: "货物流向：由右向左，中国 → 欧洲", contact: "提交货运需求" },
-  en: { foundation: "Operating foundation", scope: "Scope of capability", process: "Operating sequence", imageNote: "Industry image; not an HPF.kz-owned asset", routeDirection: "Cargo direction: right to left, China → Europe", contact: "Submit freight request" },
-  ru: { foundation: "Операционная основа", scope: "Объём возможностей", process: "Порядок работы", imageNote: "Отраслевое фото; это не актив HPF.kz", routeDirection: "Направление груза: справа налево, Китай → Европа", contact: "Отправить запрос" },
+const ui: Record<SiteLang, { foundation: string; scope: string; process: string; customs: string; customsNote: string; imageNote: string; routeDirection: string; contact: string }> = {
+  zh: { foundation: "运营基础", scope: "能力范围", process: "工作次序", customs: "清关前置能力", customsNote: "不承诺“保证通关”；承诺把可预见问题前置，并让现场问题有明确责任人。", imageNote: "行业场景图，不代表 HPF.kz 自有资产", routeDirection: "货物流向：由右向左，中国 → 欧洲", contact: "提交货运需求" },
+  en: { foundation: "Operating foundation", scope: "Scope of capability", process: "Operating sequence", customs: "Customs-first capability", customsNote: "No promise of ‘guaranteed clearance’; foreseeable issues move upstream and border issues receive a named owner.", imageNote: "Industry image; not an HPF.kz-owned asset", routeDirection: "Cargo direction: right to left, China → Europe", contact: "Submit freight request" },
+  ru: { foundation: "Операционная основа", scope: "Объём возможностей", process: "Порядок работы", customs: "Таможня до отправки", customsNote: "Без обещаний «гарантированного оформления»: предсказуемые вопросы решаем заранее, пограничные закрепляем за ответственным.", imageNote: "Отраслевое фото; это не актив HPF.kz", routeDirection: "Направление груза: справа налево, Китай → Европа", contact: "Отправить запрос" },
 };
 ---
 
-<div class="corporate-page" data-language-root={pageKey}>
+<div class="corporate-page" id={pageKey === "services" ? "customs" : undefined} data-language-root={pageKey}>
   {SITE_LANGS.map((lang) => {
     const page = pageSet[lang];
     const trust = TRUST_NARRATIVE[lang];
@@ -52,6 +52,23 @@ const ui: Record<SiteLang, { foundation: string; scope: string; process: string;
             ))}
           </div>
         </section>
+
+        {pageKey === "services" && (
+          <section class="customs-feature">
+            <div class="page-shell customs-feature__layout">
+              <header>
+                <p class="overline">{labels.customs}</p>
+                <h2>{page.sections[0]?.title}</h2>
+                <p>{page.sections[0]?.text}</p>
+                <strong>{labels.customsNote}</strong>
+              </header>
+              <div class="customs-feature__scope">
+                <p>{page.panels[0]?.title}</p>
+                <ul>{page.panels[0]?.points.map((point, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{point}</li>)}</ul>
+              </div>
+            </div>
+          </section>
+        )}
 
         {pageKey === "routes" && (
           <section class="route-feature">
@@ -121,6 +138,18 @@ const ui: Record<SiteLang, { foundation: string; scope: string; process: string;
   .foundation-list > div { display: grid; grid-template-columns: 2.5rem minmax(11rem, .65fr) minmax(0, 1fr); gap: var(--space-lg); padding-block: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-rule); }
   .foundation-list span { color: var(--color-accent-deep); font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
   .foundation-list p { margin: 0; color: var(--color-muted); }
+  .customs-feature { border-top: var(--space-xs) solid var(--color-accent); background: var(--color-ink); color: var(--color-paper); }
+  .customs-feature__layout { display: grid; grid-template-columns: minmax(18rem, .85fr) minmax(0, 1.15fr); gap: var(--space-3xl); padding-block: var(--space-4xl); }
+  .customs-feature header { display: grid; align-content: start; justify-items: start; gap: var(--space-lg); }
+  .customs-feature .overline { color: var(--color-focus); }
+  .customs-feature h2 { min-width: 0; max-width: 12ch; margin: 0; color: var(--color-paper); font-size: clamp(2.6rem, 5vw, 5rem); line-height: 1.03; letter-spacing: -.04em; overflow-wrap: anywhere; }
+  .customs-feature header > p:not(.overline) { max-width: 62ch; margin: 0; color: var(--color-faint); }
+  .customs-feature header > strong { max-width: 60ch; padding-block-start: var(--space-lg); border-top: var(--rule-hair) solid var(--color-ink-2); }
+  .customs-feature__scope { align-self: end; border-top: var(--rule-strong) solid var(--color-accent); }
+  .customs-feature__scope > p { margin: 0; padding-block: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-ink-2); font-size: var(--text-xl); font-weight: 700; }
+  .customs-feature__scope ul { margin: 0; padding: 0; list-style: none; }
+  .customs-feature__scope li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: var(--space-lg); padding-block: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-ink-2); }
+  .customs-feature__scope li span { color: var(--color-focus); font-size: var(--text-sm); font-weight: 600; }
   .route-feature { padding-block: var(--space-3xl); background: var(--color-paper-2); }
   .scope-section { display: grid; grid-template-columns: minmax(16rem, .55fr) minmax(0, 1.45fr); gap: var(--space-3xl); padding-block: var(--space-4xl); }
   .scope-section header { display: grid; align-content: start; gap: var(--space-lg); }
@@ -153,11 +182,11 @@ const ui: Record<SiteLang, { foundation: string; scope: string; process: string;
   .page-cta > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-xl); align-items: end; padding-block: var(--space-3xl); }
   .page-cta h2 { max-width: 18ch; margin: 0; font-size: clamp(2.5rem, 5vw, 5rem); line-height: 1.05; letter-spacing: -.035em; }
   .page-cta p { max-width: 58ch; margin: var(--space-lg) 0 0; }
-  @media (max-width: 59.99rem) { .subpage-hero, .foundation, .scope-section, .operating-layout, .sequence-section { grid-template-columns: minmax(0, 1fr); } .subpage-hero { grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .95fr); } }
+  @media (max-width: 59.99rem) { .subpage-hero, .foundation, .customs-feature__layout, .scope-section, .operating-layout, .sequence-section { grid-template-columns: minmax(0, 1fr); } .subpage-hero { grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .95fr); } }
   @media (max-width: 39.99rem) {
     .subpage-hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-lg) var(--space-2xl); }
     .subpage-hero figure { min-height: 25rem; }
-    .foundation, .scope-section, .operating-layout, .sequence-section { padding-block: var(--space-3xl); }
+    .foundation, .customs-feature__layout, .scope-section, .operating-layout, .sequence-section { padding-block: var(--space-3xl); }
     .foundation-list > div { grid-template-columns: 2rem minmax(0, 1fr); }
     .foundation-list p { grid-column: 2; }
     .scope-list article { grid-template-columns: 2rem minmax(0, 1fr); }
