@@ -172,7 +172,9 @@ const principleVisuals = ["docs-first", "responsibility", "memory"];
 
 <script>
   const alignServiceAnchor = () => {
-    const target = document.querySelector<HTMLElement>(window.location.hash);
+    const hash = window.location.hash;
+    if (!hash) return;
+    const target = document.querySelector<HTMLElement>(hash);
     const index = document.querySelector<HTMLElement>(".service-index");
     if (!target?.classList.contains("service-detail") || !index) return;
 
