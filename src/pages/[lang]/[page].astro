@@ -1,0 +1,23 @@
+---
+import ContactPage from "../../components/ContactPage.astro";
+import ContentPage from "../../components/ContentPage.astro";
+import PrivacyPage from "../../components/PrivacyPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { CONTACT_COPY, PAGE_COPY, PRIVACY_COPY, type CorePage, type Lang } from "../../site-v2";
+
+const localizedPages = ["services", "routes", "about", "contact", "privacy"] as const;
+type LocalizedPage = (typeof localizedPages)[number];
+
+export function getStaticPaths() {
+  return (["zh", "ru"] as const).flatMap((lang) =>
+    (["services", "routes", "about", "contact", "privacy"] as const).map((page) => ({ params: { lang, page } })),
+  );
+}
+
+const lang = Astro.params.lang as Lang;
+const pageKey = Astro.params.page as LocalizedPage;
+const meta = pageKey === "contact" ? CONTACT_COPY[lang] : pageKey === "privacy" ? PRIVACY_COPY[lang] : PAGE_COPY[pageKey][lang];
+---
+<SiteLayout title={meta.metaTitle} description={meta.metaDescription} lang={lang} active={pageKey as CorePage}>
+  {pageKey === "contact" ? <ContactPage lang={lang} /> : pageKey === "privacy" ? <PrivacyPage lang={lang} /> : <ContentPage lang={lang} pageKey={pageKey} />}
+</SiteLayout>

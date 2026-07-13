@@ -1,0 +1,20 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+<SiteLayout title="Page not found | HPF.kz" description="The requested HPF.kz page could not be found." lang="en" active="home">
+  <section class="not-found shell">
+    <p class="eyebrow">404 / route not found</p>
+    <h1 class="display">This route ends here.</h1>
+    <div class="languages">
+      <p>Return to the <a href="/">English homepage</a>.</p>
+      <p>返回 <a href="/zh/">中文首页</a>。</p>
+      <p>Вернуться на <a href="/ru/">русскую главную страницу</a>.</p>
+    </div>
+  </section>
+</SiteLayout>
+<style>
+  .not-found { min-height: 62dvh; display: grid; align-content: center; gap: var(--space-2); padding-block: var(--space-12); }
+  .not-found .display { max-width: 10ch; }
+  .languages { display: grid; gap: .5rem; margin-block-start: var(--space-3); color: var(--mut); }
+  .languages a { color: var(--cobalt-700); text-decoration: underline; }
+</style>

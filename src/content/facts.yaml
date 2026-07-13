@@ -1,0 +1,242 @@
+- id: public_identity
+  kind: text
+  value: HPF.kz
+  labels:
+    zh: 哈萨克斯坦跨境物流运营商
+    en: Kazakhstan-based cross-border logistics operator
+    ru: Трансграничный логистический оператор в Казахстане
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V2.md
+  verified: true
+
+- id: operating_city
+  kind: text
+  value: Almaty, Kazakhstan
+  labels:
+    zh: 阿拉木图，哈萨克斯坦
+    en: Almaty, Kazakhstan
+    ru: Алматы, Казахстан
+  localizedValues:
+    zh: 哈萨克斯坦 · 阿拉木图
+    en: Almaty, Kazakhstan
+    ru: Алматы, Казахстан
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V2.md
+  verified: true
+
+- id: business_email
+  kind: contact
+  value: bd@hpf.kz
+  labels:
+    zh: 业务邮箱
+    en: Business email
+    ru: Деловая почта
+  source: current project configuration
+  verified: true
+
+- id: legal_name
+  kind: legal
+  value: Товарищество с ограниченной ответственностью "HPF KZ"
+  labels:
+    zh: ТОО 法定全称
+    en: Full legal name of the LLP
+    ru: Полное наименование ТОО
+  localizedValues:
+    zh: HPF KZ 有限责任合伙企业（ТОО）
+    en: HPF KZ Limited Liability Partnership (LLP)
+    ru: Товарищество с ограниченной ответственностью "HPF KZ"
+  source: Kazakhstan eGov state re-registration certificate issued 2025-05-27
+  asOf: "2025-05-27"
+  verified: true
+
+- id: bin
+  kind: legal
+  value: "241040015643"
+  labels:
+    zh: БИН
+    en: Business identification number (BIN)
+    ru: БИН
+  source: Kazakhstan eGov state re-registration certificate issued 2025-05-27
+  asOf: "2025-05-27"
+  verified: true
+
+- id: registered_address
+  kind: legal
+  value: Казахстан, город Алматы, Алмалинский район, улица Брусиловского, дом 159, кв. 760, почтовый индекс 050000
+  labels:
+    zh: 注册地址
+    en: Registered address
+    ru: Юридический адрес
+  localizedValues:
+    zh: 哈萨克斯坦，阿拉木图市，阿尔马雷区，布鲁西洛夫斯基街 159 号，760 室，邮编 050000
+    en: Apt. 760, 159 Brusilovskogo Street, Almaly District, Almaty 050000, Kazakhstan
+    ru: Казахстан, город Алматы, Алмалинский район, улица Брусиловского, дом 159, кв. 760, почтовый индекс 050000
+  source: Kazakhstan eGov state re-registration certificate issued 2025-05-27
+  asOf: "2025-05-27"
+  verified: true
+
+- id: office_address
+  kind: location
+  value: ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан
+  labels:
+    zh: 公司办公地址
+    en: Company office address
+    ru: Адрес офиса компании
+  localizedValues:
+    zh: HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦
+    en: HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan
+    ru: ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан
+  source: Office number provided by HPF KZ; building and street verified on 2GIS
+  asOf: "2026-07-13"
+  url: https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122
+  verified: true
+
+- id: business_phone
+  kind: contact
+  value: "[pending confirmation]"
+  labels:
+    zh: 业务电话
+    en: Business phone
+    ru: Деловой телефон
+  source: contact disclosure required before launch
+  verified: false
+
+- id: group_relationship
+  kind: governance
+  value: "[pending legal wording]"
+  labels:
+    zh: 与中国上市公司体系的关系
+    en: Relationship with the Chinese listed-company group
+    ru: Связь с группой китайской публичной компании
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V2.md; legal wording pending
+  verified: false
+
+- id: registration_year
+  kind: legal
+  value: "2024-10-11"
+  labels:
+    zh: 首次国家登记日期
+    en: Initial state registration
+    ru: Дата первичной государственной регистрации
+  localizedValues:
+    zh: 2024 年 10 月 11 日
+    en: 11 October 2024
+    ru: 11 октября 2024 г.
+  source: Kazakhstan eGov state re-registration certificate issued 2025-05-27
+  asOf: "2025-05-27"
+  verified: true
+
+- id: founder
+  kind: legal
+  value: HPF CO., LIMITED
+  labels:
+    zh: 创办方（参与者）
+    en: Founder (participant)
+    ru: Учредитель (участник)
+  localizedValues:
+    zh: HPF CO., LIMITED
+    en: HPF CO., LIMITED
+    ru: Компания "HPF CO., LIMITED"
+  source: Kazakhstan eGov state re-registration certificate issued 2025-05-27
+  asOf: "2025-05-27"
+  verified: true
+
+- id: group_fleet
+  kind: number
+  value: "182"
+  unit: vehicles
+  labels:
+    zh: 集团车队资源
+    en: Group fleet resources
+    ru: Ресурсы автопарка группы
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V2.md; ownership and dispatch scope pending
+  verified: false
+
+- id: local_fleet
+  kind: number
+  value: "5"
+  unit: vehicles
+  labels:
+    zh: 哈萨克斯坦本地车辆
+    en: Kazakhstan local vehicles
+    ru: Местный автопарк в Казахстане
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V2.md; current count and use pending
+  verified: false
+
+- id: almaty_warehouse
+  kind: facility
+  value: "[pending operating model and parameters]"
+  labels:
+    zh: 阿拉木图仓配能力
+    en: Almaty warehousing capability
+    ru: Складские возможности в Алматы
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V2.md; ownership and parameters pending
+  verified: false
+
+- id: returns_service
+  kind: facility
+  value: "[pending confirmation]"
+  labels:
+    zh: 退换件与逆向处理能力
+    en: Returns and reverse-handling capability
+    ru: Обработка возвратов
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V3.md; operating evidence required
+  verified: false
+
+- id: tir_carrier_basis
+  kind: governance
+  value: "[pending: own, group or partner carrier]"
+  labels:
+    zh: TIR 运输资质主体
+    en: TIR carrier basis
+    ru: Основание перевозок МДП
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V3.md; legal and operating confirmation required
+  verified: false
+
+- id: border_points
+  kind: route
+  value: Horgos / Alashankou
+  labels:
+    zh: 实际使用的中哈入境口岸
+    en: China–Kazakhstan border points in actual use
+    ru: Фактически используемые пункты Китай–Казахстан
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V3.md; route evidence required
+  verified: false
+
+- id: caspian_ports
+  kind: route
+  value: Kuryk / Aktau / Baku
+  labels:
+    zh: 跨里海港口口径
+    en: Caspian port wording
+    ru: Формулировка портов Каспия
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V3.md; route evidence required
+  verified: false
+
+- id: customs_transit_scope
+  kind: governance
+  value: "[pending confirmation]"
+  labels:
+    zh: 转关业务口径
+    en: Customs-transit operating scope
+    ru: Объём транзитного оформления
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V3.md; operating and legal confirmation required
+  verified: false
+
+- id: en_ru_native_review
+  kind: governance
+  value: "[pending native business review]"
+  labels:
+    zh: 英文与俄文母语商务审校
+    en: Native business-language review
+    ru: Проверка носителями делового языка
+  source: HPF_KZ_BRAND_LANGUAGE_ZH_V3.md
+  verified: false
+
+- id: corridor_nodes
+  kind: route
+  value: China origin > Kazakhstan border > Almaty > Kuryk/Aktau > Baku > Europe
+  labels:
+    zh: 中哈欧候选节点
+    en: Provisional China–Kazakhstan–Europe nodes
+    ru: Предварительные узлы Китай–Казахстан–Европа
+  source: HPF_KZ_官网设计开发_Prompt_V2.md; shipment-specific confirmation required
+  verified: false

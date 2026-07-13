@@ -1,11 +1,3 @@
 ---
-import SitePage from "../components/SitePage.astro";
-import SiteLayout from "../layouts/SiteLayout.astro";
-import { SITE_PAGES } from "../site-content";
-
-const page = SITE_PAGES.platform.zh;
+return Astro.redirect("/services/", 301);
 ---
-
-<SiteLayout title={page.metaTitle} description={page.metaDescription} active="platform">
-  <SitePage pageKey="platform" />
-</SiteLayout>

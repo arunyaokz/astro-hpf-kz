@@ -1,0 +1,7 @@
+---
+import PrivacyPage from "../components/PrivacyPage.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { PRIVACY_COPY } from "../site-v2";
+const page = PRIVACY_COPY.en;
+---
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="privacy"><PrivacyPage lang="en" /></SiteLayout>

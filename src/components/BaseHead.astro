@@ -1,39 +1,57 @@
 ---
+import { getCollection } from "astro:content";
+import { LANGS, pagePath, type CorePage, type Lang } from "../site-v2";
+
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title: string;
+  description: string;
+  lang: Lang;
+  page: CorePage;
+  image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-const { title, description, image = '/og-hpf-kz.svg' } = Astro.props;
+const { title, description, lang, page, image = "/og-hpf-kz.svg" } = Astro.props;
+const canonicalURL = new URL(pagePath(lang, page), Astro.site);
+const facts = await getCollection("facts");
+const verified = new Map(facts.filter((fact) => fact.data.verified).map((fact) => [fact.id, fact.data.value]));
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LogisticsBusiness"],
+  name: verified.get("public_identity") ?? "HPF.kz",
+  url: new URL(pagePath("en", "home"), Astro.site).toString(),
+  email: verified.get("business_email"),
+  address: verified.get("operating_city") ? {
+    "@type": "PostalAddress",
+    addressLocality: "Almaty",
+    addressCountry: "KZ",
+  } : undefined,
+  areaServed: ["China", "Kazakhstan", "Europe"],
+};
 ---
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-
-<!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+{LANGS.map((code) => <link rel="alternate" hreflang={code === "zh" ? "zh-CN" : code} href={new URL(pagePath(code, page), Astro.site)} />)}
+<link rel="alternate" hreflang="x-default" href={new URL(pagePath("en", page), Astro.site)} />
 
-<!-- Primary Meta Tags -->
 <title>{title}</title>
-<meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="robots" content="index,follow,max-image-preview:large" />
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:site_name" content="HPF.kz" />
+<meta property="og:locale" content={lang === "zh" ? "zh_CN" : lang === "ru" ? "ru_RU" : "en_US"} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(image, Astro.site)} />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />

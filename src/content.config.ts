@@ -1,4 +1,4 @@
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
@@ -34,4 +34,27 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { blog, news };
+const facts = defineCollection({
+  loader: file("./src/content/facts.yaml"),
+  schema: z.object({
+    kind: z.enum(["text", "contact", "legal", "governance", "number", "facility", "route", "location"]),
+    value: z.string(),
+    unit: z.string().optional(),
+    labels: z.object({
+      zh: z.string(),
+      en: z.string(),
+      ru: z.string(),
+    }),
+    localizedValues: z.object({
+      zh: z.string(),
+      en: z.string(),
+      ru: z.string(),
+    }).optional(),
+    source: z.string(),
+    asOf: z.string().optional(),
+    url: z.string().url().optional(),
+    verified: z.boolean(),
+  }),
+});
+
+export const collections = { blog, news, facts };

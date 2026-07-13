@@ -1,0 +1,22 @@
+---
+import HomePage from "../../components/HomePage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import type { Lang } from "../../site-v2";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "zh" } }, { params: { lang: "ru" } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const meta = {
+  zh: {
+    title: "HPF.kz｜中哈欧跨境物流：TIR 运输 · 清关合规 · 阿拉木图仓储分拨",
+    description: "HPF.kz 扎根哈萨克斯坦，提供中国—哈萨克斯坦—欧洲 TIR 跨境运输、发运前清关合规预审、阿拉木图仓储分拨与哈萨克斯坦本地交付。",
+  },
+  ru: {
+    title: "HPF.kz | TIR, таможня, склад в Алматы и доставка по Казахстану",
+    description: "HPF.kz организует перевозки Китай–Казахстан–Европа, подготовку таможенного оформления, распределение в Алматы и местную доставку.",
+  },
+}[lang];
+---
+<SiteLayout title={meta.title} description={meta.description} lang={lang} active="home"><HomePage lang={lang} /></SiteLayout>

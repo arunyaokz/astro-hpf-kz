@@ -1,11 +1,7 @@
 ---
-import SitePage from "../components/SitePage.astro";
+import ContactPage from "../components/ContactPage.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { SITE_PAGES } from "../site-content";
-
-const page = SITE_PAGES.contact.zh;
+import { CONTACT_COPY } from "../site-v2";
+const page = CONTACT_COPY.en;
 ---
-
-<SiteLayout title={page.metaTitle} description={page.metaDescription} active="contact">
-  <SitePage pageKey="contact" />
-</SiteLayout>
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="contact"><ContactPage lang="en" /></SiteLayout>

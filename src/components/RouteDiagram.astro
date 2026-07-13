@@ -1,93 +1,90 @@
 ---
-import type { SiteLang } from "../site-content";
+import type { Lang } from "../site-v2";
 
-interface Props {
-  lang: SiteLang;
-  direction: string;
-}
-
+interface Props { lang: Lang; direction: string; }
 const { lang, direction } = Astro.props;
-const labels: Record<SiteLang, Array<{ place: string; role: string }>> = {
-  zh: [
-    { place: "欧洲交付", role: "收货预约 / POD" },
-    { place: "巴库", role: "里海西岸衔接" },
-    { place: "库雷克", role: "跨里海节点" },
-    { place: "阿拉木图", role: "仓配枢纽" },
-    { place: "哈萨克斯坦入境", role: "口岸 / 清关" },
-    { place: "中国集货", role: "工厂 / 集货" },
-  ],
+const labels: Record<Lang, Array<{ place: string; role: string }>> = {
   en: [
-    { place: "Europe delivery", role: "Appointment / POD" },
-    { place: "Baku", role: "West Caspian transfer" },
-    { place: "Kuryk", role: "Caspian node" },
-    { place: "Almaty", role: "Fulfilment hub" },
-    { place: "Kazakhstan entry", role: "Border / customs" },
-    { place: "China origin", role: "Factory / consolidation" },
+    { place: "Europe", role: "Consignee / POD" },
+    { place: "South Caucasus", role: "Western handover" },
+    { place: "Caspian corridor", role: "Sea transfer" },
+    { place: "Almaty", role: "Operating hub" },
+    { place: "Kazakhstan border", role: "Entry / customs" },
+    { place: "China", role: "Factory / consolidation" },
+  ],
+  zh: [
+    { place: "欧洲", role: "收货预约 / POD" },
+    { place: "外高加索", role: "西岸交接" },
+    { place: "跨里海走廊", role: "海运换装" },
+    { place: "阿拉木图", role: "运营枢纽" },
+    { place: "哈萨克斯坦口岸", role: "入境 / 清关" },
+    { place: "中国", role: "工厂 / 集货" },
   ],
   ru: [
-    { place: "Доставка в Европе", role: "Приёмка / POD" },
-    { place: "Баку", role: "Западный берег Каспия" },
-    { place: "Курык", role: "Каспийский узел" },
-    { place: "Алматы", role: "Складской узел" },
-    { place: "Въезд в Казахстан", role: "Граница / таможня" },
-    { place: "Отправление из Китая", role: "Завод / консолидация" },
+    { place: "Европа", role: "Приёмка / POD" },
+    { place: "Южный Кавказ", role: "Передача на западе" },
+    { place: "Каспийский коридор", role: "Морская перегрузка" },
+    { place: "Алматы", role: "Операционный узел" },
+    { place: "Граница Казахстана", role: "Въезд / таможня" },
+    { place: "Китай", role: "Завод / консолидация" },
   ],
 };
-const points = [90, 295, 500, 705, 910, 1115];
+const points = [80, 284, 492, 705, 918, 1120];
 ---
 
 <figure class="route-diagram">
-  <div class="route-direction">
-    <span aria-hidden="true">←</span>
-    <span>{direction}</span>
-  </div>
-  <svg viewBox="0 0 1200 310" role="img" aria-label={direction}>
+  <div class="route-direction"><span aria-hidden="true">←</span><span>{direction}</span></div>
+  <svg viewBox="0 0 1200 330" role="img" aria-label={direction}>
     <defs>
       <marker id={`route-arrow-${lang}`} markerWidth="10" markerHeight="10" refX="4" refY="3" orient="auto" markerUnits="strokeWidth">
         <path d="M0,0 L0,6 L6,3 z" />
       </marker>
+      <pattern id={`grid-${lang}`} width="80" height="54" patternUnits="userSpaceOnUse"><path d="M80 0H0V54" /></pattern>
     </defs>
-    <path class="route-track" d="M1115 155 C1020 155 1000 118 910 134 C820 151 795 189 705 169 C625 151 584 118 500 139 C415 161 380 191 295 170 C216 151 176 137 90 155" marker-end={`url(#route-arrow-${lang})`} />
-    <path class="caspian" d="M430 82 C475 55 520 61 553 93 C570 111 568 157 540 183 C505 216 455 212 426 177 C404 151 399 101 430 82Z" />
-    {labels[lang].map((item, index) => (
-      <g class:list={["route-node", { "route-node--hub": index === 3 }]}>
-        <circle cx={points[index]} cy={index % 2 === 0 ? 155 : 170} r={index === 3 ? 9 : 7} />
-        <line x1={points[index]} y1={index % 2 === 0 ? 155 : 170} x2={points[index]} y2={index % 2 === 0 ? 104 : 224} />
-        <text class="route-place" x={points[index]} y={index % 2 === 0 ? 83 : 253} text-anchor="middle">{item.place}</text>
-        <text class="route-role" x={points[index]} y={index % 2 === 0 ? 101 : 272} text-anchor="middle">{item.role}</text>
-      </g>
-    ))}
+    <rect class="map-grid" width="1200" height="330" fill={`url(#grid-${lang})`} />
+    <path class="land" d="M22 78C119 33 210 41 305 76s190 24 276-10c102-40 183-28 278 13 82 35 169 18 319-12v192c-113 21-214 10-306-18-97-29-184-37-282 5-91 39-194 38-291 3-92-33-184-42-277-12z" />
+    <path class="route-track" d="M1120 167C1031 167 1006 131 918 146c-87 15-126 56-213 35-84-20-126-56-213-32-88 25-119 52-208 34-75-15-126-26-204-11" marker-end={`url(#route-arrow-${lang})`} />
+    <path class="sea-track" d="M492 149C412 171 373 188 284 183" />
+    {labels[lang].map((item, index) => {
+      const y = index % 2 === 0 ? 167 : 183;
+      const top = index % 2 === 0;
+      return (
+        <g class:list={["route-node", { hub: index === 3 }]}>
+          <circle cx={points[index]} cy={y} r={index === 3 ? 10 : 7} />
+          <line x1={points[index]} y1={y} x2={points[index]} y2={top ? 108 : 236} />
+          <text class="place" x={points[index]} y={top ? 82 : 265} text-anchor="middle">{item.place}</text>
+          <text class="role" x={points[index]} y={top ? 101 : 284} text-anchor="middle">{item.role}</text>
+        </g>
+      );
+    })}
   </svg>
   <ol class="route-mobile">
-    {labels[lang].map((item) => (
-      <li>
-        <strong>{item.place}</strong>
-        <span>{item.role}</span>
-      </li>
+    {[...labels[lang]].reverse().map((item, index) => (
+      <li><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{item.place}</strong><p>{item.role}</p></div></li>
     ))}
   </ol>
 </figure>
 
 <style>
-  .route-diagram { margin: 0; padding: var(--space-lg); border: var(--rule-hair) solid var(--color-rule); background: var(--color-paper); }
-  .route-direction { display: flex; align-items: center; gap: var(--space-sm); color: var(--color-muted); font-size: var(--text-sm); }
-  .route-direction > span:first-child { color: var(--color-accent); font-size: var(--text-lg); }
-  svg { width: 100%; margin-block-start: var(--space-sm); overflow: visible; }
-  .route-track { fill: none; stroke: var(--color-ink); stroke-width: 2.5; }
-  marker path { fill: var(--color-accent); }
-  .caspian { fill: var(--color-paper-2); stroke: var(--color-rule); stroke-width: 1; }
-  .route-node circle { fill: var(--color-paper); stroke: var(--color-ink); stroke-width: 2; }
-  .route-node--hub circle { fill: var(--color-accent); stroke: var(--color-accent); }
-  .route-node line { stroke: var(--color-rule-2); stroke-width: 1; }
-  .route-place { fill: var(--color-ink); font-family: var(--font-body); font-size: 15px; font-weight: 600; }
-  .route-role { fill: var(--color-muted); font-family: var(--font-body); font-size: 11px; }
+  .route-diagram { min-width: 0; padding: var(--space-2); border: 1px solid var(--line-inv); border-radius: var(--radius-surface); background: var(--navy-950); }
+  .route-direction { display: flex; align-items: center; gap: 0.75rem; color: var(--mut-inv); font-family: var(--font-num); font-size: 0.75rem; }
+  .route-direction span:first-child { color: var(--cobalt-300); font-size: 1.25rem; }
+  svg { width: 100%; margin-block-start: 0.5rem; overflow: visible; }
+  .map-grid { opacity: .08; }
+  .map-grid + path, pattern path { fill: none; stroke: #fff; stroke-width: 1; }
+  .land { fill: rgba(255,255,255,.025); stroke: var(--line-inv); stroke-width: 1; }
+  .route-track, .sea-track { fill: none; stroke: var(--cobalt-300); stroke-width: 3; }
+  .route-track { stroke-dasharray: 16 8; animation: route-flow 5s linear infinite; }
+  .sea-track { stroke-dasharray: 4 8; }
+  marker path { fill: var(--cobalt-300); }
+  .route-node circle { fill: var(--navy-950); stroke: #fff; stroke-width: 2; }
+  .route-node.hub circle { fill: var(--cobalt-300); stroke: var(--cobalt-300); }
+  .route-node line { stroke: var(--line-inv); }
+  .place, .role { font-family: var(--font-sans); }
+  .place { fill: var(--tx-inv); font-size: 14px; font-weight: 600; }
+  .role { fill: var(--mut-inv); font-size: 10px; }
   .route-mobile { display: none; }
-  @media (max-width: 47.99rem) {
-    .route-diagram { padding: var(--space-md); }
-    svg { display: none; }
-    .route-mobile { display: grid; margin: var(--space-lg) 0 0; padding: 0; border-top: var(--rule-hair) solid var(--color-rule); list-style: none; }
-    .route-mobile li { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); padding-block: var(--space-sm); border-bottom: var(--rule-hair) solid var(--color-rule); }
-    .route-mobile li::before { content: "←"; color: var(--color-accent); }
-    .route-mobile span { color: var(--color-muted); font-size: var(--text-sm); }
-  }
+  @keyframes route-flow { to { stroke-dashoffset: 48; } }
+  @media (prefers-reduced-motion: reduce) { .route-track { animation: none; } }
+  @media (max-width: 48rem) { svg { display: none; } .route-mobile { display: grid; margin: var(--space-2) 0 0; padding: 0; border-top: 1px solid var(--line-inv); list-style: none; } .route-mobile li { display: grid; grid-template-columns: 2rem 1fr; gap: var(--space-2); padding-block: 0.75rem; border-bottom: 1px solid var(--line-inv); } .route-mobile span { color: var(--cobalt-300); font-family: var(--font-num); font-size: 0.6875rem; } .route-mobile strong { color: var(--tx-inv); } .route-mobile p { color: var(--mut-inv); font-size: 0.8125rem; } }
 </style>

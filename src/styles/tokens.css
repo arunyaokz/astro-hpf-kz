@@ -1,0 +1,61 @@
+:root {
+  --ink: #0b071f;
+  --ink-2: #15102f;
+  --ink-3: #24204a;
+  --violet: #5b3ee4;
+  --violet-bright: #7658ff;
+  --electric: #9c8cff;
+  --mist: #f1f0f8;
+  --paper: #f8f7ff;
+  --card: #ffffff;
+  --text: #18122f;
+  --muted: #655f79;
+  --text-on-dark: rgba(248,247,255,.96);
+  --muted-on-dark: rgba(224,220,244,.66);
+  --line: rgba(24,18,47,.12);
+  --line-on-dark: rgba(255,255,255,.1);
+
+  /* Compatibility aliases used by the remaining content components. */
+  --navy-950: var(--ink);
+  --navy-900: var(--ink-2);
+  --navy-800: var(--text);
+  --navy-700: var(--ink-3);
+  --cobalt-700: #4d32d1;
+  --cobalt-600: var(--violet);
+  --cobalt-400: var(--violet-bright);
+  --cobalt-300: var(--electric);
+  --tx: var(--text);
+  --mut: var(--muted);
+  --tx-inv: var(--text-on-dark);
+  --mut-inv: var(--muted-on-dark);
+  --line-inv: var(--line-on-dark);
+
+  --green: #24a36a;
+  --green-bg: #e5f7ee;
+  --amber: #ba7219;
+  --amber-bg: #fff1dc;
+  --red: #c43f4f;
+  --red-bg: #fce9ec;
+  --shadow: 0 24px 70px rgba(37,23,91,.12);
+
+  --font-sans: "Manrope Variable", "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --font-num: "IBM Plex Mono", "Manrope Variable", monospace;
+
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+  --page-max: 88rem;
+  --page-gutter: clamp(1rem,4vw,3.5rem);
+  --header-height: 4.75rem;
+  --radius-button: 999px;
+  --radius-surface: 1.5rem;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --duration: 240ms;
+  --z-header: 40;
+  --z-dialog: 80;
+}
