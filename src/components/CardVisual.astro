@@ -1,0 +1,237 @@
+---
+interface Props {
+  kind: string;
+}
+
+const { kind } = Astro.props;
+const uid = `card-visual-${kind}`;
+---
+
+<svg class="card-visual" viewBox="0 0 320 180" role="presentation" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id={`${uid}-grid`} width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M12 0H0V12" class="grid-line"></path>
+    </pattern>
+    <linearGradient id={`${uid}-wash`} x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--visual-accent, #7a68ff)" stop-opacity=".34"></stop>
+      <stop offset="1" stop-color="var(--visual-accent, #7a68ff)" stop-opacity="0"></stop>
+    </linearGradient>
+    <linearGradient id={`${uid}-beam`} x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--visual-accent, #7a68ff)" stop-opacity="0"></stop>
+      <stop offset=".5" stop-color="var(--visual-accent, #7a68ff)" stop-opacity=".8"></stop>
+      <stop offset="1" stop-color="var(--visual-accent, #7a68ff)" stop-opacity="0"></stop>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="320" height="180" rx="22" class="visual-field"></rect>
+  <rect x="18" y="10" width="284" height="160" rx="18" fill={`url(#${uid}-grid)`} class="visual-grid"></rect>
+  <ellipse cx="216" cy="76" rx="105" ry="72" fill={`url(#${uid}-wash)`} class="visual-halo"></ellipse>
+
+  {kind === "documents" && (
+    <g>
+      <path d="M75 43h63l20 20v75H75z" class="plane"></path>
+      <path d="M138 43v22h20M92 82h47M92 96h38M92 110h43" class="line"></path>
+      <path d="M170 35h55l18 18v73h-55" class="plane muted"></path>
+      <path d="M225 35v20h18M191 74h34M191 88h28" class="line muted"></path>
+      <circle cx="211" cy="119" r="17" class="badge"></circle>
+      <path d="m202 119 6 6 12-14" class="line strong"></path>
+      <path d="M48 67v62M263 52v77" class="rail"></path>
+      <circle cx="48" cy="87" r="4" class="dot"></circle><circle cx="263" cy="109" r="4" class="dot"></circle>
+    </g>
+  )}
+
+  {kind === "verification" && (
+    <g>
+      <rect x="78" y="35" width="130" height="104" rx="12" class="plane"></rect>
+      <circle cx="101" cy="63" r="7" class="badge"></circle><path d="m97 63 3 3 6-7" class="line strong"></path><path d="M119 63h59" class="line"></path>
+      <circle cx="101" cy="87" r="7" class="badge"></circle><path d="m97 87 3 3 6-7" class="line strong"></path><path d="M119 87h46" class="line"></path>
+      <circle cx="101" cy="111" r="7" class="badge"></circle><path d="M119 111h67" class="line"></path>
+      <circle cx="213" cy="105" r="27" class="orbit"></circle><path d="m233 125 22 20" class="line strong"></path>
+      <path d="M46 54h18M46 71h11M246 48h28M255 65h19" class="rail"></path>
+      <path d="M65 28v124" class="scan"></path>
+    </g>
+  )}
+
+  {kind === "classification" && (
+    <g>
+      <path d="m66 73 34-19 34 19-34 20zM66 73v39l34 20 34-20V73M100 93v39" class="plane"></path>
+      <rect x="159" y="44" width="100" height="88" rx="13" class="plane muted"></rect>
+      <path d="M159 73h100M159 102h100M192 44v88M225 44v88" class="rail"></path>
+      <rect x="194" y="75" width="29" height="25" rx="5" class="badge"></rect>
+      <text x="208.5" y="91" text-anchor="middle" class="micro-text">HS</text>
+      <path d="M134 88h25m-8-8 8 8-8 8" class="line strong"></path>
+      <circle cx="276" cy="49" r="4" class="dot"></circle><circle cx="276" cy="127" r="4" class="dot"></circle>
+    </g>
+  )}
+
+  {kind === "declaration" && (
+    <g>
+      <rect x="49" y="48" width="75" height="88" rx="11" class="plane"></rect>
+      <path d="M68 70h37M68 84h29M68 98h34M68 114h20" class="line"></path>
+      <rect x="197" y="39" width="75" height="88" rx="11" class="plane muted"></rect>
+      <path d="M216 61h37M216 75h29M216 89h34M216 105h20" class="line muted"></path>
+      <path d="M125 70c28-27 45-27 70 0M195 105c-28 27-45 27-70 0" class="route"></path>
+      <path d="m186 61 9 9-13 3M134 114l-9-9 13-3" class="line strong"></path>
+      <rect x="143" y="76" width="35" height="26" rx="7" class="badge"></rect>
+      <text x="160.5" y="93" text-anchor="middle" class="micro-text">KZ</text>
+    </g>
+  )}
+
+  {kind === "inspection" && (
+    <g>
+      <path d="M62 58V39h24M234 39h24v19M62 121v19h24M234 140h24v-19" class="line strong"></path>
+      <path d="m111 76 49-28 49 28-49 29zM111 76v53l49 28 49-28V76M160 105v52" class="plane"></path>
+      <path d="M93 96h134" class="scan"></path>
+      <rect x="98" y="89" width="124" height="14" rx="7" fill={`url(#${uid}-beam)`} class="beam"></rect>
+      <circle cx="240" cy="106" r="18" class="badge"></circle><path d="m231 106 6 6 12-14" class="line strong"></path>
+    </g>
+  )}
+
+  {kind === "release" && (
+    <g>
+      <path d="M63 78h72l13 14h87v49H63z" class="plane"></path>
+      <path d="M78 58h69l12 13h77v20M91 41h59l11 11h60v18" class="line muted"></path>
+      <rect x="94" y="99" width="52" height="28" rx="6" class="badge"></rect><path d="M105 109h30M105 117h22" class="line"></path>
+      <path d="M170 108h58m-14-14 14 14-14 14" class="route"></path>
+      <circle cx="257" cy="108" r="19" class="orbit"></circle><path d="m248 108 6 6 12-14" class="line strong"></path>
+    </g>
+  )}
+
+  {kind === "cargo-route" && (
+    <g>
+      <path d="m66 79 43-24 43 24-43 25zM66 79v48l43 24 43-24V79M109 104v47" class="plane"></path>
+      <path d="M179 126c7-54 38-77 87-76" class="route"></path>
+      <circle cx="178" cy="127" r="7" class="badge"></circle><circle cx="222" cy="67" r="7" class="badge"></circle><circle cx="266" cy="50" r="7" class="badge"></circle>
+      <path d="M60 48h98M60 43v10M158 43v10M44 64v74M39 64h10M39 138h10" class="rail"></path>
+      <text x="183" y="148" class="micro-text">CARGO / ROUTE</text>
+    </g>
+  )}
+
+  {kind === "docs-first" && (
+    <g>
+      <path d="M43 121h235" class="rail"></path>
+      <circle cx="66" cy="121" r="7" class="badge"></circle><circle cx="160" cy="121" r="7" class="badge"></circle><circle cx="254" cy="121" r="7" class="badge"></circle>
+      <path d="M67 95V52h55l15 15v40H67M122 52v17h15" class="plane"></path>
+      <path d="M142 86V43h55l15 15v49h-75M197 43v17h15" class="plane muted"></path>
+      <path d="M216 93V59h43l13 13v35h-60M259 59v15h13" class="plane"></path>
+      <path d="m151 75 7 7 14-16M225 85l6 6 12-14" class="line strong"></path>
+    </g>
+  )}
+
+  {kind === "responsibility" && (
+    <g>
+      <path d="M48 112C84 59 115 136 151 84s71 27 120-31" class="route"></path>
+      <circle cx="48" cy="112" r="16" class="plane"></circle><circle cx="104" cy="93" r="16" class="plane"></circle><circle cx="151" cy="84" r="18" class="badge"></circle><circle cx="215" cy="88" r="16" class="plane"></circle><circle cx="271" cy="53" r="16" class="plane"></circle>
+      <text x="48" y="116" text-anchor="middle" class="micro-text">01</text><text x="104" y="97" text-anchor="middle" class="micro-text">02</text><text x="151" y="88" text-anchor="middle" class="micro-text">03</text><text x="215" y="92" text-anchor="middle" class="micro-text">04</text><text x="271" y="57" text-anchor="middle" class="micro-text">05</text>
+      <path d="M46 143h225" class="rail"></path><path d="M46 149h157" class="rail muted"></path>
+    </g>
+  )}
+
+  {kind === "memory" && (
+    <g>
+      <ellipse cx="132" cy="57" rx="54" ry="20" class="plane"></ellipse><path d="M78 57v59c0 11 24 20 54 20s54-9 54-20V57M78 87c0 11 24 20 54 20s54-9 54-20" class="line"></path>
+      <path d="M197 58h58v72h-58z" class="plane muted"></path><path d="M209 76h34M209 90h26M209 104h30" class="line muted"></path>
+      <path d="M225 47c30 3 47 19 47 42 0 11-5 21-14 29M264 119l-7 1-1-8" class="route"></path>
+      <circle cx="132" cy="57" r="6" class="dot"></circle>
+    </g>
+  )}
+
+  {kind === "customs" && (
+    <g>
+      <path d="M50 139V54h45v85M225 139V54h45v85M95 69h130M95 88h130" class="plane"></path>
+      <path d="M119 139V83M201 139V83" class="line"></path>
+      <rect x="133" y="42" width="54" height="35" rx="8" class="badge"></rect><text x="160" y="64" text-anchor="middle" class="micro-text">KZ</text>
+      <path d="M108 116h104m-16-14 16 14-16 14" class="route"></path>
+      <path d="M70 43V27M250 43V27M42 139h236" class="rail"></path>
+    </g>
+  )}
+
+  {kind === "transport" && (
+    <g>
+      <path d="M48 142 126 51h70l76 91M95 142l53-91M225 142l-52-91" class="rail"></path>
+      <path d="M155 59v19M147 94v17M138 128v14" class="line muted"></path>
+      <rect x="112" y="82" width="78" height="39" rx="7" class="plane"></rect><path d="M190 94h24l16 17v10h-40z" class="plane"></path>
+      <circle cx="135" cy="125" r="10" class="badge"></circle><circle cx="207" cy="125" r="10" class="badge"></circle>
+      <path d="M51 59c52-39 144-45 219 1" class="route"></path><circle cx="52" cy="59" r="5" class="dot"></circle><circle cx="270" cy="60" r="5" class="dot"></circle>
+    </g>
+  )}
+
+  {kind === "warehouse" && (
+    <g>
+      <path d="M47 76 160 31l113 45v73H47z" class="plane"></path>
+      <path d="M64 83h192M79 83v66M124 83v66M169 83v66M214 83v66" class="rail"></path>
+      <rect x="88" y="96" width="27" height="18" rx="3" class="badge"></rect><rect x="133" y="119" width="27" height="18" rx="3" class="badge"></rect><rect x="178" y="95" width="27" height="18" rx="3" class="badge"></rect><rect x="223" y="119" width="27" height="18" rx="3" class="badge"></rect>
+      <path d="M47 149h226M160 31v-12" class="line strong"></path>
+    </g>
+  )}
+
+  {kind === "delivery" && (
+    <g>
+      <path d="M52 126c29-48 73 17 109-37s69 12 108-40" class="route"></path>
+      <circle cx="52" cy="126" r="7" class="badge"></circle><circle cx="161" cy="89" r="7" class="badge"></circle>
+      <path d="M259 28c-18 0-32 14-32 32 0 24 32 52 32 52s32-28 32-52c0-18-14-32-32-32z" class="plane"></path><circle cx="259" cy="60" r="10" class="badge"></circle>
+      <path d="m89 86 31-18 31 18-31 18zM89 86v34l31 18 31-18V86M120 104v34" class="plane muted"></path>
+      <path d="M47 145h131" class="rail"></path>
+    </g>
+  )}
+
+  {kind === "company" && (
+    <g>
+      <path d="M61 145h198M82 137V71l78-34 78 34v66M71 71h178" class="plane"></path>
+      <path d="M101 82v43M130 82v43M160 82v43M190 82v43M219 82v43M73 125h174" class="rail"></path>
+      <circle cx="160" cy="36" r="14" class="badge"></circle><path d="M160 28v16M152 36h16" class="line strong"></path>
+      <text x="160" y="162" text-anchor="middle" class="micro-text">TOO / REGISTRY</text>
+    </g>
+  )}
+
+  {kind === "bin" && (
+    <g>
+      <rect x="52" y="43" width="216" height="94" rx="16" class="plane"></rect>
+      <path d="M74 61v43M83 61v43M98 61v43M104 61v43M121 61v43M131 61v43M146 61v43M153 61v43M171 61v43M180 61v43M194 61v43M211 61v43M219 61v43M239 61v43" class="line strong"></path>
+      <text x="74" y="124" class="micro-text">BIN 241040015643</text>
+      <path d="M42 53V35h18M260 35h18v18M42 127v18h18M260 145h18v-18" class="rail"></path>
+    </g>
+  )}
+
+  {kind === "calendar" && (
+    <g>
+      <rect x="72" y="45" width="176" height="105" rx="16" class="plane"></rect>
+      <path d="M72 78h176M108 37v18M212 37v18M101 98h20M149 98h20M197 98h20M101 122h20M149 122h20M197 122h20" class="rail"></path>
+      <rect x="190" y="111" width="34" height="25" rx="7" class="badge"></rect><text x="207" y="127" text-anchor="middle" class="micro-text">11</text>
+      <circle cx="248" cy="46" r="23" class="orbit"></circle><path d="m239 46 6 6 12-14" class="line strong"></path>
+    </g>
+  )}
+
+  {kind === "founder" && (
+    <g>
+      <rect x="49" y="67" width="92" height="63" rx="14" class="plane"></rect><rect x="179" y="50" width="92" height="80" rx="14" class="plane muted"></rect>
+      <circle cx="95" cy="88" r="13" class="badge"></circle><path d="M72 117c6-15 17-22 23-22s17 7 23 22" class="line"></path>
+      <path d="M203 72h44M203 87h35M203 102h40" class="line muted"></path>
+      <path d="M142 98h37m-11-11 11 11-11 11" class="route"></path>
+      <text x="160" y="151" text-anchor="middle" class="micro-text">HPF KZ / HPF CO., LIMITED</text>
+    </g>
+  )}
+</svg>
+
+<style>
+  .card-visual { display: block; color: var(--visual-ink, currentColor); pointer-events: none; transform: translateZ(0); transition: transform 420ms var(--ease-out), opacity 240ms ease; }
+  .visual-field { fill: currentColor; fill-opacity: .025; }
+  .visual-grid { color: var(--visual-accent, #7a68ff); opacity: .16; }
+  .grid-line { fill: none; stroke: currentColor; stroke-width: .7; stroke-opacity: .18; }
+  .visual-halo { opacity: .42; }
+  .line, .rail, .route, .scan, .orbit { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .line { stroke-opacity: .48; }
+  .line.strong { stroke: var(--visual-accent, #7a68ff); stroke-opacity: .72; stroke-width: 2.4; }
+  .rail { stroke-opacity: .16; stroke-dasharray: 4 6; }
+  .rail.muted, .line.muted { stroke-opacity: .3; }
+  .route { stroke: var(--visual-accent, #7a68ff); stroke-opacity: .64; stroke-width: 2.6; }
+  .scan { stroke: var(--visual-accent, #7a68ff); stroke-opacity: .48; stroke-dasharray: 3 5; }
+  .orbit { stroke: var(--visual-accent, #7a68ff); stroke-opacity: .34; }
+  .plane { fill: currentColor; fill-opacity: .055; stroke: currentColor; stroke-width: 2; stroke-opacity: .36; stroke-linecap: round; stroke-linejoin: round; }
+  .plane.muted { fill-opacity: .045; stroke-opacity: .28; }
+  .badge { fill: var(--visual-accent, #7a68ff); fill-opacity: .12; stroke: var(--visual-accent, #7a68ff); stroke-width: 2; stroke-opacity: .62; }
+  .dot { fill: var(--visual-accent, #7a68ff); }
+  .beam { opacity: .56; }
+  .micro-text { fill: currentColor; fill-opacity: .54; font-family: var(--font-num); font-size: 10px; font-weight: 700; letter-spacing: .08em; }
+  @media (prefers-reduced-motion: reduce) { .card-visual { transition: none; } }
+</style>

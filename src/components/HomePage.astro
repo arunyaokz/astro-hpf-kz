@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { HOME_V2 } from "../corporate-content";
 import { UI, pagePath, type Lang } from "../site-v2";
+import CardVisual from "./CardVisual.astro";
 import RouteDiagram from "./RouteDiagram.astro";
 
 interface Props { lang: Lang; }
@@ -11,6 +12,10 @@ const ui = UI[lang];
 const facts = await getCollection("facts");
 const byId = new Map(facts.map((fact) => [fact.id, fact.data]));
 const evidenceIds = ["legal_name", "bin", "registration_year", "founder"];
+const customsVisuals = ["documents", "verification", "classification", "declaration", "inspection", "release"];
+const methodVisuals = ["cargo-route", "docs-first", "responsibility", "memory"];
+const serviceVisuals = ["customs", "transport", "warehouse", "delivery"];
+const factVisuals = ["company", "bin", "calendar", "founder"];
 const showFact = (id: string) => {
   const fact = byId.get(id);
   return fact?.verified ? fact.localizedValues?.[lang] ?? fact.value : `[${ui.pending}]`;
@@ -70,6 +75,7 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
         {page.customs.stages.map((stage, index) => (
           <li>
             <span>{String(index + 1).padStart(2, "0")}</span>
+            <CardVisual kind={customsVisuals[index]} />
             <div><small>{stage.phase}</small><h3>{stage.title}</h3><p>{stage.text}</p></div>
           </li>
         ))}
@@ -89,6 +95,7 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
         {page.method.items.map((item, index) => (
           <article class:list={[`method-card method-card--${index + 1}`]}>
             <span>{String(index + 1).padStart(2, "0")}</span>
+            <CardVisual kind={methodVisuals[index]} />
             <h3>{item.title}</h3>
             <p>{item.text}</p>
           </article>
@@ -104,6 +111,7 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
         {page.services.items.map((item, index) => (
           <a class:list={[`service-tile service-tile--${index + 1}`]} href={pagePath(lang, "services")}>
             <span>{String(index + 1).padStart(2, "0")}</span>
+            <CardVisual kind={serviceVisuals[index]} />
             <div><h3>{item.title}</h3><p>{item.text}</p></div>
             <b aria-hidden="true">↗</b>
           </a>
@@ -140,8 +148,8 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
           return (
             <article>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <small>{fact?.labels[lang]}</small>
-              <strong>{showFact(id)}</strong>
+              <CardVisual kind={factVisuals[index]} />
+              <div><small>{fact?.labels[lang]}</small><strong>{showFact(id)}</strong></div>
             </article>
           );
         })}
@@ -197,10 +205,11 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
   .focus-heading h2 { max-width: 13ch; margin-block-start: 1rem; color: var(--ink); font-size: clamp(2.7rem, 6.2vw, 5.8rem); letter-spacing: -.055em; line-height: .94; }
   .focus-heading > p:last-child { max-width: 48rem; margin-block-start: 1.5rem; color: var(--muted); font-size: 1.05rem; }
   .customs-flow { display: grid; grid-template-columns: repeat(6,minmax(12rem,1fr)); gap: .75rem; margin: 4rem 0 0; padding: 0 0 1rem; overflow-x: auto; list-style: none; scroll-snap-type: x mandatory; scrollbar-width: thin; }
-  .customs-flow li { position: relative; min-height: 17rem; padding: 1.35rem; overflow: hidden; border: 1px solid rgba(24,16,57,.09); border-radius: 1.5rem; background: rgba(255,255,255,.72); scroll-snap-align: start; }
+  .customs-flow li { position: relative; min-height: 20rem; padding: 1.35rem; overflow: hidden; isolation: isolate; border: 1px solid rgba(24,16,57,.09); border-radius: 1.5rem; background: rgba(255,255,255,.72); scroll-snap-align: start; }
   .customs-flow li::after { position: absolute; width: 10rem; height: 10rem; inset: auto -4rem -5rem auto; border-radius: 50%; background: radial-gradient(circle, rgba(101,72,255,.14), transparent 68%); content: ""; }
-  .customs-flow li > span { color: var(--violet); font-family: var(--font-num); font-size: .72rem; }
-  .customs-flow div { display: grid; align-content: end; min-height: 13rem; }
+  .customs-flow li > span { position: relative; z-index: 2; color: var(--violet); font-family: var(--font-num); font-size: .72rem; }
+  .customs-flow li :global(.card-visual) { position: absolute; z-index: 0; width: 76%; height: 7.2rem; inset: 2.55rem .45rem auto auto; color: #2d2850; opacity: .6; --visual-accent: #7057ff; --visual-ink: #2d2850; }
+  .customs-flow div { position: relative; z-index: 1; margin-block-start: 9.4rem; }
   .customs-flow small { color: var(--violet); font-size: .72rem; }
   .customs-flow h3 { margin-block-start: .55rem; color: var(--ink); font-size: 1.15rem; }
   .customs-flow p { margin-block-start: .75rem; color: var(--muted); font-size: .85rem; line-height: 1.55; }
@@ -214,10 +223,12 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
   .method-layout h2 { max-width: 11ch; margin-block-start: 1.25rem; color: #fff; font-size: clamp(2.8rem,5vw,5rem); letter-spacing: -.055em; line-height: .96; }
   .method-layout header strong { display: block; max-width: 38rem; margin-block-start: 1.5rem; color: rgba(238,236,255,.62); font-weight: 500; }
   .method-orbit { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .85rem; transform: rotate(2deg); }
-  .method-card { min-height: 15rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,.1); border-radius: 1.5rem; background: linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,.025)); backdrop-filter: blur(14px); transform: rotate(-2deg); }
+  .method-card { position: relative; min-height: 20rem; padding: 1.5rem; overflow: hidden; isolation: isolate; border: 1px solid rgba(255,255,255,.1); border-radius: 1.5rem; background: linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,.025)); backdrop-filter: blur(14px); transform: rotate(-2deg); }
   .method-card--2, .method-card--4 { transform: translateY(2rem) rotate(-2deg); }
+  .method-card > span, .method-card h3, .method-card p { position: relative; z-index: 1; }
   .method-card span { color: var(--electric); font-family: var(--font-num); font-size: .72rem; }
-  .method-card h3 { margin-block-start: 3rem; color: #fff; font-size: 1.2rem; }
+  .method-card :global(.card-visual) { position: absolute; width: 74%; height: 7.8rem; inset: 2.5rem .45rem auto auto; color: #dcd7ff; opacity: .5; --visual-accent: #8d7bff; --visual-ink: #dcd7ff; }
+  .method-card h3 { margin-block-start: 9.4rem; color: #fff; font-size: 1.2rem; }
   .method-card p { margin-block-start: .8rem; color: var(--muted-on-dark); font-size: .88rem; }
   .services-stage { background: #f8f7ff; color: var(--ink); }
   .services-stage > div { padding-block: clamp(6rem,11vw,10rem); }
@@ -226,11 +237,15 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
   .service-heading p { max-width: 42rem; color: var(--muted); font-size: 1.05rem; }
   .service-mosaic { display: grid; grid-template-columns: 1.1fr .9fr .9fr; grid-template-rows: repeat(2,minmax(16rem,auto)); gap: .85rem; margin-block-start: 3.5rem; }
   .service-tile, .service-image { position: relative; min-width: 0; overflow: hidden; border-radius: 1.6rem; }
-  .service-tile { display: grid; align-content: space-between; padding: 1.6rem; border: 1px solid rgba(24,16,57,.08); background: #fff; }
+  .service-tile { display: grid; align-content: space-between; isolation: isolate; padding: 1.6rem; border: 1px solid rgba(24,16,57,.08); background: #fff; }
   .service-tile--1 { grid-row: 1 / 3; background: linear-gradient(150deg,#31207e,#15102f 72%); color: #fff; }
   .service-tile--3 { background: #dfdcff; }
+  .service-tile > span, .service-tile > div, .service-tile b { position: relative; z-index: 2; }
   .service-tile span { color: var(--violet); font-family: var(--font-num); font-size: .72rem; }
   .service-tile--1 span { color: var(--electric); }
+  .service-tile :global(.card-visual) { position: absolute; z-index: 0; width: 68%; height: 6.4rem; inset: 2.35rem .6rem auto auto; color: #302957; opacity: .46; --visual-accent: #7057ff; --visual-ink: #302957; }
+  .service-tile--1 :global(.card-visual) { width: 82%; height: 10.5rem; inset: 5.4rem .55rem auto auto; color: #e8e5ff; opacity: .52; --visual-accent: #8d7bff; --visual-ink: #e8e5ff; }
+  .service-tile--3 :global(.card-visual) { --visual-accent: #5941e5; }
   .service-tile h3 { max-width: 15ch; margin-block-start: auto; color: currentColor; font-size: clamp(1.35rem,2.2vw,2.1rem); }
   .service-tile p { margin-block-start: .85rem; color: var(--muted); font-size: .88rem; }
   .service-tile--1 p { color: rgba(239,237,255,.68); }
@@ -253,13 +268,17 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
   .evidence-heading p { color: var(--muted); }
   .evidence-heading small { display: block; margin-block-start: .8rem; color: #77708f; }
   .fact-mosaic { display: grid; grid-template-columns: 1.2fr .8fr .8fr 1.2fr; gap: .8rem; margin-block-start: 4rem; }
-  .fact-mosaic article { display: grid; align-content: space-between; min-height: 13rem; padding: 1.35rem; border-radius: 1.4rem; background: #fff; box-shadow: 0 18px 50px rgba(37,23,91,.06); }
+  .fact-mosaic article { position: relative; display: grid; align-content: space-between; min-height: 16rem; padding: 1.35rem; overflow: hidden; isolation: isolate; border-radius: 1.4rem; background: #fff; box-shadow: 0 18px 50px rgba(37,23,91,.06); }
   .fact-mosaic article:nth-child(2) { background: #24204a; color: #fff; }
   .fact-mosaic article:nth-child(3) { background: var(--electric); color: #17112e; }
+  .fact-mosaic > article > span, .fact-mosaic > article > div { position: relative; z-index: 1; }
   .fact-mosaic span { font-family: var(--font-num); font-size: .7rem; }
-  .fact-mosaic small { align-self: end; color: var(--muted); }
+  .fact-mosaic article :global(.card-visual) { position: absolute; z-index: 0; width: 68%; height: 6.4rem; inset: 2.15rem .4rem auto auto; color: #302957; opacity: .46; --visual-accent: #7057ff; --visual-ink: #302957; }
+  .fact-mosaic article:nth-child(2) :global(.card-visual) { color: #eceaff; opacity: .5; --visual-accent: #9180ff; --visual-ink: #eceaff; }
+  .fact-mosaic article:nth-child(3) :global(.card-visual) { --visual-accent: #2f216e; }
+  .fact-mosaic small { display: block; color: var(--muted); }
   .fact-mosaic article:nth-child(2) small { color: rgba(255,255,255,.58); }
-  .fact-mosaic strong { margin-block-start: .55rem; overflow-wrap: anywhere; font-size: 1.05rem; line-height: 1.35; }
+  .fact-mosaic strong { display: block; margin-block-start: .55rem; overflow-wrap: anywhere; font-size: 1.05rem; line-height: 1.35; }
   .final-stage { position: relative; overflow: hidden; background: #08051f; }
   .final-glow { position: absolute; width: min(90vw,70rem); height: 30rem; inset: auto auto -16rem 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse,rgba(108,70,255,.8),rgba(32,21,102,.2) 45%,transparent 70%); filter: blur(18px); }
   .final-inner { position: relative; z-index: 1; display: grid; justify-items: center; padding-block: clamp(7rem,14vw,12rem) 4rem; text-align: center; }
@@ -272,6 +291,7 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
     .hero-primary:hover, .hero-secondary:hover, .final-inner a:hover { transform: translateY(-2px); }
     .service-tile { transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out); }
     .service-tile:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(37,23,91,.12); }
+    .customs-flow li:hover :global(.card-visual), .method-card:hover :global(.card-visual), .service-tile:hover :global(.card-visual), .fact-mosaic article:hover :global(.card-visual) { transform: translate3d(0,-3px,0) scale(1.015); }
   }
   @media (max-width: 64rem) {
     .method-layout, .route-layout { grid-template-columns: 1fr; }
@@ -298,12 +318,12 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
     .customs-flow { grid-template-columns: repeat(6,78vw); margin-block-start: 3rem; }
     .promise-line { grid-template-columns: 1fr; }
     .method-orbit { grid-template-columns: 1fr; transform: none; }
-    .method-card, .method-card--2, .method-card--4 { min-height: 13rem; transform: none; }
+    .method-card, .method-card--2, .method-card--4 { min-height: 19rem; transform: none; }
     .service-mosaic { grid-template-columns: 1fr; grid-template-rows: none; }
     .service-tile, .service-tile--1, .service-image { grid-column: auto; grid-row: auto; min-height: 17rem; }
     .evidence-heading { grid-template-columns: 1fr; align-items: start; }
     .fact-mosaic { grid-template-columns: 1fr; }
-    .fact-mosaic article { min-height: 10rem; }
+    .fact-mosaic article { min-height: 15rem; }
   }
   @media (prefers-reduced-motion: reduce) { .hero-visual img { animation: none; } }
 </style>
