@@ -1,0 +1,322 @@
+---
+import { SERVICES_COPY } from "../services-content";
+import { pagePath, type Lang } from "../site-v2";
+import CardVisual from "./CardVisual.astro";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const page = SERVICES_COPY[lang];
+const principleVisuals = ["docs-first", "responsibility", "memory"];
+---
+
+<article class="services-page">
+  <section class="service-hero shell">
+    <div class="service-hero__copy">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1 class="display">{page.title}</h1>
+      <p class="lead">{page.lead}</p>
+      <div class="hero-actions">
+        <a class="button button--primary" href={pagePath(lang, "contact")}>{page.primary}</a>
+        <a class="text-link" href="#scope">{page.secondary}<span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <figure>
+      <img src="/images/corporate/hero-services-customs.webp" alt={page.imageAlt} width="1122" height="1402" fetchpriority="high" />
+      <figcaption>{page.imageCaption}</figcaption>
+    </figure>
+  </section>
+
+  <nav class="service-index" aria-label={page.indexLabel}>
+    <div class="shell">
+      <span>{page.indexLabel}</span>
+      <div>
+        {page.services.map((service) => <a href={`#${service.id}`}><b>{service.number}</b>{service.title}</a>)}
+      </div>
+    </div>
+  </nav>
+
+  <section class="method shell">
+    <header>
+      <p class="eyebrow">{page.introEyebrow}</p>
+      <h2 class="section-title">{page.introTitle}</h2>
+      <p>{page.introText}</p>
+    </header>
+    <div class="principles">
+      {page.principles.map((principle, index) => (
+        <article>
+          <CardVisual kind={principleVisuals[index]} />
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{principle.title}</h3>
+          <p>{principle.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="service-scope" id="scope">
+    <div class="shell scope-heading">
+      <p class="eyebrow">{page.servicesEyebrow}</p>
+      <h2 class="section-title">{page.servicesTitle}</h2>
+      <p>{page.servicesLead}</p>
+    </div>
+
+    <div class="service-list shell">
+      {page.services.map((service) => (
+        <section class="service-detail" id={service.id}>
+          <header>
+            <div class="service-number"><span>{service.number}</span><small>{service.kicker}</small></div>
+            <div>
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+            </div>
+          </header>
+
+          <div class="service-fit">
+            <h4>{page.labels.fit}</h4>
+            <p>{service.fit}</p>
+          </div>
+
+          <div class="service-work">
+            <h4>{page.labels.work}</h4>
+            <ol>{service.work.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
+          </div>
+
+          <div class="service-outputs">
+            <h4>{page.labels.outputs}</h4>
+            <ul>{service.outputs.map((item) => <li>{item}</li>)}</ul>
+          </div>
+
+          <aside>
+            <span>{page.labels.value}</span>
+            <p>{service.value}</p>
+          </aside>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <section class="shipment-sequence">
+    <div class="shell sequence-layout">
+      <header>
+        <p class="eyebrow">{page.sequenceEyebrow}</p>
+        <h2 class="section-title">{page.sequenceTitle}</h2>
+        <p>{page.sequenceLead}</p>
+      </header>
+      <ol>
+        {page.sequence.map((item) => (
+          <li>
+            <span>{item.step}</span>
+            <div><h3>{item.title}</h3><p>{item.text}</p></div>
+            <p class="stage-result"><b>{page.labels.result}</b>{item.result}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="exceptions shell">
+    <header>
+      <p class="eyebrow">{page.exceptionEyebrow}</p>
+      <h2 class="section-title">{page.exceptionTitle}</h2>
+      <p>{page.exceptionLead}</p>
+    </header>
+    <div class="exception-list">
+      {page.exceptions.map((item, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{item.issue}</h3>
+          <div><b>{page.labels.response}</b><p>{item.response}</p></div>
+          <p class="exception-update">{item.update}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="boundary-section">
+    <div class="shell boundary-layout">
+      <header>
+        <p class="eyebrow">{page.boundaryEyebrow}</p>
+        <h2 class="section-title">{page.boundaryTitle}</h2>
+        <p>{page.boundaryLead}</p>
+      </header>
+      <div class="boundary-columns">
+        <section>
+          <CardVisual kind="commitment" />
+          <h3>{page.boundaryDoTitle}</h3>
+          <ul>{page.boundaryDo.map((item) => <li>{item}</li>)}</ul>
+        </section>
+        <section>
+          <CardVisual kind="exclusion" />
+          <h3>{page.boundaryDontTitle}</h3>
+          <ul>{page.boundaryDont.map((item) => <li>{item}</li>)}</ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="freight-brief">
+    <div class="shell brief-layout">
+      <header>
+        <p class="eyebrow">{page.briefEyebrow}</p>
+        <h2>{page.briefTitle}</h2>
+        <p>{page.briefText}</p>
+        <a class="button button--inverse" href={pagePath(lang, "contact")}>{page.ctaButton}</a>
+      </header>
+      <div>
+        <ol>{page.briefFields.map((field, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><p>{field}</p></li>)}</ol>
+        <p class="brief-note">{page.briefNote}</p>
+      </div>
+    </div>
+  </section>
+</article>
+
+<style>
+  .services-page { overflow: clip; background: var(--paper); }
+  .service-hero { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(20rem,.9fr); gap: clamp(3rem,7vw,7rem); align-items: center; min-height: 43rem; padding-block: clamp(5rem,9vw,8rem); background: var(--ink); box-shadow: 0 0 0 100vmax var(--ink); clip-path: inset(0 -100vmax); }
+  .service-hero__copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 1.35rem; }
+  .service-hero .eyebrow { color: var(--electric); }
+  .service-hero .display { max-width: 12ch; color: #fff; white-space: pre-line; }
+  .service-hero .lead { max-width: 60ch; color: var(--muted-on-dark); }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-block-start: .75rem; }
+  .service-hero .text-link { color: var(--electric); }
+  .service-hero figure { position: relative; min-height: 34rem; margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem 2rem .75rem 2rem; background: var(--ink-2); box-shadow: 0 28px 90px rgba(0,0,0,.28); }
+  .service-hero figure::after { position: absolute; inset: 0; background: linear-gradient(180deg,transparent 42%,rgba(11,7,31,.76)); content: ""; }
+  .service-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; filter: saturate(.72) contrast(1.04); }
+  .service-hero figcaption { position: absolute; z-index: 1; inset: auto 1rem 1rem; color: rgba(255,255,255,.78); font-size: .72rem; }
+
+  .service-index { position: sticky; z-index: 5; top: var(--header-height); border-bottom: 1px solid var(--line); background: rgba(248,247,255,.94); backdrop-filter: blur(14px); }
+  .service-index > div { display: grid; grid-template-columns: 10rem minmax(0,1fr); gap: 1.5rem; align-items: center; padding-block: 1rem; }
+  .service-index > div > span { color: var(--muted); font-family: var(--font-num); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+  .service-index div div { display: flex; gap: 1.4rem; overflow-x: auto; scrollbar-width: none; }
+  .service-index div div::-webkit-scrollbar { display: none; }
+  .service-index a { display: inline-flex; flex: 0 0 auto; gap: .45rem; align-items: baseline; color: var(--muted); font-size: .78rem; transition: color 180ms ease; }
+  .service-index a b { color: var(--violet); font-family: var(--font-num); font-size: .66rem; }
+  @media (hover:hover) { .service-index a:hover { color: var(--text); } }
+
+  .method { display: grid; grid-template-columns: minmax(18rem,.62fr) minmax(0,1.38fr); gap: clamp(3rem,7vw,7rem); padding-block: clamp(6rem,10vw,10rem); }
+  .method > header { display: grid; align-content: start; gap: 1.5rem; }
+  .method > header > p:last-child { max-width: 57ch; color: var(--muted); }
+  .principles { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem; }
+  .principles article { position: relative; display: grid; grid-template-columns: auto 1fr; gap: .8rem 1rem; min-height: 17rem; align-content: end; padding: 1.5rem; overflow: hidden; isolation: isolate; border-radius: 1.5rem; background: #fff; box-shadow: 0 18px 55px rgba(37,23,91,.06); }
+  .principles article:first-child { grid-column: 1/-1; min-height: 20rem; background: var(--ink-2); color: #fff; }
+  .principles article :global(.card-visual) { position: absolute; z-index: 0; width: 68%; height: 10rem; inset: .6rem .6rem auto auto; color: #302957; opacity: .45; --visual-accent: #7057ff; --visual-ink: #302957; }
+  .principles article:first-child :global(.card-visual) { color: #ded8ff; opacity: .48; --visual-accent: #9c8cff; --visual-ink: #ded8ff; }
+  .principles article > span,.principles article h3,.principles article p { position: relative; z-index: 1; }
+  .principles article > span { color: var(--violet); font-family: var(--font-num); font-size: .72rem; }
+  .principles article h3 { align-self: end; font-size: 1.25rem; }
+  .principles article p { grid-column: 2; color: var(--muted); }
+  .principles article:first-child h3 { color: #fff; }
+  .principles article:first-child p { color: var(--muted-on-dark); }
+
+  .service-scope { padding-block: clamp(6rem,10vw,9rem); scroll-margin-top: calc(var(--header-height) + 4rem); background: #f0eef9; }
+  .scope-heading { display: grid; grid-template-columns: minmax(0,.55fr) minmax(20rem,.85fr) minmax(16rem,.6fr); gap: clamp(2rem,5vw,5rem); align-items: end; padding-block-end: clamp(4rem,7vw,7rem); }
+  .scope-heading > p:last-child { color: var(--muted); }
+  .service-list { border-top: 2px solid var(--text); }
+  .service-detail { display: grid; grid-template-columns: minmax(14rem,.48fr) minmax(0,1.05fr) minmax(14rem,.47fr); gap: 0 clamp(2rem,5vw,5rem); padding-block: clamp(4.5rem,8vw,7.5rem); border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-height) + 4rem); }
+  .service-detail:target { background: rgba(255,255,255,.42); box-shadow: 0 0 0 100vmax rgba(255,255,255,.42); clip-path: inset(0 -100vmax); }
+  .service-detail > header { display: contents; }
+  .service-number { grid-column: 1; display: flex; flex-direction: column; gap: .65rem; align-items: flex-start; }
+  .service-number span { font-family: var(--font-num); font-size: clamp(3.5rem,7vw,7rem); font-weight: 500; line-height: .8; letter-spacing: -.08em; color: var(--violet); }
+  .service-number small { color: var(--muted); font-family: var(--font-num); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+  .service-detail > header > div:last-child { grid-column: 2/-1; }
+  .service-detail h3 { max-width: 21ch; font-size: clamp(2rem,4vw,4rem); line-height: .98; }
+  .service-detail > header p { max-width: 70ch; margin-block-start: 1.25rem; color: var(--muted); font-size: 1.02rem; }
+  .service-detail h4 { margin: 0 0 1rem; color: var(--violet); font-family: var(--font-num); font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .service-fit { grid-column: 2/-1; margin-block-start: 2.5rem; padding-block: 1.25rem; border-block: 1px solid var(--line); }
+  .service-fit p { max-width: 76ch; margin: 0; }
+  .service-work { grid-column: 2; margin-block-start: 2.5rem; }
+  .service-work ol { margin: 0; padding: 0; list-style: none; }
+  .service-work li { display: grid; grid-template-columns: 2rem minmax(0,1fr); gap: .8rem; padding-block: .85rem; border-top: 1px solid var(--line); }
+  .service-work li span { color: var(--violet); font-family: var(--font-num); font-size: .68rem; }
+  .service-work li p { margin: 0; }
+  .service-outputs { grid-column: 3; margin-block-start: 2.5rem; }
+  .service-outputs ul { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+  .service-outputs li { padding-block: .85rem; border-bottom: 1px solid var(--line); font-weight: 680; }
+  .service-detail aside { grid-column: 2/-1; display: grid; grid-template-columns: minmax(9rem,.3fr) minmax(0,1.7fr); gap: 1.5rem; margin-block-start: 2.5rem; padding: 1.5rem; border-radius: .5rem 1.5rem 1.5rem 1.5rem; background: var(--ink-2); color: #fff; }
+  .service-detail aside span { color: var(--electric); font-family: var(--font-num); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+  .service-detail aside p { margin: 0; color: var(--muted-on-dark); }
+
+  .shipment-sequence { background: var(--ink-2); color: #fff; }
+  .sequence-layout { display: grid; grid-template-columns: minmax(20rem,.62fr) minmax(0,1.38fr); gap: clamp(3rem,7vw,7rem); padding-block: clamp(6rem,10vw,10rem); }
+  .sequence-layout > header { display: grid; align-content: start; gap: 1.5rem; }
+  .sequence-layout .eyebrow { color: var(--electric); }
+  .sequence-layout h2 { color: #fff; }
+  .sequence-layout > header > p:last-child { color: var(--muted-on-dark); }
+  .sequence-layout ol { margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.35); list-style: none; }
+  .sequence-layout li { display: grid; grid-template-columns: 3rem minmax(12rem,.65fr) minmax(12rem,.35fr); gap: 1.25rem; padding-block: 1.5rem; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .sequence-layout li > span { color: var(--electric); font-family: var(--font-num); font-size: .72rem; }
+  .sequence-layout h3 { color: #fff; font-size: 1.08rem; }
+  .sequence-layout li div p { margin-block-start: .5rem; color: var(--muted-on-dark); }
+  .stage-result { align-self: start; margin: 0; color: rgba(255,255,255,.82); }
+  .stage-result b { display: block; margin-block-end: .45rem; color: var(--electric); font-family: var(--font-num); font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; }
+
+  .exceptions { padding-block: clamp(6rem,10vw,10rem); }
+  .exceptions > header { display: grid; grid-template-columns: minmax(0,.5fr) minmax(20rem,.9fr) minmax(16rem,.6fr); gap: clamp(2rem,5vw,5rem); align-items: end; padding-block-end: clamp(3rem,6vw,5rem); }
+  .exceptions > header > p:last-child { color: var(--muted); }
+  .exception-list { border-top: 2px solid var(--text); }
+  .exception-list article { display: grid; grid-template-columns: 2.5rem minmax(13rem,.55fr) minmax(18rem,1fr) minmax(10rem,.45fr); gap: 1.5rem; padding-block: 1.5rem; border-bottom: 1px solid var(--line); }
+  .exception-list article > span { color: var(--violet); font-family: var(--font-num); font-size: .7rem; }
+  .exception-list h3 { font-size: 1rem; line-height: 1.35; }
+  .exception-list article div b { display: block; margin-block-end: .45rem; color: var(--violet); font-family: var(--font-num); font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; }
+  .exception-list article p { margin: 0; color: var(--muted); }
+  .exception-update { padding-inline-start: 1.25rem; border-inline-start: 2px solid var(--electric); font-weight: 650; }
+
+  .boundary-section { background: #e5e1f7; }
+  .boundary-layout { display: grid; grid-template-columns: minmax(18rem,.58fr) minmax(0,1.42fr); gap: clamp(3rem,7vw,7rem); padding-block: clamp(6rem,10vw,10rem); }
+  .boundary-layout > header { display: grid; align-content: start; gap: 1.5rem; }
+  .boundary-layout > header > p:last-child { color: var(--muted); }
+  .boundary-columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem; }
+  .boundary-columns section { position: relative; min-height: 27rem; padding: 1.5rem; overflow: hidden; isolation: isolate; border-radius: 1.5rem; background: #fff; }
+  .boundary-columns section + section { background: var(--ink-2); color: #fff; }
+  .boundary-columns :global(.card-visual) { position: absolute; z-index: 0; width: 85%; height: 11rem; inset: auto -.5rem -.5rem auto; color: #302957; opacity: .42; --visual-accent: #7057ff; --visual-ink: #302957; }
+  .boundary-columns section + section :global(.card-visual) { color: #ded8ff; --visual-accent: #9c8cff; --visual-ink: #ded8ff; }
+  .boundary-columns h3,.boundary-columns ul { position: relative; z-index: 1; }
+  .boundary-columns h3 { font-size: 1.25rem; }
+  .boundary-columns section + section h3 { color: #fff; }
+  .boundary-columns ul { margin: 1.5rem 0 0; padding-inline-start: 1.1rem; }
+  .boundary-columns li { margin-block-end: .8rem; color: var(--muted); }
+  .boundary-columns section + section li { color: var(--muted-on-dark); }
+
+  .freight-brief { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
+  .freight-brief::after { position: absolute; width: 55rem; height: 32rem; inset: auto -10rem -24rem auto; border-radius: 50%; background: radial-gradient(circle,rgba(103,67,247,.45),transparent 68%); content: ""; }
+  .brief-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(20rem,.8fr) minmax(0,1.2fr); gap: clamp(3rem,7vw,7rem); padding-block: clamp(6rem,10vw,10rem); }
+  .brief-layout header { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .brief-layout .eyebrow { color: var(--electric); }
+  .brief-layout h2 { max-width: 13ch; color: #fff; font-size: clamp(2.8rem,5vw,5.2rem); }
+  .brief-layout header p { max-width: 52ch; color: var(--muted-on-dark); }
+  .brief-layout ol { margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.35); list-style: none; }
+  .brief-layout li { display: grid; grid-template-columns: 2.5rem minmax(0,1fr); gap: 1rem; padding-block: 1.15rem; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .brief-layout li span { color: var(--electric); font-family: var(--font-num); font-size: .7rem; }
+  .brief-layout li p { margin: 0; }
+  .brief-note { margin-block-start: 1.5rem; padding: 1.25rem; border-inline-start: 2px solid var(--electric); background: rgba(255,255,255,.045); color: var(--muted-on-dark); }
+
+  @media (max-width: 65rem) {
+    .method,.sequence-layout,.boundary-layout,.brief-layout { grid-template-columns: 1fr; }
+    .scope-heading,.exceptions > header { grid-template-columns: 1fr 1.4fr; }
+    .scope-heading > p:last-child,.exceptions > header > p:last-child { grid-column: 2; }
+    .service-detail { grid-template-columns: 9rem minmax(0,1fr); }
+    .service-detail > header > div:last-child,.service-fit,.service-detail aside { grid-column: 2; }
+    .service-work { grid-column: 2; }
+    .service-outputs { grid-column: 2; }
+    .exception-list article { grid-template-columns: 2.5rem minmax(12rem,.6fr) minmax(0,1.4fr); }
+    .exception-update { grid-column: 3; }
+  }
+  @media (max-width: 48rem) {
+    .service-hero { grid-template-columns: 1fr; min-height: auto; padding-block: 4.5rem; }
+    .service-hero figure { min-height: 26rem; }
+    .service-index > div { grid-template-columns: 1fr; gap: .6rem; }
+    .principles,.boundary-columns { grid-template-columns: 1fr; }
+    .principles article:first-child { grid-column: auto; min-height: 17rem; }
+    .scope-heading,.exceptions > header { grid-template-columns: 1fr; }
+    .scope-heading > p:last-child,.exceptions > header > p:last-child { grid-column: auto; }
+    .service-detail { grid-template-columns: 1fr; }
+    .service-number,.service-detail > header > div:last-child,.service-fit,.service-work,.service-outputs,.service-detail aside { grid-column: 1; }
+    .service-number { flex-direction: row; align-items: baseline; }
+    .service-detail aside { grid-template-columns: 1fr; }
+    .sequence-layout li { grid-template-columns: 2.5rem minmax(0,1fr); }
+    .stage-result { grid-column: 2; }
+    .exception-list article { grid-template-columns: 2rem minmax(0,1fr); }
+    .exception-list article > div,.exception-update { grid-column: 2; }
+    .boundary-columns section { min-height: 24rem; }
+  }
+</style>
