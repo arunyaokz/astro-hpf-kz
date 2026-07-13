@@ -184,7 +184,7 @@ const principleVisuals = ["docs-first", "responsibility", "memory"];
   .service-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; filter: saturate(.72) contrast(1.04); }
   .service-hero figcaption { position: absolute; z-index: 1; inset: auto 1rem 1rem; color: rgba(255,255,255,.78); font-size: .72rem; }
 
-  .service-index { position: sticky; z-index: 5; top: var(--header-height); border-bottom: 1px solid var(--line); background: rgba(248,247,255,.94); backdrop-filter: blur(14px); }
+  .service-index { position: sticky; z-index: 5; top: 0; border-bottom: 1px solid var(--line); background: rgba(248,247,255,.94); backdrop-filter: blur(14px); }
   .service-index > div { display: grid; grid-template-columns: 10rem minmax(0,1fr); gap: 1.5rem; align-items: center; padding-block: 1rem; }
   .service-index > div > span { color: var(--muted); font-family: var(--font-num); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
   .service-index div div { display: flex; gap: 1.4rem; overflow-x: auto; scrollbar-width: none; }
@@ -208,11 +208,12 @@ const principleVisuals = ["docs-first", "responsibility", "memory"];
   .principles article:first-child h3 { color: #fff; }
   .principles article:first-child p { color: var(--muted-on-dark); }
 
-  .service-scope { padding-block: clamp(6rem,10vw,9rem); scroll-margin-top: calc(var(--header-height) + 4rem); background: #f0eef9; }
+  .service-scope { padding-block: clamp(6rem,10vw,9rem); scroll-margin-top: 0; background: #f0eef9; }
   .scope-heading { display: grid; grid-template-columns: minmax(0,.55fr) minmax(20rem,.85fr) minmax(16rem,.6fr); gap: clamp(2rem,5vw,5rem); align-items: end; padding-block-end: clamp(4rem,7vw,7rem); }
   .scope-heading > p:last-child { color: var(--muted); }
   .service-list { border-top: 2px solid var(--text); }
-  .service-detail { display: grid; grid-template-columns: minmax(14rem,.48fr) minmax(0,1.05fr) minmax(14rem,.47fr); gap: 0 clamp(2rem,5vw,5rem); padding-block: clamp(4.5rem,8vw,7.5rem); border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-height) + 4rem); }
+  .service-detail { display: grid; grid-template-columns: minmax(14rem,.48fr) minmax(0,1.05fr) minmax(14rem,.47fr); gap: 0 clamp(2rem,5vw,5rem); padding-block: clamp(4.5rem,8vw,7.5rem); border-bottom: 1px solid var(--line); scroll-margin-top: 0; }
+  .service-detail:first-child { padding-block-start: 2.5rem; }
   .service-detail:target { background: rgba(255,255,255,.42); box-shadow: 0 0 0 100vmax rgba(255,255,255,.42); clip-path: inset(0 -100vmax); }
   .service-detail > header { display: contents; }
   .service-number { grid-column: 1; display: flex; flex-direction: column; gap: .65rem; align-items: flex-start; }
