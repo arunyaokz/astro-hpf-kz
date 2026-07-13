@@ -2,9 +2,26 @@
 import { getCollection } from "astro:content";
 import { PAGE_COPY, pagePath, type Lang } from "../site-v2";
 import RouteMap from "./RouteMap.astro";
+import CardVisual from "./CardVisual.astro";
 
 interface Props { lang: Lang; pageKey: "services" | "routes" | "about"; }
 const { lang, pageKey } = Astro.props;
+const scopeVisuals: Record<Props["pageKey"], string[]> = {
+  services: ["customs", "transport", "warehouse", "delivery"],
+  routes: ["cargo-route", "customs", "transport", "delivery"],
+  about: ["responsibility", "docs-first", "declaration", "memory"],
+};
+const processVisuals: Record<Props["pageKey"], string[]> = {
+  services: ["documents", "verification", "inspection", "release"],
+  routes: ["documents", "responsibility", "cargo-route", "verification"],
+  about: ["documents", "responsibility", "memory", "verification"],
+};
+const boundaryVisuals: Record<Props["pageKey"], string[]> = {
+  services: ["commitment", "exclusion"],
+  routes: ["route-direction", "route-boundary"],
+  about: ["responsibility", "exclusion"],
+};
+const entityVisuals = ["company", "bin", "calendar", "founder", "warehouse"];
 const page = PAGE_COPY[pageKey][lang];
 const heroImage = {
   services: { src: "/images/corporate/hero-services-customs.webp", size: { width: 1122, height: 1402 }, alt: { zh: "仓内验货与清关前置作业", en: "Warehouse inspection and customs-ready handling", ru: "Складская проверка и подготовка к таможне" } },
@@ -60,7 +77,7 @@ const showEntityFact = (id: string) => {
       <dl>
         {entityFactIds.map((id, index) => {
           const fact = factMap.get(id);
-          return <div><span>{String(index + 1).padStart(2, "0")}</span><dt>{fact?.labels[lang]}</dt><dd>{fact?.url ? <a href={fact.url} target="_blank" rel="noreferrer">{showEntityFact(id)}</a> : showEntityFact(id)}</dd></div>;
+          return <div><CardVisual kind={entityVisuals[index]} /><span>{String(index + 1).padStart(2, "0")}</span><dt>{fact?.labels[lang]}</dt><dd>{fact?.url ? <a href={fact.url} target="_blank" rel="noreferrer">{showEntityFact(id)}</a> : showEntityFact(id)}</dd></div>;
         })}
       </dl>
     </section>
@@ -75,6 +92,7 @@ const showEntityFact = (id: string) => {
     <div class="scope-list">
       {page.sections.map((section, index) => (
         <article>
+          <CardVisual kind={scopeVisuals[pageKey][index]} />
           <span>{String(index + 1).padStart(2, "0")}</span>
           <div><p class="item-label">{section.label}</p><h3>{section.title}</h3><p>{section.text}</p></div>
           <ul>{section.points.map((point) => <li>{point}</li>)}</ul>
@@ -87,8 +105,8 @@ const showEntityFact = (id: string) => {
     <div class="shell sequence-grid">
       <header><p class="eyebrow">Process</p><h2 class="section-title">{page.processTitle}</h2></header>
       <ol>
-        {page.process.map((item) => (
-          <li><span>{item.step}</span><h3>{item.title}</h3><p>{item.text}</p></li>
+        {page.process.map((item, index) => (
+          <li><CardVisual kind={processVisuals[pageKey][index]} /><span>{item.step}</span><h3>{item.title}</h3><p>{item.text}</p></li>
         ))}
       </ol>
     </div>
@@ -97,8 +115,8 @@ const showEntityFact = (id: string) => {
   <section class="boundary shell">
     <header><p class="eyebrow">Promise boundary</p><h2 class="section-title">{page.boundaryTitle}</h2></header>
     <div class="boundary-grid">
-      <div><h3>{labels.do}</h3><ul>{page.boundaryDo.map((item) => <li>{item}</li>)}</ul></div>
-      <div><h3>{labels.dont}</h3><ul>{page.boundaryDont.map((item) => <li>{item}</li>)}</ul></div>
+      <div><CardVisual kind={boundaryVisuals[pageKey][0]} /><h3>{labels.do}</h3><ul>{page.boundaryDo.map((item) => <li>{item}</li>)}</ul></div>
+      <div><CardVisual kind={boundaryVisuals[pageKey][1]} /><h3>{labels.dont}</h3><ul>{page.boundaryDont.map((item) => <li>{item}</li>)}</ul></div>
     </div>
   </section>
 
@@ -120,31 +138,37 @@ const showEntityFact = (id: string) => {
   .page-hero .text-link { color: var(--electric); }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-block-start: var(--space-2); }
   .page-hero figure { position: relative; min-height: 32rem; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; background: var(--ink-2); box-shadow: 0 28px 90px rgba(0,0,0,.28); }
+  .page-hero figure::after { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(15,8,48,.05),rgba(15,8,48,.62)); content: ""; }
+  .page-hero img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.72) contrast(1.04); }
   .content-page:has(.route-section) .page-hero img { object-position: 60% center; }
   .content-page:has(.entity) .page-hero img { object-position: 56% center; }
   .content-page:not(:has(.route-section, .entity)) .page-hero img { object-position: 62% center; }
-  .page-hero figure::after { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(15,8,48,.05),rgba(15,8,48,.62)); content: ""; }
-  .page-hero img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.72) contrast(1.04); }
   .page-hero figcaption { position: absolute; z-index: 1; inset-inline: 0.75rem; inset-block-end: 0.75rem; color: rgba(255,255,255,.8); font-size: 0.6875rem; }
   .route-section { background: var(--ink-2); }
   .route-section > div { padding-block: clamp(4rem,8vw,7rem); }
-  .entity { display: grid; grid-template-columns: minmax(17rem,.52fr) minmax(0,1.48fr); gap: clamp(3rem,7vw,7rem); padding-block: clamp(5rem,9vw,8rem); }
-  .entity header { display: grid; align-content: start; gap: var(--space-2); }
+  .entity { display: grid; grid-template-columns: minmax(34rem,.7fr) minmax(0,1.3fr); gap: clamp(2rem,5vw,5rem); padding-block: clamp(5rem,9vw,8rem); }
+  .entity header { display: grid; min-width: 0; align-content: start; gap: var(--space-2); }
+  .entity header .section-title { max-width: 9ch; overflow-wrap: normal; font-size: clamp(2.4rem,4.2vw,4.8rem); }
   .entity header small { color: var(--muted); }
   .entity dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem; margin: 0; }
-  .entity dl div { display: grid; grid-template-columns: auto 1fr; gap: .5rem 1rem; min-height: 10rem; align-content: space-between; padding: 1.35rem; border-radius: 1.35rem; background: #fff; box-shadow: 0 18px 55px rgba(37,23,91,.06); }
+  .entity dl div { position: relative; display: grid; grid-template-columns: auto 1fr; gap: .5rem 1rem; min-height: 10rem; align-content: space-between; padding: 1.35rem; overflow: hidden; isolation: isolate; border-radius: 1.35rem; background: #fff; box-shadow: 0 18px 55px rgba(37,23,91,.06); }
   .entity dl div:last-child { grid-column: 1 / -1; min-height: auto; }
-  .entity dl span { color: var(--cobalt-700); font-family: var(--font-num); font-size: .75rem; }
-  .entity dt { color: var(--muted); font-size: .8rem; }
-  .entity dd { grid-column: 2; margin: 0; color: var(--text); font-size: 1rem; font-weight: 700; overflow-wrap: anywhere; }
+  .entity dl div :global(.card-visual) { position: absolute; z-index: 0; width: 56%; height: 3.6rem; inset: 2.8rem .35rem auto auto; color: #302957; opacity: .34; --visual-accent: #7057ff; --visual-ink: #302957; }
+  .entity dl span { position: relative; z-index: 1; color: var(--cobalt-700); font-family: var(--font-num); font-size: .75rem; }
+  .entity dt { position: relative; z-index: 1; color: var(--muted); font-size: .8rem; }
+  .entity dd { position: relative; z-index: 1; grid-column: 2; margin: 0; color: var(--text); font-size: 1rem; font-weight: 700; overflow-wrap: anywhere; }
   .scope { display: grid; grid-template-columns: minmax(17rem,.52fr) minmax(0,1.48fr); gap: clamp(3rem,7vw,7rem); padding-block: clamp(6rem,10vw,9rem); }
   .scope-intro { display: grid; align-content: start; gap: var(--space-2); }
   .scope-intro > p:last-child { color: var(--mut); }
   .scope-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem; }
-  .scope-list article { display: grid; grid-template-columns: auto 1fr; gap: 1rem; min-height: 18rem; align-content: space-between; padding: 1.5rem; border-radius: 1.5rem; background: #fff; }
+  .scope-list article { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 1rem; min-height: 18rem; overflow: hidden; isolation: isolate; align-content: space-between; padding: 1.5rem; border-radius: 1.5rem; background: #fff; }
   .scope-list article:nth-child(1) { background: linear-gradient(145deg,#39288e,#17112f); color: #fff; }
   .scope-list article:nth-child(3) { background: #dfdcff; }
-  .scope-list article > span, .sequence li > span { color: var(--cobalt-700); font-family: var(--font-num); font-size: 0.75rem; }
+  .scope-list article > span, .sequence li > span { position: relative; z-index: 1; color: var(--cobalt-700); font-family: var(--font-num); font-size: 0.75rem; }
+  .scope-list article > div, .scope-list article > ul { position: relative; z-index: 1; }
+  .scope-list article :global(.card-visual) { position: absolute; z-index: 0; width: 58%; height: 5.4rem; inset: auto .5rem 1.3rem auto; color: #2d2850; opacity: .4; --visual-accent: #7057ff; --visual-ink: #2d2850; }
+  .scope-list article:nth-child(1) :global(.card-visual) { color: #e8e5ff; opacity: .5; --visual-accent: #8d7bff; --visual-ink: #e8e5ff; }
+  .scope-list article:nth-child(3) :global(.card-visual) { --visual-accent: #5941e5; }
   .item-label { margin-block-end: 0.5rem; color: var(--cobalt-700); font-family: var(--font-num); font-size: 0.75rem; text-transform: uppercase; }
   .scope-list h3 { font-size: 1.25rem; }
   .scope-list div > p:last-child { margin-block-start: .75rem; color: var(--muted); }
@@ -153,19 +177,24 @@ const showEntityFact = (id: string) => {
   .scope-list ul, .boundary ul { margin: 0; padding-inline-start: 1.125rem; }
   .scope-list li { margin-block-end: 0.375rem; color: var(--tx); font-size: 0.875rem; }
   .sequence { background: var(--ink-2); color: #fff; }
-  .sequence-grid { display: grid; grid-template-columns: minmax(17rem,.52fr) minmax(0,1.48fr); gap: clamp(3rem,7vw,7rem); padding-block: clamp(6rem,10vw,9rem); }
+  .sequence-grid { display: grid; grid-template-columns: minmax(34rem,.7fr) minmax(0,1.3fr); gap: clamp(2rem,5vw,5rem); padding-block: clamp(6rem,10vw,9rem); }
   .sequence h2 { color:#fff; }
-  .sequence header { display: grid; align-content: start; gap: var(--space-2); }
+  .sequence header { display: grid; min-width: 0; align-content: start; gap: var(--space-2); }
+  .sequence header .section-title { max-width: 9ch; overflow-wrap: normal; font-size: clamp(2.4rem,3.6vw,4rem); }
   .sequence ol { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; margin:0; padding:0; list-style:none; }
-  .sequence li { display:grid; grid-template-columns:auto 1fr; gap:1rem; min-height:12rem; align-content:space-between; padding:1.4rem; border:1px solid rgba(255,255,255,.1); border-radius:1.4rem; background:rgba(255,255,255,.045); }
-  .sequence h3 { color:#fff; }
+  .sequence li { position: relative; display:grid; grid-template-columns:auto 1fr; gap:1rem; min-height:12rem; overflow: hidden; isolation: isolate; align-content:space-between; padding:1.4rem; border:1px solid rgba(255,255,255,.1); border-radius:1.4rem; background:rgba(255,255,255,.045); }
+  .sequence li :global(.card-visual) { position: absolute; z-index: 0; width: 58%; height: 4rem; inset: 2.7rem .4rem auto auto; color: #dcd7ff; opacity: .38; --visual-accent: #8d7bff; --visual-ink: #dcd7ff; }
+  .sequence h3 { position: relative; z-index: 1; color:#fff; }
   .sequence h3 { font-size: 1rem; }
-  .sequence p { grid-column:2; color:var(--muted-on-dark); }
+  .sequence p { position: relative; z-index: 1; grid-column:2; color:var(--muted-on-dark); }
   .boundary { display:grid; grid-template-columns:minmax(17rem,.52fr) minmax(0,1.48fr); gap:clamp(3rem,7vw,7rem); padding-block:clamp(6rem,10vw,9rem); }
-  .boundary header { display: grid; align-content: start; gap: var(--space-2); }
+  .boundary header { display: grid; min-width: 0; align-content: start; gap: var(--space-2); }
   .boundary-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; }
-  .boundary-grid > div { padding:1.5rem; border-radius:1.4rem; background:#fff; box-shadow:0 18px 55px rgba(37,23,91,.06); }
+  .boundary-grid > div { position:relative; min-height:18rem; overflow:hidden; isolation:isolate; padding:1.5rem; border-radius:1.4rem; background:#fff; box-shadow:0 18px 55px rgba(37,23,91,.06); }
   .boundary-grid > div + div { background:#e6e3ff; }
+  .boundary-grid > div :global(.card-visual) { position:absolute; z-index:0; width:62%; height:7.4rem; inset:auto .5rem .6rem auto; color:#302957; opacity:.4; --visual-accent:#7057ff; --visual-ink:#302957; }
+  .boundary-grid > div + div :global(.card-visual) { color:#31295d; opacity:.38; --visual-accent:#5941e5; --visual-ink:#31295d; }
+  .boundary-grid h3, .boundary-grid ul { position:relative; z-index:1; }
   .boundary h3 { font-size: 1rem; }
   .boundary ul { margin-block-start: var(--space-2); }
   .boundary li { margin-block-end: 0.75rem; color: var(--mut); }
