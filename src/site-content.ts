@@ -83,11 +83,6 @@ export const TRUST_NARRATIVE: Record<SiteLang, { title: string; text: string; it
 
 const routeImage =
   "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80";
-const warehouseImage =
-  "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1800&q=80";
-const railImage =
-  "https://images.unsplash.com/photo-1532105956626-9569c03602f6?auto=format&fit=crop&w=1800&q=80";
-
 type LocalPage = {
   metaTitle: string;
   metaDescription: string;
@@ -111,12 +106,14 @@ type LocalPage = {
 
 type PageSet = Record<SiteLang, LocalPage> & {
   image: string;
+  imageSize: { width: number; height: number };
   imageAlt: Record<SiteLang, string>;
 };
 
 export const SITE_PAGES: Record<PageKey, PageSet> = {
   home: {
     image: routeImage,
+    imageSize: { width: 1800, height: 1200 },
     imageAlt: {
       zh: "集装箱与跨境物流运营场景",
       en: "Container logistics operation",
@@ -280,8 +277,9 @@ export const SITE_PAGES: Record<PageKey, PageSet> = {
     },
   },
   services: {
-    image: warehouseImage,
-    imageAlt: { zh: "仓储和分拨作业", en: "Warehouse and distribution operation", ru: "Складская операция" },
+    image: "/images/corporate/hero-services-customs.webp",
+    imageSize: { width: 1122, height: 1402 },
+    imageAlt: { zh: "仓内验货与清关前置作业", en: "Warehouse inspection and customs-ready handling", ru: "Складская проверка и подготовка к таможне" },
     zh: {
       metaTitle: "清关与跨境物流服务 | HPF.kz",
       metaDescription: "HPF.kz 提供中国出口、哈萨克斯坦进口与转关协同，覆盖 HS 归类、文件预审、EAEU 证书、口岸查验，以及跨境 TIR、仓储分拨和本地交付。",
@@ -410,8 +408,9 @@ export const SITE_PAGES: Record<PageKey, PageSet> = {
     },
   },
   routes: {
-    image: railImage,
-    imageAlt: { zh: "铁路与干线物流路线", en: "Rail and linehaul logistics route", ru: "Железнодорожный маршрут" },
+    image: "/images/corporate/hero-routes-tir.webp",
+    imageSize: { width: 1122, height: 1402 },
+    imageAlt: { zh: "白色 HPF.kz TIR 公路运输车队穿越哈萨克草原", en: "White HPF.kz TIR road freight convoy across the Kazakh steppe", ru: "Белая автоколонна HPF.kz TIR в казахской степи" },
     zh: {
       metaTitle: "路线网络 | HPF.kz",
       metaDescription: "HPF.kz 设计中国、哈萨克斯坦、库雷克港、巴库、格鲁吉亚、土耳其和欧洲方向的多式联运路线。",
@@ -528,8 +527,9 @@ export const SITE_PAGES: Record<PageKey, PageSet> = {
     },
   },
   industries: {
-    image: warehouseImage,
-    imageAlt: { zh: "行业货物分拨场景", en: "Industry cargo distribution", ru: "Отраслевая дистрибуция" },
+    image: "/images/corporate/hero-industries-cargo.webp",
+    imageSize: { width: 897, height: 1752 },
+    imageAlt: { zh: "工业设备及货类化装载作业", en: "Industrial equipment and cargo-specific loading", ru: "Погрузка промышленного оборудования по типу груза" },
     zh: {
       metaTitle: "行业方案 | HPF.kz",
       metaDescription: "HPF.kz 面向工程机械、汽车零配件、跨境电商、矿产能源和快消零售提供行业物流方案。",
@@ -646,8 +646,9 @@ export const SITE_PAGES: Record<PageKey, PageSet> = {
     },
   },
   platform: {
-    image: routeImage,
-    imageAlt: { zh: "物流平台数据看板", en: "Logistics platform dashboard", ru: "Панель логистики" },
+    image: "/images/corporate/hero-platform-control.webp",
+    imageSize: { width: 972, height: 1619 },
+    imageAlt: { zh: "跨境物流运营控制台", en: "Cross-border logistics operations control room", ru: "Операционный центр трансграничной логистики" },
     zh: {
       metaTitle: "平台能力 | HPF.kz",
       metaDescription: "HPF.kz 平台能力覆盖路线报价、文件中台、节点追踪、库存状态、异常处理和运营复盘。",
@@ -764,8 +765,9 @@ export const SITE_PAGES: Record<PageKey, PageSet> = {
     },
   },
   about: {
-    image: routeImage,
-    imageAlt: { zh: "哈萨克斯坦物流枢纽", en: "Kazakhstan logistics hub", ru: "Логистический хаб Казахстана" },
+    image: "/images/corporate/hero-about-team.webp",
+    imageSize: { width: 1003, height: 1568 },
+    imageAlt: { zh: "阿拉木图团队讨论跨境路线", en: "Almaty team reviewing a cross-border route", ru: "Команда в Алматы обсуждает трансграничный маршрут" },
     zh: {
       metaTitle: "关于 HPF.kz",
       metaDescription: "HPF.kz 是位于哈萨克斯坦的跨境物流运营团队，专注中哈欧路线的确定性交付。",
@@ -882,8 +884,9 @@ export const SITE_PAGES: Record<PageKey, PageSet> = {
     },
   },
   contact: {
-    image: warehouseImage,
-    imageAlt: { zh: "物流需求沟通", en: "Logistics request discussion", ru: "Запрос логистики" },
+    image: "/images/corporate/hero-contact-request.webp",
+    imageSize: { width: 1024, height: 1536 },
+    imageAlt: { zh: "根据货运需求制作公路运输方案", en: "Preparing a road freight plan from a shipment request", ru: "Подготовка автотранспортного плана по заявке на груз" },
     zh: {
       metaTitle: "联系 | HPF.kz",
       metaDescription: "联系 HPF.kz 获取中哈欧跨境物流路线、清关、仓储、干线和平台方案。",

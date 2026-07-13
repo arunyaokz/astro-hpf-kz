@@ -7,13 +7,13 @@ interface Props { pageKey: PageKey; }
 const { pageKey } = Astro.props;
 const pageSet = SITE_PAGES[pageKey];
 const actionHref = pageKey === "contact" ? `mailto:${CONTACT_INFO.business}` : "/contact/";
-const image = pageKey === "services" || pageKey === "platform" ? "/images/corporate/warehouse-operations.jpg" : "/images/corporate/truck-mountains.jpg";
-const imageSize = image.includes("warehouse") ? { width: 1600, height: 1067 } : { width: 1800, height: 2700 };
+const image = pageSet.image;
+const imageSize = pageSet.imageSize;
 
 const ui: Record<SiteLang, { foundation: string; scope: string; process: string; customs: string; customsNote: string; imageNote: string; routeDirection: string; contact: string }> = {
-  zh: { foundation: "运营基础", scope: "能力范围", process: "工作次序", customs: "清关前置能力", customsNote: "不承诺“保证通关”；承诺把可预见问题前置，并让现场问题有明确责任人。", imageNote: "行业场景图，不代表 HPF.kz 自有资产", routeDirection: "货物流向：由右向左，中国 → 欧洲", contact: "提交货运需求" },
-  en: { foundation: "Operating foundation", scope: "Scope of capability", process: "Operating sequence", customs: "Customs-first capability", customsNote: "No promise of ‘guaranteed clearance’; foreseeable issues move upstream and border issues receive a named owner.", imageNote: "Industry image; not an HPF.kz-owned asset", routeDirection: "Cargo direction: right to left, China → Europe", contact: "Submit freight request" },
-  ru: { foundation: "Операционная основа", scope: "Объём возможностей", process: "Порядок работы", customs: "Таможня до отправки", customsNote: "Без обещаний «гарантированного оформления»: предсказуемые вопросы решаем заранее, пограничные закрепляем за ответственным.", imageNote: "Отраслевое фото; это не актив HPF.kz", routeDirection: "Направление груза: справа налево, Китай → Европа", contact: "Отправить запрос" },
+  zh: { foundation: "运营基础", scope: "能力范围", process: "工作次序", customs: "清关前置能力", customsNote: "不承诺“保证通关”；承诺把可预见问题前置，并让现场问题有明确责任人。", imageNote: "运营场景示意图", routeDirection: "货物流向：由右向左，中国 → 欧洲", contact: "提交货运需求" },
+  en: { foundation: "Operating foundation", scope: "Scope of capability", process: "Operating sequence", customs: "Customs-first capability", customsNote: "No promise of ‘guaranteed clearance’; foreseeable issues move upstream and border issues receive a named owner.", imageNote: "Operational scene visualization", routeDirection: "Cargo direction: right to left, China → Europe", contact: "Submit freight request" },
+  ru: { foundation: "Операционная основа", scope: "Объём возможностей", process: "Порядок работы", customs: "Таможня до отправки", customsNote: "Без обещаний «гарантированного оформления»: предсказуемые вопросы решаем заранее, пограничные закрепляем за ответственным.", imageNote: "Операционная сценическая визуализация", routeDirection: "Направление груза: справа налево, Китай → Европа", contact: "Отправить запрос" },
 };
 ---
 
@@ -129,6 +129,12 @@ const ui: Record<SiteLang, { foundation: string; scope: string; process: string;
   .subpage-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
   .subpage-hero figure { min-width: 0; min-height: 30rem; margin: 0; }
   .subpage-hero figure img { width: 100%; height: 100%; max-height: 42rem; object-fit: cover; }
+  .localized-page[data-page-key="services"] .subpage-hero figure img { object-position: 62% center; }
+  .localized-page[data-page-key="routes"] .subpage-hero figure img { object-position: 60% center; }
+  .localized-page[data-page-key="industries"] .subpage-hero figure img { object-position: 78% center; }
+  .localized-page[data-page-key="platform"] .subpage-hero figure img { object-position: 60% center; }
+  .localized-page[data-page-key="about"] .subpage-hero figure img { object-position: 56% center; }
+  .localized-page[data-page-key="contact"] .subpage-hero figure img { object-position: 54% center; }
   figure figcaption { padding-block-start: var(--space-xs); color: var(--color-muted); font-size: var(--text-xs); }
   .foundation { display: grid; grid-template-columns: minmax(18rem, .7fr) minmax(0, 1.3fr); gap: var(--space-3xl); padding-block: var(--space-4xl); }
   .foundation header { display: grid; align-content: start; gap: var(--space-lg); }
