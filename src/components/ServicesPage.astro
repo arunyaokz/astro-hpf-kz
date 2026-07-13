@@ -170,6 +170,25 @@ const principleVisuals = ["docs-first", "responsibility", "memory"];
   </section>
 </article>
 
+<script>
+  const alignServiceAnchor = () => {
+    const target = document.querySelector<HTMLElement>(window.location.hash);
+    const index = document.querySelector<HTMLElement>(".service-index");
+    if (!target?.classList.contains("service-detail") || !index) return;
+
+    const top = window.scrollY + target.getBoundingClientRect().top - index.getBoundingClientRect().height;
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, Math.max(0, top));
+    root.style.scrollBehavior = previousBehavior;
+  };
+
+  const alignAfterLayout = () => requestAnimationFrame(() => requestAnimationFrame(alignServiceAnchor));
+  document.fonts?.ready.then(alignAfterLayout);
+  window.addEventListener("hashchange", alignAfterLayout);
+</script>
+
 <style>
   .services-page { overflow: clip; background: var(--paper); }
   .service-hero { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(20rem,.9fr); gap: clamp(3rem,7vw,7rem); align-items: center; min-height: 43rem; padding-block: clamp(5rem,9vw,8rem); background: var(--ink); box-shadow: 0 0 0 100vmax var(--ink); clip-path: inset(0 -100vmax); }
