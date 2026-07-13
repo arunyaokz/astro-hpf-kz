@@ -91,13 +91,13 @@
 
 - id: business_phone
   kind: contact
-  value: "[pending confirmation]"
+  value: "+7 (708) 156 8876"
   labels:
     zh: 业务电话
     en: Business phone
     ru: Деловой телефон
-  source: contact disclosure required before launch
-  verified: false
+  source: provided by HPF KZ
+  verified: true
 
 - id: group_relationship
   kind: governance
