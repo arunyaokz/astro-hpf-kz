@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { PAGE_COPY, pagePath, type Lang } from "../site-v2";
-import RouteDiagram from "./RouteDiagram.astro";
+import RouteMap from "./RouteMap.astro";
 
 interface Props { lang: Lang; pageKey: "services" | "routes" | "about"; }
 const { lang, pageKey } = Astro.props;
@@ -48,7 +48,7 @@ const showEntityFact = (id: string) => {
 
   {pageKey === "routes" && (
     <section class="route-section">
-      <div class="shell"><RouteDiagram lang={lang} direction={lang === "zh" ? "货物流向：中国 → 欧洲，由右向左" : lang === "ru" ? "Поток груза: Китай → Европа, справа налево" : "Cargo flow: China → Europe, right to left"} /></div>
+      <div class="shell"><RouteMap lang={lang} direction={lang === "zh" ? "货物流向：中国 → 欧洲，由右向左" : lang === "ru" ? "Поток груза: Китай → Европа, справа налево" : "Cargo flow: China → Europe, right to left"} /></div>
     </section>
   )}
 

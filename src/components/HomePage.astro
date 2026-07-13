@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { HOME_V2 } from "../corporate-content";
 import { UI, pagePath, type Lang } from "../site-v2";
 import CardVisual from "./CardVisual.astro";
-import RouteDiagram from "./RouteDiagram.astro";
+import RouteMap from "./RouteMap.astro";
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
@@ -132,7 +132,7 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
         <p>{page.route.body}</p>
         <a href={pagePath(lang, "routes")}>{page.route.button}<span aria-hidden="true">↗</span></a>
       </header>
-      <div class="route-canvas"><RouteDiagram lang={lang} direction={ui.routeDirection} /></div>
+      <div class="route-canvas"><RouteMap lang={lang} direction={ui.routeDirection} /></div>
     </div>
   </section>
 

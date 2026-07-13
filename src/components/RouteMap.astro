@@ -1,0 +1,172 @@
+---
+import type { Lang } from "../site-v2";
+
+interface Props { lang: Lang; direction: string; }
+const { lang, direction } = Astro.props;
+const labels: Record<Lang, Array<{ place: string; role: string }>> = {
+  en: [
+    { place: "Europe", role: "Consignee / POD" },
+    { place: "South Caucasus", role: "Western handover" },
+    { place: "Caspian corridor", role: "Sea transfer" },
+    { place: "Almaty", role: "Operating hub" },
+    { place: "Kazakhstan border", role: "Entry / customs" },
+    { place: "China", role: "Factory / consolidation" },
+  ],
+  zh: [
+    { place: "欧洲", role: "收货预约 / POD" },
+    { place: "外高加索", role: "西岸交接" },
+    { place: "跨里海走廊", role: "海运换装" },
+    { place: "阿拉木图", role: "运营枢纽" },
+    { place: "哈萨克斯坦口岸", role: "入境 / 清关" },
+    { place: "中国", role: "工厂 / 集货" },
+  ],
+  ru: [
+    { place: "Европа", role: "Приёмка / POD" },
+    { place: "Южный Кавказ", role: "Передача на западе" },
+    { place: "Каспийский коридор", role: "Морская перегрузка" },
+    { place: "Алматы", role: "Операционный узел" },
+    { place: "Граница Казахстана", role: "Въезд / таможня" },
+    { place: "Китай", role: "Завод / консолидация" },
+  ],
+};
+/* Real corridor anchors: Vienna · Baku · mid-Caspian · Almaty · Khorgos · Urumqi.
+   pos = which side of the dot the label sits on, tuned to avoid collisions. */
+const anchors = [
+  { lng: 16.37, lat: 48.21, pos: "top" },
+  { lng: 49.87, lat: 40.42, pos: "bottom" },
+  { lng: 50.9, lat: 42.35, pos: "top" },
+  { lng: 76.9, lat: 43.24, pos: "bottom", hub: true },
+  { lng: 80.42, lat: 44.21, pos: "top" },
+  { lng: 87.62, lat: 43.83, pos: "bottom" },
+];
+const nodes = labels[lang].map((label, index) => ({ ...label, ...anchors[index] }));
+---
+
+<figure class="route-map">
+  <div class="route-direction"><span aria-hidden="true">←</span><span>{direction}</span></div>
+  <div class="map-canvas" data-route-map data-nodes={JSON.stringify(nodes)} role="img" aria-label={direction}></div>
+  <figcaption>© OpenStreetMap contributors · OpenFreeMap</figcaption>
+  <ol class="route-mobile">
+    {[...labels[lang]].reverse().map((item, index) => (
+      <li><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{item.place}</strong><p>{item.role}</p></div></li>
+    ))}
+  </ol>
+</figure>
+
+<script>
+  import "maplibre-gl/dist/maplibre-gl.css";
+
+  const LAND_ROUTE = [
+    [[87.62, 43.83], [80.42, 44.21], [76.9, 43.24]],
+    [[76.9, 43.24], [68.2, 45.4], [59.7, 45.0], [51.9, 43.42]],
+    [[49.87, 40.42], [44.79, 41.72], [41.67, 42.15]],
+    [[28.66, 44.17], [19.05, 47.5], [16.37, 48.21]],
+  ];
+  const SEA_ROUTE = [
+    [[51.9, 43.42], [51.0, 42.4], [49.87, 40.42]],
+    [[41.67, 42.15], [35.0, 43.2], [28.66, 44.17]],
+  ];
+
+  const initMap = async (container: HTMLElement) => {
+    const maplibregl = (await import("maplibre-gl")).default;
+    const map = new maplibregl.Map({
+      container,
+      interactive: false,
+      attributionControl: false,
+      bounds: [[10.5, 35.5], [93, 55.5]],
+      fitBoundsOptions: { padding: { top: 28, bottom: 28, left: 36, right: 36 } },
+      style: {
+        version: 8,
+        sources: { omt: { type: "vector", url: "https://tiles.openfreemap.org/planet" } },
+        layers: [
+          { id: "bg", type: "background", paint: { "background-color": "#0e0a28" } },
+          { id: "water", type: "fill", source: "omt", "source-layer": "water", paint: { "fill-color": "#070420" } },
+          { id: "borders", type: "line", source: "omt", "source-layer": "boundary",
+            filter: ["all", ["==", ["get", "admin_level"], 2], ["!=", ["get", "maritime"], 1]],
+            paint: { "line-color": "rgba(255,255,255,.14)", "line-width": 0.8 } },
+        ],
+      },
+    });
+
+    (container as HTMLElement & { __map?: unknown }).__map = map;
+    map.on("error", (event) => console.warn("RouteMap map error:", event.error?.message));
+    /* The renderer can stall pre-load when the map mounts mid-scroll; a resize kick unsticks it. */
+    requestAnimationFrame(() => map.resize());
+    map.on("load", () => {
+      map.resize();
+      map.addSource("corridor", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            { type: "Feature", properties: { kind: "land" }, geometry: { type: "MultiLineString", coordinates: LAND_ROUTE } },
+            { type: "Feature", properties: { kind: "sea" }, geometry: { type: "MultiLineString", coordinates: SEA_ROUTE } },
+          ],
+        },
+      });
+      map.addLayer({ id: "corridor-glow", type: "line", source: "corridor",
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#7658ff", "line-width": 7, "line-blur": 6, "line-opacity": 0.35 } });
+      map.addLayer({ id: "corridor-land", type: "line", source: "corridor",
+        filter: ["==", ["get", "kind"], "land"],
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#9c8cff", "line-width": 2.4 } });
+      map.addLayer({ id: "corridor-sea", type: "line", source: "corridor",
+        filter: ["==", ["get", "kind"], "sea"],
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#9c8cff", "line-width": 2.2, "line-dasharray": [0.2, 2.2] } });
+
+      const nodes = JSON.parse(container.dataset.nodes ?? "[]");
+      for (const node of nodes) {
+        const el = document.createElement("div");
+        el.className = `rm-node rm-node--${node.pos}${node.hub ? " rm-node--hub" : ""}`;
+        el.innerHTML = `<i></i><div class="rm-label"><strong>${node.place}</strong><small>${node.role}</small></div>`;
+        new maplibregl.Marker({ element: el, anchor: "center" }).setLngLat([node.lng, node.lat]).addTo(map);
+      }
+    });
+  };
+
+  const containers = document.querySelectorAll<HTMLElement>("[data-route-map]");
+  if (containers.length > 0 && window.matchMedia("(min-width: 48rem)").matches) {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+          initMap(entry.target as HTMLElement).catch((error) => console.warn("RouteMap init failed:", error));
+        }
+      }
+    }, { rootMargin: "320px" });
+    containers.forEach((el) => observer.observe(el));
+  }
+</script>
+
+<style>
+  .route-map { min-width: 0; padding: var(--space-2); border: 1px solid var(--line-inv); border-radius: var(--radius-surface); background: var(--navy-950); }
+  .route-direction { display: flex; align-items: center; gap: 0.75rem; color: var(--mut-inv); font-family: var(--font-num); font-size: 0.75rem; }
+  .route-direction span:first-child { color: var(--cobalt-300); font-size: 1.25rem; }
+  .map-canvas { height: clamp(19rem, 26vw, 24rem); margin-block-start: 0.75rem; overflow: hidden; border-radius: calc(var(--radius-surface) - 0.5rem); background: #0e0a28; }
+  figcaption { margin-block-start: 0.6rem; color: rgba(255,255,255,.28); font-size: 0.625rem; text-align: end; }
+  .route-mobile { display: none; }
+  @media (max-width: 48rem) {
+    .map-canvas, figcaption { display: none; }
+    .route-mobile { display: grid; margin: var(--space-2) 0 0; padding: 0; border-top: 1px solid var(--line-inv); list-style: none; }
+    .route-mobile li { display: grid; grid-template-columns: 2rem 1fr; gap: var(--space-2); padding-block: 0.75rem; border-bottom: 1px solid var(--line-inv); }
+    .route-mobile span { color: var(--cobalt-300); font-family: var(--font-num); font-size: 0.6875rem; }
+    .route-mobile strong { color: var(--tx-inv); }
+    .route-mobile p { color: var(--mut-inv); font-size: 0.8125rem; }
+  }
+</style>
+
+<style is:global>
+  .rm-node { position: relative; width: 0; height: 0; }
+  .rm-node i { position: absolute; inset: -5px auto auto -5px; width: 10px; height: 10px; border: 2px solid #fff; border-radius: 50%; background: #0b071f; }
+  .rm-node--hub i { inset: -7px auto auto -7px; width: 14px; height: 14px; border-color: #9c8cff; background: #9c8cff; box-shadow: 0 0 18px rgba(156,140,255,.75); }
+  .rm-node--hub::after { position: absolute; inset: -14px auto auto -14px; width: 28px; height: 28px; border: 1px solid rgba(156,140,255,.5); border-radius: 50%; content: ""; animation: rm-pulse 2.6s ease-out infinite; }
+  .rm-label { position: absolute; left: 50%; display: grid; justify-items: center; width: max-content; max-width: 11rem; transform: translateX(-50%); text-align: center; pointer-events: none; }
+  .rm-node--top .rm-label { bottom: 12px; }
+  .rm-node--bottom .rm-label { top: 12px; }
+  .rm-label strong { color: rgba(248,247,255,.96); font-size: 0.8125rem; font-weight: 600; line-height: 1.25; text-shadow: 0 1px 8px rgba(5,2,20,.9); }
+  .rm-label small { color: rgba(224,220,244,.62); font-size: 0.625rem; line-height: 1.3; text-shadow: 0 1px 8px rgba(5,2,20,.9); }
+  @keyframes rm-pulse { from { opacity: 1; transform: scale(.5); } to { opacity: 0; transform: scale(1.35); } }
+  @media (prefers-reduced-motion: reduce) { .rm-node--hub::after { animation: none; opacity: 0; } }
+</style>
