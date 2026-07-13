@@ -1,0 +1,268 @@
+---
+import { ROUTE_NETWORK_COPY } from "../routes-content";
+import { pagePath, type Lang } from "../site-v2";
+import CorridorNetworkMap from "./CorridorNetworkMap.astro";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const page = ROUTE_NETWORK_COPY[lang];
+const labels = {
+  zh: { scene: "中亚跨境公路运输场景", route: "候选节点", output: "交付物", triggers: "触发复核的四种情况", checklist: "路线询价清单" },
+  en: { scene: "Central Asian cross-border road operation", route: "Candidate nodes", output: "Outputs", triggers: "Four triggers for review", checklist: "Route-request checklist" },
+  ru: { scene: "Трансграничная автоперевозка в Центральной Азии", route: "Кандидатные узлы", output: "Результат", triggers: "Четыре повода для пересмотра", checklist: "Данные для запроса маршрута" },
+}[lang];
+---
+
+<article class="routes-page">
+  <section class="route-hero shell">
+    <div class="route-hero__copy">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1 class="display">{page.title}</h1>
+      <p class="lead">{page.lead}</p>
+      <div class="hero-actions">
+        <a class="button button--primary" href={pagePath(lang, "contact")}>{page.primary}</a>
+        <a class="text-link" href="#network-atlas">{page.secondary}<span aria-hidden="true">↓</span></a>
+      </div>
+      <dl class="hero-notes">
+        {page.heroNotes.map((item) => <div><dt>{item.value}</dt><dd>{item.label}</dd></div>)}
+      </dl>
+    </div>
+    <figure class="hero-image">
+      <img src="/images/corporate/hero-routes-tir.webp" alt={labels.scene} width="1122" height="1402" fetchpriority="high" />
+      <figcaption>HPF.kz / Eurasian route planning</figcaption>
+    </figure>
+  </section>
+
+  <section class="atlas" id="network-atlas">
+    <div class="shell atlas-inner">
+      <header class="atlas-header">
+        <p class="eyebrow">{page.atlasEyebrow}</p>
+        <h2 class="section-title">{page.atlasTitle}</h2>
+        <p>{page.atlasLead}</p>
+      </header>
+      <CorridorNetworkMap lang={lang} note={page.atlasNote} corridors={page.corridors} />
+    </div>
+  </section>
+
+  <section class="corridor-section shell">
+    <header class="section-intro">
+      <p class="eyebrow">{page.detailEyebrow}</p>
+      <h2 class="section-title">{page.detailTitle}</h2>
+      <p>{page.detailLead}</p>
+    </header>
+
+    <div class="corridor-list">
+      {page.corridors.map((corridor) => (
+        <article class={`corridor-card corridor-card--${corridor.id}`} id={`corridor-${corridor.id}`}>
+          <div class="corridor-heading">
+            <span class="corridor-index">{corridor.index}</span>
+            <p class="corridor-label">{corridor.label}</p>
+            <h3>{corridor.name}</h3>
+            <strong>{corridor.strap}</strong>
+            <p>{corridor.summary}</p>
+          </div>
+          <div class="route-chain">
+            <p>{labels.route}</p>
+            <ol>{corridor.route.map((node, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><strong>{node}</strong></li>)}</ol>
+          </div>
+          <dl class="corridor-decisions">
+            <div><dt>{corridor.bestForLabel}</dt><dd>{corridor.bestFor}</dd></div>
+            <div><dt>{corridor.modeLabel}</dt><dd>{corridor.mode}</dd></div>
+            <div class="watch"><dt>{corridor.watchLabel}</dt><dd><ul>{corridor.watch.map((item) => <li>{item}</li>)}</ul></dd></div>
+            <div class="switch"><dt>{corridor.switchLabel}</dt><dd>{corridor.switchWhen}</dd></div>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="service-grain">
+    <div class="shell service-inner">
+      <header class="section-intro section-intro--dark">
+        <p class="eyebrow">{page.serviceEyebrow}</p>
+        <h2 class="section-title">{page.serviceTitle}</h2>
+        <p>{page.serviceLead}</p>
+      </header>
+      <ol class="service-steps">
+        {page.serviceSteps.map((item) => (
+          <li>
+            <div class="step-meta"><span>{item.step}</span><strong>{item.phase}</strong></div>
+            <div class="step-copy"><h3>{item.title}</h3><p>{item.text}</p></div>
+            <div class="step-outputs"><p>{labels.output}</p><ul>{item.outputs.map((output) => <li>{output}</li>)}</ul></div>
+          </li>
+        ))}
+      </ol>
+
+      <aside class="update-card">
+        <div><p class="eyebrow">Human response / exception update</p><h3>{page.updateTitle}</h3><p>{page.updateText}</p></div>
+        <ol>{page.updateItems.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="switch-section shell">
+    <header>
+      <p class="eyebrow">{page.switchEyebrow}</p>
+      <h2 class="section-title">{page.switchTitle}</h2>
+      <p>{page.switchText}</p>
+    </header>
+    <div class="trigger-panel">
+      <p>{labels.triggers}</p>
+      <ol>{page.switchTriggers.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></li>)}</ol>
+    </div>
+  </section>
+
+  <section class="request-section">
+    <div class="shell request-grid">
+      <header>
+        <p class="eyebrow">{page.requestEyebrow}</p>
+        <h2 class="section-title">{page.requestTitle}</h2>
+        <p>{page.requestText}</p>
+      </header>
+      <div class="request-list">
+        <p>{labels.checklist}</p>
+        <ol>{page.requestItems.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="route-cta">
+    <div class="shell route-cta__inner">
+      <div><p class="eyebrow">HPF.kz / route desk</p><h2>{page.promiseTitle}</h2><p>{page.promiseText}</p></div>
+      <a class="button button--inverse" href={pagePath(lang, "contact")}>{page.ctaButton}</a>
+    </div>
+  </section>
+</article>
+
+<style>
+  .routes-page { overflow: hidden; background: var(--paper); }
+  .route-hero { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(20rem,.92fr); gap: clamp(3rem,7vw,7rem); align-items: center; min-height: 44rem; padding-block: clamp(5rem,9vw,8rem); background: var(--ink); box-shadow: 0 0 0 100vmax var(--ink); clip-path: inset(0 -100vmax); }
+  .route-hero__copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .route-hero .eyebrow,.atlas .eyebrow,.service-grain .eyebrow,.route-cta .eyebrow { color: var(--electric); }
+  .route-hero .display { max-width: 12ch; color: #fff; }
+  .route-hero .lead { color: var(--muted-on-dark); }
+  .route-hero .text-link { color: var(--electric); }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-block-start: .75rem; }
+  .hero-notes { display: grid; width: 100%; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .7rem; margin: 1rem 0 0; }
+  .hero-notes div { padding-block-start: .85rem; border-top: 1px solid rgba(255,255,255,.12); }
+  .hero-notes dt { color: #fff; font-family: var(--font-num); font-size: .92rem; font-weight: 650; }
+  .hero-notes dd { margin: .2rem 0 0; color: var(--muted-on-dark); font-size: .74rem; }
+  .hero-image { position: relative; min-height: 34rem; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; background: var(--ink-2); box-shadow: 0 28px 90px rgba(0,0,0,.3); }
+  .hero-image::after { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(11,7,31,.04),rgba(11,7,31,.68)); content: ""; }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: 60% center; filter: saturate(.72) contrast(1.05); }
+  .hero-image figcaption { position: absolute; z-index: 1; inset: auto 1rem 1rem; color: rgba(255,255,255,.7); font-family: var(--font-num); font-size: .65rem; }
+
+  .atlas { background: var(--ink-2); color: var(--text-on-dark); }
+  .atlas-inner { padding-block: clamp(5rem,9vw,8rem); }
+  .atlas-header { display: grid; grid-template-columns: minmax(0,.9fr) minmax(18rem,.55fr); gap: 1rem clamp(3rem,8vw,8rem); align-items: end; margin-block-end: clamp(2.5rem,5vw,4.5rem); }
+  .atlas-header .eyebrow { grid-column: 1 / -1; }
+  .atlas-header h2 { max-width: 13ch; color: #fff; }
+  .atlas-header > p:last-child { color: var(--muted-on-dark); }
+
+  .corridor-section { padding-block: clamp(6rem,10vw,10rem); }
+  .section-intro { display: grid; grid-template-columns: minmax(0,.95fr) minmax(19rem,.55fr); gap: 1rem clamp(3rem,8vw,8rem); align-items: end; margin-block-end: clamp(3rem,6vw,6rem); }
+  .section-intro .eyebrow { grid-column: 1 / -1; }
+  .section-intro h2 { max-width: 14ch; }
+  .section-intro > p:last-child { color: var(--muted); }
+  .corridor-list { display: grid; gap: 1.2rem; }
+  .corridor-card { display: grid; grid-template-columns: minmax(17rem,.7fr) minmax(20rem,1.05fr) minmax(22rem,1.25fr); min-height: 34rem; overflow: hidden; scroll-margin-top: calc(var(--header-height) + 1rem); border: 1px solid var(--line); border-radius: 1.8rem; background: #fff; box-shadow: 0 18px 65px rgba(37,23,91,.055); }
+  .corridor-heading,.route-chain,.corridor-decisions { padding: clamp(1.5rem,3vw,2.4rem); }
+  .corridor-heading { display: flex; flex-direction: column; align-items: flex-start; border-inline-end: 1px solid var(--line); background: #f1efff; }
+  .corridor-card--north .corridor-heading { background: #ebeaf2; }
+  .corridor-card--south .corridor-heading { background: #f3ece5; }
+  .corridor-index { color: var(--violet); font-family: var(--font-num); font-size: 2rem; }
+  .corridor-label { margin-block-start: auto; color: var(--violet); font-family: var(--font-num); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; }
+  .corridor-heading h3 { max-width: 13ch; margin-block-start: .45rem; font-size: clamp(1.8rem,3vw,2.8rem); }
+  .corridor-heading strong { margin-block-start: 1.2rem; color: var(--text); font-size: .9rem; line-height: 1.55; }
+  .corridor-heading > p:last-child { margin-block-start: .8rem; color: var(--muted); font-size: .88rem; }
+  .route-chain { display: flex; flex-direction: column; border-inline-end: 1px solid var(--line); background: var(--ink); color: #fff; }
+  .route-chain > p,.trigger-panel > p,.request-list > p,.step-outputs > p { color: var(--electric); font-family: var(--font-num); font-size: .7rem; letter-spacing: .07em; text-transform: uppercase; }
+  .route-chain ol { display: grid; gap: 0; margin: auto 0; padding: 0; list-style: none; }
+  .route-chain li { position: relative; display: grid; grid-template-columns: 2.2rem 1fr; gap: .8rem; align-items: center; min-height: 3.8rem; }
+  .route-chain li:not(:last-child)::after { position: absolute; width: 1px; height: 1.25rem; inset: calc(50% + .7rem) auto auto .7rem; background: rgba(156,140,255,.4); content: ""; }
+  .route-chain li span { display: grid; width: 1.45rem; height: 1.45rem; place-items: center; border: 1px solid rgba(156,140,255,.55); border-radius: 50%; color: var(--electric); font-family: var(--font-num); font-size: .55rem; }
+  .route-chain li strong { color: rgba(248,247,255,.9); font-size: .78rem; font-weight: 600; letter-spacing: -.01em; }
+  .corridor-decisions { display: grid; align-content: start; gap: 0; margin: 0; }
+  .corridor-decisions > div { padding-block: 1.2rem; border-bottom: 1px solid var(--line); }
+  .corridor-decisions > div:last-child { border-bottom: 0; }
+  .corridor-decisions dt { color: var(--violet); font-family: var(--font-num); font-size: .67rem; letter-spacing: .05em; text-transform: uppercase; }
+  .corridor-decisions dd { margin: .55rem 0 0; color: var(--muted); font-size: .84rem; }
+  .corridor-decisions ul { margin: 0; padding-inline-start: 1.05rem; }
+  .corridor-decisions li + li { margin-block-start: .35rem; }
+  .corridor-decisions .switch { padding: 1.1rem; border: 1px solid rgba(91,62,228,.18); border-radius: 1rem; background: #f6f4ff; }
+
+  .service-grain { background: var(--ink); color: var(--text-on-dark); }
+  .service-inner { padding-block: clamp(6rem,10vw,10rem); }
+  .section-intro--dark h2 { color: #fff; }
+  .section-intro--dark > p:last-child { color: var(--muted-on-dark); }
+  .service-steps { display: grid; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.12); list-style: none; }
+  .service-steps > li { display: grid; grid-template-columns: minmax(8rem,.35fr) minmax(18rem,1fr) minmax(15rem,.7fr); gap: clamp(1.5rem,4vw,4rem); padding-block: clamp(2rem,4vw,3.25rem); border-bottom: 1px solid rgba(255,255,255,.12); }
+  .step-meta { display: flex; flex-direction: column; gap: .8rem; }
+  .step-meta span { color: var(--electric); font-family: var(--font-num); font-size: 1.6rem; }
+  .step-meta strong { color: rgba(248,247,255,.75); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+  .step-copy h3 { color: #fff; font-size: clamp(1.45rem,2.4vw,2.15rem); }
+  .step-copy p { max-width: 58ch; margin-block-start: .9rem; color: var(--muted-on-dark); font-size: .9rem; }
+  .step-outputs ul { margin: .8rem 0 0; padding-inline-start: 1.05rem; color: rgba(248,247,255,.78); font-size: .8rem; }
+  .step-outputs li + li { margin-block-start: .35rem; }
+  .update-card { display: grid; grid-template-columns: minmax(0,.9fr) minmax(20rem,1.1fr); gap: clamp(2rem,7vw,7rem); margin-block-start: clamp(3rem,7vw,6rem); padding: clamp(1.8rem,4vw,3.2rem); border: 1px solid rgba(156,140,255,.24); border-radius: 1.7rem; background: linear-gradient(135deg,rgba(118,88,255,.17),rgba(255,255,255,.035)); }
+  .update-card h3 { max-width: 15ch; margin-block-start: 1.2rem; color: #fff; font-size: clamp(2rem,4vw,3.6rem); }
+  .update-card > div > p:last-child { margin-block-start: 1rem; color: var(--muted-on-dark); }
+  .update-card ol { display: grid; margin: 0; padding: 0; list-style: none; }
+  .update-card li { display: grid; grid-template-columns: 2.2rem 1fr; gap: 1rem; align-items: center; padding-block: .85rem; border-bottom: 1px solid rgba(255,255,255,.1); color: rgba(248,247,255,.86); font-size: .86rem; }
+  .update-card li span { color: var(--electric); font-family: var(--font-num); font-size: .68rem; }
+
+  .switch-section { display: grid; grid-template-columns: minmax(20rem,.8fr) minmax(24rem,1.2fr); gap: clamp(3rem,8vw,8rem); padding-block: clamp(6rem,10vw,10rem); }
+  .switch-section header { display: flex; flex-direction: column; align-items: flex-start; gap: 1.3rem; }
+  .switch-section h2 { max-width: 12ch; }
+  .switch-section header > p:last-child { max-width: 55ch; color: var(--muted); }
+  .trigger-panel { padding: clamp(1.5rem,3vw,2.4rem); border-radius: 1.7rem; background: #fff; box-shadow: var(--shadow); }
+  .trigger-panel ol { display: grid; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+  .trigger-panel li { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; padding-block: 1.15rem; border-bottom: 1px solid var(--line); }
+  .trigger-panel li:last-child { border-bottom: 0; }
+  .trigger-panel li > span { color: var(--violet); font-family: var(--font-num); font-size: .7rem; }
+  .trigger-panel h3 { font-size: 1rem; }
+  .trigger-panel li p { margin-block-start: .35rem; color: var(--muted); font-size: .82rem; }
+
+  .request-section { background: #eeecf8; }
+  .request-grid { display: grid; grid-template-columns: minmax(20rem,.85fr) minmax(24rem,1.15fr); gap: clamp(3rem,8vw,8rem); padding-block: clamp(6rem,10vw,9rem); }
+  .request-grid header { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .request-grid h2 { max-width: 13ch; }
+  .request-grid header > p:last-child { max-width: 55ch; color: var(--muted); }
+  .request-list { padding: clamp(1.5rem,3vw,2.4rem); border: 1px solid var(--line); border-radius: 1.7rem; background: rgba(255,255,255,.72); }
+  .request-list ol { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .request-list li { display: grid; grid-template-columns: 2rem 1fr; gap: .6rem; padding-block: .9rem; border-bottom: 1px solid var(--line); color: var(--text); font-size: .82rem; }
+  .request-list li span { color: var(--violet); font-family: var(--font-num); font-size: .66rem; }
+
+  .route-cta { position: relative; overflow: hidden; background: var(--ink-2); color: var(--text-on-dark); }
+  .route-cta::after { position: absolute; width: 55rem; height: 30rem; inset: auto auto -22rem 55%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle,rgba(118,88,255,.55),transparent 70%); content: ""; }
+  .route-cta__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 3rem; align-items: end; padding-block: clamp(6rem,10vw,9rem); }
+  .route-cta h2 { max-width: 16ch; margin-block-start: 1.2rem; color: #fff; font-size: clamp(2.8rem,5vw,5.3rem); letter-spacing: -.055em; }
+  .route-cta p:last-child { max-width: 58ch; margin-block-start: 1.2rem; color: var(--muted-on-dark); }
+
+  @media (max-width: 72rem) {
+    .corridor-card { grid-template-columns: minmax(16rem,.8fr) minmax(18rem,1.2fr); }
+    .corridor-decisions { grid-column: 1 / -1; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 2rem; }
+    .corridor-decisions .switch { margin-block: .7rem; }
+  }
+  @media (max-width: 60rem) {
+    .route-hero { grid-template-columns: minmax(0,1.1fr) minmax(18rem,.9fr); }
+    .atlas-header,.section-intro,.switch-section,.request-grid { grid-template-columns: 1fr; }
+    .service-steps > li { grid-template-columns: 7rem 1fr; }
+    .step-outputs { grid-column: 2; }
+    .update-card { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 45rem) {
+    .route-hero { grid-template-columns: 1fr; min-height: auto; padding-block: 4.5rem; }
+    .hero-image { min-height: 24rem; }
+    .hero-notes { grid-template-columns: 1fr; }
+    .corridor-card { grid-template-columns: 1fr; }
+    .corridor-heading { min-height: 25rem; border-inline-end: 0; border-bottom: 1px solid var(--line); }
+    .route-chain { border-inline-end: 0; }
+    .corridor-decisions { grid-column: auto; grid-template-columns: 1fr; }
+    .service-steps > li { grid-template-columns: 1fr; }
+    .step-meta { flex-direction: row; align-items: center; }
+    .step-outputs { grid-column: auto; }
+    .request-list ol { grid-template-columns: 1fr; }
+    .route-cta__inner { grid-template-columns: 1fr; align-items: start; }
+  }
+</style>
