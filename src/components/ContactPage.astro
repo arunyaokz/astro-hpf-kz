@@ -13,12 +13,15 @@ const page = CONTACT_COPY[lang];
       <h1 class="display">{page.title}</h1>
       <p class="lead">{page.lead}</p>
     </div>
-    <aside>
-      <p class="eyebrow">Data boundary</p>
-      <h2>{page.asideTitle}</h2>
-      <p>{page.asideText}</p>
-      <dl><div><dt>{page.emailLabel}</dt><dd><a href="mailto:bd@hpf.kz">bd@hpf.kz</a></dd></div></dl>
-      <small>{page.responseNote}</small>
+    <aside class="contact-hero__visual">
+      <img src="/images/corporate/hero-contact-request.webp" alt={lang === "zh" ? "根据货运需求制作公路运输方案" : lang === "ru" ? "Подготовка автотранспортного плана по заявке на груз" : "Preparing a road freight plan from a shipment request"} width="1024" height="1536" fetchpriority="high" />
+      <div class="contact-hero__details">
+        <p class="eyebrow">Data boundary</p>
+        <h2>{page.asideTitle}</h2>
+        <p>{page.asideText}</p>
+        <dl><div><dt>{page.emailLabel}</dt><dd><a href="mailto:bd@hpf.kz">bd@hpf.kz</a></dd></div></dl>
+        <small>{page.responseNote}</small>
+      </div>
     </aside>
   </section>
 
@@ -68,13 +71,16 @@ const page = CONTACT_COPY[lang];
   .contact-hero .display { max-width: 11ch; }
   .contact-hero .display { color:#fff; }
   .contact-hero .lead { color:var(--muted-on-dark); }
-  .contact-hero aside { display:grid; gap:1.25rem; padding:1.6rem; border:1px solid rgba(255,255,255,.1); border-radius:1.6rem; background:rgba(255,255,255,.055); backdrop-filter:blur(16px); }
-  .contact-hero aside h2 { color:#fff; font-size:1.35rem; }
-  .contact-hero aside p,.contact-hero aside small { color:var(--muted-on-dark); }
-  .contact-hero dl { margin: 0; }
-  .contact-hero dl div { display:flex; justify-content:space-between; gap:var(--space-2); padding-block:.9rem; border-block:1px solid rgba(255,255,255,.1); }
-  .contact-hero dt { color:rgba(255,255,255,.42); }
-  .contact-hero dd { margin:0; color:var(--electric); }
+  .contact-hero__visual { position:relative; display:grid; min-height:32rem; overflow:hidden; isolation:isolate; border:1px solid rgba(255,255,255,.1); border-radius:1.6rem; background:var(--ink-2); box-shadow:0 28px 90px rgba(0,0,0,.28); }
+  .contact-hero__visual::after { position:absolute; z-index:-1; inset:0; background:linear-gradient(180deg,rgba(15,8,48,.02) 24%,rgba(15,8,48,.9)); content:""; }
+  .contact-hero__visual > img { position:absolute; z-index:-2; width:100%; height:100%; object-fit:cover; object-position:54% center; filter:saturate(.72) contrast(1.04); }
+  .contact-hero__details { align-self:end; display:grid; gap:1.25rem; padding:1.6rem; }
+  .contact-hero__details h2 { color:#fff; font-size:1.35rem; }
+  .contact-hero__details p,.contact-hero__details small { color:var(--muted-on-dark); }
+  .contact-hero__details dl { margin:0; }
+  .contact-hero__details dl div { display:flex; justify-content:space-between; gap:var(--space-2); padding-block:.9rem; border-block:1px solid rgba(255,255,255,.1); }
+  .contact-hero__details dt { color:rgba(255,255,255,.42); }
+  .contact-hero__details dd { margin:0; color:var(--electric); }
   .form-section { padding-block:clamp(5rem,9vw,8rem); }
   form { max-width:64rem; margin-inline:auto; padding:clamp(1.25rem,4vw,3rem); border:1px solid var(--line); border-radius:2rem; background:#fff; box-shadow:0 28px 80px rgba(37,23,91,.08); }
   .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-2); }

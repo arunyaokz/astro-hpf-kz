@@ -6,13 +6,15 @@ import RouteMap from "./RouteMap.astro";
 interface Props { lang: Lang; pageKey: "services" | "routes" | "about"; }
 const { lang, pageKey } = Astro.props;
 const page = PAGE_COPY[pageKey][lang];
-const image = pageKey === "services" ? "/images/corporate/warehouse-operations.jpg" : "/images/corporate/truck-mountains.jpg";
-const imageSize = pageKey === "services" ? { width: 1600, height: 1067 } : { width: 1800, height: 2700 };
-const imageAlt = lang === "zh" ? "跨境物流行业场景" : lang === "ru" ? "Отраслевой логистический сюжет" : "Cross-border logistics industry scene";
+const heroImage = {
+  services: { src: "/images/corporate/hero-services-customs.webp", size: { width: 1122, height: 1402 }, alt: { zh: "仓内验货与清关前置作业", en: "Warehouse inspection and customs-ready handling", ru: "Складская проверка и подготовка к таможне" } },
+  routes: { src: "/images/corporate/hero-routes-tir.webp", size: { width: 1122, height: 1402 }, alt: { zh: "白色 HPF.kz TIR 公路运输车队穿越哈萨克草原", en: "White HPF.kz TIR road freight convoy across the Kazakh steppe", ru: "Белая автоколонна HPF.kz TIR в казахской степи" } },
+  about: { src: "/images/corporate/hero-about-team.webp", size: { width: 1003, height: 1568 }, alt: { zh: "阿拉木图团队讨论跨境路线", en: "Almaty team reviewing a cross-border route", ru: "Команда в Алматы обсуждает трансграничный маршрут" } },
+}[pageKey];
 const labels = {
-  en: { do: "We commit to", dont: "We do not claim", image: "Industry image; not an HPF.kz-owned asset" },
-  zh: { do: "我们承诺的", dont: "我们不承诺的", image: "行业场景图，不代表 HPF.kz 自有资产" },
-  ru: { do: "Что мы обязуемся делать", dont: "Чего мы не заявляем", image: "Отраслевое фото; это не актив HPF.kz" },
+  en: { do: "We commit to", dont: "We do not claim", image: "Operational scene visualization" },
+  zh: { do: "我们承诺的", dont: "我们不承诺的", image: "运营场景示意图" },
+  ru: { do: "Что мы обязуемся делать", dont: "Чего мы не заявляем", image: "Операционная сценическая визуализация" },
 }[lang];
 const facts = pageKey === "about" ? await getCollection("facts") : [];
 const factMap = new Map(facts.map((fact) => [fact.id, fact.data]));
@@ -41,7 +43,7 @@ const showEntityFact = (id: string) => {
       </div>
     </div>
     <figure>
-      <img src={image} alt={imageAlt} width={imageSize.width} height={imageSize.height} fetchpriority="high" />
+      <img src={heroImage.src} alt={heroImage.alt[lang]} width={heroImage.size.width} height={heroImage.size.height} fetchpriority="high" />
       <figcaption>{labels.image}</figcaption>
     </figure>
   </section>
@@ -118,6 +120,9 @@ const showEntityFact = (id: string) => {
   .page-hero .text-link { color: var(--electric); }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-block-start: var(--space-2); }
   .page-hero figure { position: relative; min-height: 32rem; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; background: var(--ink-2); box-shadow: 0 28px 90px rgba(0,0,0,.28); }
+  .content-page:has(.route-section) .page-hero img { object-position: 60% center; }
+  .content-page:has(.entity) .page-hero img { object-position: 56% center; }
+  .content-page:not(:has(.route-section, .entity)) .page-hero img { object-position: 62% center; }
   .page-hero figure::after { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(15,8,48,.05),rgba(15,8,48,.62)); content: ""; }
   .page-hero img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.72) contrast(1.04); }
   .page-hero figcaption { position: absolute; z-index: 1; inset-inline: 0.75rem; inset-block-end: 0.75rem; color: rgba(255,255,255,.8); font-size: 0.6875rem; }
