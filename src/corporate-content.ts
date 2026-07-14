@@ -28,7 +28,7 @@ type HomeContent = {
 
 export const HOME_V2: Record<SiteLang, HomeContent> = {
   zh: {
-    eyebrow: "中国｜哈萨克斯坦｜欧洲",
+    eyebrow: "中国 · 哈萨克斯坦 · 欧洲",
     title: "路越远，越要心中有数。",
     lead: "从中国到哈萨克斯坦，再向欧洲延伸。HPF.kz 把路线、运力、清关、仓储与末端交付统筹在一条责任链上——每一程有安排，每一处有回音。",
     primary: "获取运输方案",
@@ -76,11 +76,11 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
       button: "查看清关与合规能力",
       stages: [
         { phase: "准备", title: "文件预审", text: "合同、发票、箱单、证书与原产地资料齐套核验。" },
-        { phase: "核对", title: "要素核对", text: "品名、材质、用途与申报要素逐项确认。" },
-        { phase: "归类", title: "归类比对", text: "HS 编码与 EAEU 进口要求交叉核对。" },
-        { phase: "申报", title: "出口与进口申报", text: "在已确认的业务范围内衔接中国出口与哈萨克斯坦进口资料。" },
+        { phase: "核对", title: "申报要素", text: "品名、材质、用途与申报要素逐项确认。" },
+        { phase: "归类", title: "HS 归类", text: "HS 编码与 EAEU 进口要求交叉核对。" },
+        { phase: "申报", title: "进出口申报", text: "在已确认的业务范围内衔接中国出口与哈萨克斯坦进口资料。" },
         { phase: "现场", title: "查验应对", text: "补件、改单或口岸查验时，说明责任人、响应时限与下一步。" },
-        { phase: "结果", title: "放行与复盘", text: "异常记录归档，为下一票留下依据。" },
+        { phase: "结果", title: "放行复盘", text: "异常记录归档，为下一票留下依据。" },
       ],
     },
     services: {
@@ -117,7 +117,7 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
     },
   },
   en: {
-    eyebrow: "CHINA | KAZAKHSTAN | EUROPE",
+    eyebrow: "CHINA · KAZAKHSTAN · EUROPE",
     title: "The farther the road, the clearer the plan.",
     lead: "From China into Kazakhstan and onward to Europe, HPF.kz brings routing, capacity, customs, warehousing and final delivery into one accountable operating chain—every leg arranged, every change answered.",
     primary: "Request a transport plan",
@@ -164,12 +164,12 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
       boundary: "We do not promise guaranteed clearance. Clearance is an administrative result; we manage preparation, risk and the next action when an exception occurs.",
       button: "View customs capability",
       stages: [
-        { phase: "Prepare", title: "Document review", text: "Check contract, invoice, packing list, certificates and origin documents for completeness." },
-        { phase: "Verify", title: "Declaration data", text: "Confirm description, material, use and declaration elements." },
-        { phase: "Classify", title: "Classification check", text: "Cross-check the HS code against EAEU import requirements." },
-        { phase: "Declare", title: "Export and import filing", text: "Coordinate China export and Kazakhstan import files within the confirmed operating scope." },
-        { phase: "Respond", title: "Inspection response", text: "For additions, amendments or inspection, state the owner, response window and next action." },
-        { phase: "Record", title: "Release and review", text: "Archive exceptions and supporting evidence for the next shipment." },
+        { phase: "Prepare", title: "Documents", text: "Check contract, invoice, packing list, certificates and origin documents for completeness." },
+        { phase: "Verify", title: "Declaration", text: "Confirm description, material, use and declaration elements." },
+        { phase: "Classify", title: "HS code", text: "Cross-check the HS code against EAEU import requirements." },
+        { phase: "Declare", title: "Customs filing", text: "Coordinate China export and Kazakhstan import files within the confirmed operating scope." },
+        { phase: "Respond", title: "Inspection", text: "For additions, amendments or inspection, state the owner, response window and next action." },
+        { phase: "Record", title: "Release", text: "Archive exceptions and supporting evidence for the next shipment." },
       ],
     },
     services: {
@@ -206,7 +206,7 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
     },
   },
   ru: {
-    eyebrow: "КИТАЙ | КАЗАХСТАН | ЕВРОПА",
+    eyebrow: "КИТАЙ · КАЗАХСТАН · ЕВРОПА",
     title: "Чем дальше путь, тем яснее должен быть план.",
     lead: "Из Китая в Казахстан и далее в Европу. HPF.kz объединяет маршрут, транспорт, таможню, склад и доставку в одну цепочку ответственности — каждый этап организован, на каждое изменение есть ответ.",
     primary: "Запросить план перевозки",
@@ -253,12 +253,12 @@ export const HOME_V2: Record<SiteLang, HomeContent> = {
       boundary: "Мы не обещаем гарантированное оформление. Выпуск — административный результат; мы управляем подготовкой, риском и следующим действием при отклонении.",
       button: "Смотреть возможности таможни",
       stages: [
-        { phase: "Подготовка", title: "Проверка документов", text: "Проверяем контракт, инвойс, упаковочный лист, сертификаты и документы о происхождении." },
-        { phase: "Сверка", title: "Сведения декларации", text: "Подтверждаем наименование, материал, назначение и элементы декларации." },
-        { phase: "Классификация", title: "Проверка кода", text: "Сопоставляем код ТН ВЭД с требованиями импорта ЕАЭС." },
-        { phase: "Подача", title: "Экспорт и импорт", text: "Координируем файлы экспорта из Китая и импорта в Казахстан в подтверждённом объёме работ." },
-        { phase: "Реакция", title: "Ответ на досмотр", text: "При дополнении, корректировке или досмотре указываем ответственного, срок и следующий шаг." },
-        { phase: "Запись", title: "Выпуск и разбор", text: "Архивируем отклонения и подтверждения для следующей перевозки." },
+        { phase: "Подготовка", title: "Документы", text: "Проверяем контракт, инвойс, упаковочный лист, сертификаты и документы о происхождении." },
+        { phase: "Сверка", title: "Декларация", text: "Подтверждаем наименование, материал, назначение и элементы декларации." },
+        { phase: "Классификация", title: "Код ТН ВЭД", text: "Сопоставляем код ТН ВЭД с требованиями импорта ЕАЭС." },
+        { phase: "Подача", title: "Оформление", text: "Координируем файлы экспорта из Китая и импорта в Казахстан в подтверждённом объёме работ." },
+        { phase: "Реакция", title: "Досмотр", text: "При дополнении, корректировке или досмотре указываем ответственного, срок и следующий шаг." },
+        { phase: "Запись", title: "Выпуск", text: "Архивируем отклонения и подтверждения для следующей перевозки." },
       ],
     },
     services: {
