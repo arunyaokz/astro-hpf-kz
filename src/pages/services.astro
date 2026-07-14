@@ -1,7 +1,7 @@
 ---
-import ContentPage from "../components/ContentPage.astro";
+import ServicesPage from "../components/ServicesPage.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { PAGE_COPY } from "../site-v2";
-const page = PAGE_COPY.services.en;
+import { SERVICES_COPY } from "../services-content";
+const page = SERVICES_COPY.en;
 ---
-<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="services"><ContentPage lang="en" pageKey="services" /></SiteLayout>
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="services"><ServicesPage lang="en" /></SiteLayout>

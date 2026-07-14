@@ -1,0 +1,126 @@
+---
+import type { Lang } from "../site-v2";
+import type { CorridorId } from "../routes-content";
+
+interface Props {
+  lang: Lang;
+  note: string;
+  corridors: Array<{ id: CorridorId; label: string; name: string }>;
+}
+
+const { lang, note, corridors } = Astro.props;
+const places = {
+  zh: { europe: "欧洲", china: "中国", kz: "哈萨克斯坦", north: ["俄罗斯", "白俄罗斯"], middle: ["里海", "高加索"], south: ["乌兹别克斯坦", "伊朗 · 土耳其"] },
+  en: { europe: "Europe", china: "China", kz: "Kazakhstan", north: ["Russia", "Belarus"], middle: ["Caspian", "Caucasus"], south: ["Uzbekistan", "Iran · Türkiye"] },
+  ru: { europe: "Европа", china: "Китай", kz: "Казахстан", north: ["Россия", "Беларусь"], middle: ["Каспий", "Кавказ"], south: ["Узбекистан", "Иран · Турция"] },
+}[lang];
+---
+
+<figure class="corridor-map" data-corridor-map>
+  <div class="map-head">
+    <p>{note}</p>
+    <div class="map-tabs" role="group" aria-label={lang === "zh" ? "选择走廊" : lang === "ru" ? "Выбор коридора" : "Select corridor"}>
+      {corridors.map((corridor, index) => (
+        <button type="button" class:list={{ active: index === 1 }} data-map-select={corridor.id} aria-pressed={index === 1 ? "true" : "false"}>
+          <span aria-hidden="true"></span>{corridor.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="map-stage">
+    <svg viewBox="0 0 1200 500" role="img" aria-label={note}>
+      <defs>
+        <pattern id={`network-grid-${lang}`} width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M80 0H0V80" fill="none" stroke="rgba(255,255,255,.045)" stroke-width="1" />
+        </pattern>
+        <filter id="route-glow" x="-20%" y="-40%" width="140%" height="180%">
+          <feGaussianBlur stdDeviation="7" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+        <marker id={`arrow-west-${lang}`} markerWidth="10" markerHeight="10" refX="3" refY="3" orient="auto">
+          <path d="M6 0L0 3l6 3" fill="none" stroke="currentColor" stroke-width="1.5" />
+        </marker>
+      </defs>
+      <rect width="1200" height="500" rx="26" fill={`url(#network-grid-${lang})`} />
+      <path class="landmass" d="M62 154C157 107 253 104 338 127c69 18 136 9 205-22 89-40 167-36 254 9 91 48 185 52 337 11v256c-103 42-215 41-318 2-81-31-161-29-244 4-93 37-179 35-263-4-76-36-162-35-247 1Z" />
+
+      <g class="corridor-line corridor-line--north" data-map-route="north">
+        <path class="route-glow" d="M1080 252C920 180 810 118 666 126S413 172 120 196" />
+        <path class="route" d="M1080 252C920 180 810 118 666 126S413 172 120 196" marker-end={`url(#arrow-west-${lang})`} />
+        <g class="node" transform="translate(1080 252)"><circle r="7" /><text y="-18">{places.china}</text></g>
+        <g class="node" transform="translate(810 146)"><circle r="6" /><text y="-17">{places.kz}</text></g>
+        <g class="node" transform="translate(610 130)"><circle r="6" /><text y="-17">{places.north[0]}</text></g>
+        <g class="node" transform="translate(345 174)"><circle r="6" /><text y="-17">{places.north[1]}</text></g>
+        <g class="node" transform="translate(120 196)"><circle r="7" /><text y="-18">{places.europe}</text></g>
+      </g>
+
+      <g class="corridor-line corridor-line--middle active" data-map-route="middle">
+        <path class="route-glow" d="M1080 252C930 248 831 250 738 270s-164 55-266 45-197-47-352-28" />
+        <path class="route" d="M1080 252C930 248 831 250 738 270s-164 55-266 45-197-47-352-28" marker-end={`url(#arrow-west-${lang})`} />
+        <g class="node" transform="translate(1080 252)"><circle r="7" /><text y="-18">{places.china}</text></g>
+        <g class="node node--hub" transform="translate(790 259)"><circle r="8" /><text y="-20">{places.kz}</text></g>
+        <g class="node" transform="translate(590 304)"><circle r="6" /><text y="-17">{places.middle[0]}</text></g>
+        <g class="node" transform="translate(410 307)"><circle r="6" /><text y="-17">{places.middle[1]}</text></g>
+        <g class="node" transform="translate(120 287)"><circle r="7" /><text y="-18">{places.europe}</text></g>
+      </g>
+
+      <g class="corridor-line corridor-line--south" data-map-route="south">
+        <path class="route-glow" d="M1080 252C942 303 859 358 735 374s-255 16-350 5-165-30-265-19" />
+        <path class="route" d="M1080 252C942 303 859 358 735 374s-255 16-350 5-165-30-265-19" marker-end={`url(#arrow-west-${lang})`} />
+        <g class="node" transform="translate(1080 252)"><circle r="7" /><text y="24">{places.china}</text></g>
+        <g class="node" transform="translate(823 356)"><circle r="6" /><text y="24">{places.kz}</text></g>
+        <g class="node" transform="translate(668 380)"><circle r="6" /><text y="24">{places.south[0]}</text></g>
+        <g class="node" transform="translate(385 379)"><circle r="6" /><text y="24">{places.south[1]}</text></g>
+        <g class="node" transform="translate(120 360)"><circle r="7" /><text y="24">{places.europe}</text></g>
+      </g>
+    </svg>
+  </div>
+  <figcaption>{lang === "zh" ? "路线为走廊级示意，不代表固定口岸、承运或时效承诺。" : lang === "ru" ? "Схема показывает коридоры и не является обещанием конкретного перехода, перевозчика или срока." : "Corridor-level illustration; it is not a fixed gateway, carrier or transit-time commitment."}</figcaption>
+</figure>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-corridor-map]").forEach((map) => {
+    const buttons = map.querySelectorAll<HTMLButtonElement>("[data-map-select]");
+    const routes = map.querySelectorAll<SVGGElement>("[data-map-route]");
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      const selected = button.dataset.mapSelect;
+      buttons.forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      routes.forEach((route) => route.classList.toggle("active", route.dataset.mapRoute === selected));
+      document.getElementById(`corridor-${selected}`)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }));
+  });
+</script>
+
+<style>
+  .corridor-map { margin: 0; }
+  .map-head { display: flex; gap: 1.5rem; align-items: center; justify-content: space-between; margin-block-end: 1.25rem; }
+  .map-head > p { max-width: 58ch; color: var(--muted-on-dark); font-size: .85rem; }
+  .map-tabs { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-end; }
+  .map-tabs button { display: inline-flex; min-height: 2.65rem; align-items: center; gap: .55rem; padding: .6rem .9rem; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(255,255,255,.04); color: var(--muted-on-dark); cursor: pointer; transition: background 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out); }
+  .map-tabs button span { width: .5rem; height: .5rem; border-radius: 50%; background: currentColor; }
+  .map-tabs button.active { border-color: rgba(156,140,255,.6); background: rgba(118,88,255,.18); color: #fff; }
+  .map-tabs button:active { transform: translateY(1px); }
+  .map-stage { overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 1.7rem; background: #08051b; }
+  .map-stage svg { width: 100%; height: auto; min-height: 24rem; }
+  .landmass { fill: rgba(255,255,255,.025); stroke: rgba(255,255,255,.055); stroke-width: 1.2; }
+  .corridor-line { color: #8d82bd; opacity: .2; transition: opacity 220ms var(--ease-out); }
+  .corridor-line.active { color: #a395ff; opacity: 1; }
+  .route-glow { fill: none; stroke: currentColor; stroke-width: 13; opacity: .16; filter: url(#route-glow); }
+  .route { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .node circle { fill: #09051c; stroke: currentColor; stroke-width: 3; }
+  .node--hub circle { fill: currentColor; }
+  .node text { fill: rgba(248,247,255,.88); font-family: var(--font-sans); font-size: 13px; font-weight: 650; text-anchor: middle; paint-order: stroke; stroke: #08051b; stroke-width: 5px; stroke-linejoin: round; }
+  figcaption { margin-block-start: .75rem; color: rgba(224,220,244,.48); font-size: .7rem; text-align: end; }
+  @media (max-width: 48rem) {
+    .map-head { align-items: flex-start; flex-direction: column; }
+    .map-tabs { justify-content: flex-start; }
+    .map-stage { overflow-x: auto; }
+    .map-stage svg { width: 58rem; max-width: none; min-height: 0; }
+    figcaption { text-align: start; }
+  }
+</style>

@@ -1,7 +1,7 @@
 ---
-import ContentPage from "../components/ContentPage.astro";
+import RouteNetworkPage from "../components/RouteNetworkPage.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { PAGE_COPY } from "../site-v2";
-const page = PAGE_COPY.routes.en;
+import { ROUTE_NETWORK_COPY } from "../routes-content";
+const page = ROUTE_NETWORK_COPY.en;
 ---
-<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="routes"><ContentPage lang="en" pageKey="routes" /></SiteLayout>
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="routes"><RouteNetworkPage lang="en" /></SiteLayout>

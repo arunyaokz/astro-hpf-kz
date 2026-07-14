@@ -179,13 +179,14 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
   .hero-orbit { position: absolute; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; filter: drop-shadow(0 0 24px rgba(101,89,255,.2)); }
   .hero-orbit--one { width: min(74vw, 68rem); aspect-ratio: 2.8 / 1; inset: 30% auto auto 50%; transform: translateX(-50%) rotate(-7deg); }
   .hero-orbit--two { width: min(92vw, 84rem); aspect-ratio: 3.5 / 1; inset: 38% auto auto 50%; transform: translateX(-50%) rotate(4deg); }
-  .hero-content { display: grid; justify-items: center; padding-block: calc(var(--header-height) + 3rem) clamp(3rem,8vh,6rem); text-align: center; }
+  .hero-content { display: grid; width: 100%; align-content: center; justify-items: center; padding-block: calc(var(--header-height) + clamp(3.5rem,7vh,5.5rem)) clamp(4.5rem,9vh,7rem); text-align: center; }
   .hero-badge { display: inline-flex; align-items: center; gap: .75rem; padding: .55rem .9rem; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(7,4,26,.28); color: rgba(255,255,255,.78); font-size: .75rem; letter-spacing: .06em; backdrop-filter: blur(14px); }
   .hero-badge span { width: .45rem; height: .45rem; border-radius: 50%; background: var(--electric); box-shadow: 0 0 16px var(--electric); }
-  .home-hero h1 { display: grid; max-width: 14ch; margin-block-start: clamp(1.5rem, 4vh, 2.75rem); color: #fff; font-size: clamp(3.4rem, 8vw, 7rem); font-weight: 760; letter-spacing: -.065em; line-height: .91; text-wrap: balance; text-shadow: 0 12px 50px rgba(7,4,26,.36); }
+  .home-hero h1 { display: grid; width: min(100%,14ch); justify-items: center; margin-block-start: clamp(2.25rem,5vh,3.5rem); color: #fff; font-size: clamp(3.4rem,8vw,7rem); font-weight: 760; letter-spacing: -.065em; line-height: 1.03; text-wrap: balance; text-shadow: 0 12px 50px rgba(7,4,26,.36); }
+  .home-hero h1 span { display: block; width: 100%; text-align: center; }
   :global(html[lang="zh-CN"]) .home-hero h1 { letter-spacing: -.04em; }
-  .hero-lead { max-width: 44rem; margin-block-start: 1.75rem; color: rgba(239,238,255,.78); font-size: clamp(1rem, 1.65vw, 1.25rem); line-height: 1.55; }
-  .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-block-start: 2rem; }
+  .hero-lead { width: min(100%,44rem); margin-block-start: clamp(2rem,4vh,2.75rem); margin-inline: auto; color: rgba(239,238,255,.78); font-size: clamp(1rem,1.65vw,1.25rem); line-height: 1.72; text-wrap: balance; }
+  .hero-actions { display: flex; width: 100%; flex-wrap: wrap; justify-content: center; gap: .9rem; margin-block-start: clamp(2.25rem,4.5vh,3rem); }
   .hero-primary, .hero-secondary { display: inline-flex; min-height: 3.25rem; align-items: center; justify-content: center; gap: .75rem; padding-inline: 1.5rem; border-radius: 999px; font-size: .9375rem; font-weight: 700; transition: transform 180ms var(--ease-out), background 180ms var(--ease-out); }
   .hero-primary { background: #fff; color: #17112e; box-shadow: 0 12px 40px rgba(5,2,25,.3); }
   .hero-primary span { color: var(--violet); }
@@ -303,11 +304,11 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
   }
   @media (max-width: 44rem) {
     .home-hero { min-height: 100dvh; }
-    .hero-content { padding-block: calc(var(--header-height) + 3rem) 6rem; }
-    .home-hero h1 { max-width: none; font-size: clamp(2.5rem,10.8vw,3.5rem); }
+    .hero-content { padding-block: calc(var(--header-height) + 2.75rem) 4.5rem; }
+    .home-hero h1 { width: 100%; margin-block-start: 2rem; font-size: clamp(2.5rem,10.8vw,3.5rem); line-height: 1.04; }
     .home-hero h1 span { white-space: nowrap; }
-    .hero-lead { max-width: 28rem; font-size: .98rem; }
-    .hero-actions { width: 100%; }
+    .hero-lead { max-width: 28rem; margin-block-start: 1.75rem; font-size: .98rem; line-height: 1.65; }
+    .hero-actions { margin-block-start: 2rem; }
     .hero-primary, .hero-secondary { min-width: min(100%,19rem); }
     .hero-orbit--one { width: 125vw; }
     .hero-orbit--two { width: 150vw; }

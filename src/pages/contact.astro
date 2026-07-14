@@ -1,7 +1,3 @@
 ---
-import ContactPage from "../components/ContactPage.astro";
-import SiteLayout from "../layouts/SiteLayout.astro";
-import { CONTACT_COPY } from "../site-v2";
-const page = CONTACT_COPY.en;
+return Astro.redirect("/about/#contact", 301);
 ---
-<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="contact"><ContactPage lang="en" /></SiteLayout>

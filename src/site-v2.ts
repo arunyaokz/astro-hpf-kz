@@ -19,6 +19,7 @@ const PAGE_SLUG: Record<CorePage, string> = {
 
 export function pagePath(lang: Lang, page: CorePage): string {
   const prefix = lang === "en" ? "" : `/${lang}`;
+  if (page === "contact") return `${prefix}/about/#contact`;
   const slug = PAGE_SLUG[page];
   return slug ? `${prefix}/${slug}/` : `${prefix || ""}/`;
 }
@@ -303,17 +304,17 @@ export const PAGE_COPY: Record<Exclude<CorePage, "home" | "contact" | "privacy">
       metaTitle: "Company and operating principles | HPF.kz",
       metaDescription: "How HPF.kz approaches cross-border logistics from Kazakhstan: local execution, documented handovers and explicit promise boundaries.",
       eyebrow: "Company / Kazakhstan",
-      title: "Trust begins with precise facts.",
-      lead: "HPF.kz is building a Kazakhstan-based operating layer between Chinese shippers, Central Asian execution and European consignees. Trust begins with visible scope, named responsibility and facts that can be checked.",
+      title: "Carry the cargo. Carry the responsibility.",
+      lead: "HPF.kz is a Kazakhstan-based cross-border logistics company connecting Chinese shippers, Central Asian execution and European consignees. We exist to make every handover clear, every change answerable and every promise grounded in evidence.",
       primary: "Discuss a shipment",
       secondary: "See our services",
-      sectionTitle: "Our operating principles are practical.",
-      sectionLead: "We do not use age or group resources as a substitute for shipment evidence. The work must still stand on documents, handovers and results.",
+      sectionTitle: "Our values are operating choices.",
+      sectionLead: "They shape how we plan, communicate and take responsibility—not how we decorate a presentation.",
       sections: [
-        { label: "Local", title: "Kazakhstan execution comes first", text: "Border, warehouse, dispatch and consignee work require people who understand the local operating environment.", points: ["Almaty coordination", "Local language", "Local handovers", "Receiving conditions"] },
-        { label: "Cross-border", title: "Three commercial contexts, one record", text: "Chinese shipping requirements, Kazakhstan execution and European receiving rules must meet in the same operating record.", points: ["Chinese communication", "Kazakhstan execution", "European receiving", "Shared evidence"] },
-        { label: "Governance", title: "Facts before adjectives", text: "Legal identity, asset relationship and operating scope are disclosed only after the wording and evidence are confirmed.", points: ["Legal identity", "Asset boundary", "Source record", "Launch review"] },
-        { label: "Learning", title: "Each shipment should improve the next", text: "Time, cost, documents and exceptions are retained as operating knowledge rather than lost in chats.", points: ["Milestones", "Files", "Exceptions", "Review"] },
+        { label: "Customer outcome", title: "Let the result belong to the customer", text: "We measure our work by whether the customer can promise, receive and grow with greater confidence—not by how visible HPF.kz becomes.", points: ["Business outcome", "Stable delivery", "Reusable capability", "Long-term value"] },
+        { label: "Responsibility", title: "Own the next answer", text: "A handover is not complete until the next owner, required action and confirmation method are explicit.", points: ["Named owner", "Clear next step", "Visible exception", "Closed loop"] },
+        { label: "Truth", title: "Facts before adjectives", text: "We distinguish verified facts, current conditions and assumptions, so confidence never depends on a vague claim.", points: ["Evidence first", "Promise boundary", "Source record", "Honest status"] },
+        { label: "Learning", title: "Make each shipment improve the next", text: "Time, cost, documents and exceptions become operating knowledge instead of disappearing in chats.", points: ["Milestones", "Files", "Exceptions", "Review"] },
       ],
       processTitle: "What we mean by a responsibility chain",
       process: [
@@ -333,17 +334,17 @@ export const PAGE_COPY: Record<Exclude<CorePage, "home" | "contact" | "privacy">
       metaTitle: "公司与运营原则｜HPF.kz",
       metaDescription: "了解 HPF.kz 如何从哈萨克斯坦组织跨境物流：本地执行、节点留痕与清晰的承诺边界。",
       eyebrow: "公司 / 哈萨克斯坦",
-      title: "信任，从准确的事实开始。",
-      lead: "HPF.kz 正在中国发货方、中亚现场执行与欧洲收货方之间建设一层哈萨克斯坦本地运营能力。信任从可见的范围、明确的责任与可核验的事实开始。",
+      title: "承运货物，也承接责任。",
+      lead: "HPF.kz 是一家立足哈萨克斯坦的跨境物流公司，连接中国发货方、中亚现场执行与欧洲收货方。我们存在的意义，是让每一次交接都清楚、每一次变化都有回答、每一个承诺都有证据。",
       primary: "讨论一票货",
       secondary: "查看服务",
-      sectionTitle: "我们的运营原则，都是实务判断。",
-      sectionLead: "公司年龄或集团资源不能替代单票证据。工作仍要落在文件、交接与结果上。",
+      sectionTitle: "我们的价值观，是每天都要做出的运营选择。",
+      sectionLead: "它决定我们如何计划、沟通和承担责任，而不是如何装饰一份介绍。",
       sections: [
-        { label: "本地", title: "哈萨克斯坦现场优先", text: "口岸、仓库、调度与收货协同，需要真正理解本地执行环境的人。", points: ["阿拉木图协调", "本地语言", "现场交接", "收货条件"] },
-        { label: "跨境", title: "三种商业语境，共用一份记录", text: "中国发运要求、哈萨克斯坦执行与欧洲收货规则，要在同一份运营记录中相互看见。", points: ["中文沟通", "哈国执行", "欧洲收货", "共享证据"] },
-        { label: "治理", title: "事实先于形容词", text: "法人身份、资产关系与能力边界，只有在口径和证据确认后才对外披露。", points: ["法人身份", "资产边界", "来源记录", "上线复核"] },
-        { label: "复盘", title: "每一票，都为下一票留下经验", text: "时效、费用、文件与异常要沉淀为运营知识，而不是消失在聊天记录里。", points: ["节点", "文件", "异常", "复盘"] },
+        { label: "成果归客户", title: "让结果留在客户的生意里", text: "我们不以 HPF.kz 被看见多少衡量工作，而以客户能否更安心地承诺、收货和增长来衡量。", points: ["商业结果", "稳定交付", "可复用能力", "长期价值"] },
+        { label: "责任到人", title: "主动认领下一个答案", text: "只有下一责任人、所需动作与确认方式都清楚，一次交接才算真正完成。", points: ["责任人", "下一步", "异常可见", "闭环"] },
+        { label: "事实为先", title: "事实先于形容词", text: "我们区分已核验事实、当前条件与待确认判断，不让客户的信心建立在模糊表述上。", points: ["证据优先", "承诺边界", "来源记录", "诚实状态"] },
+        { label: "持续复盘", title: "让每一票，都改善下一票", text: "时效、费用、文件与异常要沉淀为运营知识，而不是消失在聊天记录里。", points: ["节点", "文件", "异常", "复盘"] },
       ],
       processTitle: "我们所说的责任链是什么",
       process: [
@@ -363,17 +364,17 @@ export const PAGE_COPY: Record<Exclude<CorePage, "home" | "contact" | "privacy">
       metaTitle: "Компания и принципы работы | HPF.kz",
       metaDescription: "Как HPF.kz организует трансграничную логистику из Казахстана: локальное исполнение, фиксированные передачи и ясные границы обещаний.",
       eyebrow: "Компания / Казахстан",
-      title: "Доверие начинается с точных фактов.",
-      lead: "HPF.kz создаёт в Казахстане операционный слой между китайскими отправителями, исполнением в Центральной Азии и европейскими получателями. Доверие начинается с видимого объёма работ, ответственности и проверяемых фактов.",
+      title: "Везём груз. Принимаем ответственность.",
+      lead: "HPF.kz — трансграничная логистическая компания из Казахстана, соединяющая китайских отправителей, исполнение в Центральной Азии и европейских получателей. Мы делаем каждую передачу понятной, каждое изменение — объяснимым, а каждое обещание — подтверждённым.",
       primary: "Обсудить перевозку",
       secondary: "Смотреть услуги",
-      sectionTitle: "Наши принципы — это практические решения.",
-      sectionLead: "Возраст компании и ресурсы группы не заменяют доказательства по конкретному грузу. Работа опирается на документы, передачи и результат.",
+      sectionTitle: "Наши ценности — это ежедневные операционные решения.",
+      sectionLead: "Они определяют, как мы планируем, общаемся и принимаем ответственность, а не как оформляем презентацию.",
       sections: [
-        { label: "Локально", title: "Исполнение в Казахстане — в основе", text: "Граница, склад, диспетчеризация и получатель требуют команды, понимающей местную среду.", points: ["Координация в Алматы", "Местный язык", "Передачи", "Условия приёмки"] },
-        { label: "Трансгранично", title: "Три деловые среды, одна запись", text: "Требования отправителя из Китая, исполнение в Казахстане и правила получателя в Европе должны быть видны в одной операционной записи.", points: ["Связь с Китаем", "Исполнение в Казахстане", "Приёмка в Европе", "Общие подтверждения"] },
-        { label: "Управление", title: "Факты раньше прилагательных", text: "Юридическая личность, связь активов и объём работы публикуются после подтверждения формулировок и доказательств.", points: ["Юридические данные", "Граница активов", "Источник", "Проверка запуска"] },
-        { label: "Опыт", title: "Каждая перевозка улучшает следующую", text: "Сроки, расходы, документы и отклонения становятся операционным знанием, а не теряются в чатах.", points: ["Этапы", "Файлы", "Отклонения", "Разбор"] },
+        { label: "Результат клиента", title: "Результат должен работать на клиента", text: "Мы оцениваем работу по тому, насколько увереннее клиент может обещать, получать и развивать бизнес, а не по заметности HPF.kz.", points: ["Бизнес-результат", "Стабильная доставка", "Повторяемая способность", "Долгосрочная ценность"] },
+        { label: "Ответственность", title: "Взять на себя следующий ответ", text: "Передача завершена, только когда понятны следующий ответственный, действие и способ подтверждения.", points: ["Ответственный", "Следующий шаг", "Видимое отклонение", "Замкнутый цикл"] },
+        { label: "Правда", title: "Факты раньше прилагательных", text: "Мы разделяем проверенные факты, текущие условия и предположения, чтобы доверие не зависело от расплывчатых заявлений.", points: ["Сначала доказательство", "Граница обещания", "Источник", "Честный статус"] },
+        { label: "Обучение", title: "Каждая перевозка улучшает следующую", text: "Сроки, расходы, документы и отклонения становятся операционным знанием, а не теряются в чатах.", points: ["Этапы", "Файлы", "Отклонения", "Разбор"] },
       ],
       processTitle: "Что мы называем цепочкой ответственности",
       process: [
@@ -414,6 +415,54 @@ export const CONTACT_COPY: Record<Lang, {
     eyebrow: "Запрос перевозки / Алматы", title: "Положим следующую перевозку на стол.", lead: "Укажите отправление, назначение, груз и условия, которые нельзя менять. Мы начнём с вопросов о маршруте, документах и рисках.",
     fields: { name: "Имя", company: "Компания", email: "Электронная почта", phone: "Телефон или мессенджер", cargo: "Описание груза", origin: "Отправление", destination: "Назначение", window: "Требуемое окно прибытия", message: "Ограничения или примечания", consent: "Я согласен отправить эти данные по электронной почте и прочитал уведомление о конфиденциальности.", submit: "Открыть письмо", required: "Заполните обязательные поля." },
     asideTitle: "Форма не отправляет данные на сервер сайта.", asideText: "До юридического подтверждения места хранения и обработки форма создаёт письмо в вашей почтовой программе.", emailLabel: "Деловая почта", responseNote: "Не указывайте паспортные, банковские и другие чувствительные персональные данные.",
+  },
+};
+
+export type CompanyStory = {
+  compassEyebrow: string;
+  compassTitle: string;
+  compassLead: string;
+  pillars: Array<{ number: string; label: string; title: string; text: string }>;
+  valuesEyebrow: string;
+  valuesTitle: string;
+};
+
+export const COMPANY_STORY: Record<Lang, CompanyStory> = {
+  en: {
+    compassEyebrow: "Purpose / direction / character",
+    compassTitle: "A company needs a compass before it needs scale.",
+    compassLead: "Our culture is not a slogan for the wall. It is the shared decision system we use when routes change, documents disagree and a customer needs a clear answer.",
+    pillars: [
+      { number: "01", label: "Mission", title: "Turn cross-border uncertainty into an answerable operating sequence.", text: "Connect customs, transport, warehousing and delivery so customers know what happens next, who owns it and what evidence confirms it." },
+      { number: "02", label: "Vision", title: "Make certainty the default standard for the Middle Corridor.", text: "Build the most trusted end-to-end operating network between China, Kazakhstan and Europe—shipment by shipment, node by node." },
+      { number: "03", label: "Culture", title: "Clear facts. Named owners. Quiet follow-through.", text: "We speak directly, expose boundaries early, solve at the scene and leave every shipment with a record that improves the next one." },
+    ],
+    valuesEyebrow: "Values / visible in the work",
+    valuesTitle: "Values only count when customers can see them in the handover.",
+  },
+  zh: {
+    compassEyebrow: "使命 / 愿景 / 文化",
+    compassTitle: "一家公司，先要有方向，再谈规模。",
+    compassLead: "企业文化不是挂在墙上的口号，而是当路线变化、文件不一致、客户需要答案时，所有人共同使用的一套判断方式。",
+    pillars: [
+      { number: "01", label: "使命", title: "把跨境物流的不确定，变成可回答的运营次序。", text: "连接清关、运输、仓储与交付，让客户知道下一步发生什么、由谁负责、用什么证据确认。" },
+      { number: "02", label: "愿景", title: "让确定性，成为中间走廊的默认标准。", text: "在中国、哈萨克斯坦与欧洲之间，逐票、逐节点构建最值得信赖的端到端运营网络。" },
+      { number: "03", label: "文化", title: "讲清事实，认领责任，安静地把事做完。", text: "我们直接沟通，提前说明边界，在现场解决问题，并让每一票货都留下可供下一票复用的记录。" },
+    ],
+    valuesEyebrow: "价值观 / 落在交接里",
+    valuesTitle: "价值观，只有被客户在每一次交接中看见，才算数。",
+  },
+  ru: {
+    compassEyebrow: "Миссия / видение / культура",
+    compassTitle: "Сначала компании нужен компас, затем масштаб.",
+    compassLead: "Культура — не лозунг на стене. Это общий способ принимать решения, когда маршрут меняется, документы расходятся, а клиенту нужен ясный ответ.",
+    pillars: [
+      { number: "01", label: "Миссия", title: "Превращать неопределённость трансграничной логистики в понятный порядок действий.", text: "Связывать таможню, перевозку, склад и доставку так, чтобы клиент знал следующий шаг, ответственного и подтверждение результата." },
+      { number: "02", label: "Видение", title: "Сделать определённость стандартом Среднего коридора.", text: "Создавать самую надёжную сквозную операционную сеть между Китаем, Казахстаном и Европой — перевозка за перевозкой, узел за узлом." },
+      { number: "03", label: "Культура", title: "Точные факты. Личная ответственность. Спокойное исполнение.", text: "Мы говорим прямо, заранее обозначаем границы, решаем вопросы на месте и сохраняем опыт каждой перевозки для следующей." },
+    ],
+    valuesEyebrow: "Ценности / видимые в работе",
+    valuesTitle: "Ценности имеют смысл, только когда клиент видит их в каждой передаче.",
   },
 };
 

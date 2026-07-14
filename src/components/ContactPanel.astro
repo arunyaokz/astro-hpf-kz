@@ -1,0 +1,89 @@
+---
+import { CONTACT_COPY, pagePath, type Lang } from "../site-v2";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const page = CONTACT_COPY[lang];
+const contactLabel = lang === "zh" ? "联系 / 货运需求" : lang === "ru" ? "Контакт / запрос перевозки" : "Contact / freight enquiry";
+---
+
+<section id="contact" class="contact-panel">
+  <div class="shell contact-intro">
+    <div>
+      <p class="eyebrow">{contactLabel}</p>
+      <h2>{page.title}</h2>
+      <p>{page.lead}</p>
+    </div>
+    <aside>
+      <span>bd@hpf.kz</span>
+      <h3>{page.asideTitle}</h3>
+      <p>{page.asideText}</p>
+      <small>{page.responseNote}</small>
+    </aside>
+  </div>
+
+  <div class="shell form-wrap">
+    <form data-enquiry-form data-required-message={page.fields.required} data-mail-subject="HPF.kz freight enquiry">
+      <div class="form-grid">
+        <label>{page.fields.name}<span aria-hidden="true">*</span><input name="name" autocomplete="name" required /></label>
+        <label>{page.fields.company}<input name="company" autocomplete="organization" /></label>
+        <label>{page.fields.email}<span aria-hidden="true">*</span><input type="email" name="email" autocomplete="email" required /></label>
+        <label>{page.fields.phone}<input type="tel" name="phone" autocomplete="tel" /></label>
+        <label class="wide">{page.fields.cargo}<span aria-hidden="true">*</span><textarea name="cargo" rows="3" required></textarea></label>
+        <label>{page.fields.origin}<span aria-hidden="true">*</span><input name="origin" required /></label>
+        <label>{page.fields.destination}<span aria-hidden="true">*</span><input name="destination" required /></label>
+        <label class="wide">{page.fields.window}<input name="window" /></label>
+        <label class="wide">{page.fields.message}<textarea name="message" rows="4"></textarea></label>
+      </div>
+      <label class="consent"><input type="checkbox" name="consent" required /><span>{page.fields.consent} <a href={pagePath(lang, "privacy")}>{lang === "zh" ? "查看政策" : lang === "ru" ? "Открыть уведомление" : "Read notice"}</a></span></label>
+      <div class="form-actions"><button class="button button--inverse" type="submit">{page.fields.submit}</button><p data-form-status aria-live="polite"></p></div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-enquiry-form]");
+  const status = form?.querySelector<HTMLElement>("[data-form-status]");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      if (status) status.textContent = form.dataset.requiredMessage ?? "Complete the required fields.";
+      return;
+    }
+    const data = new FormData(form);
+    const lines = Array.from(data.entries()).filter(([key]) => key !== "consent").map(([key, value]) => `${key}: ${String(value).trim() || "—"}`);
+    window.location.href = `mailto:bd@hpf.kz?subject=${encodeURIComponent(form.dataset.mailSubject ?? "HPF.kz freight enquiry")}&body=${encodeURIComponent(lines.join("\n"))}`;
+  });
+</script>
+
+<style>
+  .contact-panel { position:relative; overflow:hidden; scroll-margin-top:var(--header-height); background:var(--ink); color:var(--text-on-dark); }
+  .contact-panel::before { position:absolute; width:54rem; height:30rem; inset:-18rem -15rem auto auto; border-radius:50%; background:radial-gradient(circle,rgba(103,67,247,.55),transparent 70%); content:""; }
+  .contact-intro { position:relative; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(18rem,.65fr); gap:clamp(3rem,8vw,8rem); padding-block:clamp(6rem,10vw,9rem) clamp(3rem,6vw,5rem); }
+  .contact-intro > div { display:grid; align-content:start; gap:1.25rem; }
+  .contact-intro .eyebrow { color:var(--electric); }
+  .contact-intro h2 { max-width:12ch; color:#fff; font-size:clamp(3rem,6vw,6rem); line-height:.94; letter-spacing:-.06em; }
+  .contact-intro > div > p:last-child { max-width:58ch; color:var(--muted-on-dark); font-size:1.08rem; }
+  .contact-intro aside { display:grid; align-content:end; gap:1rem; padding:1.5rem; border-block:1px solid rgba(255,255,255,.12); }
+  .contact-intro aside span { color:var(--electric); font-family:var(--font-num); }
+  .contact-intro aside h3 { color:#fff; font-size:1.25rem; }
+  .contact-intro aside p,.contact-intro aside small { color:var(--muted-on-dark); }
+  .form-wrap { position:relative; padding-block-end:clamp(6rem,10vw,9rem); }
+  form { padding:clamp(1.25rem,4vw,3rem); border:1px solid rgba(255,255,255,.12); border-radius:2rem; background:rgba(255,255,255,.055); box-shadow:inset 0 1px rgba(255,255,255,.06); }
+  .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-2); }
+  label { display:grid; gap:.55rem; color:rgba(255,255,255,.76); font-size:.82rem; font-weight:700; }
+  label > span[aria-hidden="true"] { display:inline; margin-inline-start:.25rem; color:#ff8f9d; }
+  label.wide { grid-column:1 / -1; }
+  input,textarea { width:100%; padding:.85rem 1rem; border:1px solid rgba(255,255,255,.12); border-radius:.9rem; background:rgba(255,255,255,.075); color:#fff; transition:border-color 180ms var(--ease-out),background 180ms var(--ease-out),box-shadow 180ms var(--ease-out); }
+  input { min-height:3.25rem; }
+  input:focus,textarea:focus { border-color:var(--electric); background:rgba(255,255,255,.1); outline:0; box-shadow:0 0 0 4px rgba(130,105,255,.16); }
+  textarea { resize:vertical; }
+  .consent { grid-template-columns:auto 1fr; align-items:start; gap:.75rem; margin-block-start:var(--space-3); color:var(--muted-on-dark); font-weight:400; }
+  .consent input { width:1.125rem; min-height:1.125rem; margin-block-start:.25rem; }
+  .consent a { color:#fff; text-decoration:underline; }
+  .form-actions { display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-2); margin-block-start:var(--space-3); }
+  .form-actions p { color:#ffb0ba; font-size:.875rem; }
+  @media (max-width:52rem) { .contact-intro { grid-template-columns:1fr; } }
+  @media (max-width:38rem) { .form-grid { grid-template-columns:1fr; } label.wide { grid-column:auto; } }
+</style>

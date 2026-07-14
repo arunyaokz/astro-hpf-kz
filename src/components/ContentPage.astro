@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import { PAGE_COPY, pagePath, type Lang } from "../site-v2";
+import { COMPANY_STORY, PAGE_COPY, pagePath, type Lang } from "../site-v2";
 import RouteMap from "./RouteMap.astro";
 import CardVisual from "./CardVisual.astro";
+import ContactPanel from "./ContactPanel.astro";
 
 interface Props { lang: Lang; pageKey: "services" | "routes" | "about"; }
 const { lang, pageKey } = Astro.props;
@@ -23,15 +24,16 @@ const boundaryVisuals: Record<Props["pageKey"], string[]> = {
 };
 const entityVisuals = ["company", "bin", "calendar", "founder", "warehouse"];
 const page = PAGE_COPY[pageKey][lang];
+const companyStory = COMPANY_STORY[lang];
 const heroImage = {
   services: { src: "/images/corporate/hero-services-customs.webp", size: { width: 1122, height: 1402 }, alt: { zh: "仓内验货与清关前置作业", en: "Warehouse inspection and customs-ready handling", ru: "Складская проверка и подготовка к таможне" } },
   routes: { src: "/images/corporate/hero-routes-tir.webp", size: { width: 1122, height: 1402 }, alt: { zh: "白色 HPF.kz TIR 公路运输车队穿越哈萨克草原", en: "White HPF.kz TIR road freight convoy across the Kazakh steppe", ru: "Белая автоколонна HPF.kz TIR в казахской степи" } },
   about: { src: "/images/corporate/hero-about-team.webp", size: { width: 1003, height: 1568 }, alt: { zh: "阿拉木图团队讨论跨境路线", en: "Almaty team reviewing a cross-border route", ru: "Команда в Алматы обсуждает трансграничный маршрут" } },
 }[pageKey];
 const labels = {
-  en: { do: "We commit to", dont: "We do not claim", image: "Operational scene visualization" },
-  zh: { do: "我们承诺的", dont: "我们不承诺的", image: "运营场景示意图" },
-  ru: { do: "Что мы обязуемся делать", dont: "Чего мы не заявляем", image: "Операционная сценическая визуализация" },
+  en: { do: "We commit to", dont: "We do not claim", image: "Operational scene visualization", scope: "Scope / operating detail", process: "Process", boundary: "Promise boundary" },
+  zh: { do: "我们承诺的", dont: "我们不承诺的", image: "运营场景示意图", scope: "范围 / 运营细节", process: "责任次序", boundary: "承诺边界" },
+  ru: { do: "Что мы обязуемся делать", dont: "Чего мы не заявляем", image: "Операционная сценическая визуализация", scope: "Объём / детали работы", process: "Порядок работы", boundary: "Граница обещания" },
 }[lang];
 const facts = pageKey === "about" ? await getCollection("facts") : [];
 const factMap = new Map(facts.map((fact) => [fact.id, fact.data]));
@@ -56,7 +58,7 @@ const showEntityFact = (id: string) => {
       <p class="lead">{page.lead}</p>
       <div class="hero-actions">
         <a class="button button--primary" href={pagePath(lang, "contact")}>{page.primary}</a>
-        <a class="text-link" href={pageKey === "routes" ? pagePath(lang, "services") : pagePath(lang, "routes")}>{page.secondary}<span aria-hidden="true">→</span></a>
+        <a class="text-link" href={pageKey === "routes" || pageKey === "about" ? pagePath(lang, "services") : pagePath(lang, "routes")}>{page.secondary}<span aria-hidden="true">→</span></a>
       </div>
     </div>
     <figure>
@@ -68,6 +70,27 @@ const showEntityFact = (id: string) => {
   {pageKey === "routes" && (
     <section class="route-section">
       <div class="shell"><RouteMap lang={lang} direction={lang === "zh" ? "货物流向：中国 → 欧洲，由右向左" : lang === "ru" ? "Поток груза: Китай → Европа, справа налево" : "Cargo flow: China → Europe, right to left"} /></div>
+    </section>
+  )}
+
+  {pageKey === "about" && (
+    <section class="company-compass">
+      <div class="shell">
+        <header>
+          <p class="eyebrow">{companyStory.compassEyebrow}</p>
+          <h2 class="section-title">{companyStory.compassTitle}</h2>
+          <p>{companyStory.compassLead}</p>
+        </header>
+        <div class="compass-pillars">
+          {companyStory.pillars.map((pillar) => (
+            <article>
+              <div><span>{pillar.number}</span><p>{pillar.label}</p></div>
+              <h3>{pillar.title}</h3>
+              <p>{pillar.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   )}
 
@@ -85,8 +108,8 @@ const showEntityFact = (id: string) => {
 
   <section class="scope shell">
     <header class="scope-intro">
-      <p class="eyebrow">Scope / operating detail</p>
-      <h2 class="section-title">{page.sectionTitle}</h2>
+      <p class="eyebrow">{pageKey === "about" ? companyStory.valuesEyebrow : labels.scope}</p>
+      <h2 class="section-title">{pageKey === "about" ? companyStory.valuesTitle : page.sectionTitle}</h2>
       <p>{page.sectionLead}</p>
     </header>
     <div class="scope-list">
@@ -103,7 +126,7 @@ const showEntityFact = (id: string) => {
 
   <section class="sequence">
     <div class="shell sequence-grid">
-      <header><p class="eyebrow">Process</p><h2 class="section-title">{page.processTitle}</h2></header>
+      <header><p class="eyebrow">{labels.process}</p><h2 class="section-title">{page.processTitle}</h2></header>
       <ol>
         {page.process.map((item, index) => (
           <li><CardVisual kind={processVisuals[pageKey][index]} /><span>{item.step}</span><h3>{item.title}</h3><p>{item.text}</p></li>
@@ -113,19 +136,19 @@ const showEntityFact = (id: string) => {
   </section>
 
   <section class="boundary shell">
-    <header><p class="eyebrow">Promise boundary</p><h2 class="section-title">{page.boundaryTitle}</h2></header>
+    <header><p class="eyebrow">{labels.boundary}</p><h2 class="section-title">{page.boundaryTitle}</h2></header>
     <div class="boundary-grid">
       <div><CardVisual kind={boundaryVisuals[pageKey][0]} /><h3>{labels.do}</h3><ul>{page.boundaryDo.map((item) => <li>{item}</li>)}</ul></div>
       <div><CardVisual kind={boundaryVisuals[pageKey][1]} /><h3>{labels.dont}</h3><ul>{page.boundaryDont.map((item) => <li>{item}</li>)}</ul></div>
     </div>
   </section>
 
-  <section class="page-cta">
+  {pageKey === "about" ? <ContactPanel lang={lang} /> : <section class="page-cta">
     <div class="shell">
       <div><h2>{page.ctaTitle}</h2><p>{page.ctaText}</p></div>
       <a class="button button--inverse" href={pagePath(lang, "contact")}>{page.ctaButton}</a>
     </div>
-  </section>
+  </section>}
 </article>
 
 <style>
@@ -146,6 +169,19 @@ const showEntityFact = (id: string) => {
   .page-hero figcaption { position: absolute; z-index: 1; inset-inline: 0.75rem; inset-block-end: 0.75rem; color: rgba(255,255,255,.8); font-size: 0.6875rem; }
   .route-section { background: var(--ink-2); }
   .route-section > div { padding-block: clamp(4rem,8vw,7rem); }
+  .company-compass { background:#fff; }
+  .company-compass > div { display:grid; grid-template-columns:minmax(20rem,.72fr) minmax(0,1.28fr); gap:clamp(3rem,7vw,7rem); padding-block:clamp(6rem,10vw,9rem); }
+  .company-compass header { display:grid; align-content:start; gap:var(--space-2); }
+  .company-compass header .section-title { max-width:11ch; }
+  .company-compass header > p:last-child { max-width:55ch; color:var(--muted); }
+  .compass-pillars { display:grid; }
+  .compass-pillars article { display:grid; grid-template-columns:7rem minmax(0,1fr); gap:.75rem 1.5rem; padding-block:2rem; border-top:1px solid var(--line); }
+  .compass-pillars article:last-child { border-bottom:1px solid var(--line); }
+  .compass-pillars article > div { grid-row:1 / span 2; }
+  .compass-pillars span { color:var(--violet); font-family:var(--font-num); font-size:.72rem; }
+  .compass-pillars article > div p { margin-block-start:.45rem; color:var(--muted); font-size:.8rem; }
+  .compass-pillars h3 { max-width:22ch; font-size:clamp(1.35rem,2.2vw,2rem); line-height:1.06; }
+  .compass-pillars article > p { max-width:58ch; color:var(--muted); }
   .entity { display: grid; grid-template-columns: minmax(34rem,.7fr) minmax(0,1.3fr); gap: clamp(2rem,5vw,5rem); padding-block: clamp(5rem,9vw,8rem); }
   .entity header { display: grid; min-width: 0; align-content: start; gap: var(--space-2); }
   .entity header .section-title { max-width: 9ch; overflow-wrap: normal; font-size: clamp(2.4rem,4.2vw,4.8rem); }
@@ -203,6 +239,6 @@ const showEntityFact = (id: string) => {
   .page-cta > div { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:var(--space-4); align-items:end; padding-block:clamp(6rem,10vw,9rem); }
   .page-cta h2 { max-width:15ch; color:#fff; font-size:clamp(2.8rem,5vw,5.2rem); letter-spacing:-.055em; }
   .page-cta p { max-width:50ch; margin-block-start:1.25rem; color:var(--muted-on-dark); }
-  @media (max-width: 60rem) { .page-hero { grid-template-columns: minmax(0,1.1fr) minmax(18rem,.9fr); } .entity, .scope, .sequence-grid, .boundary { grid-template-columns: 1fr; } }
-  @media (max-width: 42rem) { .page-hero { grid-template-columns:1fr; min-height:auto; padding-block:4.5rem; } .page-hero figure { min-height:23rem; } .entity,.scope,.sequence-grid,.boundary { padding-block:5rem; } .entity dl,.scope-list,.sequence ol,.boundary-grid { grid-template-columns:1fr; } .entity dl div:last-child { grid-column:auto; } .scope-list article { min-height:15rem; } .page-cta > div { grid-template-columns:1fr; align-items:start; } }
+  @media (max-width: 60rem) { .page-hero { grid-template-columns: minmax(0,1.1fr) minmax(18rem,.9fr); } .company-compass > div,.entity, .scope, .sequence-grid, .boundary { grid-template-columns: 1fr; } }
+  @media (max-width: 42rem) { .page-hero { grid-template-columns:1fr; min-height:auto; padding-block:4.5rem; } .page-hero figure { min-height:23rem; } .company-compass > div,.entity,.scope,.sequence-grid,.boundary { padding-block:5rem; } .compass-pillars article { grid-template-columns:1fr; } .compass-pillars article > div { grid-row:auto; } .entity dl,.scope-list,.sequence ol,.boundary-grid { grid-template-columns:1fr; } .entity dl div:last-child { grid-column:auto; } .scope-list article { min-height:15rem; } .page-cta > div { grid-template-columns:1fr; align-items:start; } }
 </style>

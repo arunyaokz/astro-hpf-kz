@@ -12,7 +12,7 @@ const show = (id: string) => {
   const fact = byId.get(id);
   return fact?.verified ? fact.localizedValues?.[lang] ?? fact.value : `[${ui.pending}]`;
 };
-const navPages: CorePage[] = ["services", "routes", "about", "contact", "privacy"];
+const navPages: CorePage[] = ["services", "routes", "about", "privacy"];
 ---
 
 <footer class="footer">
