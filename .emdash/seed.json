@@ -1,0 +1,106 @@
+{
+  "version": "1",
+  "defaultLocale": "en",
+  "meta": {
+    "name": "华鹏飞新闻管理",
+    "description": "中、英、俄三语新闻；草稿、审核、发布与图片库。"
+  },
+  "settings": {
+    "title": "华鹏飞 · 新闻管理",
+    "url": "https://hpf.kz",
+    "timezone": "Asia/Almaty"
+  },
+  "collections": [
+    {
+      "slug": "news",
+      "label": "新闻",
+      "labelSingular": "新闻",
+      "description": "发布前核对来源并完成三语编辑。俄语译文须经母语者校对。",
+      "icon": "newspaper",
+      "supports": [
+        "drafts",
+        "revisions",
+        "scheduling",
+        "search",
+        "seo",
+        "preview"
+      ],
+      "urlPattern": "/news/{slug}/",
+      "titleField": "title",
+      "fields": [
+        {
+          "slug": "title",
+          "label": "新闻标题",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "description",
+          "label": "内容摘要",
+          "type": "text",
+          "required": true
+        },
+        {
+          "slug": "content",
+          "label": "新闻正文",
+          "type": "portableText",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "hero_image",
+          "label": "封面图片",
+          "type": "image"
+        },
+        {
+          "slug": "category",
+          "label": "新闻分类",
+          "type": "select",
+          "required": true,
+          "defaultValue": "公司动态",
+          "validation": {
+            "options": [
+              "公司动态",
+              "路线动态",
+              "市场观察",
+              "行业分析"
+            ]
+          }
+        },
+        {
+          "slug": "verification_status",
+          "label": "核验状态",
+          "type": "select",
+          "required": true,
+          "defaultValue": "待核验",
+          "validation": {
+            "options": [
+              "待核验",
+              "公司一手信息",
+              "公开来源已核验",
+              "分析观点"
+            ]
+          }
+        },
+        {
+          "slug": "source_urls",
+          "label": "来源链接（每行一个网址）",
+          "type": "text"
+        },
+        {
+          "slug": "author_name",
+          "label": "署名",
+          "type": "string",
+          "defaultValue": "HPF.kz"
+        },
+        {
+          "slug": "native_reviewed",
+          "label": "译文已由母语者校对",
+          "type": "boolean",
+          "defaultValue": false
+        }
+      ]
+    }
+  ]
+}

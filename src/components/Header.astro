@@ -5,7 +5,7 @@ interface Props { lang?: Lang; active?: CorePage; }
 
 const { lang = "en", active = "home" } = Astro.props;
 const ui = UI[lang];
-const navPages: CorePage[] = ["services", "routes", "about"];
+const navPages: CorePage[] = ["services", "routes", "about", "news"];
 ---
 
 <header class="site-header">

@@ -1,0 +1,214 @@
+{
+  "checked_at": "2026-10-25",
+  "domain": "hpf.kz",
+  "worker": "astro-hpf-kz",
+  "production_version": "198774c6-ddd7-4f32-a25b-7eb640c8c6e2",
+  "source_commit": "abf88a5",
+  "pages": [
+    {
+      "url": "https://hpf.kz/",
+      "download": "ok",
+      "sha256": "a11766d97950c5f4695c2ec9f27b7e3397e1eda2f595c5292a878f2d0ade3568",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/about/",
+      "download": "ok",
+      "sha256": "498ed311c41f1ef4639e1621682dad62cf183da53d405e90e3dbf20411b23369",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/blog/",
+      "download": "ok",
+      "sha256": "feb344ef5ccbce91f2730a5ef6c49a68ddcf0431ba65f328dfb8f8a08de3e3ce",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/blog/first-post/",
+      "download": "ok",
+      "sha256": "0a63cda6c7911ca955a9d2bfec20c672cedb871e2d34155d4b8abf27fae7e26c",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/blog/markdown-style-guide/",
+      "download": "ok",
+      "sha256": "b2f65f55cc4fbedb085188383386a38a57421cc13955c89e5afbffd7d47cb666",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/blog/second-post/",
+      "download": "ok",
+      "sha256": "b74b0dad115dae47738152979d75f4804c1e64a79d590d9a106863648f665b06",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/blog/third-post/",
+      "download": "ok",
+      "sha256": "b311e9a2c1bb7d0db7d2fbcbf1a0326d9e5ab5bb0b841d5257469ab52341654d",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/blog/using-mdx/",
+      "download": "ok",
+      "sha256": "c8f3f166c7ece187a70b66ee80f36840e7aac0398cbf768b9b974efd0161910d",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/colors/",
+      "download": "ok",
+      "sha256": "f2d0321281e0cf5f7aab672e3592f2bf094264bd88714cfc524e9847ff1010d4",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/contact/",
+      "download": "ok",
+      "sha256": "cacffd340f724c509bedcab7da1a2f0bf91f79eba526b2ec17abc8b03c822f9f",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/industries/",
+      "download": "ok",
+      "sha256": "e65fa2802def714038aa88a95421d8f41b318b41ebaa23543227998d21885302",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/news/",
+      "download": "ok",
+      "sha256": "7889b2633ffe276d234844777a5e9d96c5e25b54c6b4d06549237266dcd9e47e",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/platform/",
+      "download": "ok",
+      "sha256": "5cb2030cad86e8b407d97308289af9ad379508a1f23637e8200f553aa6882d03",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/privacy/",
+      "download": "ok",
+      "sha256": "8416141ff214665becaec2d500e8f1b01b4dcd9ed6c0715838bfaf54a7112c89",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/routes/",
+      "download": "ok",
+      "sha256": "98fd6ec15a553e66f859f9f3f4b17c75482a4ee7d3680184852f9acb083215cd",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/ru/",
+      "download": "ok",
+      "sha256": "1027795e16027bce7eab1b505c807bd34f655d053550b99d3b756d8cfbfa82b6",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/ru/about/",
+      "download": "ok",
+      "sha256": "e5d2d9b6e22cff5276fd084f8e5654fcd0b7847fa5e7a1143ea84b3b3095d74f",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/ru/contact/",
+      "download": "ok",
+      "sha256": "2280b8c036e6da543998463240ea387a8cb3944544900aa91087690cd4bb0e20",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/ru/privacy/",
+      "download": "ok",
+      "sha256": "06b7ac4da80ca76a05da650104463a96bb4278911bbaa2310a9250dafa34fe3c",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/ru/routes/",
+      "download": "ok",
+      "sha256": "78171d8e274183e4eb4ee56cb4fb3a4b71e2d9acd71ebedd513d90ef39656ef9",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/ru/services/",
+      "download": "ok",
+      "sha256": "905846acfaf9f2c2583405829fd042af50e2c81f5a922fa51598f2d45a5d626c",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/services/",
+      "download": "ok",
+      "sha256": "bec549b39b04be638286747426a9db4b850d071aba95e0b84559323ee7441156",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/zh/",
+      "download": "ok",
+      "sha256": "c57d032b38c795f898877414f8967458c0b47f9568491a09b54c4b2a143ae2a7",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/zh/about/",
+      "download": "ok",
+      "sha256": "abb943410418239839dfcf0b0cb65daf6f696c015e748137b61a0f7b3d790694",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/zh/contact/",
+      "download": "ok",
+      "sha256": "1c77220a45592cb76821cfb4000454a05ec0bab4a8f3290108dd0439d76fa274",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/zh/privacy/",
+      "download": "ok",
+      "sha256": "3dbd3e842f3840afaed1d4a0146067e7359f9ccfb6a383997f7ead611a3c7545",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/zh/routes/",
+      "download": "ok",
+      "sha256": "8365218c731ac63b9f694f60af5829f7eb5230da5ef681b4ab218a6afdf941b4",
+      "source_text_matches_live": true
+    },
+    {
+      "url": "https://hpf.kz/zh/services/",
+      "download": "ok",
+      "sha256": "a710a77b0078228aa8719fab3258669398e63248b7a27c6dbd0d48b1e0a0a654",
+      "source_text_matches_live": true
+    }
+  ],
+  "asset_count": 44,
+  "failed_assets": [
+    "https://hpf.kz/_astro/CardVisual.DNLtalji.css",
+    "https://hpf.kz/_astro/ContactPage.PyosbEx1.css",
+    "https://hpf.kz/_astro/ContentPage.B3iiBExS.css",
+    "https://hpf.kz/_astro/HomePage.uPL8c1fB.css",
+    "https://hpf.kz/_astro/RouteMap.9RB_wBtj.css",
+    "https://hpf.kz/_astro/RouteMap.astro_astro_type_script_index_0_lang.5AYxfbx2.js"
+  ],
+  "source_branch": "origin/codex/services-page",
+  "local_branch": "codex/website-astro-update",
+  "versions": {
+    "astro": {
+      "before": "7.2.4",
+      "after": "7.4.2"
+    },
+    "@astrojs/cloudflare": {
+      "before": "14.2.3",
+      "after": "14.4.1"
+    },
+    "@astrojs/mdx": {
+      "before": "7.0.7",
+      "after": "8.1.1"
+    },
+    "wrangler": {
+      "before": "4.98.0",
+      "after": "4.152.0"
+    },
+    "emdash_latest": "1.3.1"
+  },
+  "validation": {
+    "build": "passed: 29 pages",
+    "typescript": "passed",
+    "cloudflare_dry_run": "passed",
+    "facts_check": "exit 0; 11 pre-existing unresolved launch facts",
+    "deployed": false
+  }
+}

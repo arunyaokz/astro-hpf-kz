@@ -1,0 +1,2 @@
+# Preserve compiled compatibility assets byte-for-byte, including shader strings.
+ops/legacy-assets/_astro/** -whitespace

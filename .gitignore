@@ -26,3 +26,6 @@ pnpm-debug.log*
 # wrangler files
 .wrangler
 .dev.vars
+
+# Local production snapshots; comparison report remains tracked.
+ops/production-snapshot/

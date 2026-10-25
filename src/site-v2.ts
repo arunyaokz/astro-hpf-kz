@@ -1,6 +1,6 @@
 export const LANGS = ["en", "zh", "ru"] as const;
 export type Lang = (typeof LANGS)[number];
-export type CorePage = "home" | "services" | "routes" | "about" | "contact" | "privacy";
+export type CorePage = "news" | "home" | "services" | "routes" | "about" | "contact" | "privacy";
 
 export const HTML_LANG: Record<Lang, string> = {
   en: "en",
@@ -9,6 +9,7 @@ export const HTML_LANG: Record<Lang, string> = {
 };
 
 const PAGE_SLUG: Record<CorePage, string> = {
+  news: "news",
   home: "",
   services: "services",
   routes: "routes",
@@ -40,7 +41,7 @@ export const UI: Record<Lang, {
   legalPending: string;
 }> = {
   en: {
-    nav: { home: "Home", services: "Services", routes: "Routes & network", about: "Company", contact: "Contact", privacy: "Privacy" },
+    nav: { news: "News", home: "Home", services: "Services", routes: "Routes & network", about: "Company", contact: "Contact", privacy: "Privacy" },
     inquiry: "Request a route plan",
     menu: "Menu",
     close: "Close",
@@ -55,7 +56,7 @@ export const UI: Record<Lang, {
     legalPending: "Some contact and capability facts remain pending confirmation",
   },
   zh: {
-    nav: { home: "首页", services: "服务", routes: "路线与网络", about: "公司", contact: "联系", privacy: "隐私政策" },
+    nav: { news: "新闻", home: "首页", services: "服务", routes: "路线与网络", about: "公司", contact: "联系", privacy: "隐私政策" },
     inquiry: "获取运输方案",
     menu: "菜单",
     close: "关闭",
@@ -70,7 +71,7 @@ export const UI: Record<Lang, {
     legalPending: "部分联系方式与能力事实仍待核实",
   },
   ru: {
-    nav: { home: "Главная", services: "Услуги", routes: "Маршруты и сеть", about: "Компания", contact: "Контакты", privacy: "Конфиденциальность" },
+    nav: { news: "Новости", home: "Главная", services: "Услуги", routes: "Маршруты и сеть", about: "Компания", contact: "Контакты", privacy: "Конфиденциальность" },
     inquiry: "Запросить маршрут",
     menu: "Меню",
     close: "Закрыть",
@@ -114,7 +115,7 @@ type PageCopy = {
   ctaButton: string;
 };
 
-export const PAGE_COPY: Record<Exclude<CorePage, "home" | "contact" | "privacy">, Record<Lang, PageCopy>> = {
+export const PAGE_COPY: Record<Exclude<CorePage, "home" | "contact" | "privacy" | "news">, Record<Lang, PageCopy>> = {
   services: {
     en: {
       metaTitle: "Customs, transport, warehousing and delivery | HPF.kz",

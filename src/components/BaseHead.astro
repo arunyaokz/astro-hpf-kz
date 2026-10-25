@@ -8,10 +8,13 @@ interface Props {
   lang: Lang;
   page: CorePage;
   image?: string;
+  canonicalPath?: string;
+  alternates?: { lang: Lang; path: string }[];
 }
 
-const { title, description, lang, page, image = "/og-hpf-kz.svg" } = Astro.props;
-const canonicalURL = new URL(pagePath(lang, page), Astro.site);
+const { title, description, lang, page, image = "/og-hpf-kz.svg", canonicalPath, alternates } = Astro.props;
+const canonicalURL = new URL(canonicalPath ?? pagePath(lang, page), Astro.site);
+const languageLinks = alternates ?? LANGS.map((code) => ({ lang: code, path: pagePath(code, page) }));
 const facts = await getCollection("facts");
 const verified = new Map(facts.filter((fact) => fact.data.verified).map((fact) => [fact.id, fact.data.value]));
 const organizationSchema = {
@@ -34,8 +37,8 @@ const organizationSchema = {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonicalURL} />
-{LANGS.map((code) => <link rel="alternate" hreflang={code === "zh" ? "zh-CN" : code} href={new URL(pagePath(code, page), Astro.site)} />)}
-<link rel="alternate" hreflang="x-default" href={new URL(pagePath("en", page), Astro.site)} />
+{languageLinks.map(({ lang: code, path }) => <link rel="alternate" hreflang={code === "zh" ? "zh-CN" : code} href={new URL(path, Astro.site)} />)}
+{languageLinks.find((item) => item.lang === "en") && <link rel="alternate" hreflang="x-default" href={new URL(languageLinks.find((item) => item.lang === "en")!.path, Astro.site)} />}
 
 <title>{title}</title>
 <meta name="description" content={description} />

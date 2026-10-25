@@ -1,0 +1,7 @@
+---
+export const prerender = false;
+import NewsIndex from "../../../components/NewsIndex.astro";
+const lang = Astro.params.lang;
+if (lang !== "zh" && lang !== "ru") return Astro.rewrite("/404");
+---
+<NewsIndex lang={lang} />

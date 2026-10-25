@@ -12,16 +12,18 @@ interface Props {
   description: string;
   lang?: Lang;
   active?: CorePage | "news" | "industries" | "platform";
+  canonicalPath?: string;
+  alternates?: { lang: Lang; path: string }[];
 }
 
-const { title, description, lang = "en", active = "home" } = Astro.props;
-const activePage: CorePage = active === "news" ? "about" : active === "industries" || active === "platform" ? "services" : active;
+const { title, description, lang = "en", active = "home", canonicalPath, alternates } = Astro.props;
+const activePage: CorePage = active === "industries" || active === "platform" ? "services" : active;
 ---
 
 <!doctype html>
 <html lang={HTML_LANG[lang]}>
   <head>
-    <BaseHead title={title} description={description} lang={lang} page={activePage} />
+    <BaseHead title={title} description={description} lang={lang} page={activePage} canonicalPath={canonicalPath} alternates={alternates} />
   </head>
   <body>
     <a class="skip-link" href="#main-content">{UI[lang].skip}</a>

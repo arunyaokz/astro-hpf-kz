@@ -1,0 +1,105 @@
+{
+  "checked_at": "2026-10-25",
+  "production_version": "f1f6310c-beac-4a18-863f-7ed2cf4ae825",
+  "public_checks": [
+    {
+      "path": "/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/zh/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/ru/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/news/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/zh/news/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/ru/news/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/cms/activate/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/_emdash/admin/",
+      "status": "200",
+      "exit": 0,
+      "note": "CookieJar follows Chinese locale and login redirects"
+    },
+    {
+      "path": "/_emdash/api/setup/dev-bypass",
+      "status": "403",
+      "exit": 0
+    },
+    {
+      "path": "/zh/news/does-not-exist/",
+      "status": "404",
+      "exit": 0
+    },
+    {
+      "path": "/_astro/CardVisual.DNLtalji.css",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/_astro/ContactPage.PyosbEx1.css",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/_astro/ContentPage.B3iiBExS.css",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/_astro/HomePage.uPL8c1fB.css",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/_astro/RouteMap.9RB_wBtj.css",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "/_astro/RouteMap.astro_astro_type_script_index_0_lang.5AYxfbx2.js",
+      "status": "200",
+      "exit": 0
+    }
+  ],
+  "local_validation": [
+    "draft_anonymous_404",
+    "publish_visible",
+    "locale_isolation",
+    "unpublish_404",
+    "anonymous_write_401",
+    "media_upload_read_byte_match",
+    "test_data_cleaned"
+  ],
+  "owner": {
+    "email": "yao@hpf.kz",
+    "role": "administrator",
+    "registered_by_owner": true,
+    "login": "passkey"
+  },
+  "chinese_admin_dashboard_browser_verified": true,
+  "production_homepage_failed_images": 0,
+  "production_homepage_failed_resources": 0
+}

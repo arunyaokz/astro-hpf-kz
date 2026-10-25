@@ -1,8 +1,10 @@
 {
   "name": "astro-hpf-kz",
-  "compatibility_date": "2025-04-01",
-  "compatibility_flags": ["nodejs_compat"],
-  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-10-25",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "main": "./src/worker.ts",
   "assets": {
     "binding": "ASSETS"
   },
@@ -11,5 +13,32 @@
       "binding": "SESSION",
       "id": "60f249dc6b9343ec95b70749ae480d82"
     }
-  ]
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "hpf-website-cms",
+      "database_id": "2ec63897-0d36-49a5-9ad2-0ac742f884fa"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "hpf-website-media"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "* * * * *"
+    ]
+  },
+  "secrets": {
+    "required": [
+      "EMDASH_ENCRYPTION_KEY",
+      "HPF_CMS_SETUP_TOKEN"
+    ]
+  },
+  "observability": {
+    "enabled": true
+  }
 }

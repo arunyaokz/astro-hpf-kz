@@ -1,0 +1,17 @@
+---
+export const prerender = true;
+---
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex,nofollow"/><title>华鹏飞 · 新闻后台初始化</title></head><body><main><img src="/brand/hpf-mark.svg" alt="华鹏飞" width="160"/><h1>新闻后台初始化</h1><p id="status" role="status">正在验证您的专属入口……</p><p>进入后请使用您的邮箱创建管理员，并按设备提示保存通行密钥。以后可用指纹、面容或设备解锁登录。</p><a href="/_emdash/admin/">已有账号，前往登录</a></main></body></html>
+<script>
+  const token = location.hash.slice(1);
+  history.replaceState(null, "", location.pathname);
+  const status = document.querySelector<HTMLElement>("#status")!;
+  if (!token) status.textContent = "请使用老板专属的完整初始化链接。";
+  else {
+    fetch("/cms/unlock", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token }) }).then(async (response) => {
+      if (!response.ok) throw new Error("入口验证失败，请检查初始化链接是否完整。");
+      location.replace("/_emdash/admin/");
+    }).catch((error) => { status.textContent = error.message; });
+  }
+</script>
+<style>body{margin:0;background:#f8f7ff;color:#18122f;font:16px/1.8 system-ui,sans-serif}main{max-width:32rem;margin:10vh auto;padding:2rem}h1{font-size:2rem;margin-top:2rem}p{color:#655f79}a{color:#16387e}</style>

@@ -1,0 +1,25 @@
+---
+import { listNews, newsPath, newsLabel, NEWS_COPY } from "../news";
+import type { Lang } from "../site-v2";
+import SiteLayout from "../layouts/SiteLayout.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const text = NEWS_COPY[lang];
+const { entries, nextCursor } = await listNews(lang, Astro.url.searchParams.get("cursor") ?? undefined);
+Astro.response.headers.set("Cache-Control", "private, no-store");
+---
+<SiteLayout title={`${text.title} | HPF.kz`} description={text.lead} lang={lang} active="news">
+  <section class="shell news">
+    <header><p class="eyebrow">HPF.kz</p><h1>{text.title}</h1><p class="lead">{text.lead}</p></header>
+    {entries.length === 0 ? <p class="empty">{text.empty}</p> : <div class="news-list">
+      {entries.map(({ data }) => <a class="news-row" href={newsPath(lang, data.slug)}>
+        <div><p class="category">{newsLabel(data.category, lang)}</p><h2>{data.title}</h2><p>{data.description}</p></div>
+        <time datetime={new Date(data.publishedAt).toISOString()}>{new Date(data.publishedAt).toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : "en-GB", { timeZone: "Asia/Almaty" })}</time><span aria-hidden="true">↗</span>
+      </a>)}
+    </div>}
+    {nextCursor && <a class="next" href={`${newsPath(lang)}?cursor=${encodeURIComponent(nextCursor)}`}>{text.next} →</a>}
+  </section>
+</SiteLayout>
+<style>
+  .news{padding-block:5rem 7rem;min-height:70vh}header{max-width:52rem;margin-bottom:3rem}h1{font-size:clamp(2.5rem,6vw,5rem);margin:1rem 0 1.5rem}.lead,.empty,.news-row p,time{color:var(--muted)}.lead{font-size:1.15rem;max-width:42rem}.empty{padding-block:4rem;border-block:1px solid var(--line)}.news-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:2rem;padding-block:2rem;border-top:1px solid var(--line)}.news-row h2{font-size:clamp(1.4rem,3vw,2rem);margin:.5rem 0 1rem}.news-row:hover h2,.next{color:var(--violet)}time,.category{font-size:.85rem}.next{display:inline-block;margin-top:2rem}@media(max-width:640px){.news-row{grid-template-columns:minmax(0,1fr) auto;gap:1rem}.news-row time{grid-column:1;grid-row:2}.news{padding-block:3rem 5rem}}
+</style>
