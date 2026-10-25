@@ -15,7 +15,7 @@ export function createPlugin() {
   return definePlugin({
     id:'hpf-corporate-pages',version:'1.0.0',capabilities:['hooks.content-policy:register','content:read'],
     hooks:{'content:beforePublish':checkPage,'content:beforeSchedule':checkPage,
-      'content:beforeUnpublish':async event=>['footer_settings','contact_settings'].includes(event.collection)?{cancel:true,reason:'全站设置需要保持发布状态，请直接编辑后发布。'}:undefined,
-      'content:beforeDelete':async event=>['footer_settings','contact_settings'].includes(event.collection)?false:undefined},
+      'content:beforeUnpublish':async event=>['footer_settings','contact_settings','header_settings'].includes(event.collection)?{cancel:true,reason:'全站设置需要保持发布状态，请直接编辑后发布。'}:undefined,
+      'content:beforeDelete':async event=>['footer_settings','contact_settings','header_settings'].includes(event.collection)?false:undefined},
   });
 }

@@ -1,6 +1,7 @@
 // EmDash 1.3.1 ships a partial zh-CN catalogue. Fill the remaining news-editing
 // labels at build time, without changing installed packages or user content.
 const words = {
+  'Live version':'线上版本','Visitors see this published version':'访客正在查看此已发布版本','Publication date':'发布时间','Drop an image here or browse':'将图片拖到这里或选择图片','Drop an image here or ':'将图片拖到这里或','browse':'选择图片',
   'Unpublish {itemLabel}':'撤下{itemLabel}','Unpublish ':'撤下','Unpublished':'未发布','Unpublished changes':'未发布的修改','Filter by date range: {rangeLabel}':'按日期范围筛选：{rangeLabel}','Filter by date range: ':'按日期范围筛选：',
   'Clear selection':'清除选择','Show options':'显示选项','Close settings':'关闭设置','Created and updated':'创建与更新时间','Drag to reorder ':'拖动以调整顺序：','URL & language':'网址与语言','Choose bylines':'选择署名','Why are bylines shown in this order?':'为什么署名按此顺序显示？','Why is this important for social sharing?':'这对社交分享有什么影响？','Why is this important for search result titles?':'这对搜索结果标题有什么影响？','Why is this important for search result summaries?':'这对搜索结果摘要有什么影响？','Why is this important for duplicate pages?':'这如何避免重复页面？','Why is this important for search visibility?':'这对搜索可见性有什么影响？','Item ':'条目 ',
   'Filter by byline':'按署名筛选','Filter by date range: Date range':'按日期范围筛选','Date range':'日期范围','Per page':'每页条数','Page size':'每页条数','First page':'第一页','Last page':'最后一页','Page number':'页码','Select all on this page':'全选本页','Select ':'选择','Showing ':'显示第 ',' of ':' 条，共 ','Add item':'添加条目','Add row':'添加一项','Move up':'上移','Move down':'下移','Remove item':'移除条目','Item':'条目',

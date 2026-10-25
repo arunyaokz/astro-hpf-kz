@@ -2791,5 +2791,112 @@
         "pending": "Ожидает подтверждения"
       }
     }
+  },
+  "header": {
+    "en": {
+      "title": "Top navigation",
+      "navigation": [
+        {
+          "label": "Services",
+          "url": "/services/"
+        },
+        {
+          "label": "Routes & network",
+          "url": "/routes/"
+        },
+        {
+          "label": "Company",
+          "url": "/about/"
+        },
+        {
+          "label": "News",
+          "url": "/news/"
+        }
+      ],
+      "brandUrl": "/",
+      "brandLabel": "HPF.kz home",
+      "primaryLabel": "Primary navigation",
+      "mobileLabel": "Mobile navigation",
+      "ctaLabel": "Request a route plan",
+      "ctaUrl": "/about/#contact",
+      "languageLabel": "Language",
+      "menuLabel": "Menu",
+      "closeLabel": "Close",
+      "languageNames": {
+        "zh": "中文",
+        "en": "English",
+        "ru": "Русский"
+      }
+    },
+    "zh": {
+      "title": "顶部导航",
+      "navigation": [
+        {
+          "label": "服务",
+          "url": "/zh/services/"
+        },
+        {
+          "label": "路线与网络",
+          "url": "/zh/routes/"
+        },
+        {
+          "label": "公司",
+          "url": "/zh/about/"
+        },
+        {
+          "label": "新闻",
+          "url": "/zh/news/"
+        }
+      ],
+      "brandUrl": "/zh/",
+      "brandLabel": "HPF.kz home",
+      "primaryLabel": "Primary navigation",
+      "mobileLabel": "Mobile navigation",
+      "ctaLabel": "获取运输方案",
+      "ctaUrl": "/zh/about/#contact",
+      "languageLabel": "语言",
+      "menuLabel": "菜单",
+      "closeLabel": "关闭",
+      "languageNames": {
+        "zh": "中文",
+        "en": "English",
+        "ru": "Русский"
+      }
+    },
+    "ru": {
+      "title": "Верхняя навигация",
+      "navigation": [
+        {
+          "label": "Услуги",
+          "url": "/ru/services/"
+        },
+        {
+          "label": "Маршруты и сеть",
+          "url": "/ru/routes/"
+        },
+        {
+          "label": "Компания",
+          "url": "/ru/about/"
+        },
+        {
+          "label": "Новости",
+          "url": "/ru/news/"
+        }
+      ],
+      "brandUrl": "/ru/",
+      "brandLabel": "HPF.kz home",
+      "primaryLabel": "Primary navigation",
+      "mobileLabel": "Mobile navigation",
+      "ctaLabel": "Запросить маршрут",
+      "ctaUrl": "/ru/about/#contact",
+      "languageLabel": "Язык",
+      "menuLabel": "Меню",
+      "closeLabel": "Закрыть",
+      "languageNames": {
+        "zh": "中文",
+        "en": "English",
+        "ru": "Русский"
+      }
+    }
   }
 }

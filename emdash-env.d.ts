@@ -300,6 +300,32 @@ export interface ContactSetting {
   terms?: Record<string, TaxonomyTerm[]>;
 }
 
+export interface HeaderSetting {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  navigation: { "label": string; "url": string }[];
+  brand_url: string;
+  brand_label: string;
+  primary_label: string;
+  mobile_label: string;
+  cta_label: string;
+  cta_url: string;
+  language_label: string;
+  menu_label: string;
+  close_label: string;
+  language_names_zh: string;
+  language_names_en: string;
+  language_names_ru: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 export interface New {
   id: string;
   slug: string | null;
@@ -329,6 +355,7 @@ declare module "emdash" {
     home_pages: HomePage;
     footer_settings: FooterSetting;
     contact_settings: ContactSetting;
+    header_settings: HeaderSetting;
     news: New;
   }
 }

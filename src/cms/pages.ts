@@ -7,6 +7,7 @@ import { baseline, decodePage, PAGE_COLLECTIONS, PAGE_SLUGS } from './page-model
 
 type Hero = { heroImage?: ImageValue };
 export interface CorporatePages {
+  header: typeof baseline.header.en & Hero;
   home: typeof baseline.home.en & Hero;
   footer: typeof baseline.footer.en & Hero;
   contacts: typeof baseline.contacts.zh & Hero;

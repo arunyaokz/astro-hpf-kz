@@ -1,0 +1,247 @@
+{
+  "collections": [
+    {
+      "slug": "header_settings",
+      "label": "顶部导航",
+      "labelSingular": "顶部导航",
+      "description": "维护中英俄顶部导航。菜单可增删、调整顺序（1至6项）；先保存预览，再发布。询价按钮桌面与手机共用。",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling"
+      ],
+      "hasSeo": false,
+      "urlPattern": "/",
+      "titleField": "title",
+      "sortOrder": 7,
+      "fields": [
+        {
+          "slug": "title",
+          "label": "标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "navigation",
+          "label": "导航链接",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 1,
+            "maxItems": 6,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "url",
+                "label": "链接地址",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "brand_url",
+          "label": "品牌标志链接",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "brand_label",
+          "label": "品牌标志说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "primary_label",
+          "label": "桌面导航说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "mobile_label",
+          "label": "手机导航说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "cta_label",
+          "label": "询价按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "cta_url",
+          "label": "询价按钮链接",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "language_label",
+          "label": "语言切换说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "menu_label",
+          "label": "菜单按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "close_label",
+          "label": "关闭按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "language_names_zh",
+          "label": "语言名称｜中文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "language_names_en",
+          "label": "语言名称｜英文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "language_names_ru",
+          "label": "语言名称｜俄文",
+          "required": true,
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "content": {
+    "header_settings": [
+      {
+        "id": "header-en",
+        "slug": "header",
+        "locale": "en",
+        "status": "published",
+        "data": {
+          "title": "Top navigation",
+          "navigation": [
+            {
+              "label": "Services",
+              "url": "/services/"
+            },
+            {
+              "label": "Routes & network",
+              "url": "/routes/"
+            },
+            {
+              "label": "Company",
+              "url": "/about/"
+            },
+            {
+              "label": "News",
+              "url": "/news/"
+            }
+          ],
+          "brand_url": "/",
+          "brand_label": "HPF.kz home",
+          "primary_label": "Primary navigation",
+          "mobile_label": "Mobile navigation",
+          "cta_label": "Request a route plan",
+          "cta_url": "/about/#contact",
+          "language_label": "Language",
+          "menu_label": "Menu",
+          "close_label": "Close",
+          "language_names_zh": "中文",
+          "language_names_en": "English",
+          "language_names_ru": "Русский"
+        }
+      },
+      {
+        "id": "header-zh",
+        "slug": "header",
+        "locale": "zh",
+        "status": "published",
+        "translationOf": "header-en",
+        "data": {
+          "title": "顶部导航",
+          "navigation": [
+            {
+              "label": "服务",
+              "url": "/zh/services/"
+            },
+            {
+              "label": "路线与网络",
+              "url": "/zh/routes/"
+            },
+            {
+              "label": "公司",
+              "url": "/zh/about/"
+            },
+            {
+              "label": "新闻",
+              "url": "/zh/news/"
+            }
+          ],
+          "brand_url": "/zh/",
+          "brand_label": "HPF.kz home",
+          "primary_label": "Primary navigation",
+          "mobile_label": "Mobile navigation",
+          "cta_label": "获取运输方案",
+          "cta_url": "/zh/about/#contact",
+          "language_label": "语言",
+          "menu_label": "菜单",
+          "close_label": "关闭",
+          "language_names_zh": "中文",
+          "language_names_en": "English",
+          "language_names_ru": "Русский"
+        }
+      },
+      {
+        "id": "header-ru",
+        "slug": "header",
+        "locale": "ru",
+        "status": "published",
+        "translationOf": "header-en",
+        "data": {
+          "title": "Верхняя навигация",
+          "navigation": [
+            {
+              "label": "Услуги",
+              "url": "/ru/services/"
+            },
+            {
+              "label": "Маршруты и сеть",
+              "url": "/ru/routes/"
+            },
+            {
+              "label": "Компания",
+              "url": "/ru/about/"
+            },
+            {
+              "label": "Новости",
+              "url": "/ru/news/"
+            }
+          ],
+          "brand_url": "/ru/",
+          "brand_label": "HPF.kz home",
+          "primary_label": "Primary navigation",
+          "mobile_label": "Mobile navigation",
+          "cta_label": "Запросить маршрут",
+          "cta_url": "/ru/about/#contact",
+          "language_label": "Язык",
+          "menu_label": "Меню",
+          "close_label": "Закрыть",
+          "language_names_zh": "中文",
+          "language_names_en": "English",
+          "language_names_ru": "Русский"
+        }
+      }
+    ]
+  }
+}

@@ -1,33 +1,38 @@
 ---
-import { LANGS, UI, pagePath, type CorePage, type Lang } from "../site-v2";
+import {loadCorporatePage} from "../cms/pages";
+import { LANGS, pagePath, type CorePage, type Lang } from "../site-v2";
 
 interface Props { lang?: Lang; active?: CorePage; }
 
 const { lang = "en", active = "home" } = Astro.props;
-const ui = UI[lang];
-const navPages: CorePage[] = ["services", "routes", "about", "news"];
+const header=await loadCorporatePage('header',lang);
+if(!header)throw new Error('请先在后台发布顶部导航。');
+const isActive=(url:string)=>{
+ const target=new URL(url,Astro.site ?? Astro.url);
+ return target.origin===(Astro.site ?? Astro.url).origin&&target.pathname.replace(/\/$/,'')===pagePath(lang,active).replace(/\/$/,'');
+};
 ---
 
 <header class="site-header">
-  <nav class="shell nav" aria-label="Primary navigation">
-    <a class="wordmark" href={pagePath(lang, "home")} aria-label="HPF.kz home">
+  <nav class="shell nav" aria-label={header.primaryLabel}>
+    <a class="wordmark" href={header.brandUrl} aria-label={header.brandLabel}>
       <img src="/brand/hpf-mark.svg" alt="HPF KZ" width="260" height="96" />
     </a>
 
     <div class="desktop-links">
-      {navPages.map((page) => (
-        <a href={pagePath(lang, page)} aria-current={active === page ? "page" : undefined}>{ui.nav[page]}</a>
+      {header.navigation.map((item) => (
+        <a href={item.url} aria-current={isActive(item.url) ? "page" : undefined}>{item.label}</a>
       ))}
     </div>
 
     <div class="nav-actions">
-      <div class="languages" aria-label={ui.language}>
+      <div class="languages" aria-label={header.languageLabel}>
         {LANGS.map((code) => (
           <a class:list={{ active: code === lang }} href={pagePath(code, active)} hreflang={code === "zh" ? "zh-CN" : code}>{code === "zh" ? "中" : code.toUpperCase()}</a>
         ))}
       </div>
-      <a class="nav-cta" href={pagePath(lang, "contact")}>{ui.inquiry}</a>
-      <button class="menu-button" type="button" data-menu-open aria-controls="site-menu" aria-expanded="false">{ui.menu}</button>
+      <a class="nav-cta" href={header.ctaUrl}>{header.ctaLabel}</a>
+      <button class="menu-button" type="button" data-menu-open aria-controls="site-menu" aria-expanded="false">{header.menuLabel}</button>
     </div>
   </nav>
 </header>
@@ -35,24 +40,24 @@ const navPages: CorePage[] = ["services", "routes", "about", "news"];
 <dialog id="site-menu" class="mobile-menu" data-menu>
   <div class="mobile-head">
     <img src="/brand/hpf-mark.svg" alt="HPF KZ" width="260" height="96" />
-    <button type="button" data-menu-close>{ui.close}</button>
+    <button type="button" data-menu-close>{header.closeLabel}</button>
   </div>
-  <nav aria-label="Mobile navigation">
-    {navPages.map((page, index) => (
-      <a href={pagePath(lang, page)} data-menu-link aria-current={active === page ? "page" : undefined}>
+  <nav aria-label={header.mobileLabel}>
+    {header.navigation.map((item, index) => (
+      <a href={item.url} data-menu-link aria-current={isActive(item.url) ? "page" : undefined}>
         <span>{String(index + 1).padStart(2, "0")}</span>
-        <strong>{ui.nav[page]}</strong>
+        <strong>{item.label}</strong>
       </a>
     ))}
   </nav>
   <div class="mobile-foot">
-    <p>{ui.language}</p>
+    <p>{header.languageLabel}</p>
     <div class="mobile-languages">
       {LANGS.map((code) => (
-        <a class:list={{ active: code === lang }} href={pagePath(code, active)}>{code === "zh" ? "中文" : code === "ru" ? "Русский" : "English"}</a>
+        <a class:list={{ active: code === lang }} href={pagePath(code, active)}>{header.languageNames[code]}</a>
       ))}
     </div>
-    <a class="button button--primary" href={pagePath(lang, "contact")} data-menu-link>{ui.inquiry}</a>
+    <a class="button button--primary" href={header.ctaUrl} data-menu-link>{header.ctaLabel}</a>
   </div>
 </dialog>
 

@@ -4,7 +4,7 @@
 
 - 官网源码在 `/Users/arunyao/Developer/HPFKZ/website`，独立仓库 `arunyaokz/astro-hpf-kz`。
 - 生产基准源码来自 `origin/codex/services-page` 的 `abf88a5`；`main` 旧于生产，不能直接覆盖。
-- 本地分支 `codex/website-astro-update`：已接入并部署 EmDash 1.3.1 官网内容管理（新闻、服务介绍、路线网络、公司介绍、首页、页脚、全站联系方式）。Astro 7.4.2、Cloudflare 适配器14.4.1、MDX8.1.1、Wrangler4.152.0；Node>=22.23.4，本次用24.16.0。
+- 本地分支 `codex/website-astro-update`：已接入并部署 EmDash 1.3.1 官网内容管理（新闻、服务介绍、路线网络、公司介绍、首页、页脚、全站联系方式、顶部导航）。Astro 7.4.2、Cloudflare 适配器14.4.1、MDX8.1.1、Wrangler4.152.0；Node>=22.23.4，本次用24.16.0。
 - 后台 https://hpf.kz/_emdash/admin/ ，名称“华鹏飞 · 官网管理”，默认简体中文；各页面与设置栏目默认打开中文版本。
 - **老板已自行完成登记**：`yao@hpf.kz` / YAO，管理员（role50）。使用通行密钥登录，没有独立密码。未代建或注册生产测试账号。
 - 公开新闻列表：`/news/`、`/zh/news/`、`/ru/news/`；详情按语言与 slug 动态渲染。保存草稿、发布/撤回、定时发布、富文本及封面图由 EmDash 提供。翻译版本需要编辑人员自行录入与母语校对，没有接翻译模型。
@@ -12,7 +12,7 @@
 - 官网专用 D1：`hpf-website-cms`（2ec63897-0d36-49a5-9ad2-0ac742f884fa）；R2：`hpf-website-media`；定时任务每分钟执行。密钥保存在 Cloudflare Secrets，受保护本地备份在被 Git 忽略的 `ops/production-snapshot/credentials/`。
 - 本地完整验证通过：草稿匿名404→发布可见→撤回404、语言隔离、匿名创建401、图片上传及匿名读取。测试内容已清理。构建、TypeScript、发布模拟均通过；原有11项业务事实提醒仍待确认。
 - 6个历史 CSS/JS 地址在生产已逐个恢复200。构建 postbuild 保留历史资源及依赖，防止旧HTML缓存继续404。线上中文首页浏览器检查：无失败图片、无400以上资源请求，新闻链接正确。
-- 最终生产版本：`c874039f-40f3-49aa-9e78-8efec42f7ad1`，2026-10-25 发布。
+- 最终生产版本：`a2acf52f-6782-41fc-b974-962959871be6`，2026-10-25 发布。
 - 发布详情、检查记录见 `ops/production-check.json`；使用说明见 `ops/EmDash新闻后台使用说明.md`。
 - 当前改动尚未推送远端。正式后台高级插件等非新闻页面未逐屏完成中文验收。
 
@@ -58,3 +58,14 @@
 - 迁移前75张原始表快照、D1恢复书签及16页HTML保存在Git忽略的 `ops/production-snapshot/global-before/`；未覆盖新闻、媒体、账号或已有未发布草稿。
 - 原有哈语草稿语言配置由并行新闻工作维护；本次没有新增哈语公开页面。其他会话的新闻工作脚本与编辑文档不属于本次提交。
 - 使用说明：`ops/EmDash首页页脚联系方式使用说明.md`；线上记录：`ops/global-production-check.json`；本地验收：`scripts/verify-global-local.py`；线上只读验收：`scripts/verify-global-production.py`。
+
+## 顶部导航接入（2026-10-25）
+
+- 新增 `header_settings`（顶部导航），14个中文字段、3条中英俄已发布内容。现有菜单、链接、品牌图片、语言切换和手机样式保持不变。
+- 可修改导航名称与链接、增删与排序（1至6项），以及询价按钮、品牌点击链接、菜单/关闭文字和语言名称。桌面与手机菜单共用同一发布版本；语言切换仍按当前栏目自动生成。
+- 保留草稿隔离、签名预览、定时发布。阻止空名称、空链接、重复链接、脚本/协议相对/含反斜线或控制字符的链接发布；阻止撤下与删除全站导航。
+- 本地16页可见文字和双端导航与迁移前一致；中英俄各自的草稿、预览、发布、菜单增项/排序/链接、询价按钮同步、当前栏目高亮、语言隔离、匿名写入保护及错误拦截全部通过，测试后已恢复原导航。构建、类型检查和发布模拟通过，gzip约2907KiB。
+- 迁移只新增导航模型及三语内容，没有覆盖现有内容或账号。迁移前16页快照与D1恢复书签保存在Git忽略的 `ops/production-snapshot/header-before/`。
+- 使用说明：`ops/EmDash顶部导航使用说明.md`；首次导入：`src/cms/header-import.json`；本地验收：`scripts/verify-header-local.py`；线上只读验收：`scripts/verify-header-production.py`；线上记录：`ops/header-production-check.json`。
+
+- 顶部导航最终线上验收：16页文字、导航链接、当前栏目高亮及HTML缓存策略均与迁移前一致；3个新闻入口、6个旧资源正常。500px手机视口菜单可打开/关闭，三语切换指向对应公司介绍页面；中文编辑页链接已标为必填，发布侧栏中文已核验，不显示无关SEO设置。
