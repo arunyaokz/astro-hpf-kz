@@ -1,7 +1,7 @@
 ---
 import type { Lang } from "../site-v2";
 
-interface Props { lang: Lang; direction: string; }
+interface Props { lang: Lang; direction: string; places?: Array<{place:string;role:string}>; }
 const { lang, direction } = Astro.props;
 const labels: Record<Lang, Array<{ place: string; role: string }>> = {
   en: [
@@ -39,7 +39,8 @@ const anchors = [
   { lng: 80.42, lat: 44.21, pos: "top" },
   { lng: 87.62, lat: 43.83, pos: "bottom" },
 ];
-const nodes = labels[lang].map((label, index) => ({ ...label, ...anchors[index] }));
+const activeLabels=Astro.props.places ?? labels[lang];
+const nodes = activeLabels.map((label, index) => ({ ...label, ...anchors[index] }));
 ---
 
 <figure class="route-map">
@@ -47,7 +48,7 @@ const nodes = labels[lang].map((label, index) => ({ ...label, ...anchors[index] 
   <div class="map-canvas" data-route-map data-nodes={JSON.stringify(nodes)} role="img" aria-label={direction}></div>
   <figcaption>© OpenStreetMap contributors · OpenFreeMap</figcaption>
   <ol class="route-mobile">
-    {[...labels[lang]].reverse().map((item, index) => (
+    {[...activeLabels].reverse().map((item, index) => (
       <li><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{item.place}</strong><p>{item.role}</p></div></li>
     ))}
   </ol>

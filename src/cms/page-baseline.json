@@ -1633,7 +1633,6 @@
         "responseNote": "Please do not include passport, payment-card or other sensitive personal data."
       },
       "contactLabel": "Contact / freight enquiry",
-      "contactEmail": "bd@hpf.kz",
       "entityFacts": [
         {
           "label": "Full legal name of the LLP",
@@ -1661,13 +1660,6 @@
           "value": "HPF CO., LIMITED",
           "url": "",
           "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
-          "verified": true
-        },
-        {
-          "label": "Company office address",
-          "value": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
-          "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-          "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
           "verified": true
         }
       ]
@@ -1834,7 +1826,6 @@
         "responseNote": "请勿提交护照、银行卡等敏感个人信息。"
       },
       "contactLabel": "联系 / 货运需求",
-      "contactEmail": "bd@hpf.kz",
       "entityFacts": [
         {
           "label": "ТОО 法定全称",
@@ -1862,13 +1853,6 @@
           "value": "HPF CO., LIMITED",
           "url": "",
           "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
-          "verified": true
-        },
-        {
-          "label": "公司办公地址",
-          "value": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
-          "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-          "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
           "verified": true
         }
       ]
@@ -2035,7 +2019,6 @@
         "responseNote": "Не указывайте паспортные, банковские и другие чувствительные персональные данные."
       },
       "contactLabel": "Контакт / запрос перевозки",
-      "contactEmail": "bd@hpf.kz",
       "entityFacts": [
         {
           "label": "Полное наименование ТОО",
@@ -2064,15 +2047,749 @@
           "url": "",
           "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
           "verified": true
+        }
+      ]
+    }
+  },
+  "home": {
+    "en": {
+      "metaTitle": "HPF.kz | China–Kazakhstan–Europe TIR, customs and Almaty distribution",
+      "metaDescription": "HPF.kz coordinates TIR transport, pre-shipment customs preparation, Almaty warehousing and Kazakhstan delivery for trade between China, Central Asia and Europe.",
+      "page": {
+        "eyebrow": "CHINA · KAZAKHSTAN · EUROPE",
+        "title": "The farther the road, the clearer the plan.",
+        "primary": "Request a transport plan",
+        "secondary": "View route network",
+        "imageNote": "Industry image; not an HPF.kz-owned vehicle",
+        "trust": {
+          "title": "A company can be young without starting from zero.",
+          "body": "HPF KZ completed its initial state registration in Kazakhstan in 2024, with HPF CO., LIMITED named as founder in the eGov legal-entity certificate. Fleet, warehousing and wider group-relationship claims remain gated until evidence and public wording are confirmed.",
+          "note": "These statements describe resources, not guaranteed outcomes. Outcomes must be demonstrated through cases, signed delivery records and sustained operations."
+        },
+        "method": {
+          "title": "We do not eliminate distance. We reduce loss of control.",
+          "definition": "That is what accountable delivery means at HPF.kz.",
+          "items": [
+            {
+              "title": "Start with the cargo",
+              "text": "Commodity, dimensions, value, Incoterms and arrival requirements determine the route—not a fixed rate sheet."
+            },
+            {
+              "title": "Run the documents first",
+              "text": "Declarations, HS codes, certificates and EAEU requirements are checked before the cargo reaches the border."
+            },
+            {
+              "title": "Name an owner for every leg",
+              "text": "Pickup, export, entry, transfer, warehousing, dispatch and POD each have a node and a responsible owner."
+            },
+            {
+              "title": "Keep the learning from every load",
+              "text": "Time, cost, documents and exceptions are recorded so the next shipment does not start over."
+            }
+          ]
+        },
+        "customs": {
+          "eyebrow": "Customs & compliance",
+          "title": "Customs clearance starts before shipment.",
+          "body": "The border is where preparation is tested, not where it should begin. HPF.kz reviews files, classification and declaration data before departure, then names the owner and next action when conditions change.",
+          "boundary": "We do not promise guaranteed clearance. Clearance is an administrative result; we manage preparation, risk and the next action when an exception occurs.",
+          "button": "View customs capability",
+          "stages": [
+            {
+              "phase": "Prepare",
+              "title": "Documents",
+              "text": "Check contract, invoice, packing list, certificates and origin documents for completeness."
+            },
+            {
+              "phase": "Verify",
+              "title": "Declaration",
+              "text": "Confirm description, material, use and declaration elements."
+            },
+            {
+              "phase": "Classify",
+              "title": "HS code",
+              "text": "Cross-check the HS code against EAEU import requirements."
+            },
+            {
+              "phase": "Declare",
+              "title": "Customs filing",
+              "text": "Coordinate China export and Kazakhstan import files within the confirmed operating scope."
+            },
+            {
+              "phase": "Respond",
+              "title": "Inspection",
+              "text": "For additions, amendments or inspection, state the owner, response window and next action."
+            },
+            {
+              "phase": "Record",
+              "title": "Release",
+              "text": "Archive exceptions and supporting evidence for the next shipment."
+            }
+          ]
+        },
+        "services": {
+          "intro": "Cross-border delivery is not a list of services. HPF.kz connects the key stages so the result of one leg becomes the starting point of the next.",
+          "items": [
+            {
+              "title": "Customs and compliance coordination",
+              "text": "Files, tariffs and certificates are reviewed early so questions are answered before the truck reaches the border."
+            },
+            {
+              "title": "Cross-border TIR and linehaul",
+              "text": "We organise China–Kazakhstan–Europe road freight around cargo, border and delivery constraints, combining rail, sea or air where appropriate."
+            },
+            {
+              "title": "Almaty warehousing and distribution",
+              "text": "Receiving, inspection, put-away, labelling, picking and dispatch are recorded with clear status updates."
+            },
+            {
+              "title": "Kazakhstan local delivery",
+              "text": "Vehicle coordination, appointments, unloading and proof of delivery bring the final leg to warehouses, stores and project sites."
+            }
+          ]
+        },
+        "route": {
+          "body": "From China origin through a China–Kazakhstan border point, Almaty, the Caspian corridor and European consignees, each leg receives a transport mode, document requirement, time boundary and alternative.",
+          "button": "View full route"
+        },
+        "final": {
+          "title": "Put the next shipment on the table.",
+          "body": "Tell us where it starts, where it goes, what it is and when it must arrive. We will clarify the route, files, timing and risks first.",
+          "button": "Submit freight request",
+          "signoff": "HPF.kz | The farther the road, the clearer the plan."
+        }
+      },
+      "heroLead": "Connecting China, Kazakhstan and Europe. Every leg arranged. Every change answered.",
+      "signals": [
+        {
+          "label": "Almaty operations"
         },
         {
-          "label": "Адрес офиса компании",
-          "value": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
-          "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-          "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+          "label": "ZH · EN · RU"
+        },
+        {
+          "label": "Customs to delivery"
+        }
+      ],
+      "languageText": "中文 · English · Русский",
+      "capabilityText": "Customs · TIR · Warehouse · POD",
+      "methodLabel": "One chain of responsibility, not a list of vendors",
+      "servicesLabel": "Capability is an operating order, not a list.",
+      "routeLabel": "From China, through Kazakhstan, onward to Europe.",
+      "visualNote": "AI-generated brand visual · not an HPF.kz-owned vehicle",
+      "industryImage": "Industry image; not an HPF.kz-owned asset",
+      "routeEyebrow": "China · Kazakhstan · Europe",
+      "routeDirection": "Cargo flow: China → Europe, right to left",
+      "mapNodes": [
+        {
+          "place": "Europe",
+          "role": "Consignee / POD"
+        },
+        {
+          "place": "South Caucasus",
+          "role": "Western handover"
+        },
+        {
+          "place": "Caspian corridor",
+          "role": "Sea transfer"
+        },
+        {
+          "place": "Almaty",
+          "role": "Operating hub"
+        },
+        {
+          "place": "Kazakhstan border",
+          "role": "Entry / customs"
+        },
+        {
+          "place": "China",
+          "role": "Factory / consolidation"
+        }
+      ],
+      "entityFacts": [
+        {
+          "label": "Full legal name of the LLP",
+          "value": "HPF KZ Limited Liability Partnership (LLP)",
+          "verified": true
+        },
+        {
+          "label": "Business identification number (BIN)",
+          "value": "241040015643",
+          "verified": true
+        },
+        {
+          "label": "Initial state registration",
+          "value": "11 October 2024",
+          "verified": true
+        },
+        {
+          "label": "Founder (participant)",
+          "value": "HPF CO., LIMITED",
           "verified": true
         }
       ]
+    },
+    "zh": {
+      "metaTitle": "HPF.kz｜中哈欧跨境物流：TIR 运输 · 清关合规 · 阿拉木图仓储分拨",
+      "metaDescription": "HPF.kz 扎根哈萨克斯坦，提供中国—哈萨克斯坦—欧洲 TIR 跨境运输、发运前清关合规预审、阿拉木图仓储分拨与哈萨克斯坦本地交付。",
+      "page": {
+        "eyebrow": "中国 · 哈萨克斯坦 · 欧洲",
+        "title": "路越远，\n越要心中有数。",
+        "primary": "获取运输方案",
+        "secondary": "查看路线网络",
+        "imageNote": "行业场景图，不代表 HPF.kz 自有车辆",
+        "trust": {
+          "title": "一家公司可以年轻，能力不必从零开始。",
+          "body": "HPF KZ 于 2024 年在哈萨克斯坦完成首次国家登记，创办方 HPF CO., LIMITED 载于 eGov 法人证明。车队、仓储与更广泛的集团关系，仅在证据与公开口径确认后披露。",
+          "note": "以上只陈述资源，不把资源直接等同于结果。结果要由案例、回单和持续运营证明。"
+        },
+        "method": {
+          "title": "我们不消灭远方，只减少失控。",
+          "definition": "这就是 HPF.kz 所理解的确定性交付。",
+          "items": [
+            {
+              "title": "先看货，再看路",
+              "text": "品名、尺寸、价值、贸易条款与到达要求不同，合适的路线也不同。路线从货物的真实约束出发，而不是从一张固定价目表出发。"
+            },
+            {
+              "title": "先让文件走一遍，再让货出发",
+              "text": "在发运前核对申报资料、HS 编码、证书与 EAEU 要求。能在桌面上解决的问题，不留到口岸上解决。"
+            },
+            {
+              "title": "每一程，都有责任人",
+              "text": "取货、出口、入境、转运、入仓、派送与签收，各有节点，各有回音。事情不悬空，责任不落进缝隙。"
+            },
+            {
+              "title": "每一票，都为下一票留下经验",
+              "text": "时效、费用、文件与异常被记录下来。走过的路，不必每一次都重新摸索。"
+            }
+          ]
+        },
+        "customs": {
+          "eyebrow": "清关与合规",
+          "title": "清关，从发运前开始。",
+          "body": "口岸不是解决问题的地方，是检验准备的地方。HPF.kz 把清关工作放在发运之前：文件先走一遍，风险先摆上桌面，责任先落到人。",
+          "boundary": "我们不承诺“包通关”。通关是行政结果，我们管理的是风险、准备与异常发生后的下一步。",
+          "button": "查看清关与合规能力",
+          "stages": [
+            {
+              "phase": "准备",
+              "title": "文件预审",
+              "text": "合同、发票、箱单、证书与原产地资料齐套核验。"
+            },
+            {
+              "phase": "核对",
+              "title": "申报要素",
+              "text": "品名、材质、用途与申报要素逐项确认。"
+            },
+            {
+              "phase": "归类",
+              "title": "HS 归类",
+              "text": "HS 编码与 EAEU 进口要求交叉核对。"
+            },
+            {
+              "phase": "申报",
+              "title": "进出口申报",
+              "text": "在已确认的业务范围内衔接中国出口与哈萨克斯坦进口资料。"
+            },
+            {
+              "phase": "现场",
+              "title": "查验应对",
+              "text": "补件、改单或口岸查验时，说明责任人、响应时限与下一步。"
+            },
+            {
+              "phase": "结果",
+              "title": "放行复盘",
+              "text": "异常记录归档，为下一票留下依据。"
+            }
+          ]
+        },
+        "services": {
+          "intro": "跨境交付不是几个服务名称的相加，而是前后衔接的一套次序。HPF.kz 将关键环节放进同一条运营链，让上一程的结果，成为下一程的起点。",
+          "items": [
+            {
+              "title": "清关与合规协同",
+              "text": "申报要素与 HS 归类事先核对，单证齐套后再发运；查验与补件有责任人、有时限。"
+            },
+            {
+              "title": "跨境 TIR 与干线运输",
+              "text": "按货物、时效与通关条件组织中哈欧跨境公路运输，并在适合时组合铁路、海运或空运方案。"
+            },
+            {
+              "title": "阿拉木图仓储与分拨",
+              "text": "从到货、质检、上架，到贴标、分拣与出库，每一步有记录、有反馈。"
+            },
+            {
+              "title": "哈萨克斯坦本地交付",
+              "text": "协调车辆、预约、卸货与签收，把跨境路线的最后一程，真正落到仓库、门店或项目现场。"
+            }
+          ]
+        },
+        "route": {
+          "body": "从中国集货，经中哈口岸入境；从阿拉木图枢纽，到跨里海走廊与欧洲收货端。我们为每一段安排运输方式、文件要求、时间边界与备选方案。",
+          "button": "查看完整路线"
+        },
+        "final": {
+          "title": "把下一票货，先放到桌面上。",
+          "body": "告诉我们从哪里出发、送到哪里、是什么货、何时要到。我们先把路线、文件、时间与风险一一讲清楚。",
+          "button": "提交货运需求",
+          "signoff": "HPF.kz｜路越远，越要心中有数。"
+        }
+      },
+      "heroLead": "连接中国、哈萨克斯坦与欧洲。每一程有安排，每一次变化有回应。",
+      "signals": [
+        {
+          "label": "阿拉木图运营"
+        },
+        {
+          "label": "中英俄三语"
+        },
+        {
+          "label": "清关至交付"
+        }
+      ],
+      "languageText": "中文 · English · Русский",
+      "capabilityText": "Customs · TIR · Warehouse · POD",
+      "methodLabel": "一套责任链，而不是一串供应商",
+      "servicesLabel": "能力不是清单，是协同顺序。",
+      "routeLabel": "从中国出发，向欧洲延伸。",
+      "visualNote": "AI 生成品牌视觉 · 不代表 HPF.kz 自有车辆",
+      "industryImage": "行业场景图，不代表 HPF.kz 自有资产",
+      "routeEyebrow": "China · Kazakhstan · Europe",
+      "routeDirection": "货物流向：中国 → 欧洲，由右向左",
+      "mapNodes": [
+        {
+          "place": "欧洲",
+          "role": "收货预约 / POD"
+        },
+        {
+          "place": "外高加索",
+          "role": "西岸交接"
+        },
+        {
+          "place": "跨里海走廊",
+          "role": "海运换装"
+        },
+        {
+          "place": "阿拉木图",
+          "role": "运营枢纽"
+        },
+        {
+          "place": "哈萨克斯坦口岸",
+          "role": "入境 / 清关"
+        },
+        {
+          "place": "中国",
+          "role": "工厂 / 集货"
+        }
+      ],
+      "entityFacts": [
+        {
+          "label": "ТОО 法定全称",
+          "value": "HPF KZ 有限责任合伙企业（ТОО）",
+          "verified": true
+        },
+        {
+          "label": "БИН",
+          "value": "241040015643",
+          "verified": true
+        },
+        {
+          "label": "首次国家登记日期",
+          "value": "2024 年 10 月 11 日",
+          "verified": true
+        },
+        {
+          "label": "创办方（参与者）",
+          "value": "HPF CO., LIMITED",
+          "verified": true
+        }
+      ]
+    },
+    "ru": {
+      "metaTitle": "HPF.kz | TIR, таможня, склад в Алматы и доставка по Казахстану",
+      "metaDescription": "HPF.kz организует перевозки Китай–Казахстан–Европа, подготовку таможенного оформления, распределение в Алматы и местную доставку.",
+      "page": {
+        "eyebrow": "КИТАЙ · КАЗАХСТАН · ЕВРОПА",
+        "title": "Чем дальше путь, тем яснее должен быть план.",
+        "primary": "Запросить план перевозки",
+        "secondary": "Смотреть маршруты",
+        "imageNote": "Отраслевое фото; это не автомобиль HPF.kz",
+        "trust": {
+          "title": "Компания может быть молодой, но её возможности — не с нуля.",
+          "body": "Первичная государственная регистрация HPF KZ в Казахстане состоялась в 2024 году; учредитель HPF CO., LIMITED указан в справке eGov. Сведения об автопарке, складе и более широкой связи с группой публикуются после подтверждения доказательств и формулировок.",
+          "note": "Здесь указаны ресурсы, а не гарантированные результаты. Результаты подтверждаются кейсами, документами о доставке и стабильной работой."
+        },
+        "method": {
+          "title": "Мы не сокращаем расстояние. Мы уменьшаем потерю контроля.",
+          "definition": "Так HPF.kz понимает управляемую доставку.",
+          "items": [
+            {
+              "title": "Сначала груз, затем маршрут",
+              "text": "На выбор пути влияют товар, размеры, стоимость, Incoterms и срок прибытия, а не фиксированный прайс-лист."
+            },
+            {
+              "title": "Сначала проходят документы",
+              "text": "Декларации, коды ТН ВЭД, сертификаты и требования ЕАЭС проверяются до выхода груза."
+            },
+            {
+              "title": "Ответственный на каждом этапе",
+              "text": "Забор, экспорт, ввоз, перегрузка, склад, доставка и POD имеют свой узел и владельца."
+            },
+            {
+              "title": "Каждая перевозка оставляет опыт",
+              "text": "Сроки, расходы, документы и отклонения фиксируются, чтобы не начинать заново."
+            }
+          ]
+        },
+        "customs": {
+          "eyebrow": "Таможня и соответствие",
+          "title": "Таможенное оформление начинается до отгрузки.",
+          "body": "Граница проверяет подготовку, а не заменяет её. До отправки HPF.kz сверяет документы, классификацию и сведения декларации, а при изменениях указывает ответственного и следующее действие.",
+          "boundary": "Мы не обещаем гарантированное оформление. Выпуск — административный результат; мы управляем подготовкой, риском и следующим действием при отклонении.",
+          "button": "Смотреть возможности таможни",
+          "stages": [
+            {
+              "phase": "Подготовка",
+              "title": "Документы",
+              "text": "Проверяем контракт, инвойс, упаковочный лист, сертификаты и документы о происхождении."
+            },
+            {
+              "phase": "Сверка",
+              "title": "Декларация",
+              "text": "Подтверждаем наименование, материал, назначение и элементы декларации."
+            },
+            {
+              "phase": "Классификация",
+              "title": "Код ТН ВЭД",
+              "text": "Сопоставляем код ТН ВЭД с требованиями импорта ЕАЭС."
+            },
+            {
+              "phase": "Подача",
+              "title": "Оформление",
+              "text": "Координируем файлы экспорта из Китая и импорта в Казахстан в подтверждённом объёме работ."
+            },
+            {
+              "phase": "Реакция",
+              "title": "Досмотр",
+              "text": "При дополнении, корректировке или досмотре указываем ответственного, срок и следующий шаг."
+            },
+            {
+              "phase": "Запись",
+              "title": "Выпуск",
+              "text": "Архивируем отклонения и подтверждения для следующей перевозки."
+            }
+          ]
+        },
+        "services": {
+          "intro": "Трансграничная доставка — это не перечень услуг. HPF.kz соединяет этапы так, чтобы результат одного становился началом следующего.",
+          "items": [
+            {
+              "title": "Таможня и соответствие требованиям",
+              "text": "Проверяем документы, тарифы и сертификаты заранее, чтобы вопросы были решены до прибытия на границу."
+            },
+            {
+              "title": "TIR и магистральные перевозки",
+              "text": "Организуем автоперевозки Китай–Казахстан–Европа по условиям груза, границы и приёмки, при необходимости сочетая железную дорогу, море или авиацию."
+            },
+            {
+              "title": "Склад и распределение в Алматы",
+              "text": "Приёмка, проверка, размещение, маркировка, комплектация и отгрузка фиксируются с понятным статусом."
+            },
+            {
+              "title": "Доставка по Казахстану",
+              "text": "Координируем транспорт, время приёмки, разгрузку и POD до склада, магазина или площадки проекта."
+            }
+          ]
+        },
+        "route": {
+          "body": "От отправления в Китае через пункт Китай–Казахстан, Алматы и Каспийский коридор до получателя в Европе — у каждого этапа есть вид транспорта, документы, срок и запасной вариант.",
+          "button": "Смотреть весь маршрут"
+        },
+        "final": {
+          "title": "Положим следующую перевозку на стол.",
+          "body": "Сообщите откуда, куда, какой груз и к какому сроку. Сначала мы разберём маршрут, документы, сроки и риски.",
+          "button": "Отправить запрос",
+          "signoff": "HPF.kz | Чем дальше путь, тем яснее план."
+        }
+      },
+      "heroLead": "Соединяем Китай, Казахстан и Европу. Каждый этап организован. На каждое изменение есть ответ.",
+      "signals": [
+        {
+          "label": "Операции в Алматы"
+        },
+        {
+          "label": "中文 · EN · RU"
+        },
+        {
+          "label": "От таможни до доставки"
+        }
+      ],
+      "languageText": "中文 · English · Русский",
+      "capabilityText": "Customs · TIR · Warehouse · POD",
+      "methodLabel": "Одна цепочка ответственности, а не список подрядчиков",
+      "servicesLabel": "Возможности — это порядок работы, а не список.",
+      "routeLabel": "Из Китая — через Казахстан — в Европу.",
+      "visualNote": "Бренд-визуал создан ИИ · автомобиль не является активом HPF.kz",
+      "industryImage": "Отраслевое фото; это не актив HPF.kz",
+      "routeEyebrow": "China · Kazakhstan · Europe",
+      "routeDirection": "Поток груза: Китай → Европа, справа налево",
+      "mapNodes": [
+        {
+          "place": "Европа",
+          "role": "Приёмка / POD"
+        },
+        {
+          "place": "Южный Кавказ",
+          "role": "Передача на западе"
+        },
+        {
+          "place": "Каспийский коридор",
+          "role": "Морская перегрузка"
+        },
+        {
+          "place": "Алматы",
+          "role": "Операционный узел"
+        },
+        {
+          "place": "Граница Казахстана",
+          "role": "Въезд / таможня"
+        },
+        {
+          "place": "Китай",
+          "role": "Завод / консолидация"
+        }
+      ],
+      "entityFacts": [
+        {
+          "label": "Полное наименование ТОО",
+          "value": "Товарищество с ограниченной ответственностью \"HPF KZ\"",
+          "verified": true
+        },
+        {
+          "label": "БИН",
+          "value": "241040015643",
+          "verified": true
+        },
+        {
+          "label": "Дата первичной государственной регистрации",
+          "value": "11 октября 2024 г.",
+          "verified": true
+        },
+        {
+          "label": "Учредитель (участник)",
+          "value": "Компания \"HPF CO., LIMITED\"",
+          "verified": true
+        }
+      ]
+    }
+  },
+  "footer": {
+    "en": {
+      "title": "Footer",
+      "line": "Every leg arranged. Every change answered.",
+      "copyrightName": "HPF.kz",
+      "legalNote": "Some contact and capability facts remain pending confirmation",
+      "navigation": [
+        {
+          "label": "Services",
+          "url": "/services/"
+        },
+        {
+          "label": "Routes & network",
+          "url": "/routes/"
+        },
+        {
+          "label": "Company",
+          "url": "/about/"
+        },
+        {
+          "label": "News",
+          "url": "/news/"
+        },
+        {
+          "label": "Privacy",
+          "url": "/privacy/"
+        }
+      ],
+      "entityFacts": [
+        {
+          "label": "Full legal name of the LLP",
+          "value": "HPF KZ Limited Liability Partnership (LLP)",
+          "verified": true
+        },
+        {
+          "label": "Business identification number (BIN)",
+          "value": "241040015643",
+          "verified": true
+        }
+      ]
+    },
+    "zh": {
+      "title": "页脚",
+      "line": "每一程有安排，每一处有回音。",
+      "copyrightName": "HPF.kz",
+      "legalNote": "部分联系方式与能力事实仍待核实",
+      "navigation": [
+        {
+          "label": "服务",
+          "url": "/zh/services/"
+        },
+        {
+          "label": "路线与网络",
+          "url": "/zh/routes/"
+        },
+        {
+          "label": "公司",
+          "url": "/zh/about/"
+        },
+        {
+          "label": "新闻",
+          "url": "/zh/news/"
+        },
+        {
+          "label": "隐私政策",
+          "url": "/zh/privacy/"
+        }
+      ],
+      "entityFacts": [
+        {
+          "label": "ТОО 法定全称",
+          "value": "HPF KZ 有限责任合伙企业（ТОО）",
+          "verified": true
+        },
+        {
+          "label": "БИН",
+          "value": "241040015643",
+          "verified": true
+        }
+      ]
+    },
+    "ru": {
+      "title": "Подвал сайта",
+      "line": "Каждый этап организован. На каждое изменение есть ответ.",
+      "copyrightName": "HPF.kz",
+      "legalNote": "Часть контактных данных и сведений о возможностях ожидает подтверждения",
+      "navigation": [
+        {
+          "label": "Услуги",
+          "url": "/ru/services/"
+        },
+        {
+          "label": "Маршруты и сеть",
+          "url": "/ru/routes/"
+        },
+        {
+          "label": "Компания",
+          "url": "/ru/about/"
+        },
+        {
+          "label": "Новости",
+          "url": "/ru/news/"
+        },
+        {
+          "label": "Конфиденциальность",
+          "url": "/ru/privacy/"
+        }
+      ],
+      "entityFacts": [
+        {
+          "label": "Полное наименование ТОО",
+          "value": "Товарищество с ограниченной ответственностью \"HPF KZ\"",
+          "verified": true
+        },
+        {
+          "label": "БИН",
+          "value": "241040015643",
+          "verified": true
+        }
+      ]
+    }
+  },
+  "contacts": {
+    "en": {
+      "title": "全站联系方式",
+      "email": "bd@hpf.kz",
+      "phone": "+7 (708) 156 8876",
+      "mapUrl": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+      "countryCode": "KZ",
+      "en": {
+        "office": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
+        "officeLabel": "Company office address",
+        "phoneLabel": "Business phone",
+        "city": "Almaty, Kazakhstan",
+        "pending": "Pending confirmation"
+      },
+      "zh": {
+        "office": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
+        "officeLabel": "公司办公地址",
+        "phoneLabel": "业务电话",
+        "city": "哈萨克斯坦 · 阿拉木图",
+        "pending": "待确认"
+      },
+      "ru": {
+        "office": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
+        "officeLabel": "Адрес офиса компании",
+        "phoneLabel": "Деловой телефон",
+        "city": "Алматы, Казахстан",
+        "pending": "Ожидает подтверждения"
+      }
+    },
+    "zh": {
+      "title": "全站联系方式",
+      "email": "bd@hpf.kz",
+      "phone": "+7 (708) 156 8876",
+      "mapUrl": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+      "countryCode": "KZ",
+      "en": {
+        "office": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
+        "officeLabel": "Company office address",
+        "phoneLabel": "Business phone",
+        "city": "Almaty, Kazakhstan",
+        "pending": "Pending confirmation"
+      },
+      "zh": {
+        "office": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
+        "officeLabel": "公司办公地址",
+        "phoneLabel": "业务电话",
+        "city": "哈萨克斯坦 · 阿拉木图",
+        "pending": "待确认"
+      },
+      "ru": {
+        "office": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
+        "officeLabel": "Адрес офиса компании",
+        "phoneLabel": "Деловой телефон",
+        "city": "Алматы, Казахстан",
+        "pending": "Ожидает подтверждения"
+      }
+    },
+    "ru": {
+      "title": "全站联系方式",
+      "email": "bd@hpf.kz",
+      "phone": "+7 (708) 156 8876",
+      "mapUrl": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+      "countryCode": "KZ",
+      "en": {
+        "office": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
+        "officeLabel": "Company office address",
+        "phoneLabel": "Business phone",
+        "city": "Almaty, Kazakhstan",
+        "pending": "Pending confirmation"
+      },
+      "zh": {
+        "office": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
+        "officeLabel": "公司办公地址",
+        "phoneLabel": "业务电话",
+        "city": "哈萨克斯坦 · 阿拉木图",
+        "pending": "待确认"
+      },
+      "ru": {
+        "office": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
+        "officeLabel": "Адрес офиса компании",
+        "phoneLabel": "Деловой телефон",
+        "city": "Алматы, Казахстан",
+        "pending": "Ожидает подтверждения"
+      }
     }
   }
 }

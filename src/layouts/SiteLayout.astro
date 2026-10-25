@@ -18,6 +18,7 @@ interface Props {
 
 const { title, description, lang = "en", active = "home", canonicalPath, alternates } = Astro.props;
 const activePage: CorePage = active === "industries" || active === "platform" ? "services" : active;
+Astro.response.headers.set("Cache-Control","private, no-store");
 ---
 
 <!doctype html>

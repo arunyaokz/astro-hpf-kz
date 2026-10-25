@@ -1,42 +1,34 @@
 ---
-import { getCollection } from "astro:content";
-import { UI, pagePath, type CorePage, type Lang } from "../site-v2";
+import { loadSiteSettings } from "../cms/pages";
+import { type Lang } from "../site-v2";
 
 interface Props { lang?: Lang; }
 const { lang = "en" } = Astro.props;
-const ui = UI[lang];
+const {footer,contacts,localized}=await loadSiteSettings(lang);
 const year = new Date().getFullYear();
-const facts = await getCollection("facts");
-const byId = new Map(facts.map((fact) => [fact.id, fact.data]));
-const show = (id: string) => {
-  const fact = byId.get(id);
-  return fact?.verified ? fact.localizedValues?.[lang] ?? fact.value : `[${ui.pending}]`;
-};
-const navPages: CorePage[] = ["services", "routes", "about", "news", "privacy"];
 ---
 
 <footer class="footer">
   <div class="shell footer-grid">
     <div class="footer-brand">
       <img src="/brand/hpf-mark.svg" alt="HPF KZ" width="260" height="96" />
-      <p>{ui.footerLine}</p>
-      <a href="mailto:bd@hpf.kz">{show("business_email")}</a>
+      <p>{footer.line}</p>
+      <a href={`mailto:${contacts.email}`}>{contacts.email}</a>
     </div>
 
     <nav aria-label="Footer navigation">
-      {navPages.map((page) => <a href={pagePath(lang, page)}>{ui.nav[page]}</a>)}
+      {footer.navigation.map((link) => <a href={link.url}>{link.label}</a>)}
     </nav>
 
     <dl class="legal-ledger">
-      <div><dt>{byId.get("legal_name")?.labels[lang]}</dt><dd>{show("legal_name")}</dd></div>
-      <div><dt>{byId.get("bin")?.labels[lang]}</dt><dd>{show("bin")}</dd></div>
-      <div><dt>{byId.get("office_address")?.labels[lang]}</dt><dd><a href={byId.get("office_address")?.url} target="_blank" rel="noreferrer">{show("office_address")}</a></dd></div>
-      <div><dt>{byId.get("business_phone")?.labels[lang]}</dt><dd>{show("business_phone")}</dd></div>
+      {footer.entityFacts.map(fact=><div><dt>{fact.label}</dt><dd>{fact.verified?fact.value:`[${localized.pending}]`}</dd></div>)}
+      <div><dt>{localized.officeLabel}</dt><dd><a href={contacts.mapUrl} target="_blank" rel="noreferrer">{localized.office}</a></dd></div>
+      <div><dt>{localized.phoneLabel}</dt><dd>{contacts.phone || `[${localized.pending}]`}</dd></div>
     </dl>
   </div>
   <div class="shell footer-bottom">
-    <span>© {year} HPF.kz</span>
-    <span>{ui.legalPending}</span>
+    <span>© {year} {footer.copyrightName}</span>
+    <span>{footer.legalNote}</span>
   </div>
 </footer>
 

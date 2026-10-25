@@ -1,52 +1,37 @@
 ---
-import { getCollection } from "astro:content";
-import { HOME_V2 } from "../corporate-content";
+import { Image as EmDashImage } from "emdash/ui";
+import { loadCorporatePage, loadSiteSettings } from "../cms/pages";
 import { UI, pagePath, type Lang } from "../site-v2";
 import CardVisual from "./CardVisual.astro";
 import RouteMap from "./RouteMap.astro";
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
-const page = HOME_V2[lang];
+
 const ui = UI[lang];
-const facts = await getCollection("facts");
-const byId = new Map(facts.map((fact) => [fact.id, fact.data]));
-const evidenceIds = ["legal_name", "bin", "registration_year", "founder"];
 const customsVisuals = ["documents", "verification", "classification", "declaration", "inspection", "release"];
 const methodVisuals = ["cargo-route", "docs-first", "responsibility", "memory"];
 const serviceVisuals = ["customs", "transport", "warehouse", "delivery"];
 const factVisuals = ["company", "bin", "calendar", "founder"];
-const showFact = (id: string) => {
-  const fact = byId.get(id);
-  return fact?.verified ? fact.localizedValues?.[lang] ?? fact.value : `[${ui.pending}]`;
-};
-const heroLead = {
-  zh: "连接中国、哈萨克斯坦与欧洲。每一程有安排，每一次变化有回应。",
-  en: "Connecting China, Kazakhstan and Europe. Every leg arranged. Every change answered.",
-  ru: "Соединяем Китай, Казахстан и Европу. Каждый этап организован. На каждое изменение есть ответ.",
-}[lang];
-const signalLabels = {
-  zh: ["阿拉木图运营", "中英俄三语", "清关至交付"],
-  en: ["Almaty operations", "ZH · EN · RU", "Customs to delivery"],
-  ru: ["Операции в Алматы", "中文 · EN · RU", "От таможни до доставки"],
-}[lang];
-const methodLabel = lang === "zh" ? "一套责任链，而不是一串供应商" : lang === "ru" ? "Одна цепочка ответственности, а не список подрядчиков" : "One chain of responsibility, not a list of vendors";
-const servicesLabel = lang === "zh" ? "能力不是清单，是协同顺序。" : lang === "ru" ? "Возможности — это порядок работы, а не список." : "Capability is an operating order, not a list.";
-const routeLabel = lang === "zh" ? "从中国出发，向欧洲延伸。" : lang === "ru" ? "Из Китая — через Казахстан — в Европу." : "From China, through Kazakhstan, onward to Europe.";
-const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz 自有车辆" : lang === "ru" ? "Бренд-визуал создан ИИ · автомобиль не является активом HPF.kz" : "AI-generated brand visual · not an HPF.kz-owned vehicle";
+const cms = await loadCorporatePage('home',lang);
+if (!cms) return Astro.rewrite('/404');
+const page=cms.page;
+const {heroLead,methodLabel,servicesLabel,routeLabel,visualNote}=cms;
+const signalLabels=cms.signals.map(x=>x.label);
+const {localized}=await loadSiteSettings(lang);
 ---
 
 <article class="home">
   <section class="home-hero">
     <div class="hero-visual" aria-hidden="true">
-      <img src="/images/corporate/hero-eurasia-v3.webp" alt="" width="1678" height="945" fetchpriority="high" decoding="async" />
+      {cms.heroImage ? <EmDashImage image={cms.heroImage} alt="" width={1678} height={945} /> : <img src="/images/corporate/hero-eurasia-v3.webp" alt="" width="1678" height="945" fetchpriority="high" decoding="async" />}
       <div class="hero-wash"></div>
       <div class="hero-orbit hero-orbit--one"></div>
       <div class="hero-orbit hero-orbit--two"></div>
     </div>
     <div class="shell hero-content">
       <p class="hero-badge"><span></span>{page.eyebrow}</p>
-      <h1>{lang === "zh" ? <><span>路越远，</span><span>越要心中有数。</span></> : page.title}</h1>
+      <h1>{lang === "zh" ? page.title.split("\n").map(line=><span>{line}</span>) : page.title}</h1>
       <p class="hero-lead">{heroLead}</p>
       <div class="hero-actions">
         <a class="hero-primary" href={pagePath(lang, "contact")}>{page.primary}<span aria-hidden="true">↗</span></a>
@@ -58,9 +43,9 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
 
   <section class="signal-strip" aria-label="Operating signals">
     <div class="shell signal-grid">
-      <div><span>01</span><strong>{signalLabels[0]}</strong><p>{showFact("operating_city")}</p></div>
-      <div><span>02</span><strong>{signalLabels[1]}</strong><p>中文 · English · Русский</p></div>
-      <div><span>03</span><strong>{signalLabels[2]}</strong><p>Customs · TIR · Warehouse · POD</p></div>
+      <div><span>01</span><strong>{signalLabels[0]}</strong><p>{localized.city}</p></div>
+      <div><span>02</span><strong>{signalLabels[1]}</strong><p>{cms.languageText}</p></div>
+      <div><span>03</span><strong>{signalLabels[2]}</strong><p>{cms.capabilityText}</p></div>
     </div>
   </section>
 
@@ -118,7 +103,7 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
         ))}
         <figure class="service-image">
           <img src="/images/corporate/warehouse-operations.jpg" alt={page.imageNote} width="1600" height="1067" loading="lazy" decoding="async" />
-          <figcaption>{ui.industryImage}</figcaption>
+          <figcaption>{cms.industryImage}</figcaption>
         </figure>
       </div>
     </div>
@@ -127,12 +112,12 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
   <section class="route-stage">
     <div class="shell route-layout">
       <header>
-        <p class="kicker">China · Kazakhstan · Europe</p>
+        <p class="kicker">{cms.routeEyebrow}</p>
         <h2>{routeLabel}</h2>
         <p>{page.route.body}</p>
         <a href={pagePath(lang, "routes")}>{page.route.button}<span aria-hidden="true">↗</span></a>
       </header>
-      <div class="route-canvas"><RouteMap lang={lang} direction={ui.routeDirection} /></div>
+      <div class="route-canvas"><RouteMap lang={lang} direction={cms.routeDirection} places={cms.mapNodes} /></div>
     </div>
   </section>
 
@@ -143,13 +128,12 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
         <div><p>{page.trust.body}</p><small>{page.trust.note}</small></div>
       </header>
       <div class="fact-mosaic">
-        {evidenceIds.map((id, index) => {
-          const fact = byId.get(id);
+        {cms.entityFacts.map((fact, index) => {
           return (
             <article>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <CardVisual kind={factVisuals[index]} />
-              <div><small>{fact?.labels[lang]}</small><strong>{showFact(id)}</strong></div>
+              <div><small>{fact?.label}</small><strong>{fact.verified ? fact.value : `[${ui.pending}]`}</strong></div>
             </article>
           );
         })}
@@ -171,9 +155,9 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
 <style>
   .home { background: var(--ink); color: var(--text-on-dark); }
   .home-hero { position: relative; display: grid; min-height: 100dvh; overflow: hidden; place-items: center; isolation: isolate; }
-  .hero-visual, .hero-visual img, .hero-wash { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-visual, .hero-visual :global(img), .hero-wash { position: absolute; inset: 0; width: 100%; height: 100%; }
   .hero-visual { z-index: -2; overflow: hidden; background: #08051d; }
-  .hero-visual img { object-fit: cover; object-position: center 60%; transform: scale(1.035); animation: hero-breathe 18s ease-in-out infinite alternate; }
+  .hero-visual :global(img) { object-fit: cover; object-position: center 60%; transform: scale(1.035); animation: hero-breathe 18s ease-in-out infinite alternate; }
   .hero-wash { background: radial-gradient(circle at 50% 38%, rgba(72,36,190,.12), transparent 32%), linear-gradient(180deg, rgba(7,4,26,.28), rgba(7,4,26,.1) 48%, rgba(7,4,26,.82)); }
   .hero-visual::after { position: absolute; inset: 0; opacity: .18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E"); content: ""; mix-blend-mode: soft-light; pointer-events: none; }
   .hero-orbit { position: absolute; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; filter: drop-shadow(0 0 24px rgba(101,89,255,.2)); }
@@ -326,5 +310,5 @@ const visualNote = lang === "zh" ? "AI 生成品牌视觉 · 不代表 HPF.kz �
     .fact-mosaic { grid-template-columns: 1fr; }
     .fact-mosaic article { min-height: 15rem; }
   }
-  @media (prefers-reduced-motion: reduce) { .hero-visual img { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .hero-visual :global(img) { animation: none; } }
 </style>

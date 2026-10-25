@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import { corporateSeed, encodePage, PAGE_COLLECTIONS, PAGE_SLUGS } from '../src/cms/page-model.mjs';
+const collections=corporateSeed().filter(c=>['home_pages','footer_settings','contact_settings'].includes(c.slug));
+const content=Object.fromEntries(['home','footer','contacts'].map(kind=>[PAGE_COLLECTIONS[kind],(kind==='contacts'?['zh']:['en','zh','ru']).map(locale=>({id:`${kind}-${locale}`,slug:PAGE_SLUGS[kind],locale,status:'published',...(kind!=='contacts'&&locale!=='en'?{translationOf:`${kind}-en`}:{}),data:encodePage(kind,locale)}))]));
+fs.writeFileSync('src/cms/global-import.json',JSON.stringify({collections,content},null,2)+'\n');
+const seed=JSON.parse(fs.readFileSync('.emdash/seed.json'));
+seed.collections=seed.collections.filter(c=>!collections.some(x=>x.slug===c.slug)).concat(collections);
+for(const [key,value]of Object.entries(content))seed.content[key]=value;
+fs.writeFileSync('.emdash/seed.json',JSON.stringify(seed,null,2)+'\n');
+console.log(collections.map(c=>({collection:c.slug,fields:c.fields.length})));

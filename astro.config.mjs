@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
+import fs from "node:fs";
 import sitemap from "@astrojs/sitemap";
 
 import cloudflare from "@astrojs/cloudflare";
@@ -15,7 +16,7 @@ export default defineConfig({
   output: "server",
   vite: { plugins: [chineseUI()] },
   i18n: { defaultLocale: "en", locales: ["en", "zh", "ru"] },
-  integrations: [mdx(), sitemap({ customPages: ["", "/zh", "/ru"].flatMap((prefix) => ["services", "routes", "about"].map((page) => `https://hpf.kz${prefix}/${page}/`)), filter: (page) => !/\/(?:cms|_emdash)\//.test(new URL(page).pathname) }), react(), emdash({
+  integrations: [mdx(), sitemap({ customPages: ["", "/zh", "/ru"].flatMap((prefix) => ["", "services/", "routes/", "about/", "privacy/"].map((page) => `https://hpf.kz${prefix}/${page}`)).concat(["https://hpf.kz/blog/", ...fs.readdirSync("src/content/blog").filter(file=>/\.mdx?$/.test(file)).map(file=>`https://hpf.kz/blog/${file.replace(/\.mdx?$/, "")}/`)]), filter: (page) => !/\/(?:cms|_emdash)\//.test(new URL(page).pathname) }), react(), emdash({
     database: d1({ binding: "DB" }),
     storage: r2({ binding: "MEDIA" }),
     plugins: [{ id: "hpf-corporate-pages", version: "1.0.0", entrypoint: new URL("./src/cms/page-policy.mjs", import.meta.url).pathname }],

@@ -1,8 +1,11 @@
 ---
+import { loadSiteSettings } from "../cms/pages";
 import { CONTACT_COPY, pagePath, type Lang } from "../site-v2";
 
 interface Props { lang: Lang; page?: typeof CONTACT_COPY.en; email?: string; label?: string; }
-const { lang, email = "bd@hpf.kz", label } = Astro.props;
+const { lang, label } = Astro.props;
+const {contacts}=await loadSiteSettings(lang);
+const email=contacts.email;
 const page = Astro.props.page ?? CONTACT_COPY[lang];
 const contactLabel = label ?? (lang === "zh" ? "联系 / 货运需求" : lang === "ru" ? "Контакт / запрос перевозки" : "Contact / freight enquiry");
 ---
@@ -53,7 +56,7 @@ const contactLabel = label ?? (lang === "zh" ? "联系 / 货运需求" : lang ==
     }
     const data = new FormData(form);
     const lines = Array.from(data.entries()).filter(([key]) => key !== "consent").map(([key, value]) => `${key}: ${String(value).trim() || "—"}`);
-    window.location.href = `mailto:${form.dataset.contactEmail ?? "bd@hpf.kz"}?subject=${encodeURIComponent(form.dataset.mailSubject ?? "HPF.kz freight enquiry")}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = `mailto:${form.dataset.contactEmail}?subject=${encodeURIComponent(form.dataset.mailSubject ?? "HPF.kz freight enquiry")}&body=${encodeURIComponent(lines.join("\n"))}`;
   });
 </script>
 

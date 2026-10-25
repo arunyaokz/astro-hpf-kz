@@ -1360,22 +1360,13 @@
           "type": "text"
         },
         {
-          "slug": "contact_email",
-          "label": "业务邮箱",
-          "required": true,
-          "type": "string",
-          "validation": {
-            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
-          }
-        },
-        {
           "slug": "entity_facts",
           "label": "法人登记资料",
           "required": true,
           "type": "repeater",
           "validation": {
-            "minItems": 5,
-            "maxItems": 5,
+            "minItems": 4,
+            "maxItems": 4,
             "subFields": [
               {
                 "slug": "label",
@@ -2626,7 +2617,6 @@
           "contact_email_label": "Business email",
           "contact_response_note": "Please do not include passport, payment-card or other sensitive personal data.",
           "contact_label": "Contact / freight enquiry",
-          "contact_email": "bd@hpf.kz",
           "entity_facts": [
             {
               "label": "Full legal name of the LLP",
@@ -2654,13 +2644,6 @@
               "value": "HPF CO., LIMITED",
               "url": "",
               "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
-              "verified": true
-            },
-            {
-              "label": "Company office address",
-              "value": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
-              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
               "verified": true
             }
           ]
@@ -2794,7 +2777,6 @@
           "contact_email_label": "业务邮箱",
           "contact_response_note": "请勿提交护照、银行卡等敏感个人信息。",
           "contact_label": "联系 / 货运需求",
-          "contact_email": "bd@hpf.kz",
           "entity_facts": [
             {
               "label": "ТОО 法定全称",
@@ -2822,13 +2804,6 @@
               "value": "HPF CO., LIMITED",
               "url": "",
               "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
-              "verified": true
-            },
-            {
-              "label": "公司办公地址",
-              "value": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
-              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
               "verified": true
             }
           ]
@@ -2962,7 +2937,6 @@
           "contact_email_label": "Деловая почта",
           "contact_response_note": "Не указывайте паспортные, банковские и другие чувствительные персональные данные.",
           "contact_label": "Контакт / запрос перевозки",
-          "contact_email": "bd@hpf.kz",
           "entity_facts": [
             {
               "label": "Полное наименование ТОО",
@@ -2990,13 +2964,6 @@
               "value": "Компания \"HPF CO., LIMITED\"",
               "url": "",
               "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
-              "verified": true
-            },
-            {
-              "label": "Адрес офиса компании",
-              "value": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
-              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
               "verified": true
             }
           ]

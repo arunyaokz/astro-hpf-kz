@@ -185,8 +185,112 @@ export interface CompanyPage {
   contact_email_label: string;
   contact_response_note: string;
   contact_label: string;
-  contact_email: string;
   entity_facts: { "label": string; "value": string; "url"?: string | null; "source": string; "verified": boolean }[];
+  hero_image?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface HomePage {
+  id: string;
+  slug: string | null;
+  status: string;
+  meta_title: string;
+  meta_description: string;
+  page_eyebrow: string;
+  page_title: string;
+  page_primary: string;
+  page_secondary: string;
+  page_image_note: string;
+  page_trust_title: string;
+  page_trust_body: string;
+  page_trust_note: string;
+  page_method_title: string;
+  page_method_definition: string;
+  page_method_items: { "title": string; "text": string }[];
+  page_customs_eyebrow: string;
+  page_customs_title: string;
+  page_customs_body: string;
+  page_customs_boundary: string;
+  page_customs_button: string;
+  page_customs_stages: { "phase": string; "title": string; "text": string }[];
+  page_services_intro: string;
+  page_services_items: { "title": string; "text": string }[];
+  page_route_body: string;
+  page_route_button: string;
+  page_final_title: string;
+  page_final_body: string;
+  page_final_button: string;
+  page_final_signoff: string;
+  hero_lead: string;
+  signals: { "label": string }[];
+  language_text: string;
+  capability_text: string;
+  method_label: string;
+  services_label: string;
+  route_label: string;
+  visual_note: string;
+  industry_image: string;
+  route_eyebrow: string;
+  route_direction: string;
+  map_nodes: { "place": string; "role": string }[];
+  entity_facts: { "label": string; "value": string; "verified": boolean }[];
+  hero_image?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface FooterSetting {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  line: string;
+  copyright_name: string;
+  legal_note: string;
+  navigation: { "label": string; "url"?: string | null }[];
+  entity_facts: { "label": string; "value": string; "verified": boolean }[];
+  hero_image?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface ContactSetting {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  email: string;
+  phone?: string;
+  map_url?: string;
+  country_code: string;
+  en_office: string;
+  en_office_label: string;
+  en_phone_label: string;
+  en_city: string;
+  en_pending: string;
+  zh_office: string;
+  zh_office_label: string;
+  zh_phone_label: string;
+  zh_city: string;
+  zh_pending: string;
+  ru_office: string;
+  ru_office_label: string;
+  ru_phone_label: string;
+  ru_city: string;
+  ru_pending: string;
   hero_image?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
   createdAt: Date;
   updatedAt: Date;
@@ -222,6 +326,9 @@ declare module "emdash" {
     service_pages: ServicePage;
     route_pages: RoutePage;
     company_pages: CompanyPage;
+    home_pages: HomePage;
+    footer_settings: FooterSetting;
+    contact_settings: ContactSetting;
     news: New;
   }
 }

@@ -1,12 +1,15 @@
 ---
-export const prerender = true;
+export const prerender = false;
+import {loadCorporatePage} from "../cms/pages";
 import HomePage from "../components/HomePage.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
+const cms=await loadCorporatePage("home","en");
+if(!cms)return Astro.rewrite("/404");
 ---
 
 <SiteLayout
-  title="HPF.kz | China–Kazakhstan–Europe TIR, customs and Almaty distribution"
-  description="HPF.kz coordinates TIR transport, pre-shipment customs preparation, Almaty warehousing and Kazakhstan delivery for trade between China, Central Asia and Europe."
+  title={cms.metaTitle}
+  description={cms.metaDescription}
   lang="en"
   active="home"
 >

@@ -4,15 +4,15 @@
 
 - 官网源码在 `/Users/arunyao/Developer/HPFKZ/website`，独立仓库 `arunyaokz/astro-hpf-kz`。
 - 生产基准源码来自 `origin/codex/services-page` 的 `abf88a5`；`main` 旧于生产，不能直接覆盖。
-- 本地分支 `codex/website-astro-update`：已接入并部署 EmDash 1.3.1 官网内容管理（新闻、服务介绍、路线网络、公司介绍）。Astro 7.4.2、Cloudflare 适配器14.4.1、MDX8.1.1、Wrangler4.152.0；Node>=22.23.4，本次用24.16.0。
-- 后台 https://hpf.kz/_emdash/admin/ ，名称“华鹏飞 · 官网管理”，默认简体中文；新增三类页面栏目默认打开中文版本。
+- 本地分支 `codex/website-astro-update`：已接入并部署 EmDash 1.3.1 官网内容管理（新闻、服务介绍、路线网络、公司介绍、首页、页脚、全站联系方式）。Astro 7.4.2、Cloudflare 适配器14.4.1、MDX8.1.1、Wrangler4.152.0；Node>=22.23.4，本次用24.16.0。
+- 后台 https://hpf.kz/_emdash/admin/ ，名称“华鹏飞 · 官网管理”，默认简体中文；各页面与设置栏目默认打开中文版本。
 - **老板已自行完成登记**：`yao@hpf.kz` / YAO，管理员（role50）。使用通行密钥登录，没有独立密码。未代建或注册生产测试账号。
 - 公开新闻列表：`/news/`、`/zh/news/`、`/ru/news/`；详情按语言与 slug 动态渲染。保存草稿、发布/撤回、定时发布、富文本及封面图由 EmDash 提供。翻译版本需要编辑人员自行录入与母语校对，没有接翻译模型。
-- 新闻、服务介绍、路线网络、公司介绍与后台按请求渲染；其他官网页面保持静态预渲染。新增三语新闻导航；修正新闻详情 canonical 与语言链接。
+- 官网使用全站页脚的页面均按请求渲染，HTML 禁止缓存；RSS 与激活页面保留静态预渲染。新增三语新闻导航；修正新闻详情 canonical 与语言链接。
 - 官网专用 D1：`hpf-website-cms`（2ec63897-0d36-49a5-9ad2-0ac742f884fa）；R2：`hpf-website-media`；定时任务每分钟执行。密钥保存在 Cloudflare Secrets，受保护本地备份在被 Git 忽略的 `ops/production-snapshot/credentials/`。
 - 本地完整验证通过：草稿匿名404→发布可见→撤回404、语言隔离、匿名创建401、图片上传及匿名读取。测试内容已清理。构建、TypeScript、发布模拟均通过；原有11项业务事实提醒仍待确认。
 - 6个历史 CSS/JS 地址在生产已逐个恢复200。构建 postbuild 保留历史资源及依赖，防止旧HTML缓存继续404。线上中文首页浏览器检查：无失败图片、无400以上资源请求，新闻链接正确。
-- 最终生产版本：`684d9474-a64b-433a-b241-c5351b10f1f0`，2026-10-25 发布。
+- 最终生产版本：`c874039f-40f3-49aa-9e78-8efec42f7ad1`，2026-10-25 发布。
 - 发布详情、检查记录见 `ops/production-check.json`；使用说明见 `ops/EmDash新闻后台使用说明.md`。
 - 当前改动尚未推送远端。正式后台高级插件等非新闻页面未逐屏完成中文验收。
 
@@ -35,3 +35,26 @@
 回归：`python3 scripts/verify-news-local.py`、`python3 scripts/verify-media-local.py`；发布前 `npm run check`，通过后 `npm run deploy`。本地回归脚本固定使用 localhost，不要改到生产。
 
 改绑定后重新运行 `npm run cf-typegen`。`emdash doctor` 的 data.db 缺失不适用于本项目D1部署，scheduler wiring 已通过。
+
+
+## Codex 图文草稿接入（2026-10-25）
+
+- Codex 已保存 `hpf-emdash` 远程 MCP 连接，姚总以 YAO 管理员账号批准 OAuth；仅授权内容/媒体读写与模型只读，凭据由 Codex 管理，不写入源码。配置只展示本流程所需的10个工具；脚本另外强制只存草稿，不提供发布、定时发布、删除或站点设置调用。
+- 已跑通《中间走廊发货前，先把五件事问清楚》：中文、俄文、哈文均存为 `news` 草稿，并以 `translationOf` 关联；同一张内置生图封面已入 R2/媒体库并绑定三稿。保留资料来源、编辑分析标签与 AI 图片说明，`native_reviewed=false`，未发布、未定时。
+- 已验证：媒体匿名读取200且文件 SHA-256一致；三稿富文本、封面引用、语言关联、未校对状态正确；匿名新闻详情全部404；真实后台中、哈编辑页显示已保存、草稿与关闭的校对开关，哈稿显示关联 ZH/RU。
+- 为支持哈语草稿，在 Astro i18n 添加 `kk`；公开哈语导航与新闻渲染仍未实现。本次用生产基线 `c4c9b61` 单独构建，排除并行首页/页脚迁移改动，构建、类型检查和发布模拟通过；配置部署版本 `d3f53367-4d3a-471f-baab-725a3b479b87`。后续并行发布应保留 `kk`，不应回退成仅 en/zh/ru。
+- 本批原稿/封面/完整提示词/回执位于 `ops/editorial/middle-corridor-shipping-checklist-20261025/`；草稿ID与验证结果见 `receipt.json`，配置发布结果见 `deployment-check.json`。
+- 可复用工具：`scripts/emdash-mcp.mjs`（通过官方 App Server 管理授权，不导出 token；仅内存临时工具会话，无模型调用、无新聊天保存），`scripts/emdash-draft-workflow.mjs`（本选题可重试入库与回读程序）。流程说明：`ops/EmDash与Codex图文草稿流程.md`。旧 `AI_NEWS_WORKFLOW.md` 已标为历史方案。
+- 俄哈稿仍需真实母语校对；本次没有对外发布文章，也不代表哈语官网上线。
+
+## 首页、页脚和统一联系方式（2026-10-25）
+
+- 新增 `home_pages`（41字段）、`footer_settings`（6字段）、`contact_settings`（20字段），导入7条已发布内容：首页和页脚各中英俄三语，联系方式为一个中文管理条目。
+- 首页包括当前所有可见栏目文案、地图节点、搜索摘要及首屏图片；页脚包括品牌介绍、导航链接、法人展示、版权与备注。现有版式和译文保持不变。
+- 全站邮箱、电话、地图及三语地址和运营城市统一维护。页脚、公司介绍办公地址、邮件联系表单、隐私说明和组织结构化资料统一读取。公司介绍重复邮箱字段和办公地址条目已迁出，保留4条法人资料；旧五条版本仍可读取。
+- 保留草稿隔离、签名预览和定时发布。链接、邮箱、国家代码和固定网址在发布时校验；页脚及联系方式禁止撤下与删除，避免全站设置缺失。
+- 本地验收：16个页面可见文字与迁移前完全一致；3类内容的草稿隔离、签名预览、发布联动、匿名写入拒绝、非法字段拒绝、全站设置防误删/撤下均通过；邮箱、电话、地图、表单与搜索资料同步通过。公司联系方式去重在本地、生产均完成。
+- 线上只读验收：16个页面正文和缓存策略、3个新闻入口、6个旧资源地址均通过；中文首页图片加载正常。构建、TypeScript、Wrangler发布模拟通过，包gzip约2903KiB。
+- 迁移前75张原始表快照、D1恢复书签及16页HTML保存在Git忽略的 `ops/production-snapshot/global-before/`；未覆盖新闻、媒体、账号或已有未发布草稿。
+- 原有哈语草稿语言配置由并行新闻工作维护；本次没有新增哈语公开页面。其他会话的新闻工作脚本与编辑文档不属于本次提交。
+- 使用说明：`ops/EmDash首页页脚联系方式使用说明.md`；线上记录：`ops/global-production-check.json`；本地验收：`scripts/verify-global-local.py`；线上只读验收：`scripts/verify-global-production.py`。

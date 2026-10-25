@@ -12,7 +12,11 @@ async function equalSecret(a: string, b: string): Promise<boolean> {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  if (!context.url.pathname.startsWith("/_emdash/")) return next();
+  if (!context.url.pathname.startsWith("/_emdash/")) {
+    const response = await next();
+    if (response.headers.get("Content-Type")?.includes("text/html")) response.headers.set("Cache-Control", "private, no-store");
+    return response;
+  }
 
   let hasOwner = false;
   try {
@@ -45,7 +49,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     context.cookies.set("emdash-locale", "zh-CN", { path: "/", sameSite: "lax", maxAge: 31536000 });
     return context.redirect(context.url.pathname + context.url.search, 303);
   }
-  if (/^\/_emdash\/admin\/content\/(service_pages|route_pages|company_pages)(\/|$)/.test(context.url.pathname) && !context.url.searchParams.has("locale")) {
+  if (/^\/_emdash\/admin\/content\/(service_pages|route_pages|company_pages|home_pages|footer_settings|contact_settings)(\/|$)/.test(context.url.pathname) && !context.url.searchParams.has("locale")) {
     const localized = new URL(context.url);
     localized.searchParams.set("locale", "zh");
     return context.redirect(localized.pathname + localized.search, 303);

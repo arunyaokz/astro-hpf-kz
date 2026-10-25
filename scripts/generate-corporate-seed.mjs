@@ -18,11 +18,11 @@ const hero=literal('src/components/ContentPage.astro','heroImage','pageKey').abo
 const routeLabels=literal('src/components/RouteNetworkPage.astro','labels','lang');
 const mapPlaces=literal('src/components/CorridorNetworkMap.astro','places','lang');
 const facts=parse(fs.readFileSync('src/content/facts.yaml','utf8'));
-const baseline={services:{},routes:{},company:{}};
+const baseline={...JSON.parse(fs.readFileSync('src/cms/page-baseline.json','utf8')),services:{},routes:{},company:{}};
 for(const lang of ['en','zh','ru']) {
  baseline.services[lang]={page:services.SERVICES_COPY[lang]};
  baseline.routes[lang]={page:routes.ROUTE_NETWORK_COPY[lang],labels:routeLabels[lang],mapPlaces:mapPlaces[lang],heroCaption:'HPF.kz / Eurasian route planning',updateEyebrow:'Human response / exception update',ctaEyebrow:'HPF.kz / route desk'};
- baseline.company[lang]={page:site.PAGE_COPY.about[lang],story:site.COMPANY_STORY[lang],labels:companyLabels[lang],entityLabels:entityLabels[lang],heroAlt:hero.alt[lang],contact:site.CONTACT_COPY[lang],contactLabel:{en:'Contact / freight enquiry',zh:'联系 / 货运需求',ru:'Контакт / запрос перевозки'}[lang],contactEmail:'bd@hpf.kz',entityFacts:['legal_name','bin','registration_year','founder','office_address'].map(id=>{const f=facts.find(x=>x.id===id);return {label:f.labels[lang],value:f.localizedValues?.[lang]??f.value,url:f.url??'',source:f.source,verified:f.verified};})};
+ baseline.company[lang]={page:site.PAGE_COPY.about[lang],story:site.COMPANY_STORY[lang],labels:companyLabels[lang],entityLabels:entityLabels[lang],heroAlt:hero.alt[lang],contact:site.CONTACT_COPY[lang],contactLabel:{en:'Contact / freight enquiry',zh:'联系 / 货运需求',ru:'Контакт / запрос перевозки'}[lang],entityFacts:['legal_name','bin','registration_year','founder'].map(id=>{const f=facts.find(x=>x.id===id);return {label:f.labels[lang],value:f.localizedValues?.[lang]??f.value,url:f.url??'',source:f.source,verified:f.verified};})};
 }
 fs.writeFileSync('src/cms/page-baseline.json',JSON.stringify(baseline,null,2)+'\n');
 console.log('Exported 9 page baselines.');

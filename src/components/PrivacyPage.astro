@@ -1,8 +1,10 @@
 ---
+import {loadSiteSettings} from "../cms/pages";
 import { PRIVACY_COPY, type Lang } from "../site-v2";
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
-const page = PRIVACY_COPY[lang];
+const {contacts}=await loadSiteSettings(lang);
+const page = {...PRIVACY_COPY[lang],sections:PRIVACY_COPY[lang].sections.map(section=>({...section,text:section.text.replaceAll("bd@hpf.kz",contacts.email)}))};
 ---
 
 <article class="legal-page shell">

@@ -1,4 +1,5 @@
 ---
+import { loadSiteSettings } from "../cms/pages";
 import { getCollection } from "astro:content";
 import { LANGS, pagePath, type CorePage, type Lang } from "../site-v2";
 
@@ -17,16 +18,19 @@ const canonicalURL = new URL(canonicalPath ?? pagePath(lang, page), Astro.site);
 const languageLinks = alternates ?? LANGS.map((code) => ({ lang: code, path: pagePath(code, page) }));
 const facts = await getCollection("facts");
 const verified = new Map(facts.filter((fact) => fact.data.verified).map((fact) => [fact.id, fact.data.value]));
+const {contacts,localized}=await loadSiteSettings(lang ?? "en");
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LogisticsBusiness"],
   name: verified.get("public_identity") ?? "HPF.kz",
   url: new URL(pagePath("en", "home"), Astro.site).toString(),
-  email: verified.get("business_email"),
+  email: contacts.email,
+  telephone:contacts.phone || undefined,
   address: verified.get("operating_city") ? {
     "@type": "PostalAddress",
-    addressLocality: "Almaty",
-    addressCountry: "KZ",
+    addressLocality: localized.city,
+    streetAddress: localized.office,
+    addressCountry: contacts.countryCode,
   } : undefined,
   areaServed: ["China", "Kazakhstan", "Europe"],
 };
@@ -57,4 +61,4 @@ const organizationSchema = {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
-<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema).replaceAll("<", "\\u003c")} />

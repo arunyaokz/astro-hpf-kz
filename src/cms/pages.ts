@@ -7,6 +7,9 @@ import { baseline, decodePage, PAGE_COLLECTIONS, PAGE_SLUGS } from './page-model
 
 type Hero = { heroImage?: ImageValue };
 export interface CorporatePages {
+  home: typeof baseline.home.en & Hero;
+  footer: typeof baseline.footer.en & Hero;
+  contacts: typeof baseline.contacts.zh & Hero;
   services: { page: typeof SERVICES_COPY.en } & Hero;
   routes: Omit<typeof baseline.routes.en, 'page'> & { page: typeof ROUTE_NETWORK_COPY.en } & Hero;
   company: Omit<typeof baseline.company.en, 'page' | 'story' | 'contact'> & {
@@ -19,4 +22,10 @@ export async function loadCorporatePage<K extends keyof CorporatePages>(kind: K,
   if (error) throw error;
   if (!entry || (!isPreview && (entry.data.status !== 'published' || entry.data.locale !== lang))) return null;
   return decodePage(kind, lang, entry.data) as CorporatePages[K];
+}
+
+export async function loadSiteSettings(lang: Lang) {
+  const [footer, contacts] = await Promise.all([loadCorporatePage('footer',lang),loadCorporatePage('contacts','zh')]);
+  if (!footer || !contacts) throw new Error('请先在后台发布页脚和全站联系方式。');
+  return {footer, contacts, localized: contacts[lang]};
 }

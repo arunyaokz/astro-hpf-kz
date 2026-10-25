@@ -1462,22 +1462,13 @@
           "type": "text"
         },
         {
-          "slug": "contact_email",
-          "label": "业务邮箱",
-          "required": true,
-          "type": "string",
-          "validation": {
-            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
-          }
-        },
-        {
           "slug": "entity_facts",
           "label": "法人登记资料",
           "required": true,
           "type": "repeater",
           "validation": {
-            "minItems": 5,
-            "maxItems": 5,
+            "minItems": 4,
+            "maxItems": 4,
             "subFields": [
               {
                 "slug": "label",
@@ -1516,6 +1507,617 @@
           "slug": "hero_image",
           "label": "首屏图片（留空使用现有图片）",
           "type": "image"
+        }
+      ]
+    },
+    {
+      "slug": "home_pages",
+      "label": "首页",
+      "labelSingular": "首页",
+      "description": "编辑现有三语页面。保存草稿不会修改线上；发布后生效。列表每行一项，条目数量保持原版式。",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "seo"
+      ],
+      "urlPattern": "/",
+      "titleField": "page_title",
+      "sortOrder": 4,
+      "fields": [
+        {
+          "slug": "meta_title",
+          "label": "搜索标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "meta_description",
+          "label": "搜索摘要",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_eyebrow",
+          "label": "页面内容｜栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_title",
+          "label": "页面内容｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_primary",
+          "label": "页面内容｜主按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_secondary",
+          "label": "页面内容｜次按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_image_note",
+          "label": "页面内容｜图片注释",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_trust_title",
+          "label": "页面内容｜公司资料｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_trust_body",
+          "label": "页面内容｜公司资料｜正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_trust_note",
+          "label": "页面内容｜公司资料｜来源说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_method_title",
+          "label": "页面内容｜工作方法｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_method_definition",
+          "label": "页面内容｜工作方法｜定义",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_method_items",
+          "label": "页面内容｜工作方法｜条目",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 4,
+            "maxItems": 4,
+            "subFields": [
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_customs_eyebrow",
+          "label": "页面内容｜清关合规｜栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_customs_title",
+          "label": "页面内容｜清关合规｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_customs_body",
+          "label": "页面内容｜清关合规｜正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_customs_boundary",
+          "label": "页面内容｜清关合规｜边界标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_customs_button",
+          "label": "页面内容｜清关合规｜按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_customs_stages",
+          "label": "页面内容｜清关合规｜清关阶段",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 6,
+            "maxItems": 6,
+            "subFields": [
+              {
+                "slug": "phase",
+                "label": "阶段",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_services_intro",
+          "label": "页面内容｜服务项目｜简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_services_items",
+          "label": "页面内容｜服务项目｜条目",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 4,
+            "maxItems": 4,
+            "subFields": [
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_route_body",
+          "label": "页面内容｜途经节点｜正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_route_button",
+          "label": "页面内容｜途经节点｜按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_final_title",
+          "label": "页面内容｜底部联系区｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_final_body",
+          "label": "页面内容｜底部联系区｜正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_final_button",
+          "label": "页面内容｜底部联系区｜按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_final_signoff",
+          "label": "页面内容｜底部联系区｜署名",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "hero_lead",
+          "label": "首屏简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "signals",
+          "label": "运营要点",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 3,
+            "maxItems": 3,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "language_text",
+          "label": "语言说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "capability_text",
+          "label": "能力说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "method_label",
+          "label": "责任链说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "services_label",
+          "label": "能力栏目标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "route_label",
+          "label": "路线栏目标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "visual_note",
+          "label": "视觉声明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "industry_image",
+          "label": "行业图片注释",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "route_eyebrow",
+          "label": "地图栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "route_direction",
+          "label": "地图方向说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "map_nodes",
+          "label": "地图节点",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 6,
+            "maxItems": 6,
+            "subFields": [
+              {
+                "slug": "place",
+                "label": "地名",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "role",
+                "label": "节点作用",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "entity_facts",
+          "label": "法人登记资料",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 4,
+            "maxItems": 4,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "value",
+                "label": "客户价值",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "verified",
+                "label": "已核验",
+                "type": "boolean",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "hero_image",
+          "label": "首屏图片（留空使用现有图片）",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "slug": "footer_settings",
+      "label": "页脚",
+      "labelSingular": "页脚",
+      "description": "编辑现有三语页面。保存草稿不会修改线上；发布后生效。列表每行一项，条目数量保持原版式。",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "seo"
+      ],
+      "urlPattern": "/",
+      "titleField": "title",
+      "sortOrder": 5,
+      "fields": [
+        {
+          "slug": "title",
+          "label": "标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "line",
+          "label": "品牌介绍",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "copyright_name",
+          "label": "版权名称",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "legal_note",
+          "label": "页脚备注",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "navigation",
+          "label": "导航链接",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 5,
+            "maxItems": 5,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "url",
+                "label": "证明链接",
+                "type": "text",
+                "required": false
+              }
+            ]
+          }
+        },
+        {
+          "slug": "entity_facts",
+          "label": "法人登记资料",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 2,
+            "maxItems": 2,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "value",
+                "label": "客户价值",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "verified",
+                "label": "已核验",
+                "type": "boolean",
+                "required": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "contact_settings",
+      "label": "全站联系方式",
+      "labelSingular": "全站联系方式",
+      "description": "编辑现有三语页面。保存草稿不会修改线上；发布后生效。列表每行一项，条目数量保持原版式。",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "seo"
+      ],
+      "urlPattern": "/",
+      "titleField": "title",
+      "sortOrder": 6,
+      "fields": [
+        {
+          "slug": "title",
+          "label": "标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "email",
+          "label": "邮箱",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "phone",
+          "label": "电话",
+          "required": false,
+          "type": "text"
+        },
+        {
+          "slug": "map_url",
+          "label": "办公地址地图链接",
+          "required": false,
+          "type": "text"
+        },
+        {
+          "slug": "country_code",
+          "label": "国家代码",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "en_office",
+          "label": "英文｜办公地址",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "en_office_label",
+          "label": "英文｜办公地址标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "en_phone_label",
+          "label": "英文｜电话标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "en_city",
+          "label": "英文｜运营城市",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "en_pending",
+          "label": "英文｜待确认提示",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "zh_office",
+          "label": "中文｜办公地址",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "zh_office_label",
+          "label": "中文｜办公地址标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "zh_phone_label",
+          "label": "中文｜电话标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "zh_city",
+          "label": "中文｜运营城市",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "zh_pending",
+          "label": "中文｜待确认提示",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "ru_office",
+          "label": "俄文｜办公地址",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "ru_office_label",
+          "label": "俄文｜办公地址标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "ru_phone_label",
+          "label": "俄文｜电话标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "ru_city",
+          "label": "俄文｜运营城市",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "ru_pending",
+          "label": "俄文｜待确认提示",
+          "required": true,
+          "type": "text"
         }
       ]
     }
@@ -2728,7 +3330,6 @@
           "contact_email_label": "Business email",
           "contact_response_note": "Please do not include passport, payment-card or other sensitive personal data.",
           "contact_label": "Contact / freight enquiry",
-          "contact_email": "bd@hpf.kz",
           "entity_facts": [
             {
               "label": "Full legal name of the LLP",
@@ -2756,13 +3357,6 @@
               "value": "HPF CO., LIMITED",
               "url": "",
               "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
-              "verified": true
-            },
-            {
-              "label": "Company office address",
-              "value": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
-              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
               "verified": true
             }
           ]
@@ -2896,7 +3490,6 @@
           "contact_email_label": "业务邮箱",
           "contact_response_note": "请勿提交护照、银行卡等敏感个人信息。",
           "contact_label": "联系 / 货运需求",
-          "contact_email": "bd@hpf.kz",
           "entity_facts": [
             {
               "label": "ТОО 法定全称",
@@ -2924,13 +3517,6 @@
               "value": "HPF CO., LIMITED",
               "url": "",
               "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
-              "verified": true
-            },
-            {
-              "label": "公司办公地址",
-              "value": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
-              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
               "verified": true
             }
           ]
@@ -3064,7 +3650,6 @@
           "contact_email_label": "Деловая почта",
           "contact_response_note": "Не указывайте паспортные, банковские и другие чувствительные персональные данные.",
           "contact_label": "Контакт / запрос перевозки",
-          "contact_email": "bd@hpf.kz",
           "entity_facts": [
             {
               "label": "Полное наименование ТОО",
@@ -3093,15 +3678,691 @@
               "url": "",
               "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
               "verified": true
+            }
+          ]
+        }
+      }
+    ],
+    "home_pages": [
+      {
+        "id": "home-en",
+        "slug": "home",
+        "locale": "en",
+        "status": "published",
+        "data": {
+          "meta_title": "HPF.kz | China–Kazakhstan–Europe TIR, customs and Almaty distribution",
+          "meta_description": "HPF.kz coordinates TIR transport, pre-shipment customs preparation, Almaty warehousing and Kazakhstan delivery for trade between China, Central Asia and Europe.",
+          "page_eyebrow": "CHINA · KAZAKHSTAN · EUROPE",
+          "page_title": "The farther the road, the clearer the plan.",
+          "page_primary": "Request a transport plan",
+          "page_secondary": "View route network",
+          "page_image_note": "Industry image; not an HPF.kz-owned vehicle",
+          "page_trust_title": "A company can be young without starting from zero.",
+          "page_trust_body": "HPF KZ completed its initial state registration in Kazakhstan in 2024, with HPF CO., LIMITED named as founder in the eGov legal-entity certificate. Fleet, warehousing and wider group-relationship claims remain gated until evidence and public wording are confirmed.",
+          "page_trust_note": "These statements describe resources, not guaranteed outcomes. Outcomes must be demonstrated through cases, signed delivery records and sustained operations.",
+          "page_method_title": "We do not eliminate distance. We reduce loss of control.",
+          "page_method_definition": "That is what accountable delivery means at HPF.kz.",
+          "page_method_items": [
+            {
+              "title": "Start with the cargo",
+              "text": "Commodity, dimensions, value, Incoterms and arrival requirements determine the route—not a fixed rate sheet."
             },
             {
-              "label": "Адрес офиса компании",
-              "value": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
-              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
-              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+              "title": "Run the documents first",
+              "text": "Declarations, HS codes, certificates and EAEU requirements are checked before the cargo reaches the border."
+            },
+            {
+              "title": "Name an owner for every leg",
+              "text": "Pickup, export, entry, transfer, warehousing, dispatch and POD each have a node and a responsible owner."
+            },
+            {
+              "title": "Keep the learning from every load",
+              "text": "Time, cost, documents and exceptions are recorded so the next shipment does not start over."
+            }
+          ],
+          "page_customs_eyebrow": "Customs & compliance",
+          "page_customs_title": "Customs clearance starts before shipment.",
+          "page_customs_body": "The border is where preparation is tested, not where it should begin. HPF.kz reviews files, classification and declaration data before departure, then names the owner and next action when conditions change.",
+          "page_customs_boundary": "We do not promise guaranteed clearance. Clearance is an administrative result; we manage preparation, risk and the next action when an exception occurs.",
+          "page_customs_button": "View customs capability",
+          "page_customs_stages": [
+            {
+              "phase": "Prepare",
+              "title": "Documents",
+              "text": "Check contract, invoice, packing list, certificates and origin documents for completeness."
+            },
+            {
+              "phase": "Verify",
+              "title": "Declaration",
+              "text": "Confirm description, material, use and declaration elements."
+            },
+            {
+              "phase": "Classify",
+              "title": "HS code",
+              "text": "Cross-check the HS code against EAEU import requirements."
+            },
+            {
+              "phase": "Declare",
+              "title": "Customs filing",
+              "text": "Coordinate China export and Kazakhstan import files within the confirmed operating scope."
+            },
+            {
+              "phase": "Respond",
+              "title": "Inspection",
+              "text": "For additions, amendments or inspection, state the owner, response window and next action."
+            },
+            {
+              "phase": "Record",
+              "title": "Release",
+              "text": "Archive exceptions and supporting evidence for the next shipment."
+            }
+          ],
+          "page_services_intro": "Cross-border delivery is not a list of services. HPF.kz connects the key stages so the result of one leg becomes the starting point of the next.",
+          "page_services_items": [
+            {
+              "title": "Customs and compliance coordination",
+              "text": "Files, tariffs and certificates are reviewed early so questions are answered before the truck reaches the border."
+            },
+            {
+              "title": "Cross-border TIR and linehaul",
+              "text": "We organise China–Kazakhstan–Europe road freight around cargo, border and delivery constraints, combining rail, sea or air where appropriate."
+            },
+            {
+              "title": "Almaty warehousing and distribution",
+              "text": "Receiving, inspection, put-away, labelling, picking and dispatch are recorded with clear status updates."
+            },
+            {
+              "title": "Kazakhstan local delivery",
+              "text": "Vehicle coordination, appointments, unloading and proof of delivery bring the final leg to warehouses, stores and project sites."
+            }
+          ],
+          "page_route_body": "From China origin through a China–Kazakhstan border point, Almaty, the Caspian corridor and European consignees, each leg receives a transport mode, document requirement, time boundary and alternative.",
+          "page_route_button": "View full route",
+          "page_final_title": "Put the next shipment on the table.",
+          "page_final_body": "Tell us where it starts, where it goes, what it is and when it must arrive. We will clarify the route, files, timing and risks first.",
+          "page_final_button": "Submit freight request",
+          "page_final_signoff": "HPF.kz | The farther the road, the clearer the plan.",
+          "hero_lead": "Connecting China, Kazakhstan and Europe. Every leg arranged. Every change answered.",
+          "signals": [
+            {
+              "label": "Almaty operations"
+            },
+            {
+              "label": "ZH · EN · RU"
+            },
+            {
+              "label": "Customs to delivery"
+            }
+          ],
+          "language_text": "中文 · English · Русский",
+          "capability_text": "Customs · TIR · Warehouse · POD",
+          "method_label": "One chain of responsibility, not a list of vendors",
+          "services_label": "Capability is an operating order, not a list.",
+          "route_label": "From China, through Kazakhstan, onward to Europe.",
+          "visual_note": "AI-generated brand visual · not an HPF.kz-owned vehicle",
+          "industry_image": "Industry image; not an HPF.kz-owned asset",
+          "route_eyebrow": "China · Kazakhstan · Europe",
+          "route_direction": "Cargo flow: China → Europe, right to left",
+          "map_nodes": [
+            {
+              "place": "Europe",
+              "role": "Consignee / POD"
+            },
+            {
+              "place": "South Caucasus",
+              "role": "Western handover"
+            },
+            {
+              "place": "Caspian corridor",
+              "role": "Sea transfer"
+            },
+            {
+              "place": "Almaty",
+              "role": "Operating hub"
+            },
+            {
+              "place": "Kazakhstan border",
+              "role": "Entry / customs"
+            },
+            {
+              "place": "China",
+              "role": "Factory / consolidation"
+            }
+          ],
+          "entity_facts": [
+            {
+              "label": "Full legal name of the LLP",
+              "value": "HPF KZ Limited Liability Partnership (LLP)",
+              "verified": true
+            },
+            {
+              "label": "Business identification number (BIN)",
+              "value": "241040015643",
+              "verified": true
+            },
+            {
+              "label": "Initial state registration",
+              "value": "11 October 2024",
+              "verified": true
+            },
+            {
+              "label": "Founder (participant)",
+              "value": "HPF CO., LIMITED",
               "verified": true
             }
           ]
+        }
+      },
+      {
+        "id": "home-zh",
+        "slug": "home",
+        "locale": "zh",
+        "status": "published",
+        "translationOf": "home-en",
+        "data": {
+          "meta_title": "HPF.kz｜中哈欧跨境物流：TIR 运输 · 清关合规 · 阿拉木图仓储分拨",
+          "meta_description": "HPF.kz 扎根哈萨克斯坦，提供中国—哈萨克斯坦—欧洲 TIR 跨境运输、发运前清关合规预审、阿拉木图仓储分拨与哈萨克斯坦本地交付。",
+          "page_eyebrow": "中国 · 哈萨克斯坦 · 欧洲",
+          "page_title": "路越远，\n越要心中有数。",
+          "page_primary": "获取运输方案",
+          "page_secondary": "查看路线网络",
+          "page_image_note": "行业场景图，不代表 HPF.kz 自有车辆",
+          "page_trust_title": "一家公司可以年轻，能力不必从零开始。",
+          "page_trust_body": "HPF KZ 于 2024 年在哈萨克斯坦完成首次国家登记，创办方 HPF CO., LIMITED 载于 eGov 法人证明。车队、仓储与更广泛的集团关系，仅在证据与公开口径确认后披露。",
+          "page_trust_note": "以上只陈述资源，不把资源直接等同于结果。结果要由案例、回单和持续运营证明。",
+          "page_method_title": "我们不消灭远方，只减少失控。",
+          "page_method_definition": "这就是 HPF.kz 所理解的确定性交付。",
+          "page_method_items": [
+            {
+              "title": "先看货，再看路",
+              "text": "品名、尺寸、价值、贸易条款与到达要求不同，合适的路线也不同。路线从货物的真实约束出发，而不是从一张固定价目表出发。"
+            },
+            {
+              "title": "先让文件走一遍，再让货出发",
+              "text": "在发运前核对申报资料、HS 编码、证书与 EAEU 要求。能在桌面上解决的问题，不留到口岸上解决。"
+            },
+            {
+              "title": "每一程，都有责任人",
+              "text": "取货、出口、入境、转运、入仓、派送与签收，各有节点，各有回音。事情不悬空，责任不落进缝隙。"
+            },
+            {
+              "title": "每一票，都为下一票留下经验",
+              "text": "时效、费用、文件与异常被记录下来。走过的路，不必每一次都重新摸索。"
+            }
+          ],
+          "page_customs_eyebrow": "清关与合规",
+          "page_customs_title": "清关，从发运前开始。",
+          "page_customs_body": "口岸不是解决问题的地方，是检验准备的地方。HPF.kz 把清关工作放在发运之前：文件先走一遍，风险先摆上桌面，责任先落到人。",
+          "page_customs_boundary": "我们不承诺“包通关”。通关是行政结果，我们管理的是风险、准备与异常发生后的下一步。",
+          "page_customs_button": "查看清关与合规能力",
+          "page_customs_stages": [
+            {
+              "phase": "准备",
+              "title": "文件预审",
+              "text": "合同、发票、箱单、证书与原产地资料齐套核验。"
+            },
+            {
+              "phase": "核对",
+              "title": "申报要素",
+              "text": "品名、材质、用途与申报要素逐项确认。"
+            },
+            {
+              "phase": "归类",
+              "title": "HS 归类",
+              "text": "HS 编码与 EAEU 进口要求交叉核对。"
+            },
+            {
+              "phase": "申报",
+              "title": "进出口申报",
+              "text": "在已确认的业务范围内衔接中国出口与哈萨克斯坦进口资料。"
+            },
+            {
+              "phase": "现场",
+              "title": "查验应对",
+              "text": "补件、改单或口岸查验时，说明责任人、响应时限与下一步。"
+            },
+            {
+              "phase": "结果",
+              "title": "放行复盘",
+              "text": "异常记录归档，为下一票留下依据。"
+            }
+          ],
+          "page_services_intro": "跨境交付不是几个服务名称的相加，而是前后衔接的一套次序。HPF.kz 将关键环节放进同一条运营链，让上一程的结果，成为下一程的起点。",
+          "page_services_items": [
+            {
+              "title": "清关与合规协同",
+              "text": "申报要素与 HS 归类事先核对，单证齐套后再发运；查验与补件有责任人、有时限。"
+            },
+            {
+              "title": "跨境 TIR 与干线运输",
+              "text": "按货物、时效与通关条件组织中哈欧跨境公路运输，并在适合时组合铁路、海运或空运方案。"
+            },
+            {
+              "title": "阿拉木图仓储与分拨",
+              "text": "从到货、质检、上架，到贴标、分拣与出库，每一步有记录、有反馈。"
+            },
+            {
+              "title": "哈萨克斯坦本地交付",
+              "text": "协调车辆、预约、卸货与签收，把跨境路线的最后一程，真正落到仓库、门店或项目现场。"
+            }
+          ],
+          "page_route_body": "从中国集货，经中哈口岸入境；从阿拉木图枢纽，到跨里海走廊与欧洲收货端。我们为每一段安排运输方式、文件要求、时间边界与备选方案。",
+          "page_route_button": "查看完整路线",
+          "page_final_title": "把下一票货，先放到桌面上。",
+          "page_final_body": "告诉我们从哪里出发、送到哪里、是什么货、何时要到。我们先把路线、文件、时间与风险一一讲清楚。",
+          "page_final_button": "提交货运需求",
+          "page_final_signoff": "HPF.kz｜路越远，越要心中有数。",
+          "hero_lead": "连接中国、哈萨克斯坦与欧洲。每一程有安排，每一次变化有回应。",
+          "signals": [
+            {
+              "label": "阿拉木图运营"
+            },
+            {
+              "label": "中英俄三语"
+            },
+            {
+              "label": "清关至交付"
+            }
+          ],
+          "language_text": "中文 · English · Русский",
+          "capability_text": "Customs · TIR · Warehouse · POD",
+          "method_label": "一套责任链，而不是一串供应商",
+          "services_label": "能力不是清单，是协同顺序。",
+          "route_label": "从中国出发，向欧洲延伸。",
+          "visual_note": "AI 生成品牌视觉 · 不代表 HPF.kz 自有车辆",
+          "industry_image": "行业场景图，不代表 HPF.kz 自有资产",
+          "route_eyebrow": "China · Kazakhstan · Europe",
+          "route_direction": "货物流向：中国 → 欧洲，由右向左",
+          "map_nodes": [
+            {
+              "place": "欧洲",
+              "role": "收货预约 / POD"
+            },
+            {
+              "place": "外高加索",
+              "role": "西岸交接"
+            },
+            {
+              "place": "跨里海走廊",
+              "role": "海运换装"
+            },
+            {
+              "place": "阿拉木图",
+              "role": "运营枢纽"
+            },
+            {
+              "place": "哈萨克斯坦口岸",
+              "role": "入境 / 清关"
+            },
+            {
+              "place": "中国",
+              "role": "工厂 / 集货"
+            }
+          ],
+          "entity_facts": [
+            {
+              "label": "ТОО 法定全称",
+              "value": "HPF KZ 有限责任合伙企业（ТОО）",
+              "verified": true
+            },
+            {
+              "label": "БИН",
+              "value": "241040015643",
+              "verified": true
+            },
+            {
+              "label": "首次国家登记日期",
+              "value": "2024 年 10 月 11 日",
+              "verified": true
+            },
+            {
+              "label": "创办方（参与者）",
+              "value": "HPF CO., LIMITED",
+              "verified": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "home-ru",
+        "slug": "home",
+        "locale": "ru",
+        "status": "published",
+        "translationOf": "home-en",
+        "data": {
+          "meta_title": "HPF.kz | TIR, таможня, склад в Алматы и доставка по Казахстану",
+          "meta_description": "HPF.kz организует перевозки Китай–Казахстан–Европа, подготовку таможенного оформления, распределение в Алматы и местную доставку.",
+          "page_eyebrow": "КИТАЙ · КАЗАХСТАН · ЕВРОПА",
+          "page_title": "Чем дальше путь, тем яснее должен быть план.",
+          "page_primary": "Запросить план перевозки",
+          "page_secondary": "Смотреть маршруты",
+          "page_image_note": "Отраслевое фото; это не автомобиль HPF.kz",
+          "page_trust_title": "Компания может быть молодой, но её возможности — не с нуля.",
+          "page_trust_body": "Первичная государственная регистрация HPF KZ в Казахстане состоялась в 2024 году; учредитель HPF CO., LIMITED указан в справке eGov. Сведения об автопарке, складе и более широкой связи с группой публикуются после подтверждения доказательств и формулировок.",
+          "page_trust_note": "Здесь указаны ресурсы, а не гарантированные результаты. Результаты подтверждаются кейсами, документами о доставке и стабильной работой.",
+          "page_method_title": "Мы не сокращаем расстояние. Мы уменьшаем потерю контроля.",
+          "page_method_definition": "Так HPF.kz понимает управляемую доставку.",
+          "page_method_items": [
+            {
+              "title": "Сначала груз, затем маршрут",
+              "text": "На выбор пути влияют товар, размеры, стоимость, Incoterms и срок прибытия, а не фиксированный прайс-лист."
+            },
+            {
+              "title": "Сначала проходят документы",
+              "text": "Декларации, коды ТН ВЭД, сертификаты и требования ЕАЭС проверяются до выхода груза."
+            },
+            {
+              "title": "Ответственный на каждом этапе",
+              "text": "Забор, экспорт, ввоз, перегрузка, склад, доставка и POD имеют свой узел и владельца."
+            },
+            {
+              "title": "Каждая перевозка оставляет опыт",
+              "text": "Сроки, расходы, документы и отклонения фиксируются, чтобы не начинать заново."
+            }
+          ],
+          "page_customs_eyebrow": "Таможня и соответствие",
+          "page_customs_title": "Таможенное оформление начинается до отгрузки.",
+          "page_customs_body": "Граница проверяет подготовку, а не заменяет её. До отправки HPF.kz сверяет документы, классификацию и сведения декларации, а при изменениях указывает ответственного и следующее действие.",
+          "page_customs_boundary": "Мы не обещаем гарантированное оформление. Выпуск — административный результат; мы управляем подготовкой, риском и следующим действием при отклонении.",
+          "page_customs_button": "Смотреть возможности таможни",
+          "page_customs_stages": [
+            {
+              "phase": "Подготовка",
+              "title": "Документы",
+              "text": "Проверяем контракт, инвойс, упаковочный лист, сертификаты и документы о происхождении."
+            },
+            {
+              "phase": "Сверка",
+              "title": "Декларация",
+              "text": "Подтверждаем наименование, материал, назначение и элементы декларации."
+            },
+            {
+              "phase": "Классификация",
+              "title": "Код ТН ВЭД",
+              "text": "Сопоставляем код ТН ВЭД с требованиями импорта ЕАЭС."
+            },
+            {
+              "phase": "Подача",
+              "title": "Оформление",
+              "text": "Координируем файлы экспорта из Китая и импорта в Казахстан в подтверждённом объёме работ."
+            },
+            {
+              "phase": "Реакция",
+              "title": "Досмотр",
+              "text": "При дополнении, корректировке или досмотре указываем ответственного, срок и следующий шаг."
+            },
+            {
+              "phase": "Запись",
+              "title": "Выпуск",
+              "text": "Архивируем отклонения и подтверждения для следующей перевозки."
+            }
+          ],
+          "page_services_intro": "Трансграничная доставка — это не перечень услуг. HPF.kz соединяет этапы так, чтобы результат одного становился началом следующего.",
+          "page_services_items": [
+            {
+              "title": "Таможня и соответствие требованиям",
+              "text": "Проверяем документы, тарифы и сертификаты заранее, чтобы вопросы были решены до прибытия на границу."
+            },
+            {
+              "title": "TIR и магистральные перевозки",
+              "text": "Организуем автоперевозки Китай–Казахстан–Европа по условиям груза, границы и приёмки, при необходимости сочетая железную дорогу, море или авиацию."
+            },
+            {
+              "title": "Склад и распределение в Алматы",
+              "text": "Приёмка, проверка, размещение, маркировка, комплектация и отгрузка фиксируются с понятным статусом."
+            },
+            {
+              "title": "Доставка по Казахстану",
+              "text": "Координируем транспорт, время приёмки, разгрузку и POD до склада, магазина или площадки проекта."
+            }
+          ],
+          "page_route_body": "От отправления в Китае через пункт Китай–Казахстан, Алматы и Каспийский коридор до получателя в Европе — у каждого этапа есть вид транспорта, документы, срок и запасной вариант.",
+          "page_route_button": "Смотреть весь маршрут",
+          "page_final_title": "Положим следующую перевозку на стол.",
+          "page_final_body": "Сообщите откуда, куда, какой груз и к какому сроку. Сначала мы разберём маршрут, документы, сроки и риски.",
+          "page_final_button": "Отправить запрос",
+          "page_final_signoff": "HPF.kz | Чем дальше путь, тем яснее план.",
+          "hero_lead": "Соединяем Китай, Казахстан и Европу. Каждый этап организован. На каждое изменение есть ответ.",
+          "signals": [
+            {
+              "label": "Операции в Алматы"
+            },
+            {
+              "label": "中文 · EN · RU"
+            },
+            {
+              "label": "От таможни до доставки"
+            }
+          ],
+          "language_text": "中文 · English · Русский",
+          "capability_text": "Customs · TIR · Warehouse · POD",
+          "method_label": "Одна цепочка ответственности, а не список подрядчиков",
+          "services_label": "Возможности — это порядок работы, а не список.",
+          "route_label": "Из Китая — через Казахстан — в Европу.",
+          "visual_note": "Бренд-визуал создан ИИ · автомобиль не является активом HPF.kz",
+          "industry_image": "Отраслевое фото; это не актив HPF.kz",
+          "route_eyebrow": "China · Kazakhstan · Europe",
+          "route_direction": "Поток груза: Китай → Европа, справа налево",
+          "map_nodes": [
+            {
+              "place": "Европа",
+              "role": "Приёмка / POD"
+            },
+            {
+              "place": "Южный Кавказ",
+              "role": "Передача на западе"
+            },
+            {
+              "place": "Каспийский коридор",
+              "role": "Морская перегрузка"
+            },
+            {
+              "place": "Алматы",
+              "role": "Операционный узел"
+            },
+            {
+              "place": "Граница Казахстана",
+              "role": "Въезд / таможня"
+            },
+            {
+              "place": "Китай",
+              "role": "Завод / консолидация"
+            }
+          ],
+          "entity_facts": [
+            {
+              "label": "Полное наименование ТОО",
+              "value": "Товарищество с ограниченной ответственностью \"HPF KZ\"",
+              "verified": true
+            },
+            {
+              "label": "БИН",
+              "value": "241040015643",
+              "verified": true
+            },
+            {
+              "label": "Дата первичной государственной регистрации",
+              "value": "11 октября 2024 г.",
+              "verified": true
+            },
+            {
+              "label": "Учредитель (участник)",
+              "value": "Компания \"HPF CO., LIMITED\"",
+              "verified": true
+            }
+          ]
+        }
+      }
+    ],
+    "footer_settings": [
+      {
+        "id": "footer-en",
+        "slug": "footer",
+        "locale": "en",
+        "status": "published",
+        "data": {
+          "title": "Footer",
+          "line": "Every leg arranged. Every change answered.",
+          "copyright_name": "HPF.kz",
+          "legal_note": "Some contact and capability facts remain pending confirmation",
+          "navigation": [
+            {
+              "label": "Services",
+              "url": "/services/"
+            },
+            {
+              "label": "Routes & network",
+              "url": "/routes/"
+            },
+            {
+              "label": "Company",
+              "url": "/about/"
+            },
+            {
+              "label": "News",
+              "url": "/news/"
+            },
+            {
+              "label": "Privacy",
+              "url": "/privacy/"
+            }
+          ],
+          "entity_facts": [
+            {
+              "label": "Full legal name of the LLP",
+              "value": "HPF KZ Limited Liability Partnership (LLP)",
+              "verified": true
+            },
+            {
+              "label": "Business identification number (BIN)",
+              "value": "241040015643",
+              "verified": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "footer-zh",
+        "slug": "footer",
+        "locale": "zh",
+        "status": "published",
+        "translationOf": "footer-en",
+        "data": {
+          "title": "页脚",
+          "line": "每一程有安排，每一处有回音。",
+          "copyright_name": "HPF.kz",
+          "legal_note": "部分联系方式与能力事实仍待核实",
+          "navigation": [
+            {
+              "label": "服务",
+              "url": "/zh/services/"
+            },
+            {
+              "label": "路线与网络",
+              "url": "/zh/routes/"
+            },
+            {
+              "label": "公司",
+              "url": "/zh/about/"
+            },
+            {
+              "label": "新闻",
+              "url": "/zh/news/"
+            },
+            {
+              "label": "隐私政策",
+              "url": "/zh/privacy/"
+            }
+          ],
+          "entity_facts": [
+            {
+              "label": "ТОО 法定全称",
+              "value": "HPF KZ 有限责任合伙企业（ТОО）",
+              "verified": true
+            },
+            {
+              "label": "БИН",
+              "value": "241040015643",
+              "verified": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "footer-ru",
+        "slug": "footer",
+        "locale": "ru",
+        "status": "published",
+        "translationOf": "footer-en",
+        "data": {
+          "title": "Подвал сайта",
+          "line": "Каждый этап организован. На каждое изменение есть ответ.",
+          "copyright_name": "HPF.kz",
+          "legal_note": "Часть контактных данных и сведений о возможностях ожидает подтверждения",
+          "navigation": [
+            {
+              "label": "Услуги",
+              "url": "/ru/services/"
+            },
+            {
+              "label": "Маршруты и сеть",
+              "url": "/ru/routes/"
+            },
+            {
+              "label": "Компания",
+              "url": "/ru/about/"
+            },
+            {
+              "label": "Новости",
+              "url": "/ru/news/"
+            },
+            {
+              "label": "Конфиденциальность",
+              "url": "/ru/privacy/"
+            }
+          ],
+          "entity_facts": [
+            {
+              "label": "Полное наименование ТОО",
+              "value": "Товарищество с ограниченной ответственностью \"HPF KZ\"",
+              "verified": true
+            },
+            {
+              "label": "БИН",
+              "value": "241040015643",
+              "verified": true
+            }
+          ]
+        }
+      }
+    ],
+    "contact_settings": [
+      {
+        "id": "contacts-zh",
+        "slug": "contacts",
+        "locale": "zh",
+        "status": "published",
+        "data": {
+          "title": "全站联系方式",
+          "email": "bd@hpf.kz",
+          "phone": "+7 (708) 156 8876",
+          "map_url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+          "country_code": "KZ",
+          "en_office": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
+          "en_office_label": "Company office address",
+          "en_phone_label": "Business phone",
+          "en_city": "Almaty, Kazakhstan",
+          "en_pending": "Pending confirmation",
+          "zh_office": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
+          "zh_office_label": "公司办公地址",
+          "zh_phone_label": "业务电话",
+          "zh_city": "哈萨克斯坦 · 阿拉木图",
+          "zh_pending": "待确认",
+          "ru_office": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
+          "ru_office_label": "Адрес офиса компании",
+          "ru_phone_label": "Деловой телефон",
+          "ru_city": "Алматы, Казахстан",
+          "ru_pending": "Ожидает подтверждения"
         }
       }
     ]

@@ -1,4 +1,5 @@
 ---
+import {loadSiteSettings} from "../cms/pages";
 import { Image as EmDashImage } from "emdash/ui";
 import type { CorporatePages } from "../cms/pages";
 import { sanitizeHref } from "emdash";
@@ -51,6 +52,7 @@ const showEntityFact = (id: string) => {
   const pending = lang === "zh" ? "待确认" : lang === "ru" ? "Ожидает подтверждения" : "Pending confirmation";
   return fact?.verified ? fact.localizedValues?.[lang] ?? fact.value : `[${pending}]`;
 };
+const globalContacts=await loadSiteSettings(lang);
 ---
 
 <article class="content-page">
@@ -103,7 +105,7 @@ const showEntityFact = (id: string) => {
       <dl>
         {entityFactIds.map((id, index) => {
           const stored = factMap.get(id);
-          const managed = cms?.entityFacts[index];
+          const managed = id === "office_address" ? {label:globalContacts.localized.officeLabel,value:globalContacts.localized.office,url:globalContacts.contacts.mapUrl,verified:true,source:"EmDash"} : cms?.entityFacts[index];
           const fact = managed ? { ...managed, labels: { [lang]: managed.label } } : stored;
           const value = managed ? (managed.verified ? managed.value : `[${lang === "zh" ? "待确认" : lang === "ru" ? "Ожидает подтверждения" : "Pending confirmation"}]`) : showEntityFact(id);
           const link = fact?.url ? sanitizeHref(fact.url) : undefined;
@@ -150,7 +152,7 @@ const showEntityFact = (id: string) => {
     </div>
   </section>
 
-  {pageKey === "about" ? <ContactPanel lang={lang} page={cms?.contact} email={cms?.contactEmail} label={cms?.contactLabel} /> : <section class="page-cta">
+  {pageKey === "about" ? <ContactPanel lang={lang} page={cms?.contact} label={cms?.contactLabel} /> : <section class="page-cta">
     <div class="shell">
       <div><h2>{page.ctaTitle}</h2><p>{page.ctaText}</p></div>
       <a class="button button--inverse" href={pagePath(lang, "contact")}>{page.ctaButton}</a>

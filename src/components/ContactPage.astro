@@ -1,9 +1,11 @@
 ---
+import {loadSiteSettings} from "../cms/pages";
 import { CONTACT_COPY, pagePath, type Lang } from "../site-v2";
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const page = CONTACT_COPY[lang];
+const {contacts}=await loadSiteSettings(lang);
 ---
 
 <article class="contact-page">
@@ -19,14 +21,14 @@ const page = CONTACT_COPY[lang];
         <p class="eyebrow">Data boundary</p>
         <h2>{page.asideTitle}</h2>
         <p>{page.asideText}</p>
-        <dl><div><dt>{page.emailLabel}</dt><dd><a href="mailto:bd@hpf.kz">bd@hpf.kz</a></dd></div></dl>
+        <dl><div><dt>{page.emailLabel}</dt><dd><a href={`mailto:${contacts.email}`}>{contacts.email}</a></dd></div></dl>
         <small>{page.responseNote}</small>
       </div>
     </aside>
   </section>
 
   <section class="form-section shell">
-    <form data-enquiry-form data-required-message={page.fields.required} data-mail-subject="HPF.kz freight enquiry">
+    <form data-contact-email={contacts.email} data-enquiry-form data-required-message={page.fields.required} data-mail-subject="HPF.kz freight enquiry">
       <div class="form-grid">
         <label>{page.fields.name}<span aria-hidden="true">*</span><input name="name" autocomplete="name" required /></label>
         <label>{page.fields.company}<input name="company" autocomplete="organization" /></label>
@@ -59,7 +61,7 @@ const page = CONTACT_COPY[lang];
       .filter(([key]) => key !== "consent")
       .map(([key, value]) => `${key}: ${String(value).trim() || "—"}`);
     const subject = form.dataset.mailSubject ?? "HPF.kz freight enquiry";
-    window.location.href = `mailto:bd@hpf.kz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = `mailto:${form.dataset.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
   });
 </script>
 
