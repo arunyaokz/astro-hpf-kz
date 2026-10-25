@@ -1,11 +1,13 @@
 ---
+import { Image as EmDashImage } from "emdash/ui";
+import type { CorporatePages } from "../cms/pages";
 import { SERVICES_COPY } from "../services-content";
 import { pagePath, type Lang } from "../site-v2";
 import CardVisual from "./CardVisual.astro";
 
-interface Props { lang: Lang; }
-const { lang } = Astro.props;
-const page = SERVICES_COPY[lang];
+interface Props { lang: Lang; cms?: CorporatePages["services"]; }
+const { lang, cms } = Astro.props;
+const page = cms?.page ?? SERVICES_COPY[lang];
 const principleVisuals = ["docs-first", "responsibility", "memory"];
 ---
 
@@ -21,7 +23,7 @@ const principleVisuals = ["docs-first", "responsibility", "memory"];
       </div>
     </div>
     <figure>
-      <img src="/images/corporate/hero-services-customs.webp" alt={page.imageAlt} width="1122" height="1402" fetchpriority="high" />
+      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={page.imageAlt} width={1122} height={1402} /> : <img src="/images/corporate/hero-services-customs.webp" alt={page.imageAlt} width="1122" height="1402" fetchpriority="high" />}
       <figcaption>{page.imageCaption}</figcaption>
     </figure>
   </section>

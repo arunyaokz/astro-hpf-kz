@@ -2,11 +2,11 @@
   "version": "1",
   "defaultLocale": "en",
   "meta": {
-    "name": "华鹏飞新闻管理",
+    "name": "华鹏飞官网内容",
     "description": "中、英、俄三语新闻；草稿、审核、发布与图片库。"
   },
   "settings": {
-    "title": "华鹏飞 · 新闻管理",
+    "title": "华鹏飞 · 官网管理",
     "url": "https://hpf.kz",
     "timezone": "Asia/Almaty"
   },
@@ -101,6 +101,3009 @@
           "defaultValue": false
         }
       ]
+    },
+    {
+      "slug": "service_pages",
+      "label": "服务介绍",
+      "labelSingular": "服务介绍",
+      "description": "编辑现有三语页面。保存草稿不会修改线上；发布后生效。列表每行一项，条目数量保持原版式。",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "seo"
+      ],
+      "urlPattern": "/services/",
+      "titleField": "page_title",
+      "sortOrder": 1,
+      "fields": [
+        {
+          "slug": "page_meta_title",
+          "label": "页面内容｜搜索标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_meta_description",
+          "label": "页面内容｜搜索摘要",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_eyebrow",
+          "label": "页面内容｜栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_title",
+          "label": "页面内容｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_lead",
+          "label": "页面内容｜简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_primary",
+          "label": "页面内容｜主按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_secondary",
+          "label": "页面内容｜次按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_image_alt",
+          "label": "页面内容｜图片说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_image_caption",
+          "label": "页面内容｜图片注释",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_index_label",
+          "label": "页面内容｜服务导航标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_intro_eyebrow",
+          "label": "页面内容｜做法栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_intro_title",
+          "label": "页面内容｜做法标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_intro_text",
+          "label": "页面内容｜做法介绍",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_principles",
+          "label": "页面内容｜服务原则",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 3,
+            "maxItems": 3,
+            "subFields": [
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_services_eyebrow",
+          "label": "页面内容｜服务栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_services_title",
+          "label": "页面内容｜服务标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_services_lead",
+          "label": "页面内容｜服务简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_labels_fit",
+          "label": "页面内容｜界面文字｜适用场景",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_labels_work",
+          "label": "页面内容｜界面文字｜工作内容",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_labels_outputs",
+          "label": "页面内容｜界面文字｜交付物",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_labels_value",
+          "label": "页面内容｜界面文字｜客户价值",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_labels_input",
+          "label": "页面内容｜界面文字｜输入",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_labels_result",
+          "label": "页面内容｜界面文字｜结果",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_labels_response",
+          "label": "页面内容｜界面文字｜响应",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_services",
+          "label": "页面内容｜服务项目",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 6,
+            "maxItems": 6,
+            "subFields": [
+              {
+                "slug": "id",
+                "label": "项目类型",
+                "type": "select",
+                "required": true,
+                "options": [
+                  "清关服务",
+                  "跨境运输",
+                  "多式联运",
+                  "仓储服务",
+                  "本地交付",
+                  "市场落地"
+                ]
+              },
+              {
+                "slug": "number",
+                "label": "序号",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "kicker",
+                "label": "副标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "summary",
+                "label": "概述",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "fit",
+                "label": "适用场景",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "work",
+                "label": "工作内容（每行一项）",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "outputs",
+                "label": "交付物（每行一项）",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "value",
+                "label": "客户价值",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_sequence_eyebrow",
+          "label": "页面内容｜流程栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_sequence_title",
+          "label": "页面内容｜流程标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_sequence_lead",
+          "label": "页面内容｜流程简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_sequence",
+          "label": "页面内容｜服务流程",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 6,
+            "maxItems": 6,
+            "subFields": [
+              {
+                "slug": "step",
+                "label": "步骤编号",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "result",
+                "label": "结果",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_exception_eyebrow",
+          "label": "页面内容｜异常栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_exception_title",
+          "label": "页面内容｜异常标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_exception_lead",
+          "label": "页面内容｜异常简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_exceptions",
+          "label": "页面内容｜异常处理",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 5,
+            "maxItems": 5,
+            "subFields": [
+              {
+                "slug": "issue",
+                "label": "问题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "response",
+                "label": "响应",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "update",
+                "label": "跟进说明",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_boundary_eyebrow",
+          "label": "页面内容｜承诺栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_title",
+          "label": "页面内容｜承诺标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_lead",
+          "label": "页面内容｜承诺简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_do_title",
+          "label": "页面内容｜承诺清单标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_do",
+          "label": "页面内容｜承诺清单（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_dont_title",
+          "label": "页面内容｜边界清单标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_dont",
+          "label": "页面内容｜边界清单（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_brief_eyebrow",
+          "label": "页面内容｜询价栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_brief_title",
+          "label": "页面内容｜询价标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_brief_text",
+          "label": "页面内容｜询价说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_brief_fields",
+          "label": "页面内容｜询价清单（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_brief_note",
+          "label": "页面内容｜询价提示",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_cta_button",
+          "label": "页面内容｜联系按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "hero_image",
+          "label": "首屏图片（留空使用现有图片）",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "slug": "route_pages",
+      "label": "路线网络",
+      "labelSingular": "路线网络",
+      "description": "编辑现有三语页面。保存草稿不会修改线上；发布后生效。列表每行一项，条目数量保持原版式。",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "seo"
+      ],
+      "urlPattern": "/routes/",
+      "titleField": "page_title",
+      "sortOrder": 2,
+      "fields": [
+        {
+          "slug": "page_meta_title",
+          "label": "页面内容｜搜索标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_meta_description",
+          "label": "页面内容｜搜索摘要",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_eyebrow",
+          "label": "页面内容｜栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_title",
+          "label": "页面内容｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_lead",
+          "label": "页面内容｜简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_primary",
+          "label": "页面内容｜主按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_secondary",
+          "label": "页面内容｜次按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_hero_notes",
+          "label": "页面内容｜首屏要点",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 3,
+            "maxItems": 3,
+            "subFields": [
+              {
+                "slug": "value",
+                "label": "客户价值",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_atlas_eyebrow",
+          "label": "页面内容｜地图栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_atlas_title",
+          "label": "页面内容｜地图标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_atlas_lead",
+          "label": "页面内容｜地图简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_atlas_note",
+          "label": "页面内容｜地图提示",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_detail_eyebrow",
+          "label": "页面内容｜路线栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_detail_title",
+          "label": "页面内容｜路线标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_detail_lead",
+          "label": "页面内容｜路线简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_corridors",
+          "label": "页面内容｜路线走廊",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 3,
+            "maxItems": 3,
+            "subFields": [
+              {
+                "slug": "id",
+                "label": "项目类型",
+                "type": "select",
+                "required": true,
+                "options": [
+                  "北线",
+                  "中线",
+                  "南线"
+                ]
+              },
+              {
+                "slug": "index",
+                "label": "编号",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "name",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "strap",
+                "label": "路线特点",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "summary",
+                "label": "概述",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "route",
+                "label": "途经节点（每行一项）",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "best_for_label",
+                "label": "适用场景标签",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "best_for",
+                "label": "适用场景",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "mode_label",
+                "label": "运输方式标签",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "mode",
+                "label": "运输方式",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "watch_label",
+                "label": "风险提示标签",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "watch",
+                "label": "风险提示（每行一项）",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "switch_label",
+                "label": "切换条件标签",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "switch_when",
+                "label": "切换条件",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_service_eyebrow",
+          "label": "页面内容｜服务阶段说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_service_title",
+          "label": "页面内容｜服务阶段标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_service_lead",
+          "label": "页面内容｜服务阶段简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_service_steps",
+          "label": "页面内容｜服务阶段",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 3,
+            "maxItems": 3,
+            "subFields": [
+              {
+                "slug": "step",
+                "label": "步骤编号",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "phase",
+                "label": "阶段",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "outputs",
+                "label": "交付物（每行一项）",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_update_title",
+          "label": "页面内容｜异常更新标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_update_text",
+          "label": "页面内容｜异常更新说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_update_items",
+          "label": "页面内容｜更新内容清单（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_switch_eyebrow",
+          "label": "页面内容｜主备切换说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_switch_title",
+          "label": "页面内容｜主备切换标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_switch_text",
+          "label": "页面内容｜主备切换正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_switch_triggers",
+          "label": "页面内容｜切换触发条件",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 4,
+            "maxItems": 4,
+            "subFields": [
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_request_eyebrow",
+          "label": "页面内容｜询价栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_request_title",
+          "label": "页面内容｜询价标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_request_text",
+          "label": "页面内容｜询价正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_request_items",
+          "label": "页面内容｜询价要素（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_promise_title",
+          "label": "页面内容｜服务承诺标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_promise_text",
+          "label": "页面内容｜服务承诺正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_cta_button",
+          "label": "页面内容｜联系按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_scene",
+          "label": "界面文字｜图片说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_route",
+          "label": "界面文字｜途经节点",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_output",
+          "label": "界面文字｜交付物标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_triggers",
+          "label": "界面文字｜复核条件标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_checklist",
+          "label": "界面文字｜询价清单标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "map_places_europe",
+          "label": "地图地名｜欧洲",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "map_places_china",
+          "label": "地图地名｜中国",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "map_places_kz",
+          "label": "地图地名｜哈萨克斯坦",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "map_places_north",
+          "label": "地图地名｜北线节点（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "map_places_middle",
+          "label": "地图地名｜中线节点（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "map_places_south",
+          "label": "地图地名｜南线节点（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "hero_caption",
+          "label": "首屏图片注释",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "update_eyebrow",
+          "label": "异常更新栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "cta_eyebrow",
+          "label": "联系栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "hero_image",
+          "label": "首屏图片（留空使用现有图片）",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "slug": "company_pages",
+      "label": "公司介绍",
+      "labelSingular": "公司介绍",
+      "description": "编辑现有三语页面。保存草稿不会修改线上；发布后生效。列表每行一项，条目数量保持原版式。",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "seo"
+      ],
+      "urlPattern": "/about/",
+      "titleField": "page_title",
+      "sortOrder": 3,
+      "fields": [
+        {
+          "slug": "page_meta_title",
+          "label": "页面内容｜搜索标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_meta_description",
+          "label": "页面内容｜搜索摘要",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_eyebrow",
+          "label": "页面内容｜栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_title",
+          "label": "页面内容｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_lead",
+          "label": "页面内容｜简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_primary",
+          "label": "页面内容｜主按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_secondary",
+          "label": "页面内容｜次按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_section_title",
+          "label": "页面内容｜内容区标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_section_lead",
+          "label": "页面内容｜内容区简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_sections",
+          "label": "页面内容｜价值观与经营原则",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 4,
+            "maxItems": 4,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "points",
+                "label": "具体做法（每行一项）",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_process_title",
+          "label": "页面内容｜工作流程标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_process",
+          "label": "页面内容｜工作流程",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 4,
+            "maxItems": 4,
+            "subFields": [
+              {
+                "slug": "step",
+                "label": "步骤编号",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "page_boundary_title",
+          "label": "页面内容｜承诺标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_do",
+          "label": "页面内容｜承诺清单（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_boundary_dont",
+          "label": "页面内容｜边界清单（每行一项）",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_cta_title",
+          "label": "页面内容｜联系标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_cta_text",
+          "label": "页面内容｜联系说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "page_cta_button",
+          "label": "页面内容｜联系按钮文字",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "story_compass_eyebrow",
+          "label": "使命愿景｜使命栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "story_compass_title",
+          "label": "使命愿景｜使命标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "story_compass_lead",
+          "label": "使命愿景｜使命简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "story_pillars",
+          "label": "使命愿景｜使命愿景条目",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 3,
+            "maxItems": 3,
+            "subFields": [
+              {
+                "slug": "number",
+                "label": "序号",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "title",
+                "label": "标题",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "text",
+                "label": "正文",
+                "type": "text",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "story_values_eyebrow",
+          "label": "使命愿景｜价值观栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "story_values_title",
+          "label": "使命愿景｜价值观标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_do",
+          "label": "界面文字｜承诺标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_dont",
+          "label": "界面文字｜边界标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_image",
+          "label": "界面文字｜图片注释",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_scope",
+          "label": "界面文字｜范围标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_process",
+          "label": "界面文字｜工作流程",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "labels_boundary",
+          "label": "界面文字｜边界标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "entity_labels_eyebrow",
+          "label": "法人资料说明｜栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "entity_labels_title",
+          "label": "法人资料说明｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "entity_labels_note",
+          "label": "法人资料说明｜来源说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "hero_alt",
+          "label": "首屏图片说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_meta_title",
+          "label": "联系表单｜搜索标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_meta_description",
+          "label": "联系表单｜搜索摘要",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_eyebrow",
+          "label": "联系表单｜栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_title",
+          "label": "联系表单｜标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_lead",
+          "label": "联系表单｜简介",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_name",
+          "label": "联系表单｜表单文字｜名称",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_company",
+          "label": "联系表单｜表单文字｜公司",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_email",
+          "label": "联系表单｜表单文字｜邮箱",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_phone",
+          "label": "联系表单｜表单文字｜电话",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_cargo",
+          "label": "联系表单｜表单文字｜货物",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_origin",
+          "label": "联系表单｜表单文字｜出发地",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_destination",
+          "label": "联系表单｜表单文字｜目的地",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_window",
+          "label": "联系表单｜表单文字｜期望时间",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_message",
+          "label": "联系表单｜表单文字｜补充说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_consent",
+          "label": "联系表单｜表单文字｜隐私同意提示",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_submit",
+          "label": "联系表单｜表单文字｜提交按钮",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_fields_required",
+          "label": "联系表单｜表单文字｜必填提示",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_aside_title",
+          "label": "联系表单｜联系侧栏标题",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_aside_text",
+          "label": "联系表单｜联系侧栏正文",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_email_label",
+          "label": "联系表单｜邮箱标签",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_response_note",
+          "label": "联系表单｜响应说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_label",
+          "label": "联系栏目说明",
+          "required": true,
+          "type": "text"
+        },
+        {
+          "slug": "contact_email",
+          "label": "业务邮箱",
+          "required": true,
+          "type": "string",
+          "validation": {
+            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+          }
+        },
+        {
+          "slug": "entity_facts",
+          "label": "法人登记资料",
+          "required": true,
+          "type": "repeater",
+          "validation": {
+            "minItems": 5,
+            "maxItems": 5,
+            "subFields": [
+              {
+                "slug": "label",
+                "label": "名称",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "value",
+                "label": "客户价值",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "url",
+                "label": "证明链接",
+                "type": "text",
+                "required": false
+              },
+              {
+                "slug": "source",
+                "label": "信息来源",
+                "type": "text",
+                "required": true
+              },
+              {
+                "slug": "verified",
+                "label": "已核验",
+                "type": "boolean",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "slug": "hero_image",
+          "label": "首屏图片（留空使用现有图片）",
+          "type": "image"
+        }
+      ]
     }
-  ]
+  ],
+  "content": {
+    "service_pages": [
+      {
+        "id": "services-en",
+        "slug": "services",
+        "locale": "en",
+        "status": "published",
+        "data": {
+          "page_meta_title": "Cross-border logistics services | Transport, customs, warehousing and delivery | HPF.kz",
+          "page_meta_description": "HPF.kz connects transport, customs, warehousing and Kazakhstan delivery through one accountable shipment chain.",
+          "page_eyebrow": "Transport / customs / warehousing / delivery",
+          "page_title": "One shipment.\nOne team in charge.",
+          "page_lead": "Transport, customs, warehousing and delivery—connected end to end.",
+          "page_primary": "Get a route plan",
+          "page_secondary": "See the services",
+          "page_image_alt": "Warehouse staff checking cargo and customs documentation",
+          "page_image_caption": "Pre-clearance and warehouse operations",
+          "page_index_label": "Six services",
+          "page_intro_eyebrow": "How we work",
+          "page_intro_title": "Every handover, owned.",
+          "page_intro_text": "We connect vehicles, borders, warehouses and consignees. Less chasing for you. More movement for the cargo.",
+          "page_principles": [
+            {
+              "title": "Cargo first",
+              "text": "The cargo shapes the route—not a template."
+            },
+            {
+              "title": "Files first",
+              "text": "Find document gaps before the border."
+            },
+            {
+              "title": "Proof at every step",
+              "text": "Every handover leaves a status and a next move."
+            }
+          ],
+          "page_services_eyebrow": "Service scope",
+          "page_services_title": "Six services. One delivery chain.",
+          "page_services_lead": "Choose one service or hand us the shipment. Scope, owner and result are clear before departure.",
+          "page_labels_fit": "Best for",
+          "page_labels_work": "We handle",
+          "page_labels_outputs": "You receive",
+          "page_labels_value": "Your value",
+          "page_labels_input": "Input",
+          "page_labels_result": "Result",
+          "page_labels_response": "Response",
+          "page_services": [
+            {
+              "id": "清关服务",
+              "number": "01",
+              "kicker": "Before the border",
+              "title": "Customs compliance",
+              "summary": "Review the cargo and files before they reach the border.",
+              "fit": "First imports, many SKUs, certificates or inconsistent files.",
+              "work": "Check invoice, packing list and contract\nReview HS and declaration questions\nFollow missing files, inspection and release",
+              "outputs": "File-gap list\nDeclaration check\nRelease record",
+              "value": "Fewer surprises. Less border waiting."
+            },
+            {
+              "id": "跨境运输",
+              "number": "02",
+              "kicker": "Cross-border trunk",
+              "title": "TIR road freight",
+              "summary": "Connect pickup, border and arrival in one road plan.",
+              "fit": "Full loads, repeat volumes and time-sensitive China–Kazakhstan–Europe cargo.",
+              "work": "Match vehicle and loading needs\nArrange pickup, border and handover\nUpdate position, changes and ETA",
+              "outputs": "Pickup plan\nMilestone status\nHandover record",
+              "value": "One place to see what happens next."
+            },
+            {
+              "id": "多式联运",
+              "number": "03",
+              "kicker": "Route combination",
+              "title": "Trans-Caspian freight",
+              "summary": "Combine road, rail and Caspian legs around the delivery goal.",
+              "fit": "Cargo moving toward the Caucasus, Türkiye or Europe.",
+              "work": "Compare primary and fallback routes\nConnect terminals, ports and vessel windows\nSet wait and switch rules",
+              "outputs": "Route options\nNode dependencies\nSwitch conditions",
+              "value": "Choose the route that can perform—not only the lowest rate."
+            },
+            {
+              "id": "仓储服务",
+              "number": "04",
+              "kicker": "Almaty node",
+              "title": "Warehousing & fulfilment",
+              "summary": "Turn bulk cargo into visible, dispatch-ready inventory.",
+              "fit": "Storage, SKU control, labelling, picking, split dispatch or returns.",
+              "work": "Book and record receiving\nTrack SKU or batch status\nLabel, pick and check dispatch",
+              "outputs": "Receiving record\nInventory status\nDispatch list",
+              "value": "Know where the goods are and whether they can ship."
+            },
+            {
+              "id": "本地交付",
+              "number": "05",
+              "kicker": "Final leg",
+              "title": "Kazakhstan delivery",
+              "summary": "Deliver to the warehouse, store or project site.",
+              "fit": "Single or multi-drop delivery across Almaty and Kazakhstan.",
+              "work": "Confirm appointment and unloading\nPlan vehicle and drop order\nTrack arrival, POD and exceptions",
+              "outputs": "Delivery plan\nArrival status\nPOD",
+              "value": "Visibility continues after international linehaul."
+            },
+            {
+              "id": "市场落地",
+              "number": "06",
+              "kicker": "Local execution",
+              "title": "Kazakhstan market entry",
+              "summary": "Build the local delivery flow from the first shipment.",
+              "fit": "Companies entering Kazakhstan or testing a first import flow.",
+              "work": "Map import, storage and delivery\nFind first-load file and packaging gaps\nUse the pilot to improve repeat shipments",
+              "outputs": "First-load plan\nOwner map\nRepeatable baseline",
+              "value": "Make the first shipment work before scaling."
+            }
+          ],
+          "page_sequence_eyebrow": "How it moves",
+          "page_sequence_title": "You only need to see the next move.",
+          "page_sequence_lead": "Every step has an action and a result.",
+          "page_sequence": [
+            {
+              "step": "01",
+              "title": "Share the brief",
+              "text": "Cargo, route, size and timing.",
+              "result": "Open questions"
+            },
+            {
+              "step": "02",
+              "title": "Review the cargo",
+              "text": "Check restrictions, files and receiving.",
+              "result": "Risks and gaps"
+            },
+            {
+              "step": "03",
+              "title": "Build the plan",
+              "text": "Set route, cost boundary and owners.",
+              "result": "Plan and quote"
+            },
+            {
+              "step": "04",
+              "title": "Move and hand over",
+              "text": "Pickup, cross, receive or deliver.",
+              "result": "Status and proof"
+            },
+            {
+              "step": "05",
+              "title": "Manage change",
+              "text": "Give facts, options and next update time.",
+              "result": "Decision record"
+            },
+            {
+              "step": "06",
+              "title": "Close and learn",
+              "text": "Collect POD and improve the next load.",
+              "result": "File and notes"
+            }
+          ],
+          "page_exception_eyebrow": "Exception management",
+          "page_exception_title": "A change needs options.",
+          "page_exception_lead": "Not just ‘being handled’. You get the status, choices and next move.",
+          "page_exceptions": [
+            {
+              "issue": "Conflicting files",
+              "response": "Name the gap, replacement and owner.",
+              "update": "List, deadline, result"
+            },
+            {
+              "issue": "Border delay",
+              "response": "Separate queue, inspection and release.",
+              "update": "Status, action, next update"
+            },
+            {
+              "issue": "Vehicle or vessel change",
+              "response": "Compare waiting, switching and added cost.",
+              "update": "Impact and options"
+            },
+            {
+              "issue": "Cargo discrepancy",
+              "response": "Record, isolate and await instruction.",
+              "update": "Difference, status, result"
+            },
+            {
+              "issue": "Receiving change",
+              "response": "Protect the cargo, then confirm the new plan.",
+              "update": "Approval and delivery plan"
+            }
+          ],
+          "page_boundary_eyebrow": "Service boundary",
+          "page_boundary_title": "Clear limits make stronger promises.",
+          "page_boundary_lead": "We own what can be managed and flag what needs a joint decision.",
+          "page_boundary_do_title": "We commit to",
+          "page_boundary_do": "State scope and assumptions before quoting\nName owners for key milestones\nGive impact and options when plans change\nKeep handover and POD records",
+          "page_boundary_dont_title": "We do not claim",
+          "page_boundary_dont": "No guaranteed clearance\nNo absolute no-delay promise\nNo unverified performance figures\nNo hidden unconfirmed costs",
+          "page_brief_eyebrow": "Start a shipment",
+          "page_brief_title": "One shipment in. One plan back.",
+          "page_brief_text": "Send what you know. We will mark what is missing.",
+          "page_brief_fields": "Commodity, use and HS code\nUnits, weight, volume and packaging\nOrigin, destination and contacts\nEXW / FOB / DAP terms\nShip date and arrival window\nTemperature, dangerous, oversized or high-value needs",
+          "page_brief_note": "First confirm it can move. Then quote on clear conditions.",
+          "page_cta_button": "Get my route plan"
+        }
+      },
+      {
+        "id": "services-zh",
+        "slug": "services",
+        "locale": "zh",
+        "status": "published",
+        "translationOf": "services-en",
+        "data": {
+          "page_meta_title": "跨境物流服务｜运输、清关、仓储与哈萨克斯坦交付｜HPF.kz",
+          "page_meta_description": "HPF.kz 连接跨境运输、清关、仓储与哈萨克斯坦本地交付，让一票货由一条责任链接到底。",
+          "page_eyebrow": "运输｜清关｜仓储｜本地交付",
+          "page_title": "一票货，\n一路有人管。",
+          "page_lead": "运输、清关、仓储、交付，由一支团队接到底。",
+          "page_primary": "获取运输方案",
+          "page_secondary": "查看服务",
+          "page_image_alt": "仓内工作人员核对货物与清关资料",
+          "page_image_caption": "清关前置与仓内作业",
+          "page_index_label": "六项服务",
+          "page_intro_eyebrow": "我们的做法",
+          "page_intro_title": "每次交接，都有人管。",
+          "page_intro_text": "我们接好车辆、口岸、仓库与收货端。客户少追问一步，货物多向前一步。",
+          "page_principles": [
+            {
+              "title": "先看货",
+              "text": "货物决定路线，不拿模板套方案。"
+            },
+            {
+              "title": "文件前置",
+              "text": "能在发运前发现的问题，不留到口岸。"
+            },
+            {
+              "title": "交接留痕",
+              "text": "每个节点有状态、有凭据、有下一步。"
+            }
+          ],
+          "page_services_eyebrow": "服务范围",
+          "page_services_title": "六项能力，一条交付链。",
+          "page_services_lead": "选一项，或整票托付。范围、责任和结果，发运前说清。",
+          "page_labels_fit": "适合谁",
+          "page_labels_work": "我们来做",
+          "page_labels_outputs": "你会拿到",
+          "page_labels_value": "客户价值",
+          "page_labels_input": "输入",
+          "page_labels_result": "结果",
+          "page_labels_response": "处理",
+          "page_services": [
+            {
+              "id": "清关服务",
+              "number": "01",
+              "kicker": "先于口岸",
+              "title": "清关合规",
+              "summary": "货到口岸前，先把文件和要求走一遍。",
+              "fit": "首票进口、SKU 多、证书复杂或单证口径不一。",
+              "work": "核对合同、发票、装箱单\n梳理 HS 编码与申报要素\n跟进补件、查验与放行",
+              "outputs": "文件缺口\n申报核对\n放行记录",
+              "value": "问题前置，少补件，少等待。"
+            },
+            {
+              "id": "跨境运输",
+              "number": "02",
+              "kicker": "跨境主干",
+              "title": "TIR 跨境干线",
+              "summary": "从提货到过境，把车辆和节点接起来。",
+              "fit": "中哈欧整车、批量货与时效敏感货物。",
+              "work": "匹配车型与装载条件\n安排提货、口岸和交接\n同步位置、变化与 ETA",
+              "outputs": "提货计划\n节点状态\n交接记录",
+              "value": "不用四处追问，一处看清进度。"
+            },
+            {
+              "id": "多式联运",
+              "number": "03",
+              "kicker": "路线组合",
+              "title": "跨里海联运",
+              "summary": "公路、铁路与里海运输，按目标组合。",
+              "fit": "需要连接高加索、土耳其或欧洲的货物。",
+              "work": "比较主线与备选线\n衔接场站、港口与船期\n设定等待与切换条件",
+              "outputs": "路线组合\n节点依赖\n切换条件",
+              "value": "不只比运价，更看哪条路走得成。"
+            },
+            {
+              "id": "仓储服务",
+              "number": "04",
+              "kicker": "阿拉木图节点",
+              "title": "仓储分拨",
+              "summary": "让大批量货物变成可盘点、可分拨的订单。",
+              "fit": "中转、存放、贴标、分拣、分批出库与退换。",
+              "work": "预约收货并记录差异\n按 SKU 或批次管理\n执行贴标、拣选与出库",
+              "outputs": "入库记录\n库存状态\n出库清单",
+              "value": "货在哪里、能否出库，一目了然。"
+            },
+            {
+              "id": "本地交付",
+              "number": "05",
+              "kicker": "最后一程",
+              "title": "本地配送",
+              "summary": "把跨境货送到仓库、门店或项目现场。",
+              "fit": "阿拉木图及哈萨克斯坦境内单点或多点交付。",
+              "work": "确认预约与卸货条件\n安排车辆和配送次序\n跟进到场、签收与异常",
+              "outputs": "配送计划\n到场状态\nPOD 回单",
+              "value": "国际干线结束，服务不断线。"
+            },
+            {
+              "id": "市场落地",
+              "number": "06",
+              "kicker": "业务落地",
+              "title": "入哈履约",
+              "summary": "从第一票货开始，搭好本地交付路径。",
+              "fit": "准备进入哈萨克斯坦或验证首票流程的企业。",
+              "work": "梳理进口、仓储与配送\n识别首票文件和包装约束\n用试运行结果优化批量执行",
+              "outputs": "首票清单\n责任分工\n复用底稿",
+              "value": "不谈空泛出海，先把第一票做成。"
+            }
+          ],
+          "page_sequence_eyebrow": "一票货如何推进",
+          "page_sequence_title": "你只需看清下一步。",
+          "page_sequence_lead": "每一步，都有动作和结果。",
+          "page_sequence": [
+            {
+              "step": "01",
+              "title": "说清需求",
+              "text": "货物、起讫地、重量与时间。",
+              "result": "待确认清单"
+            },
+            {
+              "step": "02",
+              "title": "预审货物",
+              "text": "先查限制、文件与收货条件。",
+              "result": "风险与补件"
+            },
+            {
+              "step": "03",
+              "title": "配置方案",
+              "text": "定路线、费用边界和责任人。",
+              "result": "方案与报价"
+            },
+            {
+              "step": "04",
+              "title": "执行交接",
+              "text": "提货、过境、入仓或派送。",
+              "result": "节点与凭据"
+            },
+            {
+              "step": "05",
+              "title": "处理变化",
+              "text": "给事实、选项和下次更新时间。",
+              "result": "处理决定"
+            },
+            {
+              "step": "06",
+              "title": "签收复盘",
+              "text": "收回 POD，留下下一票经验。",
+              "result": "归档与建议"
+            }
+          ],
+          "page_exception_eyebrow": "异常管理",
+          "page_exception_title": "有变化，就给方案。",
+          "page_exception_lead": "不只说“正在处理”，还要说清现在、选择和下一步。",
+          "page_exceptions": [
+            {
+              "issue": "文件不一致",
+              "response": "指出差异、补件和责任人。",
+              "update": "清单、截止时间、结果"
+            },
+            {
+              "issue": "口岸延迟",
+              "response": "拆清排队、查验与放行状态。",
+              "update": "状态、动作、更新时间"
+            },
+            {
+              "issue": "车辆或船期变化",
+              "response": "比较等待、切换和新增成本。",
+              "update": "影响与备选方案"
+            },
+            {
+              "issue": "货物差异",
+              "response": "留证、隔离并等待处置指令。",
+              "update": "差异、状态、结果"
+            },
+            {
+              "issue": "收货条件变化",
+              "response": "先保全货物，再确认新安排。",
+              "update": "确认与配送计划"
+            }
+          ],
+          "page_boundary_eyebrow": "服务边界",
+          "page_boundary_title": "边界清楚，承诺才有分量。",
+          "page_boundary_lead": "能管理的，我们负责到底；需共同决定的，我们提前说清。",
+          "page_boundary_do_title": "我们做到",
+          "page_boundary_do": "报价前写清范围与假设\n关键节点指定责任人\n变化后给出影响和选项\n保留交接与签收记录",
+          "page_boundary_dont_title": "我们不说",
+          "page_boundary_dont": "不说“保证通关”\n不承诺绝对无延误\n不使用未经核验的数据\n不隐藏待确认费用",
+          "page_brief_eyebrow": "开始合作",
+          "page_brief_title": "给一票货，拿一份方案。",
+          "page_brief_text": "先发来已知信息，缺什么由我们标出。",
+          "page_brief_fields": "品名、用途与 HS 编码\n件数、重量、体积与包装\n起运地、目的地与联系人\nEXW / FOB / DAP 等条款\n发运日与到达窗口\n温控、危险、超限或高价值属性",
+          "page_brief_note": "先确认走得成，再给有条件的报价。",
+          "page_cta_button": "获取运输方案"
+        }
+      },
+      {
+        "id": "services-ru",
+        "slug": "services",
+        "locale": "ru",
+        "status": "published",
+        "translationOf": "services-en",
+        "data": {
+          "page_meta_title": "Трансграничная логистика | Перевозка, таможня, склад и доставка | HPF.kz",
+          "page_meta_description": "HPF.kz объединяет перевозку, таможню, склад и доставку по Казахстану в одну ответственную цепочку.",
+          "page_eyebrow": "Перевозка / таможня / склад / доставка",
+          "page_title": "Один груз.\nОдна команда отвечает.",
+          "page_lead": "Перевозка, таможня, склад и доставка — в одной цепочке.",
+          "page_primary": "Получить маршрут",
+          "page_secondary": "Смотреть услуги",
+          "page_image_alt": "Сотрудники склада сверяют груз и таможенные документы",
+          "page_image_caption": "Подготовка документов и складские операции",
+          "page_index_label": "Шесть услуг",
+          "page_intro_eyebrow": "Как мы работаем",
+          "page_intro_title": "Каждая передача — под контролем.",
+          "page_intro_text": "Мы соединяем машину, границу, склад и получателя. Клиент меньше ищет ответы. Груз быстрее движется дальше.",
+          "page_principles": [
+            {
+              "title": "Сначала груз",
+              "text": "Маршрут строится под груз, а не по шаблону."
+            },
+            {
+              "title": "Документы заранее",
+              "text": "Пробелы находим до прибытия на границу."
+            },
+            {
+              "title": "Результат этапа",
+              "text": "После каждой передачи есть статус и следующий шаг."
+            }
+          ],
+          "page_services_eyebrow": "Состав услуг",
+          "page_services_title": "Шесть услуг. Одна цепочка доставки.",
+          "page_services_lead": "Выберите одну услугу или передайте всю перевозку. Объём, ответственный и результат понятны до отправки.",
+          "page_labels_fit": "Для каких задач",
+          "page_labels_work": "Что делаем",
+          "page_labels_outputs": "Что получаете",
+          "page_labels_value": "Ваша выгода",
+          "page_labels_input": "Вход",
+          "page_labels_result": "Результат",
+          "page_labels_response": "Действие",
+          "page_services": [
+            {
+              "id": "清关服务",
+              "number": "01",
+              "kicker": "До границы",
+              "title": "Таможня и комплаенс",
+              "summary": "Проверяем груз и документы до прибытия на границу.",
+              "fit": "Первый импорт, много SKU, сертификаты или разночтения в документах.",
+              "work": "Сверяем контракт, инвойс и упаковочный лист\nПроверяем код ТН ВЭД и сведения\nСопровождаем документы, досмотр и выпуск",
+              "outputs": "Список пробелов\nПроверка сведений\nЗапись выпуска",
+              "value": "Меньше сюрпризов. Меньше ожидания на границе."
+            },
+            {
+              "id": "跨境运输",
+              "number": "02",
+              "kicker": "Магистраль",
+              "title": "TIR и автоперевозка",
+              "summary": "Связываем забор, границу и прибытие в одном плане.",
+              "fit": "Полные машины, регулярные партии и срочные грузы Китай–Казахстан–Европа.",
+              "work": "Подбираем машину и условия погрузки\nОрганизуем забор, границу и передачу\nСообщаем позицию, изменения и ETA",
+              "outputs": "План забора\nСтатус этапов\nЗапись передачи",
+              "value": "Один источник статуса и следующего шага."
+            },
+            {
+              "id": "多式联运",
+              "number": "03",
+              "kicker": "Комбинация маршрута",
+              "title": "Транскаспийская перевозка",
+              "summary": "Соединяем авто, железную дорогу и Каспий под цель доставки.",
+              "fit": "Грузы на Кавказ, в Турцию и Европу.",
+              "work": "Сравниваем основной и резервный путь\nСвязываем терминалы, порты и суда\nЗадаём условия ожидания и переключения",
+              "outputs": "Варианты маршрута\nЗависимости узлов\nУсловия переключения",
+              "value": "Выбор по исполнимости, а не только по тарифу."
+            },
+            {
+              "id": "仓储服务",
+              "number": "04",
+              "kicker": "Узел Алматы",
+              "title": "Склад и фулфилмент",
+              "summary": "Превращаем партию в видимый, готовый к отгрузке запас.",
+              "fit": "Хранение, SKU-учёт, маркировка, подбор, частичные отгрузки и возвраты.",
+              "work": "Бронируем и фиксируем приёмку\nВедём статус SKU или партии\nМаркируем, подбираем и проверяем отгрузку",
+              "outputs": "Запись приёмки\nСтатус запасов\nЛист отгрузки",
+              "value": "Понятно, где товар и готов ли он к отгрузке."
+            },
+            {
+              "id": "本地交付",
+              "number": "05",
+              "kicker": "Последний этап",
+              "title": "Доставка по Казахстану",
+              "summary": "Доставляем на склад, в магазин или на объект.",
+              "fit": "Одна или несколько точек по Алматы и Казахстану.",
+              "work": "Подтверждаем запись и разгрузку\nПланируем машину и порядок точек\nКонтролируем прибытие, POD и отклонения",
+              "outputs": "План доставки\nСтатус прибытия\nPOD",
+              "value": "Видимость не заканчивается после международного плеча."
+            },
+            {
+              "id": "市场落地",
+              "number": "06",
+              "kicker": "Локальное исполнение",
+              "title": "Выход на рынок Казахстана",
+              "summary": "Строим местную схему с первой поставки.",
+              "fit": "Компании, которые выходят в Казахстан или тестируют первый импорт.",
+              "work": "Описываем импорт, склад и доставку\nНаходим пробелы первой поставки\nУлучшаем повторные отправки по результату пилота",
+              "outputs": "План первой поставки\nСхема ответственных\nПовторяемая основа",
+              "value": "Сначала успешная поставка. Затем масштабирование."
+            }
+          ],
+          "page_sequence_eyebrow": "Как движется груз",
+          "page_sequence_title": "Вам достаточно видеть следующий шаг.",
+          "page_sequence_lead": "У каждого шага есть действие и результат.",
+          "page_sequence": [
+            {
+              "step": "01",
+              "title": "Передать заявку",
+              "text": "Груз, маршрут, размер и срок.",
+              "result": "Открытые вопросы"
+            },
+            {
+              "step": "02",
+              "title": "Проверить груз",
+              "text": "Ограничения, документы и приёмка.",
+              "result": "Риски и пробелы"
+            },
+            {
+              "step": "03",
+              "title": "Собрать план",
+              "text": "Маршрут, стоимость и ответственные.",
+              "result": "План и тариф"
+            },
+            {
+              "step": "04",
+              "title": "Выполнить перевозку",
+              "text": "Забор, граница, склад или доставка.",
+              "result": "Статус и подтверждение"
+            },
+            {
+              "step": "05",
+              "title": "Управлять изменением",
+              "text": "Факты, варианты и время обновления.",
+              "result": "Решение"
+            },
+            {
+              "step": "06",
+              "title": "Закрыть и улучшить",
+              "text": "POD и выводы для следующего груза.",
+              "result": "Архив и рекомендации"
+            }
+          ],
+          "page_exception_eyebrow": "Работа с отклонениями",
+          "page_exception_title": "Есть изменение — есть варианты.",
+          "page_exception_lead": "Не просто «в работе». Вы получаете статус, выбор и следующий шаг.",
+          "page_exceptions": [
+            {
+              "issue": "Документы расходятся",
+              "response": "Называем пробел, замену и ответственного.",
+              "update": "Список, срок, результат"
+            },
+            {
+              "issue": "Задержка на границе",
+              "response": "Разделяем очередь, досмотр и выпуск.",
+              "update": "Статус, действие, обновление"
+            },
+            {
+              "issue": "Изменение машины или судна",
+              "response": "Сравниваем ожидание, замену и расходы.",
+              "update": "Влияние и варианты"
+            },
+            {
+              "issue": "Расхождение по грузу",
+              "response": "Фиксируем, изолируем и ждём решения.",
+              "update": "Разница, статус, итог"
+            },
+            {
+              "issue": "Изменилась приёмка",
+              "response": "Сохраняем груз и подтверждаем новый план.",
+              "update": "Согласование и доставка"
+            }
+          ],
+          "page_boundary_eyebrow": "Границы услуги",
+          "page_boundary_title": "Чёткие границы усиливают обещание.",
+          "page_boundary_lead": "Управляемым отвечаем сами. Совместные решения обозначаем заранее.",
+          "page_boundary_do_title": "Мы обязуемся",
+          "page_boundary_do": "До тарифа указать объём и допущения\nНазначить ответственных за этапы\nПри изменении дать влияние и варианты\nСохранить записи передачи и POD",
+          "page_boundary_dont_title": "Мы не обещаем",
+          "page_boundary_dont": "Гарантированное оформление\nПолное отсутствие задержек\nНепроверенные показатели\nСкрытые неподтверждённые расходы",
+          "page_brief_eyebrow": "Начать перевозку",
+          "page_brief_title": "Один груз — один готовый план.",
+          "page_brief_text": "Передайте известное. Мы отметим, чего не хватает.",
+          "page_brief_fields": "Товар, назначение и код ТН ВЭД\nКоличество, вес, объём и упаковка\nОтправление, назначение и контакты\nУсловия EXW / FOB / DAP\nДата отправки и окно прибытия\nТемпература, опасность, негабарит или высокая стоимость",
+          "page_brief_note": "Сначала подтверждаем исполнимость. Затем даём тариф с ясными условиями.",
+          "page_cta_button": "Получить маршрут"
+        }
+      }
+    ],
+    "route_pages": [
+      {
+        "id": "routes-en",
+        "slug": "routes",
+        "locale": "en",
+        "status": "published",
+        "data": {
+          "page_meta_title": "Northern, Middle and Southern Eurasian corridors | HPF.kz",
+          "page_meta_description": "HPF.kz compares Northern, Middle and Southern Eurasian corridors and configures a primary route, fallback and node ownership around each shipment.",
+          "page_eyebrow": "Routes & network / three Eurasian corridors",
+          "page_title": "The longer the journey, the less it should depend on one route.",
+          "page_lead": "The Northern Corridor favours continuous inland linehaul. The Middle Corridor depends on disciplined Trans-Caspian handovers. The Southern Corridor adds another Central Asian land option. HPF.kz does not ask customers to bet on a line; we compare cargo, compliance, arrival window, budget and receiving conditions before defining the primary route, fallback and switch rules.",
+          "page_primary": "Configure my route",
+          "page_secondary": "See the three corridors",
+          "page_hero_notes": [
+            {
+              "value": "3",
+              "label": "candidate corridors"
+            },
+            {
+              "value": "1",
+              "label": "node-ownership method"
+            },
+            {
+              "value": "Per load",
+              "label": "conditions confirmed"
+            }
+          ],
+          "page_atlas_eyebrow": "Network overview / east to west",
+          "page_atlas_title": "One shipment can have more than one westbound answer.",
+          "page_atlas_lead": "The map shows direction; the operating plan explains the trade-offs. Border points, ports, services, carriers, transit acceptance and timing are confirmed against current conditions before booking.",
+          "page_atlas_note": "Cargo moves from China on the right to Europe on the left. Select a corridor to read its operating logic.",
+          "page_detail_eyebrow": "Corridor judgement / not a list of places",
+          "page_detail_title": "The route choice depends on which uncertainty can be managed best.",
+          "page_detail_lead": "We compare more than freight cost: transloading, schedule dependency, country compliance, border congestion, insurance and payment conditions, and whether an exception still leaves an executable next move.",
+          "page_corridors": [
+            {
+              "id": "北线",
+              "index": "01",
+              "label": "Northern",
+              "name": "Northern Eurasian land bridge",
+              "strap": "Fewer sea transfers; heavier country and trade-compliance review.",
+              "summary": "The corridor runs from China through Kazakhstan into the Russian, Belarusian and EU rail networks. Its value is a relatively continuous inland trunk; its prerequisite is current acceptance of the cargo, counterparties, carrier, insurance and payment structure.",
+              "route": "China origin\nHorgos / Alashankou candidate gateway\nKazakhstan rail nodes\nRussia\nBelarus\nPoland / Europe",
+              "best_for_label": "Worth assessing for",
+              "best_for": "Standard containers, repeat volumes and cargo that benefits from fewer sea transfers and has a clear compliance profile.",
+              "mode_label": "Typical configuration",
+              "mode": "Rail-led, with road pickup, delivery and European onward distribution.",
+              "watch_label": "Confirm before booking",
+              "watch": "Sanctions, export controls and counterparty screening\nTrain schedule and gauge-change arrangements\nInsurance, payment and EU entry conditions",
+              "switch_label": "Switch logic",
+              "switch_when": "If compliance, carrier acceptance, schedule or destination-entry conditions change, the fallback is reviewed before the shipment reaches an irreversible node."
+            },
+            {
+              "id": "中线",
+              "index": "02",
+              "label": "Middle",
+              "name": "Trans-Caspian Middle Corridor",
+              "strap": "Multimodal by design; dependent on ports, vessels and clean handovers.",
+              "summary": "The corridor crosses Kazakhstan to the candidate ports of Aktau or Kuryk, continues over the Caspian to Baku and the South Caucasus, then reaches Europe through Türkiye or the Black Sea. It diversifies geography while adding port and transloading dependencies.",
+              "route": "China origin\nKazakhstan gateway / Almaty\nAktau / Kuryk candidate port\nCaspian / Baku\nGeorgia\nTürkiye / Black Sea / Europe",
+              "best_for_label": "Worth assessing for",
+              "best_for": "Cargo seeking geographic diversification and able to accommodate multimodal handling, especially for the Caucasus, Türkiye and Europe.",
+              "mode_label": "Typical configuration",
+              "mode": "Rail, road, Caspian vessel and western rail or road in one operating sequence.",
+              "watch_label": "Confirm before booking",
+              "watch": "Port acceptance, yard status and vessel window\nTransloading, equipment and document continuity\nWestern onward capacity and consignee appointment",
+              "switch_label": "Switch logic",
+              "switch_when": "Port waiting, vessel changes or a missed western connection are assessed against agreed thresholds: wait, change port or move to another corridor."
+            },
+            {
+              "id": "南线",
+              "index": "03",
+              "label": "Southern",
+              "name": "Central Asia–Iran–Türkiye corridor",
+              "strap": "Another inland option; country-by-country transit and financial checks are decisive.",
+              "summary": "The route extends from China through Kazakhstan toward Uzbekistan, Turkmenistan and Iran, then through Türkiye into Europe. It creates an option for Türkiye and Southern Europe or when other corridors are constrained, subject to country, carrier, insurance and payment feasibility.",
+              "route": "China origin\nKazakhstan / Almaty\nUzbekistan\nTurkmenistan\nIran\nTürkiye / Europe",
+              "best_for_label": "Worth assessing for",
+              "best_for": "Türkiye or Southern Europe destinations and projects needing another inland fallback with a cargo and trade structure acceptable along the route.",
+              "mode_label": "Typical configuration",
+              "mode": "Road and rail combined around border, gauge and destination conditions.",
+              "watch_label": "Confirm before booking",
+              "watch": "Transit permits and border acceptance in each country\nSanctions, banking, insurance and carrier restrictions\nDocument consistency across multiple border handovers",
+              "switch_label": "Switch logic",
+              "switch_when": "If transit, insurance, payment or carrier acceptance is not confirmed in any country, this corridor does not enter the formal commitment."
+            }
+          ],
+          "page_service_eyebrow": "Operating detail / care for one shipment",
+          "page_service_title": "Beyond the map, we look after every handover.",
+          "page_service_lead": "Customers should not discover a missing file, vehicle or decision after departure. We turn the route into a sequence that can be confirmed, reported and reviewed.",
+          "page_service_steps": [
+            {
+              "step": "01",
+              "phase": "Before departure",
+              "title": "Make the non-negotiables explicit",
+              "text": "Review cargo, Incoterms, files, handling and destination requirements; compare corridors and state inclusions, dependencies and exclusions.",
+              "outputs": "Cargo and file gap list\nPrimary and fallback route\nNode owners and rate boundary"
+            },
+            {
+              "step": "02",
+              "phase": "In transit",
+              "title": "Know who owns the next handover",
+              "text": "Follow entry, customs, transloading, port, onward capacity and appointment. Status names the node, next action and owner—not simply ‘in transit’. ",
+              "outputs": "Milestone status\nException options and impact\nNext update time"
+            },
+            {
+              "step": "03",
+              "phase": "After arrival",
+              "title": "Delivery continues through evidence",
+              "text": "Connect appointment, unloading, POD, temporary storage or redistribution, then carry the lessons into the next shipment.",
+              "outputs": "POD and receipt\nClosed exception record\nNext-shipment improvement"
+            }
+          ],
+          "page_update_title": "When conditions change, give an answer before reassurance.",
+          "page_update_text": "Care is not repeating ‘please wait’. It is putting facts and choices on the table when the customer needs to decide. Every exception update should include:",
+          "page_update_items": "What happened and which node is affected\nWhat we are doing and the available options\nPossible time or cost impact\nThe latest time for a customer decision\nThe next definite update time",
+          "page_switch_eyebrow": "Primary and fallback / design the way out",
+          "page_switch_title": "A fallback is not another supplier found after the problem starts.",
+          "page_switch_text": "Before departure, we agree the acceptable switch range. When a trigger is reached, we report facts, impact and options before acting under the agreed authority—no silent rerouting and no information vacuum.",
+          "page_switch_triggers": [
+            {
+              "title": "Compliance change",
+              "text": "A new restriction affects cargo, counterparties, carrier or transit."
+            },
+            {
+              "title": "Node mismatch",
+              "text": "Train, vessel, port or final appointment no longer connects as planned."
+            },
+            {
+              "title": "Waiting threshold",
+              "text": "Actual waiting reaches the review point agreed with the customer."
+            },
+            {
+              "title": "Commercial boundary",
+              "text": "Added cost or timing impact exceeds the authorised range."
+            }
+          ],
+          "page_request_eyebrow": "Route request / information can start incomplete",
+          "page_request_title": "Give us the outline of one shipment. We will start by asking the route questions.",
+          "page_request_text": "Send what is known; we will identify the gaps. The more complete these inputs are, the more reliable the comparison and rate boundary become.",
+          "page_request_items": "Origin and final destination\nCommodity, HS code if known, and use\nPackages, weight, volume and piece dimensions\nPackaging, temperature, dangerous-goods or handling needs\nIncoterms and cargo-value range\nTarget arrival window and fixed milestones\nShipper, consignee and required compliance information\nAcceptable corridors, transfers and fallback range",
+          "page_promise_title": "Routes change. Responsibility should not disappear.",
+          "page_promise_text": "We do not promise that delays cannot happen. We promise that each change is seen, explained and carried forward by an owner.",
+          "page_cta_button": "Send cargo details",
+          "labels_scene": "Central Asian cross-border road operation",
+          "labels_route": "Candidate nodes",
+          "labels_output": "Outputs",
+          "labels_triggers": "Four triggers for review",
+          "labels_checklist": "Route-request checklist",
+          "map_places_europe": "Europe",
+          "map_places_china": "China",
+          "map_places_kz": "Kazakhstan",
+          "map_places_north": "Russia\nBelarus",
+          "map_places_middle": "Caspian\nCaucasus",
+          "map_places_south": "Uzbekistan\nIran · Türkiye",
+          "hero_caption": "HPF.kz / Eurasian route planning",
+          "update_eyebrow": "Human response / exception update",
+          "cta_eyebrow": "HPF.kz / route desk"
+        }
+      },
+      {
+        "id": "routes-zh",
+        "slug": "routes",
+        "locale": "zh",
+        "status": "published",
+        "translationOf": "routes-en",
+        "data": {
+          "page_meta_title": "中亚欧北线、中线与南线路线网络｜HPF.kz",
+          "page_meta_description": "HPF.kz 以北线、中线与南线构建中亚欧路线组合，按货物、合规、交期、预算与收货条件配置主线、备选线和节点责任。",
+          "page_eyebrow": "路线与网络 / 欧亚三走廊",
+          "page_title": "路越远，越不能只准备一条路。",
+          "page_lead": "北线看重连续干线，中线重在跨里海节点协同，南线提供另一组中亚陆路连接。HPF.kz 不替客户押注某一条线；我们把货物、合规、交期、预算与收货条件放在一起，配置主线、备选线和切换条件。",
+          "page_primary": "配置我的路线",
+          "page_secondary": "先看三条走廊",
+          "page_hero_notes": [
+            {
+              "value": "3 条",
+              "label": "候选欧亚走廊"
+            },
+            {
+              "value": "1 套",
+              "label": "统一节点责任"
+            },
+            {
+              "value": "逐票",
+              "label": "核验路线与条件"
+            }
+          ],
+          "page_atlas_eyebrow": "网络总览 / 由东向西",
+          "page_atlas_title": "同一票货，可以有不同的西行答案。",
+          "page_atlas_lead": "地图负责说明方向，操作方案负责说明代价。每条路线均为候选走廊，实际口岸、港口、班列、承运主体、过境条件与时效，在接单前按当期条件确认。",
+          "page_atlas_note": "货物流向：中国在右，欧洲在左。点击路线查看关键取舍。",
+          "page_detail_eyebrow": "走廊判断 / 不是路线罗列",
+          "page_detail_title": "选哪条线，取决于哪种不确定性更能被管理。",
+          "page_detail_lead": "我们比较的不只是运价，还包括换装次数、班期依赖、国别合规、边境拥堵、保险与结算条件，以及异常发生后是否有可执行的下一步。",
+          "page_corridors": [
+            {
+              "id": "北线",
+              "index": "01",
+              "label": "北线",
+              "name": "欧亚北部陆桥",
+              "strap": "少海运换装，重国别与贸易合规审查。",
+              "summary": "由中国经哈萨克斯坦向北接入俄罗斯、白俄罗斯与欧盟铁路网络。它的价值在于较连续的陆路干线；它的前提，是货物、交易方、承运与保险安排都通过当期合规核验。",
+              "route": "中国集货地\n霍尔果斯 / 阿拉山口候选口岸\n哈萨克斯坦铁路节点\n俄罗斯\n白俄罗斯\n波兰 / 欧洲",
+              "best_for_label": "更值得评估",
+              "best_for": "标准化集装箱、稳定批量、希望减少海运换装，且国别与商品合规边界清晰的货物。",
+              "mode_label": "主要组织方式",
+              "mode": "铁路为主，可衔接公路提送与欧洲末段配送。",
+              "watch_label": "接单前重点核验",
+              "watch": "制裁、出口管制与交易方筛查\n班列与换轨节点安排\n保险、结算与欧盟入境条件",
+              "switch_label": "切换判断",
+              "switch_when": "合规边界、承运接受、班期或目的国入境条件变化时，不等待货物进入不可逆节点再讨论备选。"
+            },
+            {
+              "id": "中线",
+              "index": "02",
+              "label": "中线",
+              "name": "跨里海中间走廊",
+              "strap": "多式联运，重港口、船期与每次交接。",
+              "summary": "由中国进入哈萨克斯坦，经阿克套或库雷克候选港口跨越里海，在巴库衔接外高加索，再经土耳其或黑海方向进入欧洲。它提供地缘分散，也增加港口与换装依赖。",
+              "route": "中国集货地\n哈萨克斯坦口岸 / 阿拉木图\n阿克套 / 库雷克候选港\n里海 / 巴库\n格鲁吉亚\n土耳其 / 黑海 / 欧洲",
+              "best_for_label": "更值得评估",
+              "best_for": "希望分散北部通道风险、可接受多式联运，并需要连接高加索、土耳其或欧洲市场的货物。",
+              "mode_label": "主要组织方式",
+              "mode": "铁路、公路、里海船舶与西段铁路或公路组合。",
+              "watch_label": "接单前重点核验",
+              "watch": "港口受理、堆场与船期窗口\n换装、箱体与单证衔接\n西岸接续运力和收货预约",
+              "switch_label": "切换判断",
+              "switch_when": "港口等待、船期变化或西岸接续失配时，以已约定阈值判断等待、改港或改走其他走廊。"
+            },
+            {
+              "id": "南线",
+              "index": "03",
+              "label": "南线",
+              "name": "中亚—伊朗—土耳其走廊",
+              "strap": "另一组陆路连接，重逐国过境与金融合规。",
+              "summary": "由中国经哈萨克斯坦向乌兹别克斯坦、土库曼斯坦与伊朗延伸，再由土耳其接入欧洲。它为土耳其、南欧方向或其他走廊受限时提供评估空间，但必须逐国核验过境、承运、保险与结算可行性。",
+              "route": "中国集货地\n哈萨克斯坦 / 阿拉木图\n乌兹别克斯坦\n土库曼斯坦\n伊朗\n土耳其 / 欧洲",
+              "best_for_label": "更值得评估",
+              "best_for": "目的地偏土耳其或南欧、需要补充陆路备选，且货物与交易结构能够通过沿线国别审查的项目。",
+              "mode_label": "主要组织方式",
+              "mode": "公路与铁路组合，按边境、轨距和目的地条件配置。",
+              "watch_label": "接单前重点核验",
+              "watch": "各国过境许可与口岸受理\n制裁、银行、保险与承运限制\n多次边境交接和文件一致性",
+              "switch_label": "切换判断",
+              "switch_when": "任一国别的过境、保险、结算或承运条件未获确认时，该线不进入正式承诺。"
+            }
+          ],
+          "page_service_eyebrow": "服务颗粒度 / 一票货的完整照看",
+          "page_service_title": "地图之外，我们把每次交接照看清楚。",
+          "page_service_lead": "客户不应在货物出发后才发现还缺一个文件、一个车位或一个决定。我们把路线拆成可确认、可汇报、可追溯的操作次序。",
+          "page_service_steps": [
+            {
+              "step": "01",
+              "phase": "发运前",
+              "title": "先把不能出错的事说清楚",
+              "text": "核对货物、贸易条款、文件、装卸条件与目的地要求；比较候选走廊，写明报价包含项、依赖项与不包含项。",
+              "outputs": "货物与文件缺口清单\n主线 / 备选线\n节点责任与报价边界"
+            },
+            {
+              "step": "02",
+              "phase": "在途中",
+              "title": "每到一处，都知道谁在接",
+              "text": "跟进入境、清关、换装、港口、接续运力与收货预约。状态不只写“运输中”，而要说明当前节点、下一动作和责任人。",
+              "outputs": "里程碑状态\n异常选项与影响\n下一次更新时间"
+            },
+            {
+              "step": "03",
+              "phase": "到达后",
+              "title": "交付不是卸完货就结束",
+              "text": "衔接预约、卸货、签收、POD、短期仓储或再次分拨；把本票发生的偏差和处理结果留给下一票。",
+              "outputs": "签收与回单\n异常关闭记录\n下一票优化建议"
+            }
+          ],
+          "page_update_title": "遇到变化，先给答案，再给安慰。",
+          "page_update_text": "一个有温度的服务，不是反复说“请耐心等待”，而是在客户需要决定时，把事实和选择摆在桌面上。每次异常更新至少包含：",
+          "page_update_items": "发生了什么，影响哪个节点\n我们正在做什么，有哪些可选方案\n成本或时间可能如何变化\n客户最晚何时需要决定\n下一次明确更新时间",
+          "page_switch_eyebrow": "主备切换 / 把退路写进方案",
+          "page_switch_title": "备选线不是出事后临时找的另一家供应商。",
+          "page_switch_text": "在发运前，我们与客户确认可接受的切换范围。条件触发时，先报告事实、影响和选择，再根据授权推进；不擅自改线，也不让货物停在信息真空里。",
+          "page_switch_triggers": [
+            {
+              "title": "合规变化",
+              "text": "货物、交易方、承运或过境条件出现新的限制。"
+            },
+            {
+              "title": "节点失配",
+              "text": "班列、船期、港口或末段预约无法按原计划衔接。"
+            },
+            {
+              "title": "等待超阈值",
+              "text": "实际等待触及双方预先约定的复核点。"
+            },
+            {
+              "title": "商业边界变化",
+              "text": "新增成本或交期影响超过客户授权范围。"
+            }
+          ],
+          "page_request_eyebrow": "询价准备 / 信息不必完美",
+          "page_request_title": "给我们一票货的轮廓，我们先把路问清楚。",
+          "page_request_text": "已有信息先发来，缺失项由我们标出。以下内容越完整，路线比较与报价边界越可靠。",
+          "page_request_items": "起运地与最终目的地\n品名、HS 编码（如有）与用途\n件数、重量、体积和单件尺寸\n包装、温控、危险品或装卸要求\n贸易条款与货值区间\n期望到达窗口与不可变节点\n收发货主体及必要的合规信息\n可接受的走廊、换装与备选范围",
+          "page_promise_title": "路会变化，责任不能失联。",
+          "page_promise_text": "我们不承诺不存在延误；我们承诺让每一处变化有人看见、有人解释、有人继续往下做。",
+          "page_cta_button": "发送货物信息",
+          "labels_scene": "中亚跨境公路运输场景",
+          "labels_route": "候选节点",
+          "labels_output": "交付物",
+          "labels_triggers": "触发复核的四种情况",
+          "labels_checklist": "路线询价清单",
+          "map_places_europe": "欧洲",
+          "map_places_china": "中国",
+          "map_places_kz": "哈萨克斯坦",
+          "map_places_north": "俄罗斯\n白俄罗斯",
+          "map_places_middle": "里海\n高加索",
+          "map_places_south": "乌兹别克斯坦\n伊朗 · 土耳其",
+          "hero_caption": "HPF.kz / Eurasian route planning",
+          "update_eyebrow": "Human response / exception update",
+          "cta_eyebrow": "HPF.kz / route desk"
+        }
+      },
+      {
+        "id": "routes-ru",
+        "slug": "routes",
+        "locale": "ru",
+        "status": "published",
+        "translationOf": "routes-en",
+        "data": {
+          "page_meta_title": "Северный, Средний и Южный коридоры Китай–Европа | HPF.kz",
+          "page_meta_description": "HPF.kz сравнивает северный, средний и южный евразийские коридоры и определяет основной маршрут, резервный сценарий и ответственность по узлам.",
+          "page_eyebrow": "Маршруты и сеть / три евразийских коридора",
+          "page_title": "Чем длиннее путь, тем опаснее зависеть от одного маршрута.",
+          "page_lead": "Северный коридор даёт более непрерывное сухопутное плечо. Средний требует точной координации на Каспии. Южный добавляет ещё один вариант через Центральную Азию. HPF.kz не предлагает клиенту делать ставку на одну линию: мы сопоставляем груз, комплаенс, срок, бюджет и условия приёмки, затем определяем основной путь, резерв и правила переключения.",
+          "page_primary": "Подобрать маршрут",
+          "page_secondary": "Смотреть три коридора",
+          "page_hero_notes": [
+            {
+              "value": "3",
+              "label": "кандидатных коридора"
+            },
+            {
+              "value": "1",
+              "label": "система ответственности"
+            },
+            {
+              "value": "Каждый груз",
+              "label": "проверка условий"
+            }
+          ],
+          "page_atlas_eyebrow": "Обзор сети / с востока на запад",
+          "page_atlas_title": "У одной перевозки может быть несколько вариантов движения на запад.",
+          "page_atlas_lead": "Карта показывает направление, а операционный план — цену каждого решения. Пункты пропуска, порты, сервисы, перевозчики, условия транзита и сроки подтверждаются до бронирования по текущей ситуации.",
+          "page_atlas_note": "Груз идёт из Китая справа в Европу слева. Выберите коридор, чтобы увидеть логику работы.",
+          "page_detail_eyebrow": "Выбор коридора / не перечень городов",
+          "page_detail_title": "Маршрут выбирают по тому, какой риск можно контролировать лучше.",
+          "page_detail_lead": "Мы сравниваем не только ставку: перегрузки, зависимость от расписаний, страновой комплаенс, очереди на границе, страхование и расчёты, а также наличие реального следующего шага при отклонении.",
+          "page_corridors": [
+            {
+              "id": "北线",
+              "index": "01",
+              "label": "Северный",
+              "name": "Северный евразийский сухопутный мост",
+              "strap": "Меньше морских перегрузок; больше внимания страновому и торговому комплаенсу.",
+              "summary": "Маршрут идёт из Китая через Казахстан в железнодорожные сети России, Беларуси и ЕС. Его преимущество — сравнительно непрерывное сухопутное плечо; обязательное условие — актуальная проверка груза, сторон сделки, перевозчика, страхования и расчётов.",
+              "route": "Пункт отправления в Китае\nХоргос / Алашанькоу — кандидатные переходы\nЖелезнодорожные узлы Казахстана\nРоссия\nБеларусь\nПольша / Европа",
+              "best_for_label": "Стоит рассматривать для",
+              "best_for": "Стандартных контейнеров, регулярных партий и грузов, которым важно сократить морские перегрузки при ясном комплаенс-профиле.",
+              "mode_label": "Типовая схема",
+              "mode": "Железная дорога как основа, автозабор, доставка и европейское плечо.",
+              "watch_label": "Проверить до бронирования",
+              "watch": "Санкции, экспортный контроль и стороны сделки\nРасписание поездов и смена колеи\nСтрахование, расчёты и условия входа в ЕС",
+              "switch_label": "Условие переключения",
+              "switch_when": "При изменении комплаенса, допуска перевозчика, расписания или условий въезда резерв пересматривается до необратимого этапа."
+            },
+            {
+              "id": "中线",
+              "index": "02",
+              "label": "Средний",
+              "name": "Транскаспийский Средний коридор",
+              "strap": "Мультимодальный по своей природе; зависит от портов, судов и точной передачи груза.",
+              "summary": "Маршрут проходит через Казахстан к кандидатным портам Актау или Курык, далее через Каспий в Баку и Южный Кавказ, а затем через Турцию или Чёрное море в Европу. Он диверсифицирует географию, но добавляет портовые и перегрузочные зависимости.",
+              "route": "Пункт отправления в Китае\nПереход в Казахстан / Алматы\nАктау / Курык — кандидатный порт\nКаспий / Баку\nГрузия\nТурция / Чёрное море / Европа",
+              "best_for_label": "Стоит рассматривать для",
+              "best_for": "Грузов, которым нужна географическая диверсификация и допустима мультимодальная обработка, особенно на Кавказ, в Турцию и Европу.",
+              "mode_label": "Типовая схема",
+              "mode": "Железная дорога, автотранспорт, каспийское судно и западное плечо в одной цепочке.",
+              "watch_label": "Проверить до бронирования",
+              "watch": "Приём порта, терминал и окно судна\nПерегрузка, оборудование и непрерывность документов\nЗападная провозная способность и окно получателя",
+              "switch_label": "Условие переключения",
+              "switch_when": "Ожидание в порту, изменение судового окна или срыв западной стыковки сравниваются с согласованным порогом: ждать, менять порт или коридор."
+            },
+            {
+              "id": "南线",
+              "index": "03",
+              "label": "Южный",
+              "name": "Коридор Центральная Азия–Иран–Турция",
+              "strap": "Ещё один сухопутный вариант; решают проверки транзита и финансов по каждой стране.",
+              "summary": "Маршрут идёт из Китая через Казахстан в направлении Узбекистана, Туркменистана и Ирана, затем через Турцию в Европу. Он может быть вариантом для Турции и Южной Европы или при ограничениях на других путях — при подтверждённой страновой, страховой и платёжной возможности.",
+              "route": "Пункт отправления в Китае\nКазахстан / Алматы\nУзбекистан\nТуркменистан\nИран\nТурция / Европа",
+              "best_for_label": "Стоит рассматривать для",
+              "best_for": "Направлений в Турцию и Южную Европу и проектов, которым нужен дополнительный сухопутный резерв с допустимой структурой груза и сделки.",
+              "mode_label": "Типовая схема",
+              "mode": "Авто и железная дорога с учётом границ, колеи и условий назначения.",
+              "watch_label": "Проверить до бронирования",
+              "watch": "Транзитные разрешения и приём на каждой границе\nСанкции, банки, страхование и ограничения перевозчиков\nЕдинообразие документов при нескольких передачах",
+              "switch_label": "Условие переключения",
+              "switch_when": "Если хотя бы в одной стране не подтверждены транзит, страхование, расчёты или перевозчик, маршрут не включается в обязательство."
+            }
+          ],
+          "page_service_eyebrow": "Операционная детализация / забота об одной перевозке",
+          "page_service_title": "За пределами карты мы отвечаем за каждую передачу.",
+          "page_service_lead": "Клиент не должен узнавать о недостающем документе, машине или решении после отправки. Мы превращаем маршрут в порядок действий, который можно подтвердить, показать и разобрать.",
+          "page_service_steps": [
+            {
+              "step": "01",
+              "phase": "До отправки",
+              "title": "Зафиксировать то, что нельзя упустить",
+              "text": "Проверяем груз, Incoterms, документы, обработку и требования назначения; сравниваем коридоры и указываем состав ставки, зависимости и исключения.",
+              "outputs": "Список пробелов по грузу и документам\nОсновной и резервный маршрут\nОтветственные и границы ставки"
+            },
+            {
+              "step": "02",
+              "phase": "В пути",
+              "title": "Знать, кто принимает следующий этап",
+              "text": "Контролируем въезд, таможню, перегрузку, порт, дальнейший транспорт и приёмку. Статус называет узел, следующее действие и ответственного, а не только «в пути».",
+              "outputs": "Статус контрольных точек\nВарианты и последствия отклонения\nВремя следующего обновления"
+            },
+            {
+              "step": "03",
+              "phase": "После прибытия",
+              "title": "Доставка заканчивается подтверждением",
+              "text": "Связываем приёмку, разгрузку, POD, временное хранение или распределение и переносим выводы в следующую перевозку.",
+              "outputs": "POD и подтверждение\nЗакрытие отклонений\nУлучшения для следующей отправки"
+            }
+          ],
+          "page_update_title": "Когда условия меняются, сначала нужен ответ, потом успокоение.",
+          "page_update_text": "Забота — не повторять «ожидайте». Это вовремя положить на стол факты и варианты. Каждое сообщение об отклонении должно содержать:",
+          "page_update_items": "Что произошло и какой узел затронут\nЧто мы делаем и какие есть варианты\nВозможное влияние на срок или стоимость\nДо какого момента клиенту нужно принять решение\nТочное время следующего обновления",
+          "page_switch_eyebrow": "Основной и резервный путь / выход продуман заранее",
+          "page_switch_title": "Резерв — не новый подрядчик, которого начинают искать после проблемы.",
+          "page_switch_text": "До отправки мы согласуем допустимые границы переключения. При срабатывании условия сначала сообщаем факты, последствия и варианты, затем действуем в рамках полномочий — без молчаливой смены маршрута и без информационного вакуума.",
+          "page_switch_triggers": [
+            {
+              "title": "Изменение комплаенса",
+              "text": "Новое ограничение затрагивает груз, стороны, перевозчика или транзит."
+            },
+            {
+              "title": "Срыв стыковки",
+              "text": "Поезд, судно, порт или приёмка больше не соединяются по плану."
+            },
+            {
+              "title": "Порог ожидания",
+              "text": "Фактическое ожидание достигает согласованной точки пересмотра."
+            },
+            {
+              "title": "Коммерческая граница",
+              "text": "Дополнительные затраты или срок выходят за пределы полномочий."
+            }
+          ],
+          "page_request_eyebrow": "Запрос маршрута / можно начать с неполных данных",
+          "page_request_title": "Дайте контур одной перевозки — мы начнём с правильных вопросов о пути.",
+          "page_request_text": "Пришлите то, что уже известно; пробелы обозначим мы. Чем полнее данные, тем надёжнее сравнение и границы ставки.",
+          "page_request_items": "Пункт отправления и конечное назначение\nТовар, код ТН ВЭД при наличии и назначение\nМеста, вес, объём и размеры одного места\nУпаковка, температура, опасный груз и погрузка\nIncoterms и диапазон стоимости груза\nТребуемое окно прибытия и фиксированные этапы\nОтправитель, получатель и данные для комплаенса\nДопустимые коридоры, перегрузки и резерв",
+          "page_promise_title": "Маршрут может измениться. Ответственность не должна пропасть.",
+          "page_promise_text": "Мы не обещаем, что задержек не бывает. Мы обещаем: каждое изменение будет замечено, объяснено и передано ответственному до следующего шага.",
+          "page_cta_button": "Отправить данные груза",
+          "labels_scene": "Трансграничная автоперевозка в Центральной Азии",
+          "labels_route": "Кандидатные узлы",
+          "labels_output": "Результат",
+          "labels_triggers": "Четыре повода для пересмотра",
+          "labels_checklist": "Данные для запроса маршрута",
+          "map_places_europe": "Европа",
+          "map_places_china": "Китай",
+          "map_places_kz": "Казахстан",
+          "map_places_north": "Россия\nБеларусь",
+          "map_places_middle": "Каспий\nКавказ",
+          "map_places_south": "Узбекистан\nИран · Турция",
+          "hero_caption": "HPF.kz / Eurasian route planning",
+          "update_eyebrow": "Human response / exception update",
+          "cta_eyebrow": "HPF.kz / route desk"
+        }
+      }
+    ],
+    "company_pages": [
+      {
+        "id": "company-en",
+        "slug": "about",
+        "locale": "en",
+        "status": "published",
+        "data": {
+          "page_meta_title": "Company and operating principles | HPF.kz",
+          "page_meta_description": "How HPF.kz approaches cross-border logistics from Kazakhstan: local execution, documented handovers and explicit promise boundaries.",
+          "page_eyebrow": "Company / Kazakhstan",
+          "page_title": "Carry the cargo. Carry the responsibility.",
+          "page_lead": "HPF.kz is a Kazakhstan-based cross-border logistics company connecting Chinese shippers, Central Asian execution and European consignees. We exist to make every handover clear, every change answerable and every promise grounded in evidence.",
+          "page_primary": "Discuss a shipment",
+          "page_secondary": "See our services",
+          "page_section_title": "Our values are operating choices.",
+          "page_section_lead": "They shape how we plan, communicate and take responsibility—not how we decorate a presentation.",
+          "page_sections": [
+            {
+              "label": "Customer outcome",
+              "title": "Let the result belong to the customer",
+              "text": "We measure our work by whether the customer can promise, receive and grow with greater confidence—not by how visible HPF.kz becomes.",
+              "points": "Business outcome\nStable delivery\nReusable capability\nLong-term value"
+            },
+            {
+              "label": "Responsibility",
+              "title": "Own the next answer",
+              "text": "A handover is not complete until the next owner, required action and confirmation method are explicit.",
+              "points": "Named owner\nClear next step\nVisible exception\nClosed loop"
+            },
+            {
+              "label": "Truth",
+              "title": "Facts before adjectives",
+              "text": "We distinguish verified facts, current conditions and assumptions, so confidence never depends on a vague claim.",
+              "points": "Evidence first\nPromise boundary\nSource record\nHonest status"
+            },
+            {
+              "label": "Learning",
+              "title": "Make each shipment improve the next",
+              "text": "Time, cost, documents and exceptions become operating knowledge instead of disappearing in chats.",
+              "points": "Milestones\nFiles\nExceptions\nReview"
+            }
+          ],
+          "page_process_title": "What we mean by a responsibility chain",
+          "page_process": [
+            {
+              "step": "01",
+              "title": "Define",
+              "text": "State cargo, route, documents and non-negotiable conditions."
+            },
+            {
+              "step": "02",
+              "title": "Assign",
+              "text": "Name the owner at each operational handover."
+            },
+            {
+              "step": "03",
+              "title": "Record",
+              "text": "Keep status, evidence and changes in one shipment record."
+            },
+            {
+              "step": "04",
+              "title": "Review",
+              "text": "Turn the outcome into a better next plan."
+            }
+          ],
+          "page_boundary_title": "What company trust should—and should not—mean.",
+          "page_boundary_do": "Disclose verified legal information\nSeparate resources from results\nKeep an auditable operating record",
+          "page_boundary_dont": "No ‘market leader’ claim\nNo borrowed asset presented as owned\nNo relationship wording before legal confirmation",
+          "page_cta_title": "Judge us by the operating questions we ask.",
+          "page_cta_text": "Bring us a real shipment. We will start with the constraints, responsibilities and evidence required.",
+          "page_cta_button": "Contact the team",
+          "story_compass_eyebrow": "Purpose / direction / character",
+          "story_compass_title": "A company needs a compass before it needs scale.",
+          "story_compass_lead": "Our culture is not a slogan for the wall. It is the shared decision system we use when routes change, documents disagree and a customer needs a clear answer.",
+          "story_pillars": [
+            {
+              "number": "01",
+              "label": "Mission",
+              "title": "Turn cross-border uncertainty into an answerable operating sequence.",
+              "text": "Connect customs, transport, warehousing and delivery so customers know what happens next, who owns it and what evidence confirms it."
+            },
+            {
+              "number": "02",
+              "label": "Vision",
+              "title": "Make certainty the default standard for the Middle Corridor.",
+              "text": "Build the most trusted end-to-end operating network between China, Kazakhstan and Europe—shipment by shipment, node by node."
+            },
+            {
+              "number": "03",
+              "label": "Culture",
+              "title": "Clear facts. Named owners. Quiet follow-through.",
+              "text": "We speak directly, expose boundaries early, solve at the scene and leave every shipment with a record that improves the next one."
+            }
+          ],
+          "story_values_eyebrow": "Values / visible in the work",
+          "story_values_title": "Values only count when customers can see them in the handover.",
+          "labels_do": "We commit to",
+          "labels_dont": "We do not claim",
+          "labels_image": "Operational scene visualization",
+          "labels_scope": "Scope / operating detail",
+          "labels_process": "Process",
+          "labels_boundary": "Promise boundary",
+          "entity_labels_eyebrow": "Registered entity",
+          "entity_labels_title": "Legal identity, documented.",
+          "entity_labels_note": "Legal identity: Kazakhstan eGov certificate issued 27 May 2025. Office location: company-provided; building and street verified on 2GIS.",
+          "hero_alt": "Almaty team reviewing a cross-border route",
+          "contact_meta_title": "Contact the HPF.kz logistics team",
+          "contact_meta_description": "Share cargo, route and delivery requirements with the HPF.kz team in Almaty.",
+          "contact_eyebrow": "Freight enquiry / Almaty",
+          "contact_title": "Put the next shipment on the table.",
+          "contact_lead": "Tell us where it starts, where it needs to arrive, what the cargo is and which conditions cannot change. We will begin with the route, files and risk questions.",
+          "contact_fields_name": "Your name",
+          "contact_fields_company": "Company",
+          "contact_fields_email": "Email",
+          "contact_fields_phone": "Phone or messenger",
+          "contact_fields_cargo": "Cargo description",
+          "contact_fields_origin": "Origin",
+          "contact_fields_destination": "Destination",
+          "contact_fields_window": "Required arrival window",
+          "contact_fields_message": "Constraints or notes",
+          "contact_fields_consent": "I agree to send these details by email and have read the privacy notice.",
+          "contact_fields_submit": "Open email request",
+          "contact_fields_required": "Complete the required fields before continuing.",
+          "contact_aside_title": "This form does not send data to a website backend.",
+          "contact_aside_text": "Until the data-storage and form-processing arrangement is legally confirmed, the form prepares an email in your own mail application.",
+          "contact_email_label": "Business email",
+          "contact_response_note": "Please do not include passport, payment-card or other sensitive personal data.",
+          "contact_label": "Contact / freight enquiry",
+          "contact_email": "bd@hpf.kz",
+          "entity_facts": [
+            {
+              "label": "Full legal name of the LLP",
+              "value": "HPF KZ Limited Liability Partnership (LLP)",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "Business identification number (BIN)",
+              "value": "241040015643",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "Initial state registration",
+              "value": "11 October 2024",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "Founder (participant)",
+              "value": "HPF CO., LIMITED",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "Company office address",
+              "value": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
+              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+              "verified": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "company-zh",
+        "slug": "about",
+        "locale": "zh",
+        "status": "published",
+        "translationOf": "company-en",
+        "data": {
+          "page_meta_title": "公司与运营原则｜HPF.kz",
+          "page_meta_description": "了解 HPF.kz 如何从哈萨克斯坦组织跨境物流：本地执行、节点留痕与清晰的承诺边界。",
+          "page_eyebrow": "公司 / 哈萨克斯坦",
+          "page_title": "承运货物，也承接责任。",
+          "page_lead": "HPF.kz 是一家立足哈萨克斯坦的跨境物流公司，连接中国发货方、中亚现场执行与欧洲收货方。我们存在的意义，是让每一次交接都清楚、每一次变化都有回答、每一个承诺都有证据。",
+          "page_primary": "讨论一票货",
+          "page_secondary": "查看服务",
+          "page_section_title": "我们的价值观，是每天都要做出的运营选择。",
+          "page_section_lead": "它决定我们如何计划、沟通和承担责任，而不是如何装饰一份介绍。",
+          "page_sections": [
+            {
+              "label": "成果归客户",
+              "title": "让结果留在客户的生意里",
+              "text": "我们不以 HPF.kz 被看见多少衡量工作，而以客户能否更安心地承诺、收货和增长来衡量。",
+              "points": "商业结果\n稳定交付\n可复用能力\n长期价值"
+            },
+            {
+              "label": "责任到人",
+              "title": "主动认领下一个答案",
+              "text": "只有下一责任人、所需动作与确认方式都清楚，一次交接才算真正完成。",
+              "points": "责任人\n下一步\n异常可见\n闭环"
+            },
+            {
+              "label": "事实为先",
+              "title": "事实先于形容词",
+              "text": "我们区分已核验事实、当前条件与待确认判断，不让客户的信心建立在模糊表述上。",
+              "points": "证据优先\n承诺边界\n来源记录\n诚实状态"
+            },
+            {
+              "label": "持续复盘",
+              "title": "让每一票，都改善下一票",
+              "text": "时效、费用、文件与异常要沉淀为运营知识，而不是消失在聊天记录里。",
+              "points": "节点\n文件\n异常\n复盘"
+            }
+          ],
+          "page_process_title": "我们所说的责任链是什么",
+          "page_process": [
+            {
+              "step": "01",
+              "title": "定义",
+              "text": "说清货物、路线、文件与不可变化的条件。"
+            },
+            {
+              "step": "02",
+              "title": "分配",
+              "text": "为每处运营交接指定责任人。"
+            },
+            {
+              "step": "03",
+              "title": "记录",
+              "text": "把状态、证据与变化放进同一票记录。"
+            },
+            {
+              "step": "04",
+              "title": "复盘",
+              "text": "让本票结果成为下一票更好的方案。"
+            }
+          ],
+          "page_boundary_title": "公司信任应该意味着什么，也不该意味着什么。",
+          "page_boundary_do": "披露已核验法人信息\n区分资源与结果\n保留可审计运营记录",
+          "page_boundary_dont": "不宣传“行业领先”\n不把借用资源说成自有资产\n法务确认前不写集团关系口径",
+          "page_cta_title": "请用我们提出的运营问题判断我们。",
+          "page_cta_text": "给我们一票真实货物，我们从约束、责任与所需证据开始。",
+          "page_cta_button": "联系团队",
+          "story_compass_eyebrow": "使命 / 愿景 / 文化",
+          "story_compass_title": "一家公司，先要有方向，再谈规模。",
+          "story_compass_lead": "企业文化不是挂在墙上的口号，而是当路线变化、文件不一致、客户需要答案时，所有人共同使用的一套判断方式。",
+          "story_pillars": [
+            {
+              "number": "01",
+              "label": "使命",
+              "title": "把跨境物流的不确定，变成可回答的运营次序。",
+              "text": "连接清关、运输、仓储与交付，让客户知道下一步发生什么、由谁负责、用什么证据确认。"
+            },
+            {
+              "number": "02",
+              "label": "愿景",
+              "title": "让确定性，成为中间走廊的默认标准。",
+              "text": "在中国、哈萨克斯坦与欧洲之间，逐票、逐节点构建最值得信赖的端到端运营网络。"
+            },
+            {
+              "number": "03",
+              "label": "文化",
+              "title": "讲清事实，认领责任，安静地把事做完。",
+              "text": "我们直接沟通，提前说明边界，在现场解决问题，并让每一票货都留下可供下一票复用的记录。"
+            }
+          ],
+          "story_values_eyebrow": "价值观 / 落在交接里",
+          "story_values_title": "价值观，只有被客户在每一次交接中看见，才算数。",
+          "labels_do": "我们承诺的",
+          "labels_dont": "我们不承诺的",
+          "labels_image": "运营场景示意图",
+          "labels_scope": "范围 / 运营细节",
+          "labels_process": "责任次序",
+          "labels_boundary": "承诺边界",
+          "entity_labels_eyebrow": "法人登记",
+          "entity_labels_title": "法人身份，有文件可查。",
+          "entity_labels_note": "法人身份来源：2025 年 5 月 27 日签发的哈萨克斯坦 eGov 证明。办公地点由公司提供，楼宇及街道经 2GIS 核对。",
+          "hero_alt": "阿拉木图团队讨论跨境路线",
+          "contact_meta_title": "联系 HPF.kz 物流团队",
+          "contact_meta_description": "向 HPF.kz 阿拉木图团队提交货物、路线与交付要求。",
+          "contact_eyebrow": "货运需求 / 阿拉木图",
+          "contact_title": "把下一票货，先放到桌面上。",
+          "contact_lead": "告诉我们从哪里出发、送到哪里、是什么货，以及哪些条件不能变。我们先从路线、文件与风险问题开始。",
+          "contact_fields_name": "姓名",
+          "contact_fields_company": "公司",
+          "contact_fields_email": "邮箱",
+          "contact_fields_phone": "电话或即时通讯",
+          "contact_fields_cargo": "货物说明",
+          "contact_fields_origin": "起运地",
+          "contact_fields_destination": "目的地",
+          "contact_fields_window": "期望到达窗口",
+          "contact_fields_message": "约束或补充说明",
+          "contact_fields_consent": "我同意通过电子邮件发送以上信息，并已阅读隐私政策。",
+          "contact_fields_submit": "打开邮件需求",
+          "contact_fields_required": "请先填写必填项。",
+          "contact_aside_title": "此表单不会把数据提交到网站后端。",
+          "contact_aside_text": "在数据存储地和表单处理方案完成法务确认前，表单只在你的邮件客户端中生成一封业务邮件。",
+          "contact_email_label": "业务邮箱",
+          "contact_response_note": "请勿提交护照、银行卡等敏感个人信息。",
+          "contact_label": "联系 / 货运需求",
+          "contact_email": "bd@hpf.kz",
+          "entity_facts": [
+            {
+              "label": "ТОО 法定全称",
+              "value": "HPF KZ 有限责任合伙企业（ТОО）",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "БИН",
+              "value": "241040015643",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "首次国家登记日期",
+              "value": "2024 年 10 月 11 日",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "创办方（参与者）",
+              "value": "HPF CO., LIMITED",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "公司办公地址",
+              "value": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
+              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+              "verified": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "company-ru",
+        "slug": "about",
+        "locale": "ru",
+        "status": "published",
+        "translationOf": "company-en",
+        "data": {
+          "page_meta_title": "Компания и принципы работы | HPF.kz",
+          "page_meta_description": "Как HPF.kz организует трансграничную логистику из Казахстана: локальное исполнение, фиксированные передачи и ясные границы обещаний.",
+          "page_eyebrow": "Компания / Казахстан",
+          "page_title": "Везём груз. Принимаем ответственность.",
+          "page_lead": "HPF.kz — трансграничная логистическая компания из Казахстана, соединяющая китайских отправителей, исполнение в Центральной Азии и европейских получателей. Мы делаем каждую передачу понятной, каждое изменение — объяснимым, а каждое обещание — подтверждённым.",
+          "page_primary": "Обсудить перевозку",
+          "page_secondary": "Смотреть услуги",
+          "page_section_title": "Наши ценности — это ежедневные операционные решения.",
+          "page_section_lead": "Они определяют, как мы планируем, общаемся и принимаем ответственность, а не как оформляем презентацию.",
+          "page_sections": [
+            {
+              "label": "Результат клиента",
+              "title": "Результат должен работать на клиента",
+              "text": "Мы оцениваем работу по тому, насколько увереннее клиент может обещать, получать и развивать бизнес, а не по заметности HPF.kz.",
+              "points": "Бизнес-результат\nСтабильная доставка\nПовторяемая способность\nДолгосрочная ценность"
+            },
+            {
+              "label": "Ответственность",
+              "title": "Взять на себя следующий ответ",
+              "text": "Передача завершена, только когда понятны следующий ответственный, действие и способ подтверждения.",
+              "points": "Ответственный\nСледующий шаг\nВидимое отклонение\nЗамкнутый цикл"
+            },
+            {
+              "label": "Правда",
+              "title": "Факты раньше прилагательных",
+              "text": "Мы разделяем проверенные факты, текущие условия и предположения, чтобы доверие не зависело от расплывчатых заявлений.",
+              "points": "Сначала доказательство\nГраница обещания\nИсточник\nЧестный статус"
+            },
+            {
+              "label": "Обучение",
+              "title": "Каждая перевозка улучшает следующую",
+              "text": "Сроки, расходы, документы и отклонения становятся операционным знанием, а не теряются в чатах.",
+              "points": "Этапы\nФайлы\nОтклонения\nРазбор"
+            }
+          ],
+          "page_process_title": "Что мы называем цепочкой ответственности",
+          "page_process": [
+            {
+              "step": "01",
+              "title": "Определить",
+              "text": "Зафиксировать груз, маршрут, документы и неизменяемые условия."
+            },
+            {
+              "step": "02",
+              "title": "Назначить",
+              "text": "Указать ответственного на каждой операционной передаче."
+            },
+            {
+              "step": "03",
+              "title": "Записать",
+              "text": "Хранить статус, подтверждения и изменения в одной записи."
+            },
+            {
+              "step": "04",
+              "title": "Разобрать",
+              "text": "Превратить результат в лучший следующий план."
+            }
+          ],
+          "page_boundary_title": "Что должно и не должно означать доверие к компании.",
+          "page_boundary_do": "Публиковать проверенные юридические данные\nРазделять ресурсы и результат\nВести проверяемую операционную запись",
+          "page_boundary_dont": "Без заявления «лидер рынка»\nБез выдачи привлечённого актива за собственный\nБез формулировки связи с группой до юридического согласования",
+          "page_cta_title": "Оценивайте нас по операционным вопросам.",
+          "page_cta_text": "Покажите реальную перевозку. Мы начнём с ограничений, ответственности и нужных подтверждений.",
+          "page_cta_button": "Связаться с командой",
+          "story_compass_eyebrow": "Миссия / видение / культура",
+          "story_compass_title": "Сначала компании нужен компас, затем масштаб.",
+          "story_compass_lead": "Культура — не лозунг на стене. Это общий способ принимать решения, когда маршрут меняется, документы расходятся, а клиенту нужен ясный ответ.",
+          "story_pillars": [
+            {
+              "number": "01",
+              "label": "Миссия",
+              "title": "Превращать неопределённость трансграничной логистики в понятный порядок действий.",
+              "text": "Связывать таможню, перевозку, склад и доставку так, чтобы клиент знал следующий шаг, ответственного и подтверждение результата."
+            },
+            {
+              "number": "02",
+              "label": "Видение",
+              "title": "Сделать определённость стандартом Среднего коридора.",
+              "text": "Создавать самую надёжную сквозную операционную сеть между Китаем, Казахстаном и Европой — перевозка за перевозкой, узел за узлом."
+            },
+            {
+              "number": "03",
+              "label": "Культура",
+              "title": "Точные факты. Личная ответственность. Спокойное исполнение.",
+              "text": "Мы говорим прямо, заранее обозначаем границы, решаем вопросы на месте и сохраняем опыт каждой перевозки для следующей."
+            }
+          ],
+          "story_values_eyebrow": "Ценности / видимые в работе",
+          "story_values_title": "Ценности имеют смысл, только когда клиент видит их в каждой передаче.",
+          "labels_do": "Что мы обязуемся делать",
+          "labels_dont": "Чего мы не заявляем",
+          "labels_image": "Операционная сценическая визуализация",
+          "labels_scope": "Объём / детали работы",
+          "labels_process": "Порядок работы",
+          "labels_boundary": "Граница обещания",
+          "entity_labels_eyebrow": "Юридическое лицо",
+          "entity_labels_title": "Юридические данные подтверждены документом.",
+          "entity_labels_note": "Юридические данные: справка eGov от 27 мая 2025 г. Адрес офиса предоставлен компанией; здание и улица проверены по 2ГИС.",
+          "hero_alt": "Команда в Алматы обсуждает трансграничный маршрут",
+          "contact_meta_title": "Связаться с логистической командой HPF.kz",
+          "contact_meta_description": "Передайте команде HPF.kz в Алматы данные груза, маршрута и доставки.",
+          "contact_eyebrow": "Запрос перевозки / Алматы",
+          "contact_title": "Положим следующую перевозку на стол.",
+          "contact_lead": "Укажите отправление, назначение, груз и условия, которые нельзя менять. Мы начнём с вопросов о маршруте, документах и рисках.",
+          "contact_fields_name": "Имя",
+          "contact_fields_company": "Компания",
+          "contact_fields_email": "Электронная почта",
+          "contact_fields_phone": "Телефон или мессенджер",
+          "contact_fields_cargo": "Описание груза",
+          "contact_fields_origin": "Отправление",
+          "contact_fields_destination": "Назначение",
+          "contact_fields_window": "Требуемое окно прибытия",
+          "contact_fields_message": "Ограничения или примечания",
+          "contact_fields_consent": "Я согласен отправить эти данные по электронной почте и прочитал уведомление о конфиденциальности.",
+          "contact_fields_submit": "Открыть письмо",
+          "contact_fields_required": "Заполните обязательные поля.",
+          "contact_aside_title": "Форма не отправляет данные на сервер сайта.",
+          "contact_aside_text": "До юридического подтверждения места хранения и обработки форма создаёт письмо в вашей почтовой программе.",
+          "contact_email_label": "Деловая почта",
+          "contact_response_note": "Не указывайте паспортные, банковские и другие чувствительные персональные данные.",
+          "contact_label": "Контакт / запрос перевозки",
+          "contact_email": "bd@hpf.kz",
+          "entity_facts": [
+            {
+              "label": "Полное наименование ТОО",
+              "value": "Товарищество с ограниченной ответственностью \"HPF KZ\"",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "БИН",
+              "value": "241040015643",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "Дата первичной государственной регистрации",
+              "value": "11 октября 2024 г.",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "Учредитель (участник)",
+              "value": "Компания \"HPF CO., LIMITED\"",
+              "url": "",
+              "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+              "verified": true
+            },
+            {
+              "label": "Адрес офиса компании",
+              "value": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
+              "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+              "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+              "verified": true
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

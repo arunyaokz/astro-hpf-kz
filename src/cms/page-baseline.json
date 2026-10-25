@@ -1,0 +1,2078 @@
+{
+  "services": {
+    "en": {
+      "page": {
+        "metaTitle": "Cross-border logistics services | Transport, customs, warehousing and delivery | HPF.kz",
+        "metaDescription": "HPF.kz connects transport, customs, warehousing and Kazakhstan delivery through one accountable shipment chain.",
+        "eyebrow": "Transport / customs / warehousing / delivery",
+        "title": "One shipment.\nOne team in charge.",
+        "lead": "Transport, customs, warehousing and delivery—connected end to end.",
+        "primary": "Get a route plan",
+        "secondary": "See the services",
+        "imageAlt": "Warehouse staff checking cargo and customs documentation",
+        "imageCaption": "Pre-clearance and warehouse operations",
+        "indexLabel": "Six services",
+        "introEyebrow": "How we work",
+        "introTitle": "Every handover, owned.",
+        "introText": "We connect vehicles, borders, warehouses and consignees. Less chasing for you. More movement for the cargo.",
+        "principles": [
+          {
+            "title": "Cargo first",
+            "text": "The cargo shapes the route—not a template."
+          },
+          {
+            "title": "Files first",
+            "text": "Find document gaps before the border."
+          },
+          {
+            "title": "Proof at every step",
+            "text": "Every handover leaves a status and a next move."
+          }
+        ],
+        "servicesEyebrow": "Service scope",
+        "servicesTitle": "Six services. One delivery chain.",
+        "servicesLead": "Choose one service or hand us the shipment. Scope, owner and result are clear before departure.",
+        "labels": {
+          "fit": "Best for",
+          "work": "We handle",
+          "outputs": "You receive",
+          "value": "Your value",
+          "input": "Input",
+          "result": "Result",
+          "response": "Response"
+        },
+        "services": [
+          {
+            "id": "customs",
+            "number": "01",
+            "kicker": "Before the border",
+            "title": "Customs compliance",
+            "summary": "Review the cargo and files before they reach the border.",
+            "fit": "First imports, many SKUs, certificates or inconsistent files.",
+            "work": [
+              "Check invoice, packing list and contract",
+              "Review HS and declaration questions",
+              "Follow missing files, inspection and release"
+            ],
+            "outputs": [
+              "File-gap list",
+              "Declaration check",
+              "Release record"
+            ],
+            "value": "Fewer surprises. Less border waiting."
+          },
+          {
+            "id": "transport",
+            "number": "02",
+            "kicker": "Cross-border trunk",
+            "title": "TIR road freight",
+            "summary": "Connect pickup, border and arrival in one road plan.",
+            "fit": "Full loads, repeat volumes and time-sensitive China–Kazakhstan–Europe cargo.",
+            "work": [
+              "Match vehicle and loading needs",
+              "Arrange pickup, border and handover",
+              "Update position, changes and ETA"
+            ],
+            "outputs": [
+              "Pickup plan",
+              "Milestone status",
+              "Handover record"
+            ],
+            "value": "One place to see what happens next."
+          },
+          {
+            "id": "multimodal",
+            "number": "03",
+            "kicker": "Route combination",
+            "title": "Trans-Caspian freight",
+            "summary": "Combine road, rail and Caspian legs around the delivery goal.",
+            "fit": "Cargo moving toward the Caucasus, Türkiye or Europe.",
+            "work": [
+              "Compare primary and fallback routes",
+              "Connect terminals, ports and vessel windows",
+              "Set wait and switch rules"
+            ],
+            "outputs": [
+              "Route options",
+              "Node dependencies",
+              "Switch conditions"
+            ],
+            "value": "Choose the route that can perform—not only the lowest rate."
+          },
+          {
+            "id": "warehouse",
+            "number": "04",
+            "kicker": "Almaty node",
+            "title": "Warehousing & fulfilment",
+            "summary": "Turn bulk cargo into visible, dispatch-ready inventory.",
+            "fit": "Storage, SKU control, labelling, picking, split dispatch or returns.",
+            "work": [
+              "Book and record receiving",
+              "Track SKU or batch status",
+              "Label, pick and check dispatch"
+            ],
+            "outputs": [
+              "Receiving record",
+              "Inventory status",
+              "Dispatch list"
+            ],
+            "value": "Know where the goods are and whether they can ship."
+          },
+          {
+            "id": "delivery",
+            "number": "05",
+            "kicker": "Final leg",
+            "title": "Kazakhstan delivery",
+            "summary": "Deliver to the warehouse, store or project site.",
+            "fit": "Single or multi-drop delivery across Almaty and Kazakhstan.",
+            "work": [
+              "Confirm appointment and unloading",
+              "Plan vehicle and drop order",
+              "Track arrival, POD and exceptions"
+            ],
+            "outputs": [
+              "Delivery plan",
+              "Arrival status",
+              "POD"
+            ],
+            "value": "Visibility continues after international linehaul."
+          },
+          {
+            "id": "market-entry",
+            "number": "06",
+            "kicker": "Local execution",
+            "title": "Kazakhstan market entry",
+            "summary": "Build the local delivery flow from the first shipment.",
+            "fit": "Companies entering Kazakhstan or testing a first import flow.",
+            "work": [
+              "Map import, storage and delivery",
+              "Find first-load file and packaging gaps",
+              "Use the pilot to improve repeat shipments"
+            ],
+            "outputs": [
+              "First-load plan",
+              "Owner map",
+              "Repeatable baseline"
+            ],
+            "value": "Make the first shipment work before scaling."
+          }
+        ],
+        "sequenceEyebrow": "How it moves",
+        "sequenceTitle": "You only need to see the next move.",
+        "sequenceLead": "Every step has an action and a result.",
+        "sequence": [
+          {
+            "step": "01",
+            "title": "Share the brief",
+            "text": "Cargo, route, size and timing.",
+            "result": "Open questions"
+          },
+          {
+            "step": "02",
+            "title": "Review the cargo",
+            "text": "Check restrictions, files and receiving.",
+            "result": "Risks and gaps"
+          },
+          {
+            "step": "03",
+            "title": "Build the plan",
+            "text": "Set route, cost boundary and owners.",
+            "result": "Plan and quote"
+          },
+          {
+            "step": "04",
+            "title": "Move and hand over",
+            "text": "Pickup, cross, receive or deliver.",
+            "result": "Status and proof"
+          },
+          {
+            "step": "05",
+            "title": "Manage change",
+            "text": "Give facts, options and next update time.",
+            "result": "Decision record"
+          },
+          {
+            "step": "06",
+            "title": "Close and learn",
+            "text": "Collect POD and improve the next load.",
+            "result": "File and notes"
+          }
+        ],
+        "exceptionEyebrow": "Exception management",
+        "exceptionTitle": "A change needs options.",
+        "exceptionLead": "Not just ‘being handled’. You get the status, choices and next move.",
+        "exceptions": [
+          {
+            "issue": "Conflicting files",
+            "response": "Name the gap, replacement and owner.",
+            "update": "List, deadline, result"
+          },
+          {
+            "issue": "Border delay",
+            "response": "Separate queue, inspection and release.",
+            "update": "Status, action, next update"
+          },
+          {
+            "issue": "Vehicle or vessel change",
+            "response": "Compare waiting, switching and added cost.",
+            "update": "Impact and options"
+          },
+          {
+            "issue": "Cargo discrepancy",
+            "response": "Record, isolate and await instruction.",
+            "update": "Difference, status, result"
+          },
+          {
+            "issue": "Receiving change",
+            "response": "Protect the cargo, then confirm the new plan.",
+            "update": "Approval and delivery plan"
+          }
+        ],
+        "boundaryEyebrow": "Service boundary",
+        "boundaryTitle": "Clear limits make stronger promises.",
+        "boundaryLead": "We own what can be managed and flag what needs a joint decision.",
+        "boundaryDoTitle": "We commit to",
+        "boundaryDo": [
+          "State scope and assumptions before quoting",
+          "Name owners for key milestones",
+          "Give impact and options when plans change",
+          "Keep handover and POD records"
+        ],
+        "boundaryDontTitle": "We do not claim",
+        "boundaryDont": [
+          "No guaranteed clearance",
+          "No absolute no-delay promise",
+          "No unverified performance figures",
+          "No hidden unconfirmed costs"
+        ],
+        "briefEyebrow": "Start a shipment",
+        "briefTitle": "One shipment in. One plan back.",
+        "briefText": "Send what you know. We will mark what is missing.",
+        "briefFields": [
+          "Commodity, use and HS code",
+          "Units, weight, volume and packaging",
+          "Origin, destination and contacts",
+          "EXW / FOB / DAP terms",
+          "Ship date and arrival window",
+          "Temperature, dangerous, oversized or high-value needs"
+        ],
+        "briefNote": "First confirm it can move. Then quote on clear conditions.",
+        "ctaButton": "Get my route plan"
+      }
+    },
+    "zh": {
+      "page": {
+        "metaTitle": "跨境物流服务｜运输、清关、仓储与哈萨克斯坦交付｜HPF.kz",
+        "metaDescription": "HPF.kz 连接跨境运输、清关、仓储与哈萨克斯坦本地交付，让一票货由一条责任链接到底。",
+        "eyebrow": "运输｜清关｜仓储｜本地交付",
+        "title": "一票货，\n一路有人管。",
+        "lead": "运输、清关、仓储、交付，由一支团队接到底。",
+        "primary": "获取运输方案",
+        "secondary": "查看服务",
+        "imageAlt": "仓内工作人员核对货物与清关资料",
+        "imageCaption": "清关前置与仓内作业",
+        "indexLabel": "六项服务",
+        "introEyebrow": "我们的做法",
+        "introTitle": "每次交接，都有人管。",
+        "introText": "我们接好车辆、口岸、仓库与收货端。客户少追问一步，货物多向前一步。",
+        "principles": [
+          {
+            "title": "先看货",
+            "text": "货物决定路线，不拿模板套方案。"
+          },
+          {
+            "title": "文件前置",
+            "text": "能在发运前发现的问题，不留到口岸。"
+          },
+          {
+            "title": "交接留痕",
+            "text": "每个节点有状态、有凭据、有下一步。"
+          }
+        ],
+        "servicesEyebrow": "服务范围",
+        "servicesTitle": "六项能力，一条交付链。",
+        "servicesLead": "选一项，或整票托付。范围、责任和结果，发运前说清。",
+        "labels": {
+          "fit": "适合谁",
+          "work": "我们来做",
+          "outputs": "你会拿到",
+          "value": "客户价值",
+          "input": "输入",
+          "result": "结果",
+          "response": "处理"
+        },
+        "services": [
+          {
+            "id": "customs",
+            "number": "01",
+            "kicker": "先于口岸",
+            "title": "清关合规",
+            "summary": "货到口岸前，先把文件和要求走一遍。",
+            "fit": "首票进口、SKU 多、证书复杂或单证口径不一。",
+            "work": [
+              "核对合同、发票、装箱单",
+              "梳理 HS 编码与申报要素",
+              "跟进补件、查验与放行"
+            ],
+            "outputs": [
+              "文件缺口",
+              "申报核对",
+              "放行记录"
+            ],
+            "value": "问题前置，少补件，少等待。"
+          },
+          {
+            "id": "transport",
+            "number": "02",
+            "kicker": "跨境主干",
+            "title": "TIR 跨境干线",
+            "summary": "从提货到过境，把车辆和节点接起来。",
+            "fit": "中哈欧整车、批量货与时效敏感货物。",
+            "work": [
+              "匹配车型与装载条件",
+              "安排提货、口岸和交接",
+              "同步位置、变化与 ETA"
+            ],
+            "outputs": [
+              "提货计划",
+              "节点状态",
+              "交接记录"
+            ],
+            "value": "不用四处追问，一处看清进度。"
+          },
+          {
+            "id": "multimodal",
+            "number": "03",
+            "kicker": "路线组合",
+            "title": "跨里海联运",
+            "summary": "公路、铁路与里海运输，按目标组合。",
+            "fit": "需要连接高加索、土耳其或欧洲的货物。",
+            "work": [
+              "比较主线与备选线",
+              "衔接场站、港口与船期",
+              "设定等待与切换条件"
+            ],
+            "outputs": [
+              "路线组合",
+              "节点依赖",
+              "切换条件"
+            ],
+            "value": "不只比运价，更看哪条路走得成。"
+          },
+          {
+            "id": "warehouse",
+            "number": "04",
+            "kicker": "阿拉木图节点",
+            "title": "仓储分拨",
+            "summary": "让大批量货物变成可盘点、可分拨的订单。",
+            "fit": "中转、存放、贴标、分拣、分批出库与退换。",
+            "work": [
+              "预约收货并记录差异",
+              "按 SKU 或批次管理",
+              "执行贴标、拣选与出库"
+            ],
+            "outputs": [
+              "入库记录",
+              "库存状态",
+              "出库清单"
+            ],
+            "value": "货在哪里、能否出库，一目了然。"
+          },
+          {
+            "id": "delivery",
+            "number": "05",
+            "kicker": "最后一程",
+            "title": "本地配送",
+            "summary": "把跨境货送到仓库、门店或项目现场。",
+            "fit": "阿拉木图及哈萨克斯坦境内单点或多点交付。",
+            "work": [
+              "确认预约与卸货条件",
+              "安排车辆和配送次序",
+              "跟进到场、签收与异常"
+            ],
+            "outputs": [
+              "配送计划",
+              "到场状态",
+              "POD 回单"
+            ],
+            "value": "国际干线结束，服务不断线。"
+          },
+          {
+            "id": "market-entry",
+            "number": "06",
+            "kicker": "业务落地",
+            "title": "入哈履约",
+            "summary": "从第一票货开始，搭好本地交付路径。",
+            "fit": "准备进入哈萨克斯坦或验证首票流程的企业。",
+            "work": [
+              "梳理进口、仓储与配送",
+              "识别首票文件和包装约束",
+              "用试运行结果优化批量执行"
+            ],
+            "outputs": [
+              "首票清单",
+              "责任分工",
+              "复用底稿"
+            ],
+            "value": "不谈空泛出海，先把第一票做成。"
+          }
+        ],
+        "sequenceEyebrow": "一票货如何推进",
+        "sequenceTitle": "你只需看清下一步。",
+        "sequenceLead": "每一步，都有动作和结果。",
+        "sequence": [
+          {
+            "step": "01",
+            "title": "说清需求",
+            "text": "货物、起讫地、重量与时间。",
+            "result": "待确认清单"
+          },
+          {
+            "step": "02",
+            "title": "预审货物",
+            "text": "先查限制、文件与收货条件。",
+            "result": "风险与补件"
+          },
+          {
+            "step": "03",
+            "title": "配置方案",
+            "text": "定路线、费用边界和责任人。",
+            "result": "方案与报价"
+          },
+          {
+            "step": "04",
+            "title": "执行交接",
+            "text": "提货、过境、入仓或派送。",
+            "result": "节点与凭据"
+          },
+          {
+            "step": "05",
+            "title": "处理变化",
+            "text": "给事实、选项和下次更新时间。",
+            "result": "处理决定"
+          },
+          {
+            "step": "06",
+            "title": "签收复盘",
+            "text": "收回 POD，留下下一票经验。",
+            "result": "归档与建议"
+          }
+        ],
+        "exceptionEyebrow": "异常管理",
+        "exceptionTitle": "有变化，就给方案。",
+        "exceptionLead": "不只说“正在处理”，还要说清现在、选择和下一步。",
+        "exceptions": [
+          {
+            "issue": "文件不一致",
+            "response": "指出差异、补件和责任人。",
+            "update": "清单、截止时间、结果"
+          },
+          {
+            "issue": "口岸延迟",
+            "response": "拆清排队、查验与放行状态。",
+            "update": "状态、动作、更新时间"
+          },
+          {
+            "issue": "车辆或船期变化",
+            "response": "比较等待、切换和新增成本。",
+            "update": "影响与备选方案"
+          },
+          {
+            "issue": "货物差异",
+            "response": "留证、隔离并等待处置指令。",
+            "update": "差异、状态、结果"
+          },
+          {
+            "issue": "收货条件变化",
+            "response": "先保全货物，再确认新安排。",
+            "update": "确认与配送计划"
+          }
+        ],
+        "boundaryEyebrow": "服务边界",
+        "boundaryTitle": "边界清楚，承诺才有分量。",
+        "boundaryLead": "能管理的，我们负责到底；需共同决定的，我们提前说清。",
+        "boundaryDoTitle": "我们做到",
+        "boundaryDo": [
+          "报价前写清范围与假设",
+          "关键节点指定责任人",
+          "变化后给出影响和选项",
+          "保留交接与签收记录"
+        ],
+        "boundaryDontTitle": "我们不说",
+        "boundaryDont": [
+          "不说“保证通关”",
+          "不承诺绝对无延误",
+          "不使用未经核验的数据",
+          "不隐藏待确认费用"
+        ],
+        "briefEyebrow": "开始合作",
+        "briefTitle": "给一票货，拿一份方案。",
+        "briefText": "先发来已知信息，缺什么由我们标出。",
+        "briefFields": [
+          "品名、用途与 HS 编码",
+          "件数、重量、体积与包装",
+          "起运地、目的地与联系人",
+          "EXW / FOB / DAP 等条款",
+          "发运日与到达窗口",
+          "温控、危险、超限或高价值属性"
+        ],
+        "briefNote": "先确认走得成，再给有条件的报价。",
+        "ctaButton": "获取运输方案"
+      }
+    },
+    "ru": {
+      "page": {
+        "metaTitle": "Трансграничная логистика | Перевозка, таможня, склад и доставка | HPF.kz",
+        "metaDescription": "HPF.kz объединяет перевозку, таможню, склад и доставку по Казахстану в одну ответственную цепочку.",
+        "eyebrow": "Перевозка / таможня / склад / доставка",
+        "title": "Один груз.\nОдна команда отвечает.",
+        "lead": "Перевозка, таможня, склад и доставка — в одной цепочке.",
+        "primary": "Получить маршрут",
+        "secondary": "Смотреть услуги",
+        "imageAlt": "Сотрудники склада сверяют груз и таможенные документы",
+        "imageCaption": "Подготовка документов и складские операции",
+        "indexLabel": "Шесть услуг",
+        "introEyebrow": "Как мы работаем",
+        "introTitle": "Каждая передача — под контролем.",
+        "introText": "Мы соединяем машину, границу, склад и получателя. Клиент меньше ищет ответы. Груз быстрее движется дальше.",
+        "principles": [
+          {
+            "title": "Сначала груз",
+            "text": "Маршрут строится под груз, а не по шаблону."
+          },
+          {
+            "title": "Документы заранее",
+            "text": "Пробелы находим до прибытия на границу."
+          },
+          {
+            "title": "Результат этапа",
+            "text": "После каждой передачи есть статус и следующий шаг."
+          }
+        ],
+        "servicesEyebrow": "Состав услуг",
+        "servicesTitle": "Шесть услуг. Одна цепочка доставки.",
+        "servicesLead": "Выберите одну услугу или передайте всю перевозку. Объём, ответственный и результат понятны до отправки.",
+        "labels": {
+          "fit": "Для каких задач",
+          "work": "Что делаем",
+          "outputs": "Что получаете",
+          "value": "Ваша выгода",
+          "input": "Вход",
+          "result": "Результат",
+          "response": "Действие"
+        },
+        "services": [
+          {
+            "id": "customs",
+            "number": "01",
+            "kicker": "До границы",
+            "title": "Таможня и комплаенс",
+            "summary": "Проверяем груз и документы до прибытия на границу.",
+            "fit": "Первый импорт, много SKU, сертификаты или разночтения в документах.",
+            "work": [
+              "Сверяем контракт, инвойс и упаковочный лист",
+              "Проверяем код ТН ВЭД и сведения",
+              "Сопровождаем документы, досмотр и выпуск"
+            ],
+            "outputs": [
+              "Список пробелов",
+              "Проверка сведений",
+              "Запись выпуска"
+            ],
+            "value": "Меньше сюрпризов. Меньше ожидания на границе."
+          },
+          {
+            "id": "transport",
+            "number": "02",
+            "kicker": "Магистраль",
+            "title": "TIR и автоперевозка",
+            "summary": "Связываем забор, границу и прибытие в одном плане.",
+            "fit": "Полные машины, регулярные партии и срочные грузы Китай–Казахстан–Европа.",
+            "work": [
+              "Подбираем машину и условия погрузки",
+              "Организуем забор, границу и передачу",
+              "Сообщаем позицию, изменения и ETA"
+            ],
+            "outputs": [
+              "План забора",
+              "Статус этапов",
+              "Запись передачи"
+            ],
+            "value": "Один источник статуса и следующего шага."
+          },
+          {
+            "id": "multimodal",
+            "number": "03",
+            "kicker": "Комбинация маршрута",
+            "title": "Транскаспийская перевозка",
+            "summary": "Соединяем авто, железную дорогу и Каспий под цель доставки.",
+            "fit": "Грузы на Кавказ, в Турцию и Европу.",
+            "work": [
+              "Сравниваем основной и резервный путь",
+              "Связываем терминалы, порты и суда",
+              "Задаём условия ожидания и переключения"
+            ],
+            "outputs": [
+              "Варианты маршрута",
+              "Зависимости узлов",
+              "Условия переключения"
+            ],
+            "value": "Выбор по исполнимости, а не только по тарифу."
+          },
+          {
+            "id": "warehouse",
+            "number": "04",
+            "kicker": "Узел Алматы",
+            "title": "Склад и фулфилмент",
+            "summary": "Превращаем партию в видимый, готовый к отгрузке запас.",
+            "fit": "Хранение, SKU-учёт, маркировка, подбор, частичные отгрузки и возвраты.",
+            "work": [
+              "Бронируем и фиксируем приёмку",
+              "Ведём статус SKU или партии",
+              "Маркируем, подбираем и проверяем отгрузку"
+            ],
+            "outputs": [
+              "Запись приёмки",
+              "Статус запасов",
+              "Лист отгрузки"
+            ],
+            "value": "Понятно, где товар и готов ли он к отгрузке."
+          },
+          {
+            "id": "delivery",
+            "number": "05",
+            "kicker": "Последний этап",
+            "title": "Доставка по Казахстану",
+            "summary": "Доставляем на склад, в магазин или на объект.",
+            "fit": "Одна или несколько точек по Алматы и Казахстану.",
+            "work": [
+              "Подтверждаем запись и разгрузку",
+              "Планируем машину и порядок точек",
+              "Контролируем прибытие, POD и отклонения"
+            ],
+            "outputs": [
+              "План доставки",
+              "Статус прибытия",
+              "POD"
+            ],
+            "value": "Видимость не заканчивается после международного плеча."
+          },
+          {
+            "id": "market-entry",
+            "number": "06",
+            "kicker": "Локальное исполнение",
+            "title": "Выход на рынок Казахстана",
+            "summary": "Строим местную схему с первой поставки.",
+            "fit": "Компании, которые выходят в Казахстан или тестируют первый импорт.",
+            "work": [
+              "Описываем импорт, склад и доставку",
+              "Находим пробелы первой поставки",
+              "Улучшаем повторные отправки по результату пилота"
+            ],
+            "outputs": [
+              "План первой поставки",
+              "Схема ответственных",
+              "Повторяемая основа"
+            ],
+            "value": "Сначала успешная поставка. Затем масштабирование."
+          }
+        ],
+        "sequenceEyebrow": "Как движется груз",
+        "sequenceTitle": "Вам достаточно видеть следующий шаг.",
+        "sequenceLead": "У каждого шага есть действие и результат.",
+        "sequence": [
+          {
+            "step": "01",
+            "title": "Передать заявку",
+            "text": "Груз, маршрут, размер и срок.",
+            "result": "Открытые вопросы"
+          },
+          {
+            "step": "02",
+            "title": "Проверить груз",
+            "text": "Ограничения, документы и приёмка.",
+            "result": "Риски и пробелы"
+          },
+          {
+            "step": "03",
+            "title": "Собрать план",
+            "text": "Маршрут, стоимость и ответственные.",
+            "result": "План и тариф"
+          },
+          {
+            "step": "04",
+            "title": "Выполнить перевозку",
+            "text": "Забор, граница, склад или доставка.",
+            "result": "Статус и подтверждение"
+          },
+          {
+            "step": "05",
+            "title": "Управлять изменением",
+            "text": "Факты, варианты и время обновления.",
+            "result": "Решение"
+          },
+          {
+            "step": "06",
+            "title": "Закрыть и улучшить",
+            "text": "POD и выводы для следующего груза.",
+            "result": "Архив и рекомендации"
+          }
+        ],
+        "exceptionEyebrow": "Работа с отклонениями",
+        "exceptionTitle": "Есть изменение — есть варианты.",
+        "exceptionLead": "Не просто «в работе». Вы получаете статус, выбор и следующий шаг.",
+        "exceptions": [
+          {
+            "issue": "Документы расходятся",
+            "response": "Называем пробел, замену и ответственного.",
+            "update": "Список, срок, результат"
+          },
+          {
+            "issue": "Задержка на границе",
+            "response": "Разделяем очередь, досмотр и выпуск.",
+            "update": "Статус, действие, обновление"
+          },
+          {
+            "issue": "Изменение машины или судна",
+            "response": "Сравниваем ожидание, замену и расходы.",
+            "update": "Влияние и варианты"
+          },
+          {
+            "issue": "Расхождение по грузу",
+            "response": "Фиксируем, изолируем и ждём решения.",
+            "update": "Разница, статус, итог"
+          },
+          {
+            "issue": "Изменилась приёмка",
+            "response": "Сохраняем груз и подтверждаем новый план.",
+            "update": "Согласование и доставка"
+          }
+        ],
+        "boundaryEyebrow": "Границы услуги",
+        "boundaryTitle": "Чёткие границы усиливают обещание.",
+        "boundaryLead": "Управляемым отвечаем сами. Совместные решения обозначаем заранее.",
+        "boundaryDoTitle": "Мы обязуемся",
+        "boundaryDo": [
+          "До тарифа указать объём и допущения",
+          "Назначить ответственных за этапы",
+          "При изменении дать влияние и варианты",
+          "Сохранить записи передачи и POD"
+        ],
+        "boundaryDontTitle": "Мы не обещаем",
+        "boundaryDont": [
+          "Гарантированное оформление",
+          "Полное отсутствие задержек",
+          "Непроверенные показатели",
+          "Скрытые неподтверждённые расходы"
+        ],
+        "briefEyebrow": "Начать перевозку",
+        "briefTitle": "Один груз — один готовый план.",
+        "briefText": "Передайте известное. Мы отметим, чего не хватает.",
+        "briefFields": [
+          "Товар, назначение и код ТН ВЭД",
+          "Количество, вес, объём и упаковка",
+          "Отправление, назначение и контакты",
+          "Условия EXW / FOB / DAP",
+          "Дата отправки и окно прибытия",
+          "Температура, опасность, негабарит или высокая стоимость"
+        ],
+        "briefNote": "Сначала подтверждаем исполнимость. Затем даём тариф с ясными условиями.",
+        "ctaButton": "Получить маршрут"
+      }
+    }
+  },
+  "routes": {
+    "en": {
+      "page": {
+        "metaTitle": "Northern, Middle and Southern Eurasian corridors | HPF.kz",
+        "metaDescription": "HPF.kz compares Northern, Middle and Southern Eurasian corridors and configures a primary route, fallback and node ownership around each shipment.",
+        "eyebrow": "Routes & network / three Eurasian corridors",
+        "title": "The longer the journey, the less it should depend on one route.",
+        "lead": "The Northern Corridor favours continuous inland linehaul. The Middle Corridor depends on disciplined Trans-Caspian handovers. The Southern Corridor adds another Central Asian land option. HPF.kz does not ask customers to bet on a line; we compare cargo, compliance, arrival window, budget and receiving conditions before defining the primary route, fallback and switch rules.",
+        "primary": "Configure my route",
+        "secondary": "See the three corridors",
+        "heroNotes": [
+          {
+            "value": "3",
+            "label": "candidate corridors"
+          },
+          {
+            "value": "1",
+            "label": "node-ownership method"
+          },
+          {
+            "value": "Per load",
+            "label": "conditions confirmed"
+          }
+        ],
+        "atlasEyebrow": "Network overview / east to west",
+        "atlasTitle": "One shipment can have more than one westbound answer.",
+        "atlasLead": "The map shows direction; the operating plan explains the trade-offs. Border points, ports, services, carriers, transit acceptance and timing are confirmed against current conditions before booking.",
+        "atlasNote": "Cargo moves from China on the right to Europe on the left. Select a corridor to read its operating logic.",
+        "detailEyebrow": "Corridor judgement / not a list of places",
+        "detailTitle": "The route choice depends on which uncertainty can be managed best.",
+        "detailLead": "We compare more than freight cost: transloading, schedule dependency, country compliance, border congestion, insurance and payment conditions, and whether an exception still leaves an executable next move.",
+        "corridors": [
+          {
+            "id": "north",
+            "index": "01",
+            "label": "Northern",
+            "name": "Northern Eurasian land bridge",
+            "strap": "Fewer sea transfers; heavier country and trade-compliance review.",
+            "summary": "The corridor runs from China through Kazakhstan into the Russian, Belarusian and EU rail networks. Its value is a relatively continuous inland trunk; its prerequisite is current acceptance of the cargo, counterparties, carrier, insurance and payment structure.",
+            "route": [
+              "China origin",
+              "Horgos / Alashankou candidate gateway",
+              "Kazakhstan rail nodes",
+              "Russia",
+              "Belarus",
+              "Poland / Europe"
+            ],
+            "bestForLabel": "Worth assessing for",
+            "bestFor": "Standard containers, repeat volumes and cargo that benefits from fewer sea transfers and has a clear compliance profile.",
+            "modeLabel": "Typical configuration",
+            "mode": "Rail-led, with road pickup, delivery and European onward distribution.",
+            "watchLabel": "Confirm before booking",
+            "watch": [
+              "Sanctions, export controls and counterparty screening",
+              "Train schedule and gauge-change arrangements",
+              "Insurance, payment and EU entry conditions"
+            ],
+            "switchLabel": "Switch logic",
+            "switchWhen": "If compliance, carrier acceptance, schedule or destination-entry conditions change, the fallback is reviewed before the shipment reaches an irreversible node."
+          },
+          {
+            "id": "middle",
+            "index": "02",
+            "label": "Middle",
+            "name": "Trans-Caspian Middle Corridor",
+            "strap": "Multimodal by design; dependent on ports, vessels and clean handovers.",
+            "summary": "The corridor crosses Kazakhstan to the candidate ports of Aktau or Kuryk, continues over the Caspian to Baku and the South Caucasus, then reaches Europe through Türkiye or the Black Sea. It diversifies geography while adding port and transloading dependencies.",
+            "route": [
+              "China origin",
+              "Kazakhstan gateway / Almaty",
+              "Aktau / Kuryk candidate port",
+              "Caspian / Baku",
+              "Georgia",
+              "Türkiye / Black Sea / Europe"
+            ],
+            "bestForLabel": "Worth assessing for",
+            "bestFor": "Cargo seeking geographic diversification and able to accommodate multimodal handling, especially for the Caucasus, Türkiye and Europe.",
+            "modeLabel": "Typical configuration",
+            "mode": "Rail, road, Caspian vessel and western rail or road in one operating sequence.",
+            "watchLabel": "Confirm before booking",
+            "watch": [
+              "Port acceptance, yard status and vessel window",
+              "Transloading, equipment and document continuity",
+              "Western onward capacity and consignee appointment"
+            ],
+            "switchLabel": "Switch logic",
+            "switchWhen": "Port waiting, vessel changes or a missed western connection are assessed against agreed thresholds: wait, change port or move to another corridor."
+          },
+          {
+            "id": "south",
+            "index": "03",
+            "label": "Southern",
+            "name": "Central Asia–Iran–Türkiye corridor",
+            "strap": "Another inland option; country-by-country transit and financial checks are decisive.",
+            "summary": "The route extends from China through Kazakhstan toward Uzbekistan, Turkmenistan and Iran, then through Türkiye into Europe. It creates an option for Türkiye and Southern Europe or when other corridors are constrained, subject to country, carrier, insurance and payment feasibility.",
+            "route": [
+              "China origin",
+              "Kazakhstan / Almaty",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Iran",
+              "Türkiye / Europe"
+            ],
+            "bestForLabel": "Worth assessing for",
+            "bestFor": "Türkiye or Southern Europe destinations and projects needing another inland fallback with a cargo and trade structure acceptable along the route.",
+            "modeLabel": "Typical configuration",
+            "mode": "Road and rail combined around border, gauge and destination conditions.",
+            "watchLabel": "Confirm before booking",
+            "watch": [
+              "Transit permits and border acceptance in each country",
+              "Sanctions, banking, insurance and carrier restrictions",
+              "Document consistency across multiple border handovers"
+            ],
+            "switchLabel": "Switch logic",
+            "switchWhen": "If transit, insurance, payment or carrier acceptance is not confirmed in any country, this corridor does not enter the formal commitment."
+          }
+        ],
+        "serviceEyebrow": "Operating detail / care for one shipment",
+        "serviceTitle": "Beyond the map, we look after every handover.",
+        "serviceLead": "Customers should not discover a missing file, vehicle or decision after departure. We turn the route into a sequence that can be confirmed, reported and reviewed.",
+        "serviceSteps": [
+          {
+            "step": "01",
+            "phase": "Before departure",
+            "title": "Make the non-negotiables explicit",
+            "text": "Review cargo, Incoterms, files, handling and destination requirements; compare corridors and state inclusions, dependencies and exclusions.",
+            "outputs": [
+              "Cargo and file gap list",
+              "Primary and fallback route",
+              "Node owners and rate boundary"
+            ]
+          },
+          {
+            "step": "02",
+            "phase": "In transit",
+            "title": "Know who owns the next handover",
+            "text": "Follow entry, customs, transloading, port, onward capacity and appointment. Status names the node, next action and owner—not simply ‘in transit’. ",
+            "outputs": [
+              "Milestone status",
+              "Exception options and impact",
+              "Next update time"
+            ]
+          },
+          {
+            "step": "03",
+            "phase": "After arrival",
+            "title": "Delivery continues through evidence",
+            "text": "Connect appointment, unloading, POD, temporary storage or redistribution, then carry the lessons into the next shipment.",
+            "outputs": [
+              "POD and receipt",
+              "Closed exception record",
+              "Next-shipment improvement"
+            ]
+          }
+        ],
+        "updateTitle": "When conditions change, give an answer before reassurance.",
+        "updateText": "Care is not repeating ‘please wait’. It is putting facts and choices on the table when the customer needs to decide. Every exception update should include:",
+        "updateItems": [
+          "What happened and which node is affected",
+          "What we are doing and the available options",
+          "Possible time or cost impact",
+          "The latest time for a customer decision",
+          "The next definite update time"
+        ],
+        "switchEyebrow": "Primary and fallback / design the way out",
+        "switchTitle": "A fallback is not another supplier found after the problem starts.",
+        "switchText": "Before departure, we agree the acceptable switch range. When a trigger is reached, we report facts, impact and options before acting under the agreed authority—no silent rerouting and no information vacuum.",
+        "switchTriggers": [
+          {
+            "title": "Compliance change",
+            "text": "A new restriction affects cargo, counterparties, carrier or transit."
+          },
+          {
+            "title": "Node mismatch",
+            "text": "Train, vessel, port or final appointment no longer connects as planned."
+          },
+          {
+            "title": "Waiting threshold",
+            "text": "Actual waiting reaches the review point agreed with the customer."
+          },
+          {
+            "title": "Commercial boundary",
+            "text": "Added cost or timing impact exceeds the authorised range."
+          }
+        ],
+        "requestEyebrow": "Route request / information can start incomplete",
+        "requestTitle": "Give us the outline of one shipment. We will start by asking the route questions.",
+        "requestText": "Send what is known; we will identify the gaps. The more complete these inputs are, the more reliable the comparison and rate boundary become.",
+        "requestItems": [
+          "Origin and final destination",
+          "Commodity, HS code if known, and use",
+          "Packages, weight, volume and piece dimensions",
+          "Packaging, temperature, dangerous-goods or handling needs",
+          "Incoterms and cargo-value range",
+          "Target arrival window and fixed milestones",
+          "Shipper, consignee and required compliance information",
+          "Acceptable corridors, transfers and fallback range"
+        ],
+        "promiseTitle": "Routes change. Responsibility should not disappear.",
+        "promiseText": "We do not promise that delays cannot happen. We promise that each change is seen, explained and carried forward by an owner.",
+        "ctaButton": "Send cargo details"
+      },
+      "labels": {
+        "scene": "Central Asian cross-border road operation",
+        "route": "Candidate nodes",
+        "output": "Outputs",
+        "triggers": "Four triggers for review",
+        "checklist": "Route-request checklist"
+      },
+      "mapPlaces": {
+        "europe": "Europe",
+        "china": "China",
+        "kz": "Kazakhstan",
+        "north": [
+          "Russia",
+          "Belarus"
+        ],
+        "middle": [
+          "Caspian",
+          "Caucasus"
+        ],
+        "south": [
+          "Uzbekistan",
+          "Iran · Türkiye"
+        ]
+      },
+      "heroCaption": "HPF.kz / Eurasian route planning",
+      "updateEyebrow": "Human response / exception update",
+      "ctaEyebrow": "HPF.kz / route desk"
+    },
+    "zh": {
+      "page": {
+        "metaTitle": "中亚欧北线、中线与南线路线网络｜HPF.kz",
+        "metaDescription": "HPF.kz 以北线、中线与南线构建中亚欧路线组合，按货物、合规、交期、预算与收货条件配置主线、备选线和节点责任。",
+        "eyebrow": "路线与网络 / 欧亚三走廊",
+        "title": "路越远，越不能只准备一条路。",
+        "lead": "北线看重连续干线，中线重在跨里海节点协同，南线提供另一组中亚陆路连接。HPF.kz 不替客户押注某一条线；我们把货物、合规、交期、预算与收货条件放在一起，配置主线、备选线和切换条件。",
+        "primary": "配置我的路线",
+        "secondary": "先看三条走廊",
+        "heroNotes": [
+          {
+            "value": "3 条",
+            "label": "候选欧亚走廊"
+          },
+          {
+            "value": "1 套",
+            "label": "统一节点责任"
+          },
+          {
+            "value": "逐票",
+            "label": "核验路线与条件"
+          }
+        ],
+        "atlasEyebrow": "网络总览 / 由东向西",
+        "atlasTitle": "同一票货，可以有不同的西行答案。",
+        "atlasLead": "地图负责说明方向，操作方案负责说明代价。每条路线均为候选走廊，实际口岸、港口、班列、承运主体、过境条件与时效，在接单前按当期条件确认。",
+        "atlasNote": "货物流向：中国在右，欧洲在左。点击路线查看关键取舍。",
+        "detailEyebrow": "走廊判断 / 不是路线罗列",
+        "detailTitle": "选哪条线，取决于哪种不确定性更能被管理。",
+        "detailLead": "我们比较的不只是运价，还包括换装次数、班期依赖、国别合规、边境拥堵、保险与结算条件，以及异常发生后是否有可执行的下一步。",
+        "corridors": [
+          {
+            "id": "north",
+            "index": "01",
+            "label": "北线",
+            "name": "欧亚北部陆桥",
+            "strap": "少海运换装，重国别与贸易合规审查。",
+            "summary": "由中国经哈萨克斯坦向北接入俄罗斯、白俄罗斯与欧盟铁路网络。它的价值在于较连续的陆路干线；它的前提，是货物、交易方、承运与保险安排都通过当期合规核验。",
+            "route": [
+              "中国集货地",
+              "霍尔果斯 / 阿拉山口候选口岸",
+              "哈萨克斯坦铁路节点",
+              "俄罗斯",
+              "白俄罗斯",
+              "波兰 / 欧洲"
+            ],
+            "bestForLabel": "更值得评估",
+            "bestFor": "标准化集装箱、稳定批量、希望减少海运换装，且国别与商品合规边界清晰的货物。",
+            "modeLabel": "主要组织方式",
+            "mode": "铁路为主，可衔接公路提送与欧洲末段配送。",
+            "watchLabel": "接单前重点核验",
+            "watch": [
+              "制裁、出口管制与交易方筛查",
+              "班列与换轨节点安排",
+              "保险、结算与欧盟入境条件"
+            ],
+            "switchLabel": "切换判断",
+            "switchWhen": "合规边界、承运接受、班期或目的国入境条件变化时，不等待货物进入不可逆节点再讨论备选。"
+          },
+          {
+            "id": "middle",
+            "index": "02",
+            "label": "中线",
+            "name": "跨里海中间走廊",
+            "strap": "多式联运，重港口、船期与每次交接。",
+            "summary": "由中国进入哈萨克斯坦，经阿克套或库雷克候选港口跨越里海，在巴库衔接外高加索，再经土耳其或黑海方向进入欧洲。它提供地缘分散，也增加港口与换装依赖。",
+            "route": [
+              "中国集货地",
+              "哈萨克斯坦口岸 / 阿拉木图",
+              "阿克套 / 库雷克候选港",
+              "里海 / 巴库",
+              "格鲁吉亚",
+              "土耳其 / 黑海 / 欧洲"
+            ],
+            "bestForLabel": "更值得评估",
+            "bestFor": "希望分散北部通道风险、可接受多式联运，并需要连接高加索、土耳其或欧洲市场的货物。",
+            "modeLabel": "主要组织方式",
+            "mode": "铁路、公路、里海船舶与西段铁路或公路组合。",
+            "watchLabel": "接单前重点核验",
+            "watch": [
+              "港口受理、堆场与船期窗口",
+              "换装、箱体与单证衔接",
+              "西岸接续运力和收货预约"
+            ],
+            "switchLabel": "切换判断",
+            "switchWhen": "港口等待、船期变化或西岸接续失配时，以已约定阈值判断等待、改港或改走其他走廊。"
+          },
+          {
+            "id": "south",
+            "index": "03",
+            "label": "南线",
+            "name": "中亚—伊朗—土耳其走廊",
+            "strap": "另一组陆路连接，重逐国过境与金融合规。",
+            "summary": "由中国经哈萨克斯坦向乌兹别克斯坦、土库曼斯坦与伊朗延伸，再由土耳其接入欧洲。它为土耳其、南欧方向或其他走廊受限时提供评估空间，但必须逐国核验过境、承运、保险与结算可行性。",
+            "route": [
+              "中国集货地",
+              "哈萨克斯坦 / 阿拉木图",
+              "乌兹别克斯坦",
+              "土库曼斯坦",
+              "伊朗",
+              "土耳其 / 欧洲"
+            ],
+            "bestForLabel": "更值得评估",
+            "bestFor": "目的地偏土耳其或南欧、需要补充陆路备选，且货物与交易结构能够通过沿线国别审查的项目。",
+            "modeLabel": "主要组织方式",
+            "mode": "公路与铁路组合，按边境、轨距和目的地条件配置。",
+            "watchLabel": "接单前重点核验",
+            "watch": [
+              "各国过境许可与口岸受理",
+              "制裁、银行、保险与承运限制",
+              "多次边境交接和文件一致性"
+            ],
+            "switchLabel": "切换判断",
+            "switchWhen": "任一国别的过境、保险、结算或承运条件未获确认时，该线不进入正式承诺。"
+          }
+        ],
+        "serviceEyebrow": "服务颗粒度 / 一票货的完整照看",
+        "serviceTitle": "地图之外，我们把每次交接照看清楚。",
+        "serviceLead": "客户不应在货物出发后才发现还缺一个文件、一个车位或一个决定。我们把路线拆成可确认、可汇报、可追溯的操作次序。",
+        "serviceSteps": [
+          {
+            "step": "01",
+            "phase": "发运前",
+            "title": "先把不能出错的事说清楚",
+            "text": "核对货物、贸易条款、文件、装卸条件与目的地要求；比较候选走廊，写明报价包含项、依赖项与不包含项。",
+            "outputs": [
+              "货物与文件缺口清单",
+              "主线 / 备选线",
+              "节点责任与报价边界"
+            ]
+          },
+          {
+            "step": "02",
+            "phase": "在途中",
+            "title": "每到一处，都知道谁在接",
+            "text": "跟进入境、清关、换装、港口、接续运力与收货预约。状态不只写“运输中”，而要说明当前节点、下一动作和责任人。",
+            "outputs": [
+              "里程碑状态",
+              "异常选项与影响",
+              "下一次更新时间"
+            ]
+          },
+          {
+            "step": "03",
+            "phase": "到达后",
+            "title": "交付不是卸完货就结束",
+            "text": "衔接预约、卸货、签收、POD、短期仓储或再次分拨；把本票发生的偏差和处理结果留给下一票。",
+            "outputs": [
+              "签收与回单",
+              "异常关闭记录",
+              "下一票优化建议"
+            ]
+          }
+        ],
+        "updateTitle": "遇到变化，先给答案，再给安慰。",
+        "updateText": "一个有温度的服务，不是反复说“请耐心等待”，而是在客户需要决定时，把事实和选择摆在桌面上。每次异常更新至少包含：",
+        "updateItems": [
+          "发生了什么，影响哪个节点",
+          "我们正在做什么，有哪些可选方案",
+          "成本或时间可能如何变化",
+          "客户最晚何时需要决定",
+          "下一次明确更新时间"
+        ],
+        "switchEyebrow": "主备切换 / 把退路写进方案",
+        "switchTitle": "备选线不是出事后临时找的另一家供应商。",
+        "switchText": "在发运前，我们与客户确认可接受的切换范围。条件触发时，先报告事实、影响和选择，再根据授权推进；不擅自改线，也不让货物停在信息真空里。",
+        "switchTriggers": [
+          {
+            "title": "合规变化",
+            "text": "货物、交易方、承运或过境条件出现新的限制。"
+          },
+          {
+            "title": "节点失配",
+            "text": "班列、船期、港口或末段预约无法按原计划衔接。"
+          },
+          {
+            "title": "等待超阈值",
+            "text": "实际等待触及双方预先约定的复核点。"
+          },
+          {
+            "title": "商业边界变化",
+            "text": "新增成本或交期影响超过客户授权范围。"
+          }
+        ],
+        "requestEyebrow": "询价准备 / 信息不必完美",
+        "requestTitle": "给我们一票货的轮廓，我们先把路问清楚。",
+        "requestText": "已有信息先发来，缺失项由我们标出。以下内容越完整，路线比较与报价边界越可靠。",
+        "requestItems": [
+          "起运地与最终目的地",
+          "品名、HS 编码（如有）与用途",
+          "件数、重量、体积和单件尺寸",
+          "包装、温控、危险品或装卸要求",
+          "贸易条款与货值区间",
+          "期望到达窗口与不可变节点",
+          "收发货主体及必要的合规信息",
+          "可接受的走廊、换装与备选范围"
+        ],
+        "promiseTitle": "路会变化，责任不能失联。",
+        "promiseText": "我们不承诺不存在延误；我们承诺让每一处变化有人看见、有人解释、有人继续往下做。",
+        "ctaButton": "发送货物信息"
+      },
+      "labels": {
+        "scene": "中亚跨境公路运输场景",
+        "route": "候选节点",
+        "output": "交付物",
+        "triggers": "触发复核的四种情况",
+        "checklist": "路线询价清单"
+      },
+      "mapPlaces": {
+        "europe": "欧洲",
+        "china": "中国",
+        "kz": "哈萨克斯坦",
+        "north": [
+          "俄罗斯",
+          "白俄罗斯"
+        ],
+        "middle": [
+          "里海",
+          "高加索"
+        ],
+        "south": [
+          "乌兹别克斯坦",
+          "伊朗 · 土耳其"
+        ]
+      },
+      "heroCaption": "HPF.kz / Eurasian route planning",
+      "updateEyebrow": "Human response / exception update",
+      "ctaEyebrow": "HPF.kz / route desk"
+    },
+    "ru": {
+      "page": {
+        "metaTitle": "Северный, Средний и Южный коридоры Китай–Европа | HPF.kz",
+        "metaDescription": "HPF.kz сравнивает северный, средний и южный евразийские коридоры и определяет основной маршрут, резервный сценарий и ответственность по узлам.",
+        "eyebrow": "Маршруты и сеть / три евразийских коридора",
+        "title": "Чем длиннее путь, тем опаснее зависеть от одного маршрута.",
+        "lead": "Северный коридор даёт более непрерывное сухопутное плечо. Средний требует точной координации на Каспии. Южный добавляет ещё один вариант через Центральную Азию. HPF.kz не предлагает клиенту делать ставку на одну линию: мы сопоставляем груз, комплаенс, срок, бюджет и условия приёмки, затем определяем основной путь, резерв и правила переключения.",
+        "primary": "Подобрать маршрут",
+        "secondary": "Смотреть три коридора",
+        "heroNotes": [
+          {
+            "value": "3",
+            "label": "кандидатных коридора"
+          },
+          {
+            "value": "1",
+            "label": "система ответственности"
+          },
+          {
+            "value": "Каждый груз",
+            "label": "проверка условий"
+          }
+        ],
+        "atlasEyebrow": "Обзор сети / с востока на запад",
+        "atlasTitle": "У одной перевозки может быть несколько вариантов движения на запад.",
+        "atlasLead": "Карта показывает направление, а операционный план — цену каждого решения. Пункты пропуска, порты, сервисы, перевозчики, условия транзита и сроки подтверждаются до бронирования по текущей ситуации.",
+        "atlasNote": "Груз идёт из Китая справа в Европу слева. Выберите коридор, чтобы увидеть логику работы.",
+        "detailEyebrow": "Выбор коридора / не перечень городов",
+        "detailTitle": "Маршрут выбирают по тому, какой риск можно контролировать лучше.",
+        "detailLead": "Мы сравниваем не только ставку: перегрузки, зависимость от расписаний, страновой комплаенс, очереди на границе, страхование и расчёты, а также наличие реального следующего шага при отклонении.",
+        "corridors": [
+          {
+            "id": "north",
+            "index": "01",
+            "label": "Северный",
+            "name": "Северный евразийский сухопутный мост",
+            "strap": "Меньше морских перегрузок; больше внимания страновому и торговому комплаенсу.",
+            "summary": "Маршрут идёт из Китая через Казахстан в железнодорожные сети России, Беларуси и ЕС. Его преимущество — сравнительно непрерывное сухопутное плечо; обязательное условие — актуальная проверка груза, сторон сделки, перевозчика, страхования и расчётов.",
+            "route": [
+              "Пункт отправления в Китае",
+              "Хоргос / Алашанькоу — кандидатные переходы",
+              "Железнодорожные узлы Казахстана",
+              "Россия",
+              "Беларусь",
+              "Польша / Европа"
+            ],
+            "bestForLabel": "Стоит рассматривать для",
+            "bestFor": "Стандартных контейнеров, регулярных партий и грузов, которым важно сократить морские перегрузки при ясном комплаенс-профиле.",
+            "modeLabel": "Типовая схема",
+            "mode": "Железная дорога как основа, автозабор, доставка и европейское плечо.",
+            "watchLabel": "Проверить до бронирования",
+            "watch": [
+              "Санкции, экспортный контроль и стороны сделки",
+              "Расписание поездов и смена колеи",
+              "Страхование, расчёты и условия входа в ЕС"
+            ],
+            "switchLabel": "Условие переключения",
+            "switchWhen": "При изменении комплаенса, допуска перевозчика, расписания или условий въезда резерв пересматривается до необратимого этапа."
+          },
+          {
+            "id": "middle",
+            "index": "02",
+            "label": "Средний",
+            "name": "Транскаспийский Средний коридор",
+            "strap": "Мультимодальный по своей природе; зависит от портов, судов и точной передачи груза.",
+            "summary": "Маршрут проходит через Казахстан к кандидатным портам Актау или Курык, далее через Каспий в Баку и Южный Кавказ, а затем через Турцию или Чёрное море в Европу. Он диверсифицирует географию, но добавляет портовые и перегрузочные зависимости.",
+            "route": [
+              "Пункт отправления в Китае",
+              "Переход в Казахстан / Алматы",
+              "Актау / Курык — кандидатный порт",
+              "Каспий / Баку",
+              "Грузия",
+              "Турция / Чёрное море / Европа"
+            ],
+            "bestForLabel": "Стоит рассматривать для",
+            "bestFor": "Грузов, которым нужна географическая диверсификация и допустима мультимодальная обработка, особенно на Кавказ, в Турцию и Европу.",
+            "modeLabel": "Типовая схема",
+            "mode": "Железная дорога, автотранспорт, каспийское судно и западное плечо в одной цепочке.",
+            "watchLabel": "Проверить до бронирования",
+            "watch": [
+              "Приём порта, терминал и окно судна",
+              "Перегрузка, оборудование и непрерывность документов",
+              "Западная провозная способность и окно получателя"
+            ],
+            "switchLabel": "Условие переключения",
+            "switchWhen": "Ожидание в порту, изменение судового окна или срыв западной стыковки сравниваются с согласованным порогом: ждать, менять порт или коридор."
+          },
+          {
+            "id": "south",
+            "index": "03",
+            "label": "Южный",
+            "name": "Коридор Центральная Азия–Иран–Турция",
+            "strap": "Ещё один сухопутный вариант; решают проверки транзита и финансов по каждой стране.",
+            "summary": "Маршрут идёт из Китая через Казахстан в направлении Узбекистана, Туркменистана и Ирана, затем через Турцию в Европу. Он может быть вариантом для Турции и Южной Европы или при ограничениях на других путях — при подтверждённой страновой, страховой и платёжной возможности.",
+            "route": [
+              "Пункт отправления в Китае",
+              "Казахстан / Алматы",
+              "Узбекистан",
+              "Туркменистан",
+              "Иран",
+              "Турция / Европа"
+            ],
+            "bestForLabel": "Стоит рассматривать для",
+            "bestFor": "Направлений в Турцию и Южную Европу и проектов, которым нужен дополнительный сухопутный резерв с допустимой структурой груза и сделки.",
+            "modeLabel": "Типовая схема",
+            "mode": "Авто и железная дорога с учётом границ, колеи и условий назначения.",
+            "watchLabel": "Проверить до бронирования",
+            "watch": [
+              "Транзитные разрешения и приём на каждой границе",
+              "Санкции, банки, страхование и ограничения перевозчиков",
+              "Единообразие документов при нескольких передачах"
+            ],
+            "switchLabel": "Условие переключения",
+            "switchWhen": "Если хотя бы в одной стране не подтверждены транзит, страхование, расчёты или перевозчик, маршрут не включается в обязательство."
+          }
+        ],
+        "serviceEyebrow": "Операционная детализация / забота об одной перевозке",
+        "serviceTitle": "За пределами карты мы отвечаем за каждую передачу.",
+        "serviceLead": "Клиент не должен узнавать о недостающем документе, машине или решении после отправки. Мы превращаем маршрут в порядок действий, который можно подтвердить, показать и разобрать.",
+        "serviceSteps": [
+          {
+            "step": "01",
+            "phase": "До отправки",
+            "title": "Зафиксировать то, что нельзя упустить",
+            "text": "Проверяем груз, Incoterms, документы, обработку и требования назначения; сравниваем коридоры и указываем состав ставки, зависимости и исключения.",
+            "outputs": [
+              "Список пробелов по грузу и документам",
+              "Основной и резервный маршрут",
+              "Ответственные и границы ставки"
+            ]
+          },
+          {
+            "step": "02",
+            "phase": "В пути",
+            "title": "Знать, кто принимает следующий этап",
+            "text": "Контролируем въезд, таможню, перегрузку, порт, дальнейший транспорт и приёмку. Статус называет узел, следующее действие и ответственного, а не только «в пути».",
+            "outputs": [
+              "Статус контрольных точек",
+              "Варианты и последствия отклонения",
+              "Время следующего обновления"
+            ]
+          },
+          {
+            "step": "03",
+            "phase": "После прибытия",
+            "title": "Доставка заканчивается подтверждением",
+            "text": "Связываем приёмку, разгрузку, POD, временное хранение или распределение и переносим выводы в следующую перевозку.",
+            "outputs": [
+              "POD и подтверждение",
+              "Закрытие отклонений",
+              "Улучшения для следующей отправки"
+            ]
+          }
+        ],
+        "updateTitle": "Когда условия меняются, сначала нужен ответ, потом успокоение.",
+        "updateText": "Забота — не повторять «ожидайте». Это вовремя положить на стол факты и варианты. Каждое сообщение об отклонении должно содержать:",
+        "updateItems": [
+          "Что произошло и какой узел затронут",
+          "Что мы делаем и какие есть варианты",
+          "Возможное влияние на срок или стоимость",
+          "До какого момента клиенту нужно принять решение",
+          "Точное время следующего обновления"
+        ],
+        "switchEyebrow": "Основной и резервный путь / выход продуман заранее",
+        "switchTitle": "Резерв — не новый подрядчик, которого начинают искать после проблемы.",
+        "switchText": "До отправки мы согласуем допустимые границы переключения. При срабатывании условия сначала сообщаем факты, последствия и варианты, затем действуем в рамках полномочий — без молчаливой смены маршрута и без информационного вакуума.",
+        "switchTriggers": [
+          {
+            "title": "Изменение комплаенса",
+            "text": "Новое ограничение затрагивает груз, стороны, перевозчика или транзит."
+          },
+          {
+            "title": "Срыв стыковки",
+            "text": "Поезд, судно, порт или приёмка больше не соединяются по плану."
+          },
+          {
+            "title": "Порог ожидания",
+            "text": "Фактическое ожидание достигает согласованной точки пересмотра."
+          },
+          {
+            "title": "Коммерческая граница",
+            "text": "Дополнительные затраты или срок выходят за пределы полномочий."
+          }
+        ],
+        "requestEyebrow": "Запрос маршрута / можно начать с неполных данных",
+        "requestTitle": "Дайте контур одной перевозки — мы начнём с правильных вопросов о пути.",
+        "requestText": "Пришлите то, что уже известно; пробелы обозначим мы. Чем полнее данные, тем надёжнее сравнение и границы ставки.",
+        "requestItems": [
+          "Пункт отправления и конечное назначение",
+          "Товар, код ТН ВЭД при наличии и назначение",
+          "Места, вес, объём и размеры одного места",
+          "Упаковка, температура, опасный груз и погрузка",
+          "Incoterms и диапазон стоимости груза",
+          "Требуемое окно прибытия и фиксированные этапы",
+          "Отправитель, получатель и данные для комплаенса",
+          "Допустимые коридоры, перегрузки и резерв"
+        ],
+        "promiseTitle": "Маршрут может измениться. Ответственность не должна пропасть.",
+        "promiseText": "Мы не обещаем, что задержек не бывает. Мы обещаем: каждое изменение будет замечено, объяснено и передано ответственному до следующего шага.",
+        "ctaButton": "Отправить данные груза"
+      },
+      "labels": {
+        "scene": "Трансграничная автоперевозка в Центральной Азии",
+        "route": "Кандидатные узлы",
+        "output": "Результат",
+        "triggers": "Четыре повода для пересмотра",
+        "checklist": "Данные для запроса маршрута"
+      },
+      "mapPlaces": {
+        "europe": "Европа",
+        "china": "Китай",
+        "kz": "Казахстан",
+        "north": [
+          "Россия",
+          "Беларусь"
+        ],
+        "middle": [
+          "Каспий",
+          "Кавказ"
+        ],
+        "south": [
+          "Узбекистан",
+          "Иран · Турция"
+        ]
+      },
+      "heroCaption": "HPF.kz / Eurasian route planning",
+      "updateEyebrow": "Human response / exception update",
+      "ctaEyebrow": "HPF.kz / route desk"
+    }
+  },
+  "company": {
+    "en": {
+      "page": {
+        "metaTitle": "Company and operating principles | HPF.kz",
+        "metaDescription": "How HPF.kz approaches cross-border logistics from Kazakhstan: local execution, documented handovers and explicit promise boundaries.",
+        "eyebrow": "Company / Kazakhstan",
+        "title": "Carry the cargo. Carry the responsibility.",
+        "lead": "HPF.kz is a Kazakhstan-based cross-border logistics company connecting Chinese shippers, Central Asian execution and European consignees. We exist to make every handover clear, every change answerable and every promise grounded in evidence.",
+        "primary": "Discuss a shipment",
+        "secondary": "See our services",
+        "sectionTitle": "Our values are operating choices.",
+        "sectionLead": "They shape how we plan, communicate and take responsibility—not how we decorate a presentation.",
+        "sections": [
+          {
+            "label": "Customer outcome",
+            "title": "Let the result belong to the customer",
+            "text": "We measure our work by whether the customer can promise, receive and grow with greater confidence—not by how visible HPF.kz becomes.",
+            "points": [
+              "Business outcome",
+              "Stable delivery",
+              "Reusable capability",
+              "Long-term value"
+            ]
+          },
+          {
+            "label": "Responsibility",
+            "title": "Own the next answer",
+            "text": "A handover is not complete until the next owner, required action and confirmation method are explicit.",
+            "points": [
+              "Named owner",
+              "Clear next step",
+              "Visible exception",
+              "Closed loop"
+            ]
+          },
+          {
+            "label": "Truth",
+            "title": "Facts before adjectives",
+            "text": "We distinguish verified facts, current conditions and assumptions, so confidence never depends on a vague claim.",
+            "points": [
+              "Evidence first",
+              "Promise boundary",
+              "Source record",
+              "Honest status"
+            ]
+          },
+          {
+            "label": "Learning",
+            "title": "Make each shipment improve the next",
+            "text": "Time, cost, documents and exceptions become operating knowledge instead of disappearing in chats.",
+            "points": [
+              "Milestones",
+              "Files",
+              "Exceptions",
+              "Review"
+            ]
+          }
+        ],
+        "processTitle": "What we mean by a responsibility chain",
+        "process": [
+          {
+            "step": "01",
+            "title": "Define",
+            "text": "State cargo, route, documents and non-negotiable conditions."
+          },
+          {
+            "step": "02",
+            "title": "Assign",
+            "text": "Name the owner at each operational handover."
+          },
+          {
+            "step": "03",
+            "title": "Record",
+            "text": "Keep status, evidence and changes in one shipment record."
+          },
+          {
+            "step": "04",
+            "title": "Review",
+            "text": "Turn the outcome into a better next plan."
+          }
+        ],
+        "boundaryTitle": "What company trust should—and should not—mean.",
+        "boundaryDo": [
+          "Disclose verified legal information",
+          "Separate resources from results",
+          "Keep an auditable operating record"
+        ],
+        "boundaryDont": [
+          "No ‘market leader’ claim",
+          "No borrowed asset presented as owned",
+          "No relationship wording before legal confirmation"
+        ],
+        "ctaTitle": "Judge us by the operating questions we ask.",
+        "ctaText": "Bring us a real shipment. We will start with the constraints, responsibilities and evidence required.",
+        "ctaButton": "Contact the team"
+      },
+      "story": {
+        "compassEyebrow": "Purpose / direction / character",
+        "compassTitle": "A company needs a compass before it needs scale.",
+        "compassLead": "Our culture is not a slogan for the wall. It is the shared decision system we use when routes change, documents disagree and a customer needs a clear answer.",
+        "pillars": [
+          {
+            "number": "01",
+            "label": "Mission",
+            "title": "Turn cross-border uncertainty into an answerable operating sequence.",
+            "text": "Connect customs, transport, warehousing and delivery so customers know what happens next, who owns it and what evidence confirms it."
+          },
+          {
+            "number": "02",
+            "label": "Vision",
+            "title": "Make certainty the default standard for the Middle Corridor.",
+            "text": "Build the most trusted end-to-end operating network between China, Kazakhstan and Europe—shipment by shipment, node by node."
+          },
+          {
+            "number": "03",
+            "label": "Culture",
+            "title": "Clear facts. Named owners. Quiet follow-through.",
+            "text": "We speak directly, expose boundaries early, solve at the scene and leave every shipment with a record that improves the next one."
+          }
+        ],
+        "valuesEyebrow": "Values / visible in the work",
+        "valuesTitle": "Values only count when customers can see them in the handover."
+      },
+      "labels": {
+        "do": "We commit to",
+        "dont": "We do not claim",
+        "image": "Operational scene visualization",
+        "scope": "Scope / operating detail",
+        "process": "Process",
+        "boundary": "Promise boundary"
+      },
+      "entityLabels": {
+        "eyebrow": "Registered entity",
+        "title": "Legal identity, documented.",
+        "note": "Legal identity: Kazakhstan eGov certificate issued 27 May 2025. Office location: company-provided; building and street verified on 2GIS."
+      },
+      "heroAlt": "Almaty team reviewing a cross-border route",
+      "contact": {
+        "metaTitle": "Contact the HPF.kz logistics team",
+        "metaDescription": "Share cargo, route and delivery requirements with the HPF.kz team in Almaty.",
+        "eyebrow": "Freight enquiry / Almaty",
+        "title": "Put the next shipment on the table.",
+        "lead": "Tell us where it starts, where it needs to arrive, what the cargo is and which conditions cannot change. We will begin with the route, files and risk questions.",
+        "fields": {
+          "name": "Your name",
+          "company": "Company",
+          "email": "Email",
+          "phone": "Phone or messenger",
+          "cargo": "Cargo description",
+          "origin": "Origin",
+          "destination": "Destination",
+          "window": "Required arrival window",
+          "message": "Constraints or notes",
+          "consent": "I agree to send these details by email and have read the privacy notice.",
+          "submit": "Open email request",
+          "required": "Complete the required fields before continuing."
+        },
+        "asideTitle": "This form does not send data to a website backend.",
+        "asideText": "Until the data-storage and form-processing arrangement is legally confirmed, the form prepares an email in your own mail application.",
+        "emailLabel": "Business email",
+        "responseNote": "Please do not include passport, payment-card or other sensitive personal data."
+      },
+      "contactLabel": "Contact / freight enquiry",
+      "contactEmail": "bd@hpf.kz",
+      "entityFacts": [
+        {
+          "label": "Full legal name of the LLP",
+          "value": "HPF KZ Limited Liability Partnership (LLP)",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "Business identification number (BIN)",
+          "value": "241040015643",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "Initial state registration",
+          "value": "11 October 2024",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "Founder (participant)",
+          "value": "HPF CO., LIMITED",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "Company office address",
+          "value": "HPF KZ LLP, Room 523, Stanitsa Business Park, 66 Khaliullina Street, Almaty, Kazakhstan",
+          "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+          "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+          "verified": true
+        }
+      ]
+    },
+    "zh": {
+      "page": {
+        "metaTitle": "公司与运营原则｜HPF.kz",
+        "metaDescription": "了解 HPF.kz 如何从哈萨克斯坦组织跨境物流：本地执行、节点留痕与清晰的承诺边界。",
+        "eyebrow": "公司 / 哈萨克斯坦",
+        "title": "承运货物，也承接责任。",
+        "lead": "HPF.kz 是一家立足哈萨克斯坦的跨境物流公司，连接中国发货方、中亚现场执行与欧洲收货方。我们存在的意义，是让每一次交接都清楚、每一次变化都有回答、每一个承诺都有证据。",
+        "primary": "讨论一票货",
+        "secondary": "查看服务",
+        "sectionTitle": "我们的价值观，是每天都要做出的运营选择。",
+        "sectionLead": "它决定我们如何计划、沟通和承担责任，而不是如何装饰一份介绍。",
+        "sections": [
+          {
+            "label": "成果归客户",
+            "title": "让结果留在客户的生意里",
+            "text": "我们不以 HPF.kz 被看见多少衡量工作，而以客户能否更安心地承诺、收货和增长来衡量。",
+            "points": [
+              "商业结果",
+              "稳定交付",
+              "可复用能力",
+              "长期价值"
+            ]
+          },
+          {
+            "label": "责任到人",
+            "title": "主动认领下一个答案",
+            "text": "只有下一责任人、所需动作与确认方式都清楚，一次交接才算真正完成。",
+            "points": [
+              "责任人",
+              "下一步",
+              "异常可见",
+              "闭环"
+            ]
+          },
+          {
+            "label": "事实为先",
+            "title": "事实先于形容词",
+            "text": "我们区分已核验事实、当前条件与待确认判断，不让客户的信心建立在模糊表述上。",
+            "points": [
+              "证据优先",
+              "承诺边界",
+              "来源记录",
+              "诚实状态"
+            ]
+          },
+          {
+            "label": "持续复盘",
+            "title": "让每一票，都改善下一票",
+            "text": "时效、费用、文件与异常要沉淀为运营知识，而不是消失在聊天记录里。",
+            "points": [
+              "节点",
+              "文件",
+              "异常",
+              "复盘"
+            ]
+          }
+        ],
+        "processTitle": "我们所说的责任链是什么",
+        "process": [
+          {
+            "step": "01",
+            "title": "定义",
+            "text": "说清货物、路线、文件与不可变化的条件。"
+          },
+          {
+            "step": "02",
+            "title": "分配",
+            "text": "为每处运营交接指定责任人。"
+          },
+          {
+            "step": "03",
+            "title": "记录",
+            "text": "把状态、证据与变化放进同一票记录。"
+          },
+          {
+            "step": "04",
+            "title": "复盘",
+            "text": "让本票结果成为下一票更好的方案。"
+          }
+        ],
+        "boundaryTitle": "公司信任应该意味着什么，也不该意味着什么。",
+        "boundaryDo": [
+          "披露已核验法人信息",
+          "区分资源与结果",
+          "保留可审计运营记录"
+        ],
+        "boundaryDont": [
+          "不宣传“行业领先”",
+          "不把借用资源说成自有资产",
+          "法务确认前不写集团关系口径"
+        ],
+        "ctaTitle": "请用我们提出的运营问题判断我们。",
+        "ctaText": "给我们一票真实货物，我们从约束、责任与所需证据开始。",
+        "ctaButton": "联系团队"
+      },
+      "story": {
+        "compassEyebrow": "使命 / 愿景 / 文化",
+        "compassTitle": "一家公司，先要有方向，再谈规模。",
+        "compassLead": "企业文化不是挂在墙上的口号，而是当路线变化、文件不一致、客户需要答案时，所有人共同使用的一套判断方式。",
+        "pillars": [
+          {
+            "number": "01",
+            "label": "使命",
+            "title": "把跨境物流的不确定，变成可回答的运营次序。",
+            "text": "连接清关、运输、仓储与交付，让客户知道下一步发生什么、由谁负责、用什么证据确认。"
+          },
+          {
+            "number": "02",
+            "label": "愿景",
+            "title": "让确定性，成为中间走廊的默认标准。",
+            "text": "在中国、哈萨克斯坦与欧洲之间，逐票、逐节点构建最值得信赖的端到端运营网络。"
+          },
+          {
+            "number": "03",
+            "label": "文化",
+            "title": "讲清事实，认领责任，安静地把事做完。",
+            "text": "我们直接沟通，提前说明边界，在现场解决问题，并让每一票货都留下可供下一票复用的记录。"
+          }
+        ],
+        "valuesEyebrow": "价值观 / 落在交接里",
+        "valuesTitle": "价值观，只有被客户在每一次交接中看见，才算数。"
+      },
+      "labels": {
+        "do": "我们承诺的",
+        "dont": "我们不承诺的",
+        "image": "运营场景示意图",
+        "scope": "范围 / 运营细节",
+        "process": "责任次序",
+        "boundary": "承诺边界"
+      },
+      "entityLabels": {
+        "eyebrow": "法人登记",
+        "title": "法人身份，有文件可查。",
+        "note": "法人身份来源：2025 年 5 月 27 日签发的哈萨克斯坦 eGov 证明。办公地点由公司提供，楼宇及街道经 2GIS 核对。"
+      },
+      "heroAlt": "阿拉木图团队讨论跨境路线",
+      "contact": {
+        "metaTitle": "联系 HPF.kz 物流团队",
+        "metaDescription": "向 HPF.kz 阿拉木图团队提交货物、路线与交付要求。",
+        "eyebrow": "货运需求 / 阿拉木图",
+        "title": "把下一票货，先放到桌面上。",
+        "lead": "告诉我们从哪里出发、送到哪里、是什么货，以及哪些条件不能变。我们先从路线、文件与风险问题开始。",
+        "fields": {
+          "name": "姓名",
+          "company": "公司",
+          "email": "邮箱",
+          "phone": "电话或即时通讯",
+          "cargo": "货物说明",
+          "origin": "起运地",
+          "destination": "目的地",
+          "window": "期望到达窗口",
+          "message": "约束或补充说明",
+          "consent": "我同意通过电子邮件发送以上信息，并已阅读隐私政策。",
+          "submit": "打开邮件需求",
+          "required": "请先填写必填项。"
+        },
+        "asideTitle": "此表单不会把数据提交到网站后端。",
+        "asideText": "在数据存储地和表单处理方案完成法务确认前，表单只在你的邮件客户端中生成一封业务邮件。",
+        "emailLabel": "业务邮箱",
+        "responseNote": "请勿提交护照、银行卡等敏感个人信息。"
+      },
+      "contactLabel": "联系 / 货运需求",
+      "contactEmail": "bd@hpf.kz",
+      "entityFacts": [
+        {
+          "label": "ТОО 法定全称",
+          "value": "HPF KZ 有限责任合伙企业（ТОО）",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "БИН",
+          "value": "241040015643",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "首次国家登记日期",
+          "value": "2024 年 10 月 11 日",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "创办方（参与者）",
+          "value": "HPF CO., LIMITED",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "公司办公地址",
+          "value": "HPF KZ 有限责任合伙企业，Станица 商务园，哈利乌林街 66 号，523 室，阿拉木图，哈萨克斯坦",
+          "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+          "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+          "verified": true
+        }
+      ]
+    },
+    "ru": {
+      "page": {
+        "metaTitle": "Компания и принципы работы | HPF.kz",
+        "metaDescription": "Как HPF.kz организует трансграничную логистику из Казахстана: локальное исполнение, фиксированные передачи и ясные границы обещаний.",
+        "eyebrow": "Компания / Казахстан",
+        "title": "Везём груз. Принимаем ответственность.",
+        "lead": "HPF.kz — трансграничная логистическая компания из Казахстана, соединяющая китайских отправителей, исполнение в Центральной Азии и европейских получателей. Мы делаем каждую передачу понятной, каждое изменение — объяснимым, а каждое обещание — подтверждённым.",
+        "primary": "Обсудить перевозку",
+        "secondary": "Смотреть услуги",
+        "sectionTitle": "Наши ценности — это ежедневные операционные решения.",
+        "sectionLead": "Они определяют, как мы планируем, общаемся и принимаем ответственность, а не как оформляем презентацию.",
+        "sections": [
+          {
+            "label": "Результат клиента",
+            "title": "Результат должен работать на клиента",
+            "text": "Мы оцениваем работу по тому, насколько увереннее клиент может обещать, получать и развивать бизнес, а не по заметности HPF.kz.",
+            "points": [
+              "Бизнес-результат",
+              "Стабильная доставка",
+              "Повторяемая способность",
+              "Долгосрочная ценность"
+            ]
+          },
+          {
+            "label": "Ответственность",
+            "title": "Взять на себя следующий ответ",
+            "text": "Передача завершена, только когда понятны следующий ответственный, действие и способ подтверждения.",
+            "points": [
+              "Ответственный",
+              "Следующий шаг",
+              "Видимое отклонение",
+              "Замкнутый цикл"
+            ]
+          },
+          {
+            "label": "Правда",
+            "title": "Факты раньше прилагательных",
+            "text": "Мы разделяем проверенные факты, текущие условия и предположения, чтобы доверие не зависело от расплывчатых заявлений.",
+            "points": [
+              "Сначала доказательство",
+              "Граница обещания",
+              "Источник",
+              "Честный статус"
+            ]
+          },
+          {
+            "label": "Обучение",
+            "title": "Каждая перевозка улучшает следующую",
+            "text": "Сроки, расходы, документы и отклонения становятся операционным знанием, а не теряются в чатах.",
+            "points": [
+              "Этапы",
+              "Файлы",
+              "Отклонения",
+              "Разбор"
+            ]
+          }
+        ],
+        "processTitle": "Что мы называем цепочкой ответственности",
+        "process": [
+          {
+            "step": "01",
+            "title": "Определить",
+            "text": "Зафиксировать груз, маршрут, документы и неизменяемые условия."
+          },
+          {
+            "step": "02",
+            "title": "Назначить",
+            "text": "Указать ответственного на каждой операционной передаче."
+          },
+          {
+            "step": "03",
+            "title": "Записать",
+            "text": "Хранить статус, подтверждения и изменения в одной записи."
+          },
+          {
+            "step": "04",
+            "title": "Разобрать",
+            "text": "Превратить результат в лучший следующий план."
+          }
+        ],
+        "boundaryTitle": "Что должно и не должно означать доверие к компании.",
+        "boundaryDo": [
+          "Публиковать проверенные юридические данные",
+          "Разделять ресурсы и результат",
+          "Вести проверяемую операционную запись"
+        ],
+        "boundaryDont": [
+          "Без заявления «лидер рынка»",
+          "Без выдачи привлечённого актива за собственный",
+          "Без формулировки связи с группой до юридического согласования"
+        ],
+        "ctaTitle": "Оценивайте нас по операционным вопросам.",
+        "ctaText": "Покажите реальную перевозку. Мы начнём с ограничений, ответственности и нужных подтверждений.",
+        "ctaButton": "Связаться с командой"
+      },
+      "story": {
+        "compassEyebrow": "Миссия / видение / культура",
+        "compassTitle": "Сначала компании нужен компас, затем масштаб.",
+        "compassLead": "Культура — не лозунг на стене. Это общий способ принимать решения, когда маршрут меняется, документы расходятся, а клиенту нужен ясный ответ.",
+        "pillars": [
+          {
+            "number": "01",
+            "label": "Миссия",
+            "title": "Превращать неопределённость трансграничной логистики в понятный порядок действий.",
+            "text": "Связывать таможню, перевозку, склад и доставку так, чтобы клиент знал следующий шаг, ответственного и подтверждение результата."
+          },
+          {
+            "number": "02",
+            "label": "Видение",
+            "title": "Сделать определённость стандартом Среднего коридора.",
+            "text": "Создавать самую надёжную сквозную операционную сеть между Китаем, Казахстаном и Европой — перевозка за перевозкой, узел за узлом."
+          },
+          {
+            "number": "03",
+            "label": "Культура",
+            "title": "Точные факты. Личная ответственность. Спокойное исполнение.",
+            "text": "Мы говорим прямо, заранее обозначаем границы, решаем вопросы на месте и сохраняем опыт каждой перевозки для следующей."
+          }
+        ],
+        "valuesEyebrow": "Ценности / видимые в работе",
+        "valuesTitle": "Ценности имеют смысл, только когда клиент видит их в каждой передаче."
+      },
+      "labels": {
+        "do": "Что мы обязуемся делать",
+        "dont": "Чего мы не заявляем",
+        "image": "Операционная сценическая визуализация",
+        "scope": "Объём / детали работы",
+        "process": "Порядок работы",
+        "boundary": "Граница обещания"
+      },
+      "entityLabels": {
+        "eyebrow": "Юридическое лицо",
+        "title": "Юридические данные подтверждены документом.",
+        "note": "Юридические данные: справка eGov от 27 мая 2025 г. Адрес офиса предоставлен компанией; здание и улица проверены по 2ГИС."
+      },
+      "heroAlt": "Команда в Алматы обсуждает трансграничный маршрут",
+      "contact": {
+        "metaTitle": "Связаться с логистической командой HPF.kz",
+        "metaDescription": "Передайте команде HPF.kz в Алматы данные груза, маршрута и доставки.",
+        "eyebrow": "Запрос перевозки / Алматы",
+        "title": "Положим следующую перевозку на стол.",
+        "lead": "Укажите отправление, назначение, груз и условия, которые нельзя менять. Мы начнём с вопросов о маршруте, документах и рисках.",
+        "fields": {
+          "name": "Имя",
+          "company": "Компания",
+          "email": "Электронная почта",
+          "phone": "Телефон или мессенджер",
+          "cargo": "Описание груза",
+          "origin": "Отправление",
+          "destination": "Назначение",
+          "window": "Требуемое окно прибытия",
+          "message": "Ограничения или примечания",
+          "consent": "Я согласен отправить эти данные по электронной почте и прочитал уведомление о конфиденциальности.",
+          "submit": "Открыть письмо",
+          "required": "Заполните обязательные поля."
+        },
+        "asideTitle": "Форма не отправляет данные на сервер сайта.",
+        "asideText": "До юридического подтверждения места хранения и обработки форма создаёт письмо в вашей почтовой программе.",
+        "emailLabel": "Деловая почта",
+        "responseNote": "Не указывайте паспортные, банковские и другие чувствительные персональные данные."
+      },
+      "contactLabel": "Контакт / запрос перевозки",
+      "contactEmail": "bd@hpf.kz",
+      "entityFacts": [
+        {
+          "label": "Полное наименование ТОО",
+          "value": "Товарищество с ограниченной ответственностью \"HPF KZ\"",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "БИН",
+          "value": "241040015643",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "Дата первичной государственной регистрации",
+          "value": "11 октября 2024 г.",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "Учредитель (участник)",
+          "value": "Компания \"HPF CO., LIMITED\"",
+          "url": "",
+          "source": "Kazakhstan eGov state re-registration certificate issued 2025-05-27",
+          "verified": true
+        },
+        {
+          "label": "Адрес офиса компании",
+          "value": "ТОО «HPF KZ», бизнес-парк «Станица», улица Халиуллина, 66, офис 523, Алматы, Казахстан",
+          "url": "https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122",
+          "source": "Office number provided by HPF KZ; building and street verified on 2GIS",
+          "verified": true
+        }
+      ]
+    }
+  }
+}

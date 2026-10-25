@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-25",
+  "version": "684d9474-a64b-433a-b241-c5351b10f1f0",
+  "checks": [
+    {
+      "path": "/services/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/routes/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/zh/services/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/zh/routes/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/zh/about/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/ru/services/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/ru/routes/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "path": "/ru/about/",
+      "status": 200,
+      "text_matches_before": true,
+      "dynamic": true
+    },
+    {
+      "url": "https://hpf.kz/_astro/CardVisual.DNLtalji.css",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/_astro/ContactPage.PyosbEx1.css",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/_astro/ContentPage.B3iiBExS.css",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/_astro/HomePage.uPL8c1fB.css",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/_astro/RouteMap.9RB_wBtj.css",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/_astro/RouteMap.astro_astro_type_script_index_0_lang.5AYxfbx2.js",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/news/",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/zh/news/",
+      "status": 200
+    },
+    {
+      "url": "https://hpf.kz/ru/news/",
+      "status": 200
+    }
+  ],
+  "local_tests": [
+    "draft isolation",
+    "signed preview",
+    "publish immediate",
+    "anonymous write denied",
+    "duplicate corridor publish rejected"
+  ],
+  "admin_default_locale": "zh",
+  "admin_chrome_locale": "zh-CN",
+  "route_map_browser": {
+    "initial": "middle",
+    "selected": "north",
+    "failed_images": [],
+    "failed_resources": []
+  },
+  "collections": {
+    "service_pages": {
+      "entries": 3,
+      "fields": 47
+    },
+    "route_pages": {
+      "entries": 3,
+      "fields": 49
+    },
+    "company_pages": {
+      "entries": 3,
+      "fields": 59
+    }
+  }
+}

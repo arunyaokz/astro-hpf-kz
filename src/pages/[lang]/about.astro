@@ -1,0 +1,13 @@
+---
+export const prerender = false;
+import ContentPage from "../../components/ContentPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { loadCorporatePage } from "../../cms/pages";
+const lang = Astro.params.lang;
+if (lang !== "zh" && lang !== "ru") return Astro.rewrite("/404");
+const cms = await loadCorporatePage("company", lang);
+if (!cms) return Astro.rewrite("/404");
+const page = cms.page;
+Astro.response.headers.set("Cache-Control", "private, no-store");
+---
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang={lang} active="about"><ContentPage lang={lang} cms={cms} pageKey="about" /></SiteLayout>

@@ -1,0 +1,13 @@
+---
+export const prerender = false;
+import RouteNetworkPage from "../../components/RouteNetworkPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { loadCorporatePage } from "../../cms/pages";
+const lang = Astro.params.lang;
+if (lang !== "zh" && lang !== "ru") return Astro.rewrite("/404");
+const cms = await loadCorporatePage("routes", lang);
+if (!cms) return Astro.rewrite("/404");
+const page = cms.page;
+Astro.response.headers.set("Cache-Control", "private, no-store");
+---
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang={lang} active="routes"><RouteNetworkPage lang={lang} cms={cms} /></SiteLayout>

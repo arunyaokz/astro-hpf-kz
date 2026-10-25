@@ -1,10 +1,10 @@
 ---
 import { CONTACT_COPY, pagePath, type Lang } from "../site-v2";
 
-interface Props { lang: Lang; }
-const { lang } = Astro.props;
-const page = CONTACT_COPY[lang];
-const contactLabel = lang === "zh" ? "联系 / 货运需求" : lang === "ru" ? "Контакт / запрос перевозки" : "Contact / freight enquiry";
+interface Props { lang: Lang; page?: typeof CONTACT_COPY.en; email?: string; label?: string; }
+const { lang, email = "bd@hpf.kz", label } = Astro.props;
+const page = Astro.props.page ?? CONTACT_COPY[lang];
+const contactLabel = label ?? (lang === "zh" ? "联系 / 货运需求" : lang === "ru" ? "Контакт / запрос перевозки" : "Contact / freight enquiry");
 ---
 
 <section id="contact" class="contact-panel">
@@ -15,7 +15,7 @@ const contactLabel = lang === "zh" ? "联系 / 货运需求" : lang === "ru" ? "
       <p>{page.lead}</p>
     </div>
     <aside>
-      <span>bd@hpf.kz</span>
+      <span>{email}</span>
       <h3>{page.asideTitle}</h3>
       <p>{page.asideText}</p>
       <small>{page.responseNote}</small>
@@ -23,7 +23,7 @@ const contactLabel = lang === "zh" ? "联系 / 货运需求" : lang === "ru" ? "
   </div>
 
   <div class="shell form-wrap">
-    <form data-enquiry-form data-required-message={page.fields.required} data-mail-subject="HPF.kz freight enquiry">
+    <form data-contact-email={email} data-enquiry-form data-required-message={page.fields.required} data-mail-subject="HPF.kz freight enquiry">
       <div class="form-grid">
         <label>{page.fields.name}<span aria-hidden="true">*</span><input name="name" autocomplete="name" required /></label>
         <label>{page.fields.company}<input name="company" autocomplete="organization" /></label>
@@ -53,7 +53,7 @@ const contactLabel = lang === "zh" ? "联系 / 货运需求" : lang === "ru" ? "
     }
     const data = new FormData(form);
     const lines = Array.from(data.entries()).filter(([key]) => key !== "consent").map(([key, value]) => `${key}: ${String(value).trim() || "—"}`);
-    window.location.href = `mailto:bd@hpf.kz?subject=${encodeURIComponent(form.dataset.mailSubject ?? "HPF.kz freight enquiry")}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = `mailto:${form.dataset.contactEmail ?? "bd@hpf.kz"}?subject=${encodeURIComponent(form.dataset.mailSubject ?? "HPF.kz freight enquiry")}&body=${encodeURIComponent(lines.join("\n"))}`;
   });
 </script>
 

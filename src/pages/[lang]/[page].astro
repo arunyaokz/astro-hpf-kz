@@ -1,28 +1,13 @@
 ---
 export const prerender = true;
-import ContentPage from "../../components/ContentPage.astro";
 import PrivacyPage from "../../components/PrivacyPage.astro";
-import RouteNetworkPage from "../../components/RouteNetworkPage.astro";
-import ServicesPage from "../../components/ServicesPage.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { ROUTE_NETWORK_COPY } from "../../routes-content";
-import { SERVICES_COPY } from "../../services-content";
-import { PAGE_COPY, PRIVACY_COPY, pagePath, type CorePage, type Lang } from "../../site-v2";
-
-const localizedPages = ["services", "routes", "about", "contact", "privacy"] as const;
-type LocalizedPage = (typeof localizedPages)[number];
-
+import { PRIVACY_COPY, pagePath, type Lang } from "../../site-v2";
 export function getStaticPaths() {
-  return (["zh", "ru"] as const).flatMap((lang) =>
-    (["services", "routes", "about", "contact", "privacy"] as const).map((page) => ({ params: { lang, page } })),
-  );
+  return (["zh", "ru"] as const).flatMap((lang) => (["contact", "privacy"] as const).map((page) => ({ params: { lang, page } })));
 }
-
 const lang = Astro.params.lang as Lang;
-const pageKey = Astro.params.page as LocalizedPage;
-if (pageKey === "contact") return Astro.redirect(pagePath(lang, "contact"), 301);
-const meta = pageKey === "privacy" ? PRIVACY_COPY[lang] : pageKey === "services" ? SERVICES_COPY[lang] : pageKey === "routes" ? ROUTE_NETWORK_COPY[lang] : PAGE_COPY[pageKey][lang];
+if (Astro.params.page === "contact") return Astro.redirect(pagePath(lang, "contact"), 301);
+const meta = PRIVACY_COPY[lang];
 ---
-<SiteLayout title={meta.metaTitle} description={meta.metaDescription} lang={lang} active={pageKey as CorePage}>
-  {pageKey === "privacy" ? <PrivacyPage lang={lang} /> : pageKey === "services" ? <ServicesPage lang={lang} /> : pageKey === "routes" ? <RouteNetworkPage lang={lang} /> : <ContentPage lang={lang} pageKey={pageKey} />}
-</SiteLayout>
+<SiteLayout title={meta.metaTitle} description={meta.metaDescription} lang={lang} active="privacy"><PrivacyPage lang={lang} /></SiteLayout>

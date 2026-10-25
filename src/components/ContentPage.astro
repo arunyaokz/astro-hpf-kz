@@ -1,12 +1,15 @@
 ---
+import { Image as EmDashImage } from "emdash/ui";
+import type { CorporatePages } from "../cms/pages";
+import { sanitizeHref } from "emdash";
 import { getCollection } from "astro:content";
 import { COMPANY_STORY, PAGE_COPY, pagePath, type Lang } from "../site-v2";
 import RouteMap from "./RouteMap.astro";
 import CardVisual from "./CardVisual.astro";
 import ContactPanel from "./ContactPanel.astro";
 
-interface Props { lang: Lang; pageKey: "services" | "routes" | "about"; }
-const { lang, pageKey } = Astro.props;
+interface Props { lang: Lang; pageKey: "services" | "routes" | "about"; cms?: CorporatePages["company"]; }
+const { lang, pageKey, cms } = Astro.props;
 const scopeVisuals: Record<Props["pageKey"], string[]> = {
   services: ["customs", "transport", "warehouse", "delivery"],
   routes: ["cargo-route", "customs", "transport", "delivery"],
@@ -23,14 +26,14 @@ const boundaryVisuals: Record<Props["pageKey"], string[]> = {
   about: ["responsibility", "exclusion"],
 };
 const entityVisuals = ["company", "bin", "calendar", "founder", "warehouse"];
-const page = PAGE_COPY[pageKey][lang];
-const companyStory = COMPANY_STORY[lang];
+const page = cms?.page ?? PAGE_COPY[pageKey][lang];
+const companyStory = cms?.story ?? COMPANY_STORY[lang];
 const heroImage = {
   services: { src: "/images/corporate/hero-services-customs.webp", size: { width: 1122, height: 1402 }, alt: { zh: "仓内验货与清关前置作业", en: "Warehouse inspection and customs-ready handling", ru: "Складская проверка и подготовка к таможне" } },
   routes: { src: "/images/corporate/hero-routes-tir.webp", size: { width: 1122, height: 1402 }, alt: { zh: "白色 HPF.kz TIR 公路运输车队穿越哈萨克草原", en: "White HPF.kz TIR road freight convoy across the Kazakh steppe", ru: "Белая автоколонна HPF.kz TIR в казахской степи" } },
   about: { src: "/images/corporate/hero-about-team.webp", size: { width: 1003, height: 1568 }, alt: { zh: "阿拉木图团队讨论跨境路线", en: "Almaty team reviewing a cross-border route", ru: "Команда в Алматы обсуждает трансграничный маршрут" } },
 }[pageKey];
-const labels = {
+const labels = cms?.labels ?? {
   en: { do: "We commit to", dont: "We do not claim", image: "Operational scene visualization", scope: "Scope / operating detail", process: "Process", boundary: "Promise boundary" },
   zh: { do: "我们承诺的", dont: "我们不承诺的", image: "运营场景示意图", scope: "范围 / 运营细节", process: "责任次序", boundary: "承诺边界" },
   ru: { do: "Что мы обязуемся делать", dont: "Чего мы не заявляем", image: "Операционная сценическая визуализация", scope: "Объём / детали работы", process: "Порядок работы", boundary: "Граница обещания" },
@@ -38,7 +41,7 @@ const labels = {
 const facts = pageKey === "about" ? await getCollection("facts") : [];
 const factMap = new Map(facts.map((fact) => [fact.id, fact.data]));
 const entityFactIds = ["legal_name", "bin", "registration_year", "founder", "office_address"];
-const entityLabels = {
+const entityLabels = cms?.entityLabels ?? {
   en: { eyebrow: "Registered entity", title: "Legal identity, documented.", note: "Legal identity: Kazakhstan eGov certificate issued 27 May 2025. Office location: company-provided; building and street verified on 2GIS." },
   zh: { eyebrow: "法人登记", title: "法人身份，有文件可查。", note: "法人身份来源：2025 年 5 月 27 日签发的哈萨克斯坦 eGov 证明。办公地点由公司提供，楼宇及街道经 2GIS 核对。" },
   ru: { eyebrow: "Юридическое лицо", title: "Юридические данные подтверждены документом.", note: "Юридические данные: справка eGov от 27 мая 2025 г. Адрес офиса предоставлен компанией; здание и улица проверены по 2ГИС." },
@@ -62,7 +65,7 @@ const showEntityFact = (id: string) => {
       </div>
     </div>
     <figure>
-      <img src={heroImage.src} alt={heroImage.alt[lang]} width={heroImage.size.width} height={heroImage.size.height} fetchpriority="high" />
+      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={cms.heroAlt} width={heroImage.size.width} height={heroImage.size.height} /> : <img src={heroImage.src} alt={cms?.heroAlt ?? heroImage.alt[lang]} width={heroImage.size.width} height={heroImage.size.height} fetchpriority="high" />}
       <figcaption>{labels.image}</figcaption>
     </figure>
   </section>
@@ -99,8 +102,12 @@ const showEntityFact = (id: string) => {
       <header><p class="eyebrow">{entityLabels.eyebrow}</p><h2 class="section-title">{entityLabels.title}</h2><small>{entityLabels.note}</small></header>
       <dl>
         {entityFactIds.map((id, index) => {
-          const fact = factMap.get(id);
-          return <div><CardVisual kind={entityVisuals[index]} /><span>{String(index + 1).padStart(2, "0")}</span><dt>{fact?.labels[lang]}</dt><dd>{fact?.url ? <a href={fact.url} target="_blank" rel="noreferrer">{showEntityFact(id)}</a> : showEntityFact(id)}</dd></div>;
+          const stored = factMap.get(id);
+          const managed = cms?.entityFacts[index];
+          const fact = managed ? { ...managed, labels: { [lang]: managed.label } } : stored;
+          const value = managed ? (managed.verified ? managed.value : `[${lang === "zh" ? "待确认" : lang === "ru" ? "Ожидает подтверждения" : "Pending confirmation"}]`) : showEntityFact(id);
+          const link = fact?.url ? sanitizeHref(fact.url) : undefined;
+          return <div><CardVisual kind={entityVisuals[index]} /><span>{String(index + 1).padStart(2, "0")}</span><dt>{fact?.labels[lang]}</dt><dd>{link ? <a href={link} target="_blank" rel="noreferrer">{value}</a> : value}</dd></div>;
         })}
       </dl>
     </section>
@@ -143,7 +150,7 @@ const showEntityFact = (id: string) => {
     </div>
   </section>
 
-  {pageKey === "about" ? <ContactPanel lang={lang} /> : <section class="page-cta">
+  {pageKey === "about" ? <ContactPanel lang={lang} page={cms?.contact} email={cms?.contactEmail} label={cms?.contactLabel} /> : <section class="page-cta">
     <div class="shell">
       <div><h2>{page.ctaTitle}</h2><p>{page.ctaText}</p></div>
       <a class="button button--inverse" href={pagePath(lang, "contact")}>{page.ctaButton}</a>

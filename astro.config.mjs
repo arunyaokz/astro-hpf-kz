@@ -15,13 +15,14 @@ export default defineConfig({
   output: "server",
   vite: { plugins: [chineseUI()] },
   i18n: { defaultLocale: "en", locales: ["en", "zh", "ru"] },
-  integrations: [mdx(), sitemap({ filter: (page) => !/\/(?:cms|_emdash)\//.test(new URL(page).pathname) }), react(), emdash({
+  integrations: [mdx(), sitemap({ customPages: ["", "/zh", "/ru"].flatMap((prefix) => ["services", "routes", "about"].map((page) => `https://hpf.kz${prefix}/${page}/`)), filter: (page) => !/\/(?:cms|_emdash)\//.test(new URL(page).pathname) }), react(), emdash({
     database: d1({ binding: "DB" }),
     storage: r2({ binding: "MEDIA" }),
+    plugins: [{ id: "hpf-corporate-pages", version: "1.0.0", entrypoint: new URL("./src/cms/page-policy.mjs", import.meta.url).pathname }],
     fonts: false,
     toolbar: false,
     admin: {
-      siteName: "华鹏飞 · 新闻管理",
+      siteName: "华鹏飞 · 官网管理",
       logo: "/brand/hpf-mark.svg",
       favicon: "/favicon.svg",
       locales: ["zh-CN"],

@@ -1,8 +1,11 @@
 ---
-export const prerender = true;
+export const prerender = false;
 import ServicesPage from "../components/ServicesPage.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { SERVICES_COPY } from "../services-content";
-const page = SERVICES_COPY.en;
+import { loadCorporatePage } from "../cms/pages";
+const cms = await loadCorporatePage("services", "en");
+if (!cms) return Astro.rewrite("/404");
+const page = cms.page;
+Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
-<SiteLayout title={page.metaTitle} description={page.metaDescription} lang="en" active="services"><ServicesPage lang="en" /></SiteLayout>
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang={"en"} active="services"><ServicesPage lang={"en"} cms={cms} /></SiteLayout>

@@ -1,15 +1,17 @@
 ---
+import type { CorporatePages } from "../cms/pages";
 import type { Lang } from "../site-v2";
 import type { CorridorId } from "../routes-content";
 
 interface Props {
   lang: Lang;
+  places?: CorporatePages["routes"]["mapPlaces"];
   note: string;
   corridors: Array<{ id: CorridorId; label: string; name: string }>;
 }
 
 const { lang, note, corridors } = Astro.props;
-const places = {
+const places = Astro.props.places ?? {
   zh: { europe: "欧洲", china: "中国", kz: "哈萨克斯坦", north: ["俄罗斯", "白俄罗斯"], middle: ["里海", "高加索"], south: ["乌兹别克斯坦", "伊朗 · 土耳其"] },
   en: { europe: "Europe", china: "China", kz: "Kazakhstan", north: ["Russia", "Belarus"], middle: ["Caspian", "Caucasus"], south: ["Uzbekistan", "Iran · Türkiye"] },
   ru: { europe: "Европа", china: "Китай", kz: "Казахстан", north: ["Россия", "Беларусь"], middle: ["Каспий", "Кавказ"], south: ["Узбекистан", "Иран · Турция"] },

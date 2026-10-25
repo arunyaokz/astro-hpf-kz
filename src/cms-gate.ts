@@ -45,11 +45,16 @@ export const onRequest = defineMiddleware(async (context, next) => {
     context.cookies.set("emdash-locale", "zh-CN", { path: "/", sameSite: "lax", maxAge: 31536000 });
     return context.redirect(context.url.pathname + context.url.search, 303);
   }
+  if (/^\/_emdash\/admin\/content\/(service_pages|route_pages|company_pages)(\/|$)/.test(context.url.pathname) && !context.url.searchParams.has("locale")) {
+    const localized = new URL(context.url);
+    localized.searchParams.set("locale", "zh");
+    return context.redirect(localized.pathname + localized.search, 303);
+  }
   const response = await next();
   response.headers.set("Cache-Control", "private, no-store");
   response.headers.set("Referrer-Policy", "same-origin");
   if (context.url.pathname.startsWith("/_emdash/admin") && response.headers.get("Content-Type")?.includes("text/html")) {
-    return new HTMLRewriter().on("title", { element: (element) => { element.setInnerContent("华鹏飞 · 新闻管理"); } }).transform(response);
+    return new HTMLRewriter().on("title", { element: (element) => { element.setInnerContent("华鹏飞 · 官网管理"); } }).transform(response);
   }
   return response;
 });

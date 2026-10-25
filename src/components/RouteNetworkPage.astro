@@ -1,12 +1,14 @@
 ---
+import { Image as EmDashImage } from "emdash/ui";
+import type { CorporatePages } from "../cms/pages";
 import { ROUTE_NETWORK_COPY } from "../routes-content";
 import { pagePath, type Lang } from "../site-v2";
 import CorridorNetworkMap from "./CorridorNetworkMap.astro";
 
-interface Props { lang: Lang; }
-const { lang } = Astro.props;
-const page = ROUTE_NETWORK_COPY[lang];
-const labels = {
+interface Props { lang: Lang; cms?: CorporatePages["routes"]; }
+const { lang, cms } = Astro.props;
+const page = cms?.page ?? ROUTE_NETWORK_COPY[lang];
+const labels = cms?.labels ?? {
   zh: { scene: "中亚跨境公路运输场景", route: "候选节点", output: "交付物", triggers: "触发复核的四种情况", checklist: "路线询价清单" },
   en: { scene: "Central Asian cross-border road operation", route: "Candidate nodes", output: "Outputs", triggers: "Four triggers for review", checklist: "Route-request checklist" },
   ru: { scene: "Трансграничная автоперевозка в Центральной Азии", route: "Кандидатные узлы", output: "Результат", triggers: "Четыре повода для пересмотра", checklist: "Данные для запроса маршрута" },
@@ -28,8 +30,8 @@ const labels = {
       </dl>
     </div>
     <figure class="hero-image">
-      <img src="/images/corporate/hero-routes-tir.webp" alt={labels.scene} width="1122" height="1402" fetchpriority="high" />
-      <figcaption>HPF.kz / Eurasian route planning</figcaption>
+      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={labels.scene} width={1122} height={1402} /> : <img src="/images/corporate/hero-routes-tir.webp" alt={labels.scene} width="1122" height="1402" fetchpriority="high" />}
+      <figcaption>{cms?.heroCaption ?? "HPF.kz / Eurasian route planning"}</figcaption>
     </figure>
   </section>
 
@@ -40,7 +42,7 @@ const labels = {
         <h2 class="section-title">{page.atlasTitle}</h2>
         <p>{page.atlasLead}</p>
       </header>
-      <CorridorNetworkMap lang={lang} note={page.atlasNote} corridors={page.corridors} />
+      <CorridorNetworkMap lang={lang} note={page.atlasNote} corridors={page.corridors} places={cms?.mapPlaces} />
     </div>
   </section>
 
@@ -94,7 +96,7 @@ const labels = {
       </ol>
 
       <aside class="update-card">
-        <div><p class="eyebrow">Human response / exception update</p><h3>{page.updateTitle}</h3><p>{page.updateText}</p></div>
+        <div><p class="eyebrow">{cms?.updateEyebrow ?? "Human response / exception update"}</p><h3>{page.updateTitle}</h3><p>{page.updateText}</p></div>
         <ol>{page.updateItems.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ol>
       </aside>
     </div>
@@ -128,7 +130,7 @@ const labels = {
 
   <section class="route-cta">
     <div class="shell route-cta__inner">
-      <div><p class="eyebrow">HPF.kz / route desk</p><h2>{page.promiseTitle}</h2><p>{page.promiseText}</p></div>
+      <div><p class="eyebrow">{cms?.ctaEyebrow ?? "HPF.kz / route desk"}</p><h2>{page.promiseTitle}</h2><p>{page.promiseText}</p></div>
       <a class="button button--inverse" href={pagePath(lang, "contact")}>{page.ctaButton}</a>
     </div>
   </section>
