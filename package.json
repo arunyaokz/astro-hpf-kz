@@ -40,11 +40,12 @@
     "facts:check": "node scripts/check-facts.mjs",
     "build": "npm run facts:check && astro build",
     "cf-typegen": "wrangler types",
-    "check": "npm run build && tsc --noEmit && wrangler deploy --dry-run",
+    "check": "npm run check:admin-chinese && npm run build && tsc --noEmit && wrangler deploy --dry-run",
     "deploy": "wrangler deploy",
     "dev": "astro dev",
     "preview": "astro build && wrangler dev",
-    "postbuild": "node scripts/restore-legacy-assets.mjs"
+    "postbuild": "node scripts/restore-legacy-assets.mjs",
+    "check:admin-chinese": "node scripts/verify-admin-chinese.mjs"
   },
   "type": "module",
   "engines": {

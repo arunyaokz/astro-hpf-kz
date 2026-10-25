@@ -1,0 +1,355 @@
+{
+  "date": "2026-10-26",
+  "version": "0fcaafe4-c128-443b-b923-afbababaeda9",
+  "catalogue_messages": 3512,
+  "supplemental_translations": 1928,
+  "ui_message_english_remaining": 0,
+  "icu_arguments": "preserved",
+  "plural_selectors": "preserved",
+  "markup": "preserved",
+  "business_content_and_stored_values": "unchanged",
+  "browser_pages": 28,
+  "browser_checks": [
+    {
+      "path": "calendar",
+      "heading": "日历",
+      "subheadings": [
+        "2026年10月"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "media",
+      "heading": "媒体库",
+      "subheadings": [],
+      "englishControls": [],
+      "settingsLinks": [
+        {
+          "text": "查看设置",
+          "href": "/_emdash/admin/settings/media-usage"
+        }
+      ],
+      "preservedLiterals": []
+    },
+    {
+      "path": "comments",
+      "heading": "评论",
+      "subheadings": [],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "menus",
+      "heading": "菜单",
+      "subheadings": [
+        "暂无菜单"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "redirects",
+      "heading": "重定向",
+      "subheadings": [],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "widgets",
+      "heading": "小部件",
+      "subheadings": [
+        "可用小部件"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "sections",
+      "heading": "区块",
+      "subheadings": [
+        "暂无区块"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "bylines",
+      "heading": "署名",
+      "subheadings": [
+        "还没有署名"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "content-types",
+      "heading": "内容类型",
+      "subheadings": [
+        "内容块类型"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "byline-schema",
+      "heading": "署名架构",
+      "subheadings": [],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "users",
+      "heading": "用户",
+      "subheadings": [],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "plugins-manager",
+      "heading": "插件",
+      "subheadings": [
+        "hpf-corporate-pages"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "import/wordpress",
+      "heading": "从 WordPress 导入",
+      "subheadings": [
+        "粘贴您的迁移密钥",
+        "输入您的 WordPress 站点 URL",
+        "上传 WordPress 导出文件"
+      ],
+      "englishControls": [],
+      "settingsLinks": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings",
+      "heading": "设置",
+      "subheadings": [
+        "站点",
+        "媒体",
+        "安全设置",
+        "API 令牌",
+        "邮件设置",
+        "语言"
+      ],
+      "englishControls": [],
+      "settingsLinks": [
+        {
+          "text": "常规\n站点标识、徽标、网站图标和阅读偏好",
+          "href": "/_emdash/admin/settings/general"
+        },
+        {
+          "text": "社交链接\n社交媒体个人资料链接",
+          "href": "/_emdash/admin/settings/social"
+        },
+        {
+          "text": "搜索引擎优化\n搜索引擎优化和验证",
+          "href": "/_emdash/admin/settings/seo"
+        },
+        {
+          "text": "媒体使用跟踪\n跟踪内容中媒体的使用位置",
+          "href": "/_emdash/admin/settings/media-usage"
+        },
+        {
+          "text": "安全\n管理您的通行密钥和认证",
+          "href": "/_emdash/admin/settings/security"
+        },
+        {
+          "text": "自助注册域\n允许来自特定域的用户注册",
+          "href": "/_emdash/admin/settings/allowed-domains"
+        },
+        {
+          "text": "API 令牌\n创建个人访问令牌以通过程序访问 API",
+          "href": "/_emdash/admin/settings/api-tokens"
+        },
+        {
+          "text": "邮箱\n查看邮件提供商状态并发送测试邮件",
+          "href": "/_emdash/admin/settings/email"
+        },
+        {
+          "text": "备份\n下载备份，并设置自动备份到存储空间",
+          "href": "/_emdash/admin/settings/backups"
+        },
+        {
+          "text": "迁移\n将此站点移至另一个 EmDash 安装，或导入站点包",
+          "href": "/_emdash/admin/settings/transfer"
+        }
+      ],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/general",
+      "heading": "常规设置",
+      "subheadings": [
+        "站点标识",
+        "阅读"
+      ],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/social",
+      "heading": "社交链接",
+      "subheadings": [
+        "社交资料"
+      ],
+      "englishControls": [],
+      "preservedLiterals": [
+        "Twitter",
+        "GitHub",
+        "Facebook",
+        "Instagram",
+        "YouTube"
+      ]
+    },
+    {
+      "path": "settings/seo",
+      "heading": "SEO 设置",
+      "subheadings": [
+        "搜索引擎优化",
+        "Google 验证 / Bing 验证",
+        "robots.txt"
+      ],
+      "englishControls": [],
+      "preservedLiterals": [
+        "robots.txt"
+      ]
+    },
+    {
+      "path": "settings/media-usage",
+      "heading": "媒体使用跟踪",
+      "subheadings": [
+        "状态",
+        "索引现有内容"
+      ],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/security",
+      "heading": "安全设置",
+      "subheadings": [
+        "通行密钥",
+        "添加新的通行密钥"
+      ],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/allowed-domains",
+      "heading": "自助注册域",
+      "subheadings": [
+        "允许的域名"
+      ],
+      "englishControls": [],
+      "finalRecheck": {
+        "switchLabel": "开关",
+        "remainingEnglishControls": 0
+      },
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/api-tokens",
+      "heading": "API 令牌",
+      "subheadings": [
+        "创建新令牌",
+        "API 令牌"
+      ],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/email",
+      "heading": "邮件设置",
+      "subheadings": [
+        "邮件管道"
+      ],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/backups",
+      "heading": "备份",
+      "subheadings": [
+        "下载备份",
+        "自动备份",
+        "存储的备份",
+        "恢复到指定时间点"
+      ],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "settings/transfer",
+      "heading": "迁移",
+      "subheadings": [
+        "导出",
+        "导入",
+        "批准请求"
+      ],
+      "englishControls": [],
+      "finalRecheck": {
+        "exportHeading": "导出",
+        "remainingEnglishControls": 0
+      },
+      "preservedLiterals": []
+    },
+    {
+      "path": "taxonomies/category?locale=zh",
+      "heading": "分类",
+      "subheadings": [],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "taxonomies/tag?locale=zh",
+      "heading": "标签",
+      "subheadings": [],
+      "englishControls": [],
+      "preservedLiterals": []
+    },
+    {
+      "path": "content/header_settings/01M5SGHE2MKGPFCVDE78ESJD2J?locale=zh",
+      "heading": "顶部导航",
+      "subheadings": [
+        "发布",
+        "网址与语言",
+        "所有权",
+        "署名",
+        "翻译"
+      ],
+      "englishControls": [],
+      "preservedLiterals": [
+        "my-post-slug"
+      ]
+    },
+    {
+      "path": "content/news/new?locale=zh",
+      "heading": "新建新闻",
+      "subheadings": [
+        "网址与语言",
+        "署名"
+      ],
+      "englishControls": [],
+      "preservedLiterals": [
+        "my-post-slug"
+      ]
+    }
+  ]
+}

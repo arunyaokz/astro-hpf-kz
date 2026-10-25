@@ -1,6 +1,6 @@
 # HPF.kz 官网状态
 
-更新：2026-10-25（Asia/Almaty）
+更新：2026-10-26（Asia/Almaty）
 
 - 官网源码在 `/Users/arunyao/Developer/HPFKZ/website`，独立仓库 `arunyaokz/astro-hpf-kz`。
 - 生产基准源码来自 `origin/codex/services-page` 的 `abf88a5`；`main` 旧于生产，不能直接覆盖。
@@ -12,7 +12,7 @@
 - 官网专用 D1：`hpf-website-cms`（2ec63897-0d36-49a5-9ad2-0ac742f884fa）；R2：`hpf-website-media`；定时任务每分钟执行。密钥保存在 Cloudflare Secrets，受保护本地备份在被 Git 忽略的 `ops/production-snapshot/credentials/`。
 - 本地完整验证通过：草稿匿名404→发布可见→撤回404、语言隔离、匿名创建401、图片上传及匿名读取。测试内容已清理。构建、TypeScript、发布模拟均通过；原有11项业务事实提醒仍待确认。
 - 6个历史 CSS/JS 地址在生产已逐个恢复200。构建 postbuild 保留历史资源及依赖，防止旧HTML缓存继续404。线上中文首页浏览器检查：无失败图片、无400以上资源请求，新闻链接正确。
-- 最终生产版本：`a2acf52f-6782-41fc-b974-962959871be6`，2026-10-25 发布。
+- 最终生产版本：`0fcaafe4-c128-443b-b923-afbababaeda9`，2026-10-26 发布。
 - 发布详情、检查记录见 `ops/production-check.json`；使用说明见 `ops/EmDash新闻后台使用说明.md`。
 - 当前改动尚未推送远端。正式后台高级插件等非新闻页面未逐屏完成中文验收。
 
@@ -69,3 +69,12 @@
 - 使用说明：`ops/EmDash顶部导航使用说明.md`；首次导入：`src/cms/header-import.json`；本地验收：`scripts/verify-header-local.py`；线上只读验收：`scripts/verify-header-production.py`；线上记录：`ops/header-production-check.json`。
 
 - 顶部导航最终线上验收：16页文字、导航链接、当前栏目高亮及HTML缓存策略均与迁移前一致；3个新闻入口、6个旧资源正常。500px手机视口菜单可打开/关闭，三语切换指向对应公司介绍页面；中文编辑页链接已标为必填，发布侧栏中文已核验，不显示无关SEO设置。
+
+## 后台底座完整中文补丁（2026-10-26）
+
+- 完整审阅 EmDash 1.3.1 的3512条简体中文消息，新增补充词典1928条翻译及术语修订；普通界面英文扫描为0，品牌、代码示例、协议和编程语言等保留原样。
+- 覆盖日历、媒体库、菜单、小部件、分类/标签、署名字段、内容类型、用户权限、插件、设置、安全、令牌、邮件、备份、导入导出及错误提示。默认分类标签只在显示位置中文化；不改数据库标签、表单原始值、字段标识、文章或账号。
+- 翻译器按ICU结构处理，完整保留变量名称、复数与选择分支、格式参数、独立数字占位符和标签。补充静态控件翻译，并保留组件标识；修正导出/导入等软件术语。
+- `npm run check:admin-chinese` 已接入 `npm run check`。3512条消息的结构、标记、普通英文遗漏、字段值与业务内容隔离，以及带查询参数的模块和开关组件标识测试均通过。完整构建、TypeScript与Wrangler发布模拟通过，gzip约2904KiB。
+- 线上逐屏只读验收28个后台页面，开关提示与迁移页的软件术语复核通过；16个官网页面、3个新闻入口及6个旧资源地址均正常。本次未改生产内容、用户、权限、令牌或站点设置。
+- 实现：`src/cms/chinese-ui.mjs`、`src/cms/localize-admin.mjs`、`src/cms/zh-CN-extra-words.json`；回归：`scripts/verify-admin-chinese.mjs`；记录：`ops/admin-chinese-check.json`、`ops/admin-chinese-public-check.json`；说明：`ops/EmDash后台中文说明.md`。

@@ -1,6 +1,8 @@
-// EmDash 1.3.1 ships a partial zh-CN catalogue. Fill the remaining news-editing
-// labels at build time, without changing installed packages or user content.
-const words = {
+import extraWords from './zh-CN-extra-words.json' with {type:'json'};
+import {localizeCatalogue,localizeUiExpressions} from './localize-admin.mjs';
+// EmDash 1.3.1 ships a partial zh-CN catalogue. Complete admin UI text at build
+// time without changing installed packages, stored metadata or user content.
+const manualWords = Object.assign(Object.create(null),{
   'Live version':'线上版本','Visitors see this published version':'访客正在查看此已发布版本','Publication date':'发布时间','Drop an image here or browse':'将图片拖到这里或选择图片','Drop an image here or ':'将图片拖到这里或','browse':'选择图片',
   'Unpublish {itemLabel}':'撤下{itemLabel}','Unpublish ':'撤下','Unpublished':'未发布','Unpublished changes':'未发布的修改','Filter by date range: {rangeLabel}':'按日期范围筛选：{rangeLabel}','Filter by date range: ':'按日期范围筛选：',
   'Clear selection':'清除选择','Show options':'显示选项','Close settings':'关闭设置','Created and updated':'创建与更新时间','Drag to reorder ':'拖动以调整顺序：','URL & language':'网址与语言','Choose bylines':'选择署名','Why are bylines shown in this order?':'为什么署名按此顺序显示？','Why is this important for social sharing?':'这对社交分享有什么影响？','Why is this important for search result titles?':'这对搜索结果标题有什么影响？','Why is this important for search result summaries?':'这对搜索结果摘要有什么影响？','Why is this important for duplicate pages?':'这如何避免重复页面？','Why is this important for search visibility?':'这对搜索可见性有什么影响？','Item ':'条目 ',
@@ -41,30 +43,35 @@ const words = {
   'Removed an HTML block':'移除了 HTML 内容块','Removed a code block':'移除了代码块','Edited a list item':'编辑了列表项','Moved a table':'移动了表格','Table inserted':'已插入表格',
   'Delete rows':'删除行','Add row below':'在下方添加行','Select table':'选择表格','Header column added':'已添加表头列','Distribute columns evenly':'均分列宽',
   'Number of posts':'新闻数量','Shown to readers in this order.':'将按此顺序展示给读者。','Search bylines…':'搜索署名…','No byline':'暂无署名','Byline credits':'作者署名',
-};
+});
+
+const words=Object.assign(Object.create(null),extraWords,manualWords);
 
 export default function chineseUI() {
   return {
-    name: 'hpf-chinese-news-admin', enforce: 'pre',
+    name: 'hpf-chinese-admin', enforce: 'pre',
     transform(code, id) {
-      if (id.includes('/@cloudflare/kumo/dist/chunks/') && id.endsWith('.js')) {
-        const translated = code.replace(/"(?:\\.|[^"\\])*"/g, literal => { try { const original=JSON.parse(literal); return words[original] ? JSON.stringify(words[original]) : literal; } catch { return literal; } });
-        return translated === code ? undefined : { code: translated, map: null };
+      const cleanId=id.split("?",1)[0];
+      if (cleanId.includes('/@cloudflare/kumo/dist/chunks/') && cleanId.endsWith('.js')) {
+        const switchLocalized=cleanId.includes("/switch-")?code.replace(/(typeof (\w+) == "string" \? \2 : )"Switch"/g,'$1"开关"'):code;
+        const translated = switchLocalized.replace(/"(?:\\.|[^"\\])*"/g, literal => { try { const original=JSON.parse(literal); return manualWords[original] ? JSON.stringify(manualWords[original]) : literal; } catch { return literal; } });
+        const result=localizeUiExpressions(translated,words);
+        return result === code ? undefined : { code: result, map: null };
       }
-      if (!id.includes('/@emdash-cms/admin/dist/') || !id.endsWith('.js')) return;
+      if (!cleanId.includes('/@emdash-cms/admin/dist/') || !cleanId.endsWith('.js')) return;
       let result = code;
       if (code.includes('src/locales/zh-CN/messages.mjs')) {
         result = code.replace(/JSON\.parse\(("(?:\\.|[^"\\])*")\)/, (_, literal) => {
           const catalogue = JSON.parse(JSON.parse(literal));
-          const translate = value => typeof value === 'string' ? (words[value] ?? value) : Array.isArray(value) ? value.map(translate) : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).map(([key, item]) => [key, translate(item)])) : value;
-          return JSON.stringify(Object.fromEntries(Object.entries(catalogue).map(([key,value]) => [key,translate(value)])));
+          return JSON.stringify(localizeCatalogue(catalogue,words));
         });
-      } else if (!id.includes('/messages-')) {
+      } else if (!cleanId.includes('/messages-')) {
         result = code.replace(/(\bmessage:\s*)("(?:\\.|[^"\\])*")/g, (match, prefix, literal) => {
           const original = JSON.parse(literal);
           return words[original] ? prefix + JSON.stringify(words[original]) : match;
         });
       }
+      if(!cleanId.includes('/messages-')&&!cleanId.includes('/locales/')) result=localizeUiExpressions(result,words);
       return result === code ? undefined : { code: result, map: null };
     },
   };
