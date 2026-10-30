@@ -347,6 +347,34 @@ export interface New {
   terms?: Record<string, TaxonomyTerm[]>;
 }
 
+export interface Product {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  summary?: string;
+  price_minor?: string;
+  currency?: string;
+  sku_id?: string;
+  revision_ref?: string;
+  revision_hash?: string;
+  category?: "跨境运输" | "危险品运输" | "冷链运输" | "海关服务";
+  pricing_mode?: string;
+  service_scope?: string;
+  highlights?: string;
+  service_area?: string;
+  hero_image?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; caption?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
+  service_lead_time?: string;
+  native_reviewed?: boolean;
+  pricing_method?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 declare module "emdash" {
   interface EmDashCollections {
     service_pages: ServicePage;
@@ -357,5 +385,6 @@ declare module "emdash" {
     contact_settings: ContactSetting;
     header_settings: HeaderSetting;
     news: New;
+    products: Product;
   }
 }
