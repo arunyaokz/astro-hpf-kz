@@ -49,6 +49,10 @@ const contactLabel = label ?? (lang === "zh" ? "联系 / 货运需求" : lang ==
 <script>
   const form = document.querySelector<HTMLFormElement>("[data-enquiry-form]");
   const status = form?.querySelector<HTMLElement>("[data-form-status]");
+  // 从运输产品页点「询价」过来时，把产品名带进「货物」一栏（只填空栏，访客可改）
+  const product = new URLSearchParams(window.location.search).get("product")?.trim().slice(0, 200);
+  const cargo = form?.querySelector<HTMLTextAreaElement>("textarea[name=cargo]");
+  if (product && cargo && !cargo.value) cargo.value = product;
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!form.checkValidity()) {

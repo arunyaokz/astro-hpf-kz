@@ -1,0 +1,39 @@
+---
+import { Image as EmDashImage } from "emdash/ui";
+import { listProducts, productPath, productInquiryPath, productCategory, productPrice, PRODUCT_COPY } from "../products";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import type { Lang } from "../site-v2";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const text = PRODUCT_COPY[lang];
+const { entries, nextCursor } = await listProducts(lang, Astro.url.searchParams.get("cursor") ?? undefined);
+Astro.response.headers.set("Cache-Control", "private, no-store");
+---
+<SiteLayout title={`${text.title} | HPF.kz`} description={text.lead} lang={lang} active="services" canonicalPath={productPath(lang)} alternates={(["en", "zh", "ru"] as const).map((code) => ({ lang: code, path: productPath(code) }))}>
+  <section class="products-hero"><img class="hero-photo" src="/images/corporate/hero-routes-tir.webp" alt="" width="1536" height="1024" fetchpriority="high" /><div class="shell"><p class="eyebrow">{text.eyebrow}</p><h1 class="display">{text.title}</h1><p class="lead">{text.lead}</p></div></section>
+  <section class="shell products-content">
+    {entries.length === 0 ? <p class="empty">{text.empty}</p> : <div class="product-grid">{entries.map(({ data }) => {
+      const price = productPrice(data, lang);
+      return <article class="product-card">
+        <a class="card-image" href={productPath(lang, data.slug)} tabindex="-1" aria-hidden="true">{data.hero_image ? <EmDashImage image={data.hero_image} alt="" width={800} height={500} /> : <img src="/images/corporate/hero-routes-tir.webp" alt="" width="800" height="500" loading="lazy" />}</a>
+        <div class="card-body">
+          <p class="meta">{[productCategory(data.category, lang), data.service_area].filter(Boolean).join(" · ")}</p>
+          <h2><a href={productPath(lang, data.slug)}>{data.title}</a></h2>
+          {data.summary && <p class="summary">{data.summary}</p>}
+          <p class="price">{price ?? text.quote}</p>
+          <div class="actions"><a class="button button--primary" href={productInquiryPath(lang, data.title)}>{text.inquire}</a><a class="more" href={productPath(lang, data.slug)}>{text.details} →</a></div>
+        </div>
+      </article>;
+    })}</div>}
+    {nextCursor && <a class="next" href={`${productPath(lang)}?cursor=${encodeURIComponent(nextCursor)}`}>{text.next} →</a>}
+  </section>
+</SiteLayout>
+<style>
+.products-hero{position:relative;overflow:hidden;color:#fff}.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.products-hero::after{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,3,18,.72),rgba(5,3,18,.35) 60%,rgba(5,3,18,.1));content:""}.products-hero .shell{position:relative;z-index:1;display:grid;gap:1.25rem;padding-block:10rem 5rem}.products-hero .eyebrow{color:var(--electric)}.products-hero h1{margin:0;color:#fff;max-width:16ch}.products-hero .lead{color:rgba(255,255,255,.86);max-width:40rem}
+.products-content{padding-block:4.5rem 7rem;min-height:24rem}.empty{padding:3rem 0;border-block:1px solid var(--line);color:var(--muted)}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(20rem,1fr));gap:1.5rem}.product-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:1.25rem;background:#fff}
+.card-image{display:block;height:13rem;background:var(--mist);overflow:hidden}.card-image :global(img){display:block;width:100%;height:100%;object-fit:cover}
+.card-body{display:flex;flex:1;flex-direction:column;gap:.75rem;padding:1.5rem}.meta{margin:0;color:var(--violet);font-size:.8rem}.card-body h2{margin:0;font-size:1.3rem;line-height:1.4}.card-body h2 a:hover{color:var(--violet)}.summary{margin:0;color:var(--muted);font-size:.95rem}.price{margin:0;font-weight:600}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:auto;padding-top:.75rem}.more{color:var(--violet);font-size:.9rem}.next{display:inline-block;margin-top:2rem;color:var(--violet)}
+@media(max-width:800px){.products-hero .shell{padding-block:7rem 3rem}.products-content{padding-block:3rem 5rem}.product-grid{grid-template-columns:1fr}}
+</style>

@@ -78,3 +78,12 @@
 - `npm run check:admin-chinese` 已接入 `npm run check`。3512条消息的结构、标记、普通英文遗漏、字段值与业务内容隔离，以及带查询参数的模块和开关组件标识测试均通过。完整构建、TypeScript与Wrangler发布模拟通过，gzip约2904KiB。
 - 线上逐屏只读验收28个后台页面，开关提示与迁移页的软件术语复核通过；16个官网页面、3个新闻入口及6个旧资源地址均正常。本次未改生产内容、用户、权限、令牌或站点设置。
 - 实现：`src/cms/chinese-ui.mjs`、`src/cms/localize-admin.mjs`、`src/cms/zh-CN-extra-words.json`；回归：`scripts/verify-admin-chinese.mjs`；记录：`ops/admin-chinese-check.json`、`ops/admin-chinese-public-check.json`；说明：`ops/EmDash后台中文说明.md`。
+
+## 运输产品栏目（Horiza 商户独立站，2026-10-30，本地完成、未部署）
+
+- 老板 10-30 定：hpf.kz 作为 Horiza 的商户独立站和客户；HPF 的运输服务（中国至欧洲 TIR、电池危险品、冷链等）在 Horiza 当产品卖，官网只是宣传站。
+- 新增 `products`（运输产品，16 字段）：Horiza 同步约定的 7 个基础字段 + 询价标记 + 4 个服务资料字段（服务范围、服务区域 / 线路、时效、计价方式），另有官网自管的分类、服务要点、图片、译文已校对。只建结构，不写任何产品内容。
+- 三语页面 `/products/`、`/zh/products/`、`/ru/products/` 及详情：实景大图页头、浅色正文；未填价格或询价标记显示「按需报价」；「询价」带产品名跳到联系表单并预填「货物」。顶部导航入口待上线后在后台加。
+- 本地验收：`scripts/verify-products-local.py` 全过；电脑与手机宽度浏览器检查、询价预填通过；`npm run check` 通过（gzip 约 2912 KiB）。
+- 用 Horiza 后台同步模块对本地站联调（`scripts/verify-horiza-sync-local.mts`）：定价服务产品建草稿 → 发布 → 页面显示服务资料与价格，通过。两处卡在 Horiza：官网有中俄译稿时同步因「产品重复」停止；「按需报价」产品被一律拒写。
+- 上线需老板：生产后台执行增量结构迁移、部署、在后台建 Horiza 令牌并自己粘进 Horiza。说明：`ops/EmDash运输产品使用说明.md`。

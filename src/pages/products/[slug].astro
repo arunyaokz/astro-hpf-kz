@@ -1,0 +1,8 @@
+---
+export const prerender = false;
+import ProductDetail from "../../components/ProductDetail.astro";
+import { loadProductEntry } from "../../products";
+const entry = await loadProductEntry("en", Astro.params.slug ?? "");
+if (!entry) return Astro.rewrite("/404");
+---
+<ProductDetail lang="en" entry={entry} />

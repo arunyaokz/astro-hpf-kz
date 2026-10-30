@@ -1,0 +1,40 @@
+---
+import { Image as EmDashImage } from "emdash/ui";
+import { productPath, productInquiryPath, productCategory, productPrice, lines, PRODUCT_COPY, type ProductData } from "../products";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import type { Lang } from "../site-v2";
+interface Props { lang: Lang; entry: { data: ProductData }; }
+const { lang, entry } = Astro.props;
+const { data } = entry;
+const text = PRODUCT_COPY[lang];
+const price = productPrice(data, lang);
+const highlights = lines(data.highlights);
+Astro.response.headers.set("Cache-Control", "private, no-store");
+---
+<SiteLayout title={`${data.title} | HPF.kz`} description={data.summary ?? text.lead} lang={lang} active="services" canonicalPath={productPath(lang, data.slug)}>
+  <section class="product-hero">
+    {data.hero_image ? <EmDashImage class="hero-photo" image={data.hero_image} alt="" width={1600} height={900} /> : <img class="hero-photo" src="/images/corporate/hero-routes-tir.webp" alt="" width="1536" height="1024" fetchpriority="high" />}
+    <div class="shell"><a class="back" href={productPath(lang)}>← {text.back}</a><p class="eyebrow">{productCategory(data.category, lang) || text.eyebrow}</p><h1 class="display">{data.title}</h1>{data.summary && <p class="lead">{data.summary}</p>}</div>
+  </section>
+  <section class="shell product-body">
+    <div class="facts">
+      <dl>
+        {data.service_area && <div><dt>{text.route}</dt><dd>{data.service_area}</dd></div>}
+        {data.service_scope && <div><dt>{text.scope}</dt><dd>{data.service_scope}</dd></div>}
+        {data.service_lead_time && <div><dt>{text.leadTime}</dt><dd>{data.service_lead_time}</dd></div>}
+        {data.pricing_method && <div><dt>{text.method}</dt><dd>{data.pricing_method}</dd></div>}
+        <div><dt>{text.price}</dt><dd>{price ?? text.quote}</dd></div>
+      </dl>
+      <a class="button button--primary" href={productInquiryPath(lang, data.title)}>{text.inquire}</a>
+    </div>
+    {highlights.length > 0 && <div class="highlights"><h2>{text.highlights}</h2><ul>{highlights.map((item) => <li>{item}</li>)}</ul></div>}
+  </section>
+</SiteLayout>
+<style>
+.product-hero{position:relative;overflow:hidden;color:#fff}.product-hero :global(.hero-photo),.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.product-hero::after{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,3,18,.74),rgba(5,3,18,.35) 60%,rgba(5,3,18,.1));content:""}
+.product-hero .shell{position:relative;z-index:1;display:grid;gap:1.1rem;justify-items:start;padding-block:9rem 4.5rem}.back{color:rgba(255,255,255,.8);font-size:.9rem}.product-hero .eyebrow{color:var(--electric)}.product-hero h1{margin:0;color:#fff;max-width:20ch}.product-hero .lead{margin:0;color:rgba(255,255,255,.86);max-width:42rem}
+.product-body{display:grid;grid-template-columns:minmax(18rem,.8fr) minmax(0,1.2fr);gap:clamp(2rem,6vw,5rem);align-items:start;padding-block:4rem 6rem}
+.facts{display:grid;gap:1.5rem;justify-items:start;padding:1.75rem;border:1px solid var(--line);border-radius:1.25rem;background:#fff}dl{display:grid;margin:0;width:100%}dl div{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding-block:.75rem;border-bottom:1px solid var(--line)}dt{color:var(--muted)}dd{margin:0;font-weight:600}
+.highlights h2{margin-top:0;font-size:1.4rem}.highlights ul{display:grid;gap:.6rem;padding-left:1.2rem}
+@media(max-width:800px){.product-hero .shell{padding-block:7rem 3rem}.product-body{grid-template-columns:1fr;padding-block:2.5rem 4rem}}
+</style>
