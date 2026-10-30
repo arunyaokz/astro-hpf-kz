@@ -22,7 +22,8 @@ export default defineConfig({
     storage: r2({ binding: "MEDIA" }),
     plugins: [{ id: "hpf-corporate-pages", version: "1.0.0", entrypoint: new URL("./src/cms/page-policy.mjs", import.meta.url).pathname }],
     fonts: false,
-    toolbar: false,
+    // Signed-in editors get EmDash's page toolbar to edit news in place.
+    toolbar: "server",
     admin: {
       siteName: "华鹏飞 · 官网管理",
       logo: "/brand/hpf-mark.svg",
