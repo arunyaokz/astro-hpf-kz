@@ -1,6 +1,6 @@
 import extraWords from './zh-CN-extra-words.json' with {type:'json'};
 import {localizeCatalogue,localizeUiExpressions} from './localize-admin.mjs';
-// EmDash 1.3.1 ships a partial zh-CN catalogue. Complete admin UI text at build
+// EmDash 1.4.0 ships a partial zh-CN catalogue. Complete admin UI text at build
 // time without changing installed packages, stored metadata or user content.
 const manualWords = Object.assign(Object.create(null),{
   'Live version':'线上版本','Visitors see this published version':'访客正在查看此已发布版本','Publication date':'发布时间','Drop an image here or browse':'将图片拖到这里或选择图片','Drop an image here or ':'将图片拖到这里或','browse':'选择图片',
