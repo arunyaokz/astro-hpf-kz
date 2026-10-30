@@ -4,18 +4,19 @@ import { PortableText, Image as EmDashImage } from "emdash/ui";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { newsPath, newsLabel, sourceUrls, NEWS_COPY, type NewsData } from "../news";
 import { LANGS, type Lang } from "../site-v2";
-interface Props { lang: Lang; entry: ContentEntry<NewsData>; }
+type NewsLang = Lang | "kk";
+interface Props { lang: NewsLang; entry: ContentEntry<NewsData>; }
 const { lang, entry } = Astro.props;
 const { data } = entry;
 const text = NEWS_COPY[lang];
 const links = sourceUrls(data.source_urls);
 const { translations } = await getTranslations("news", entry.data.id);
-const alternates = translations.filter((item) => item.status === "published" && item.slug && LANGS.includes(item.locale as Lang)).map((item) => ({ lang: item.locale as Lang, path: newsPath(item.locale as Lang, item.slug!) }));
+const alternates = translations.filter((item) => item.status === "published" && item.slug && (LANGS as readonly string[]).concat("kk").includes(item.locale)).map((item) => ({ lang: item.locale as NewsLang, path: newsPath(item.locale as Lang, item.slug!) }));
 Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
-<SiteLayout title={`${data.title} | HPF.kz`} description={data.description} lang={lang} active="news" canonicalPath={newsPath(lang, data.slug)} alternates={alternates}>
+<SiteLayout title={`${data.title} | HPF.kz`} description={data.description} lang={lang === "kk" ? "ru" : lang} htmlLang={lang} active="news" canonicalPath={newsPath(lang, data.slug)} alternates={alternates}>
   <article class="shell article">
-    <header><a class="back" href={newsPath(lang)}>← {text.back}</a><p class="category">{newsLabel(data.category, lang)}</p><h1>{data.title}</h1><p class="lead">{data.description}</p><p class="meta">{data.author_name ?? "HPF.kz"} · {new Date(data.publishedAt ?? new Date()).toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : "en-GB", { timeZone: "Asia/Almaty" })}</p><p class="meta">{text.verification}：{newsLabel(data.verification_status, lang)}</p></header>
+    <header><a class="back" href={newsPath(lang)}>← {text.back}</a><p class="category">{newsLabel(data.category, lang)}</p><h1>{data.title}</h1><p class="lead">{data.description}</p><p class="meta">{data.author_name ?? "HPF.kz"} · {new Date(data.publishedAt ?? new Date()).toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : lang === "kk" ? "kk-KZ" : "en-GB", { timeZone: "Asia/Almaty" })}</p><p class="meta">{text.verification}：{newsLabel(data.verification_status, lang)}</p></header>
     {data.hero_image && <EmDashImage image={data.hero_image} class="cover" />}
     <div class="prose"><PortableText value={data.content} /></div>
     {links.length > 0 && <footer><h2>{text.sources}</h2><ul>{links.map((url) => <li><a href={url} rel="noreferrer">{url}</a></li>)}</ul></footer>}

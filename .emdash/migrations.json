@@ -101,7 +101,8 @@
 		"locales": [
 			"en",
 			"zh",
-			"ru"
+			"ru",
+			"kk"
 		],
 		"prefixDefaultLocale": false
 	},

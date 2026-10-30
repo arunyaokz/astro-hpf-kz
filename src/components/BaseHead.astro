@@ -4,16 +4,17 @@ import { getCollection } from "astro:content";
 import { LANGS, pagePath, type CorePage, type Lang } from "../site-v2";
 
 interface Props {
+  htmlLang?: string;
   title: string;
   description: string;
   lang: Lang;
   page: CorePage;
   image?: string;
   canonicalPath?: string;
-  alternates?: { lang: Lang; path: string }[];
+  alternates?: { lang: Lang | "kk"; path: string }[];
 }
 
-const { title, description, lang, page, image = "/og-hpf-kz.svg", canonicalPath, alternates } = Astro.props;
+const { title, description, lang, htmlLang, page, image = "/og-hpf-kz.svg", canonicalPath, alternates } = Astro.props;
 const canonicalURL = new URL(canonicalPath ?? pagePath(lang, page), Astro.site);
 const languageLinks = alternates ?? LANGS.map((code) => ({ lang: code, path: pagePath(code, page) }));
 const facts = await getCollection("facts");
@@ -50,7 +51,7 @@ const organizationSchema = {
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="HPF.kz" />
-<meta property="og:locale" content={lang === "zh" ? "zh_CN" : lang === "ru" ? "ru_RU" : "en_US"} />
+<meta property="og:locale" content={htmlLang === "kk" ? "kk_KZ" : lang === "zh" ? "zh_CN" : lang === "ru" ? "ru_RU" : "en_US"} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

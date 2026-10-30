@@ -15,7 +15,8 @@ export default defineConfig({
   site: "https://hpf.kz",
   output: "server",
   vite: { plugins: [chineseUI()] },
-  i18n: { defaultLocale: "en", locales: ["en", "zh", "ru"] },
+  // Kazakh is available for linked CMS content and public news pages.
+  i18n: { defaultLocale: "en", locales: ["en", "zh", "ru", "kk"] },
   integrations: [mdx(), sitemap({ customPages: ["", "/zh", "/ru"].flatMap((prefix) => ["", "services/", "routes/", "about/", "privacy/"].map((page) => `https://hpf.kz${prefix}/${page}`)).concat(["https://hpf.kz/blog/", ...fs.readdirSync("src/content/blog").filter(file=>/\.mdx?$/.test(file)).map(file=>`https://hpf.kz/blog/${file.replace(/\.mdx?$/, "")}/`)]), filter: (page) => !/\/(?:cms|_emdash)\//.test(new URL(page).pathname) }), react(), emdash({
     database: d1({ binding: "DB" }),
     storage: r2({ binding: "MEDIA" }),

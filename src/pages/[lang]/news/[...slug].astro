@@ -3,7 +3,7 @@ export const prerender = false;
 import NewsArticle from "../../../components/NewsArticle.astro";
 import { loadNewsEntry } from "../../../news";
 const lang = Astro.params.lang;
-if (lang !== "zh" && lang !== "ru") return Astro.rewrite("/404");
+if (lang !== "zh" && lang !== "ru" && lang !== "kk") return Astro.rewrite("/404");
 const entry = await loadNewsEntry(lang, Astro.params.slug ?? "");
 if (!entry) return Astro.rewrite("/404");
 ---

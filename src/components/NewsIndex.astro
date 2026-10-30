@@ -1,25 +1,43 @@
 ---
+import { Image as EmDashImage } from "emdash/ui";
 import { listNews, newsPath, newsLabel, NEWS_COPY } from "../news";
-import type { Lang } from "../site-v2";
+import type { NewsLang } from "../news";
 import SiteLayout from "../layouts/SiteLayout.astro";
-interface Props { lang: Lang; }
+interface Props { lang: NewsLang; }
 const { lang } = Astro.props;
 const text = NEWS_COPY[lang];
+const copy = {
+  kk: { eyebrow: "HPF KZ · ЖАҢАЛЫҚТАР", title: "Дәліз жаңалықтары\nжәне халықаралық логистика", lead: "Орта дәліз, тасымал бағыттары және логистика туралы ақпарат.", browse: "Осы беттегі материалдар", all: "Барлығы", latest: "Соңғы жаңалықтар", subtitle: "Маршруттар және халықаралық тасымал", read: "Мақаланы оқу", image: "Орта дәліздегі тасымал" },
+  zh: { eyebrow: "HPF KZ · 新闻与洞察", title: "关注走廊动态\n读懂跨境物流", lead: "从路线变化、运输衔接到实务经验，了解中间走廊与跨境供应链的最新资讯。", browse: "浏览本页资讯", all: "全部", latest: "最新资讯", subtitle: "了解路线、行业与跨境运输实务", read: "阅读文章", image: "中间走廊运输场景" },
+  en: { eyebrow: "HPF KZ · NEWS & INSIGHTS", title: "Follow the corridor.\nUnderstand cross-border logistics.", lead: "Explore news and insights on routes, transport connections and practical experience across the Middle Corridor.", browse: "Browse this page", all: "All", latest: "Latest news", subtitle: "Routes, industry and cross-border transport", read: "Read article", image: "Transport along the Middle Corridor" },
+  ru: { eyebrow: "HPF KZ · НОВОСТИ И ОБЗОРЫ", title: "Следите за новостями коридора.\nУзнавайте о международной логистике.", lead: "Новости и материалы о маршрутах, стыковке перевозок и практическом опыте на Срединном коридоре.", browse: "Материалы на странице", all: "Все", latest: "Последние новости", subtitle: "Маршруты, отрасль и международные перевозки", read: "Читать статью", image: "Перевозки по Срединному коридору" },
+}[lang];
 const { entries, nextCursor } = await listNews(lang, Astro.url.searchParams.get("cursor") ?? undefined);
+const categories = [...new Set(entries.map(({ data }) => data.category).filter(Boolean))];
 Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
-<SiteLayout title={`${text.title} | HPF.kz`} description={text.lead} lang={lang} active="news">
-  <section class="shell news">
-    <header><p class="eyebrow">HPF.kz</p><h1>{text.title}</h1><p class="lead">{text.lead}</p></header>
-    {entries.length === 0 ? <p class="empty">{text.empty}</p> : <div class="news-list">
-      {entries.map(({ data }) => <a class="news-row" href={newsPath(lang, data.slug)}>
-        <div><p class="category">{newsLabel(data.category, lang)}</p><h2>{data.title}</h2><p>{data.description}</p></div>
-        <time datetime={new Date(data.publishedAt).toISOString()}>{new Date(data.publishedAt).toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : "en-GB", { timeZone: "Asia/Almaty" })}</time><span aria-hidden="true">↗</span>
-      </a>)}
-    </div>}
+<SiteLayout title={`${text.title} | HPF.kz`} description={text.lead} lang={lang === "kk" ? "ru" : lang} htmlLang={lang} active="news" canonicalPath={newsPath(lang)}>
+  <section class="news-hero"><div class="shell hero-layout"><div><p class="eyebrow">{copy.eyebrow}</p><h1 class="display">{copy.title}</h1><p class="lead">{copy.lead}</p></div><figure><img src="/images/corporate/hero-news-terminal.webp" alt={copy.image} width="1536" height="1024" fetchpriority="high" /></figure></div></section>
+  {entries.length > 0 && <nav class="news-index" aria-label={copy.browse}><div class="shell"><span>{copy.browse}</span><div class="filters"><button type="button" class="active" data-news-filter="all" aria-pressed="true">{copy.all}</button>{categories.map((category) => <button type="button" data-news-filter={category} aria-pressed="false">{newsLabel(category, lang)}</button>)}</div></div></nav>}
+  <section class="shell news-content"><header class="section-heading"><div><p class="eyebrow">{copy.eyebrow}</p><h2 class="section-title">{copy.latest}</h2></div><p>{copy.subtitle}</p></header>
+    {entries.length === 0 ? <p class="empty">{text.empty}</p> : <div class="news-grid">{entries.map(({ data }) => <article class="news-card" data-news-category={data.category}><a href={newsPath(lang, data.slug)}>
+      <div class="card-image">{data.hero_image ? <EmDashImage image={data.hero_image} alt="" width={800} height={500} /> : <img src="/images/corporate/hero-routes-tir.webp" alt="" width="800" height="500" loading="lazy" />}</div>
+      <div class="card-body"><p class="meta">{newsLabel(data.category, lang)} · <time datetime={new Date(data.publishedAt).toISOString()}>{new Date(data.publishedAt).toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : lang === "kk" ? "kk-KZ" : "en-GB", { timeZone: "Asia/Almaty" })}</time></p><h3>{data.title}</h3><p class="description">{data.description}</p><span class="read">{copy.read} ↗</span></div>
+    </a></article>)}</div>}
     {nextCursor && <a class="next" href={`${newsPath(lang)}?cursor=${encodeURIComponent(nextCursor)}`}>{text.next} →</a>}
   </section>
 </SiteLayout>
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>("[data-news-filter]");
+  const cards = document.querySelectorAll<HTMLElement>("[data-news-category]");
+  filters.forEach((button) => button.addEventListener("click", () => {
+    filters.forEach((item) => { const selected = item === button; item.classList.toggle("active", selected); item.setAttribute("aria-pressed", String(selected)); });
+    cards.forEach((card) => { card.hidden = button.dataset.newsFilter !== "all" && button.dataset.newsFilter !== card.dataset.newsCategory; });
+  }));
+</script>
 <style>
-  .news{padding-block:5rem 7rem;min-height:70vh}header{max-width:52rem;margin-bottom:3rem}h1{font-size:clamp(2.5rem,6vw,5rem);margin:1rem 0 1.5rem}.lead,.empty,.news-row p,time{color:var(--muted)}.lead{font-size:1.15rem;max-width:42rem}.empty{padding-block:4rem;border-block:1px solid var(--line)}.news-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:2rem;padding-block:2rem;border-top:1px solid var(--line)}.news-row h2{font-size:clamp(1.4rem,3vw,2rem);margin:.5rem 0 1rem}.news-row:hover h2,.next{color:var(--violet)}time,.category{font-size:.85rem}.next{display:inline-block;margin-top:2rem}@media(max-width:640px){.news-row{grid-template-columns:minmax(0,1fr) auto;gap:1rem}.news-row time{grid-column:1;grid-row:2}.news{padding-block:3rem 5rem}}
+.news-hero{background:var(--ink);color:white}.hero-layout{display:grid;grid-template-columns:1fr .9fr;gap:8%;align-items:center;min-height:43rem;padding-block:8rem 5rem}.news-hero .eyebrow{color:var(--electric)}.news-hero h1{white-space:pre-line;margin:1rem 0 1.5rem}.news-hero .lead{max-width:38rem;color:var(--muted-on-dark)}.news-hero figure{height:25rem;margin:0;overflow:hidden;border-radius:2rem 2rem .75rem 2rem}.news-hero img{width:100%;height:100%;object-fit:cover}.news-index{background:var(--mist);border-bottom:1px solid var(--line)}.news-index .shell{display:flex;align-items:center;gap:1.6rem;min-height:5rem}.news-index span{font-size:.85rem;color:var(--muted)}.filters{display:flex;gap:.4rem;flex-wrap:wrap}.filters button{min-height:2.75rem;padding:.5rem 1rem;border:0;border-radius:999px;background:transparent;color:var(--text);cursor:pointer}.filters button.active{background:var(--violet);color:#fff}.news-content{padding-block:5.5rem 7rem;min-height:30rem}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem}.section-heading h2{margin:.5rem 0 0}.section-heading>p,.empty{color:var(--muted)}.news-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.5rem;align-items:stretch}.news-card:first-child{grid-row:span 2}.news-card:first-child .card-image{height:22rem}.news-card:not(:first-child) a{display:grid;grid-template-columns:40% 1fr}.news-card:not(:first-child) .card-image{height:100%;min-height:13rem}.news-card{overflow:hidden;border:1px solid var(--line);border-radius:1.25rem;background:white}.news-card[hidden]{display:none}.news-card a{display:flex;height:100%;flex-direction:column}.card-image{height:14rem;background:var(--mist);overflow:hidden}.card-image :global(img){display:block;width:100%;height:100%;object-fit:cover}.card-body{display:flex;flex:1;flex-direction:column;padding:1.5rem}.meta{color:var(--violet);font-size:.8rem}.card-body h3{margin:.75rem 0;font-size:1.3rem;line-height:1.45}.description{color:var(--muted);font-size:.95rem}.read{margin-top:auto;padding-top:1.5rem;color:var(--violet);font-size:.9rem}.news-card a:hover h3{color:var(--violet)}.empty{padding:3rem 0;border-block:1px solid var(--line)}.next{display:inline-block;margin-top:2rem;color:var(--violet)}@media(max-width:800px){.hero-layout{grid-template-columns:1fr;gap:2rem;min-height:0;padding-block:7rem 3.5rem}.news-hero figure{height:17rem}.news-index .shell{display:block;padding-block:1rem}.news-index span{display:block}.news-content{padding-block:3.5rem 5rem}.section-heading{display:block}.section-heading>p{margin-top:1rem}.news-grid{grid-template-columns:1fr}.news-card:first-child{grid-row:auto}.news-card:first-child .card-image,.news-card:not(:first-child) .card-image{height:14rem;min-height:0}.news-card:not(:first-child) a{display:flex}}
+</style>
+<style>
+  .news-hero h1.display { color: #fff; }
 </style>

@@ -30,6 +30,7 @@ const isActive=(url:string)=>{
         {LANGS.map((code) => (
           <a class:list={{ active: code === lang }} href={pagePath(code, active)} hreflang={code === "zh" ? "zh-CN" : code}>{code === "zh" ? "中" : code.toUpperCase()}</a>
         ))}
+        {active === "news" && <a href="/kk/news/" hreflang="kk">KK</a>}
       </div>
       <a class="nav-cta" href={header.ctaUrl}>{header.ctaLabel}</a>
       <button class="menu-button" type="button" data-menu-open aria-controls="site-menu" aria-expanded="false">{header.menuLabel}</button>
@@ -56,6 +57,7 @@ const isActive=(url:string)=>{
       {LANGS.map((code) => (
         <a class:list={{ active: code === lang }} href={pagePath(code, active)}>{header.languageNames[code]}</a>
       ))}
+      {active === "news" && <a href="/kk/news/" hreflang="kk">Қазақша</a>}
     </div>
     <a class="button button--primary" href={header.ctaUrl} data-menu-link>{header.ctaLabel}</a>
   </div>

@@ -8,30 +8,31 @@ import { HTML_LANG, UI, type CorePage, type Lang } from "../site-v2";
 import "../styles/site.css";
 
 interface Props {
+  htmlLang?: string;
   title: string;
   description: string;
   lang?: Lang;
   active?: CorePage | "news" | "industries" | "platform";
   canonicalPath?: string;
-  alternates?: { lang: Lang; path: string }[];
+  alternates?: { lang: Lang | "kk"; path: string }[];
 }
 
-const { title, description, lang = "en", active = "home", canonicalPath, alternates } = Astro.props;
+const { title, description, htmlLang, lang = "en", active = "home", canonicalPath, alternates } = Astro.props;
 const activePage: CorePage = active === "industries" || active === "platform" ? "services" : active;
 Astro.response.headers.set("Cache-Control","private, no-store");
 ---
 
 <!doctype html>
-<html lang={HTML_LANG[lang]}>
+<html lang={htmlLang ?? HTML_LANG[lang]}>
   <head>
-    <BaseHead title={title} description={description} lang={lang} page={activePage} canonicalPath={canonicalPath} alternates={alternates} />
+    <BaseHead htmlLang={htmlLang} title={title} description={description} lang={lang} page={activePage} canonicalPath={canonicalPath} alternates={alternates} />
   </head>
   <body>
-    <a class="skip-link" href="#main-content">{UI[lang].skip}</a>
-    <Header lang={lang} active={activePage} />
+    <a class="skip-link" href="#main-content">{htmlLang === "kk" ? "Негізгі мазмұнға өту" : UI[lang].skip}</a>
+    {htmlLang === "kk" ? <header class="site-header"><nav class="shell nav" aria-label="Негізгі навигация"><a href="/kk/news/" aria-label="HPF.kz жаңалықтары"><img src="/brand/hpf-mark.svg" alt="HPF KZ" width="180" /></a><div class="languages"><a href="/news/">EN</a><a href="/zh/news/">中</a><a href="/ru/news/">RU</a><a href="/kk/news/" aria-current="page">KK</a></div><a href="/ru/">Сайттың орысша нұсқасы</a></nav></header> : <Header lang={lang} active={activePage} />}
     <main id="main-content">
       <slot />
     </main>
-    <Footer lang={lang} />
+    {htmlLang === "kk" ? <footer class="shell" style="padding:3rem 0"><p>HPF.kz · Жаңалықтар</p><a href="mailto:bd@hpf.kz">bd@hpf.kz</a> · <a href="/ru/about/#contact">Байланыс (орысша)</a></footer> : <Footer lang={lang} />}
   </body>
 </html>
