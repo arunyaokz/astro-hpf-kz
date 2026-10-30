@@ -28,9 +28,10 @@
 ## 和 Horiza 怎么接（现状）
 
 - Horiza 后台同步模块已在本机对官网跑通：建草稿 → 人确认 → 发布，详情页显示服务资料和价格（`scripts/verify-horiza-sync-local.mts`）。
-- 还差两处在 Horiza 那边改：
-  1. **多语言**：官网一旦有中文或俄文译稿，Horiza 会因「同名产品重复」停止同步。要让 Horiza 只读写指定语言的条目。
-  2. **按需报价**：Horiza 目前一律不准把「按需报价」产品写到网站。官网已能正确显示「按需报价」，需要 Horiza 在网站卡片上由人核对后放行。
+- 原来卡在 Horiza 的两处已在 Horiza 分支 `feat/emdash-site-locale`（提交 `957a39ab`，工作区 `~/Developer/horiza/cfos-emdash-locale-20261030`）改好，未合并、未发布：
+  1. **多语言**：同步只读写指定语言（hpf.kz 定为英文）；按条目编号发布，中俄译稿不会被碰到。改前官网一有译稿就因「同名产品重复」停止。
+  2. **按需报价**：网站经人核对「按需报价」显示无误后放行。改前一律拒写。
+  还要在 Horiza 网站卡片上加「网站语言」和「询价展示已核对」两个设置，接到同步里，才能在后台用上。
 - 中文、俄文版本暂由人在官网后台录入（翻译版本关联到同步来的条目），俄文须母语者校对。
 
 ## 上线步骤（需老板）
@@ -43,4 +44,4 @@
 ## 回归
 
 - `python3 scripts/verify-products-local.py`：结构、三语列表与详情、草稿隔离、按需报价、价格显示、匿名写入拒绝；测试条目自动删除。
-- `node scripts/verify-horiza-sync-local.mts`：用 Horiza 同步模块写本机站点；本机令牌和测试产品自动删除。只连 localhost。
+- `HORIZA_OS=<Horiza 代码目录> node scripts/verify-horiza-sync-local.mts`：用 Horiza 同步模块写本机站点（英文、询价已核对），检查中文译稿不被改动；本机令牌和测试产品自动删除。只连 localhost。用 Horiza 现有 main 跑，询价和译稿两项会失败。

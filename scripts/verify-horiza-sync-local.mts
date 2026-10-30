@@ -22,7 +22,8 @@ const call = emdashToolCaller(`${base}/_emdash/api/mcp`, token);
 const sku = `CHECK-${crypto.randomUUID().slice(0, 6).toUpperCase()}`;
 const svc = { service_scope: "Local check scope", service_area: "China → Europe", service_lead_time: "Local check lead time", pricing_method: "Local check pricing" };
 const entry = (over: Record<string, unknown> = {}) => ({ serviceFields: svc, skuId: sku, title: "Local check: TIR China to Europe", description: "Connector check only.", unitPriceMinor: "120000", currency: "USD", productRevisionRef: `rev-${sku}`, productRevisionHash: `hash-${crypto.randomUUID().slice(0, 8)}`, productRevisionStatus: "released", status: "published" as const, ...over });
-const input = { connectorId: "local", siteId: "hpf-kz-local", target: `${base}/_emdash/api/mcp`, includeServiceDetails: true };
+// Horiza 只管英文版（官网默认语言），中俄译稿由人维护；官网已能正确显示「按需报价」
+const input = { connectorId: "local", siteId: "hpf-kz-local", target: `${base}/_emdash/api/mcp`, includeServiceDetails: true, locale: "en", quoteDisplayVerified: true };
 async function sync(entries: any[], label: string) {
   for (const publish of [false, true]) {
     const preview = await previewEmDashSync(call, entries, { ...input, publish });
@@ -34,11 +35,14 @@ try {
   await sync([entry()], "首次同步");
   const page = await (await fetch(`${base}/products/sku-${sku.toLowerCase()}/`)).text();
   log["英文详情显示服务资料与价格"] = ["Local check lead time", "Local check pricing", "China → Europe"].every((t) => page.includes(t)) && /\$1,200\.00/.test(page);
-  try { await previewEmDashSync(call, [entry({ pricingMode: "quote", unitPriceMinor: null })], { ...input, publish: false }).then((p) => (log["按需报价预览"] = p.blockers)); } catch (e) { log["按需报价预览"] = `失败：${(e as Error).message}`; }
-  try { const q = [entry({ pricingMode: "quote", unitPriceMinor: null })]; const p = await previewEmDashSync(call, q, { ...input, publish: false }); await runReviewedEmDashSync(call, q, { ...input, publish: false, expectedPreviewHash: p.hash }); log["按需报价写入"] = "通过"; } catch (e) { log["按需报价写入"] = `被拒：${(e as Error).message}`; }
+  try { await previewEmDashSync(call, [entry({ skuId: `${sku}Q`, productRevisionRef: `rev-${sku}Q`, pricingMode: "quote", unitPriceMinor: null })], { ...input, publish: false }).then((p) => (log["按需报价预览"] = p.blockers)); } catch (e) { log["按需报价预览"] = `失败：${(e as Error).message}`; }
+  try { const q = [entry({ skuId: `${sku}Q`, productRevisionRef: `rev-${sku}Q`, pricingMode: "quote", unitPriceMinor: null })]; const p = await previewEmDashSync(call, q, { ...input, publish: false }); await runReviewedEmDashSync(call, q, { ...input, publish: false, expectedPreviewHash: p.hash }); log["按需报价写入"] = "通过"; } catch (e) { log["按需报价写入"] = `被拒：${(e as Error).message}`; }
   const en = (await admin("/content/products?locale=en")).items.find((x: any) => x.data.sku_id === sku);
   await admin("/content/products", { slug: en.slug, locale: "zh", status: "draft", translationOf: en.id, data: { title: "本机检查：中国至欧洲 TIR" } });
   try { await sync([entry({ title: "Local check: TIR China to Europe v2" })], "有中文翻译后再同步"); } catch (e) { log["有中文翻译后再同步"] = `失败：${(e as Error).message}`; }
+  const zh = (await admin("/content/products?locale=zh")).items.find((x: any) => x.data.title === "本机检查：中国至欧洲 TIR");
+  const enPage = await (await fetch(`${base}/products/sku-${sku.toLowerCase()}/`)).text();
+  log["中文译稿未被改动、英文已更新"] = Boolean(zh) && zh.status === "draft" && enPage.includes("Local check: TIR China to Europe v2");
 } finally {
   for (const locale of ["en", "zh", "ru"]) for (const x of (await admin(`/content/products?locale=${locale}`)).items) if (String(x.data.sku_id ?? "").startsWith("CHECK-") || String(x.data.title ?? "").startsWith("本机检查")) await admin(`/content/products/${x.id}`, undefined, "DELETE");
   await admin(`/admin/api-tokens/${tokenId}`, undefined, "DELETE");
