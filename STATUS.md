@@ -87,3 +87,4 @@
 - 本地验收：`scripts/verify-products-local.py` 全过；电脑与手机宽度浏览器检查、询价预填通过；`npm run check` 通过（gzip 约 2912 KiB）。
 - 用 Horiza 后台同步模块对本地站联调（`scripts/verify-horiza-sync-local.mts`）：服务产品建草稿 → 发布 → 页面显示服务资料与价格，通过。原卡在 Horiza 的两处（有中俄译稿时同步停止、「按需报价」被拒写）已在 Horiza 分支 `feat/emdash-site-locale`（`957a39ab`）修好并对本地站实测通过，未合并、未发布；Horiza 网站卡片的「网站语言」「询价展示已核对」设置也已在同分支 `7411613b` 加好；分支待合入 Horiza main 并发布。
 - 上线需老板：生产后台执行增量结构迁移、部署、在后台建 Horiza 令牌并自己粘进 Horiza。说明：`ops/EmDash运输产品使用说明.md`。
+- 2026-10-30 老板定：运输产品改为官网后台人工维护（不接 Horiza）；栏目说明已改（`f03bab9`），在 EmDash 1.4.0 上本地验收、从零建栏目、`npm run check` 均通过。老板暂不上线：生产后台未建栏目、未部署，线上 `/products/` 仍为 404。上线时：老板登录后台 → 增量建栏目 → 部署 → 线上只读检查 → 后台录产品、顶部导航加入口。
