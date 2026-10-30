@@ -18,10 +18,12 @@ const contactLabel = label ?? (lang === "zh" ? "联系 / 货运需求" : lang ==
       <p>{page.lead}</p>
     </div>
     <aside>
+      <img src="/images/corporate/hero-contact-20261030.webp" alt="" loading="lazy" />
       <span>{email}</span>
       <h3>{page.asideTitle}</h3>
       <p>{page.asideText}</p>
       <small>{page.responseNote}</small>
+      <small>{({zh: "AI 概念图 · 非真实办公室", en: "AI concept image · not an actual office", ru: "Иллюстрация ИИ · не реальный офис"}[lang])}</small>
     </aside>
   </div>
 
@@ -68,7 +70,9 @@ const contactLabel = label ?? (lang === "zh" ? "联系 / 货运需求" : lang ==
   .contact-intro .eyebrow { color:var(--electric); }
   .contact-intro h2 { max-width:12ch; color:#fff; font-size:clamp(3rem,6vw,6rem); line-height:.94; letter-spacing:-.06em; }
   .contact-intro > div > p:last-child { max-width:58ch; color:var(--muted-on-dark); font-size:1.08rem; }
-  .contact-intro aside { display:grid; align-content:end; gap:1rem; padding:1.5rem; border-block:1px solid rgba(255,255,255,.12); }
+  .contact-intro aside { position:relative; isolation:isolate; overflow:hidden; display:grid; align-content:end; min-height:28rem; gap:1rem; padding:1.5rem; border:1px solid rgba(255,255,255,.12); border-radius:1.5rem; }
+  .contact-intro aside::after { position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(8,5,29,.05) 10%,rgba(8,5,29,.93) 68%); content:""; }
+  .contact-intro aside img { position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover; object-position:center 35%; }
   .contact-intro aside span { color:var(--electric); font-family:var(--font-num); }
   .contact-intro aside h3 { color:#fff; font-size:1.25rem; }
   .contact-intro aside p,.contact-intro aside small { color:var(--muted-on-dark); }

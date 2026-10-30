@@ -23,8 +23,8 @@ const principleVisuals = ["docs-first", "responsibility", "memory"];
       </div>
     </div>
     <figure>
-      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={page.imageAlt} width={1122} height={1402} /> : <img src="/images/corporate/hero-services-customs.webp" alt={page.imageAlt} width="1122" height="1402" fetchpriority="high" />}
-      <figcaption>{page.imageCaption}</figcaption>
+      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={page.imageAlt} width={1122} height={1402} /> : <img src="/images/corporate/hero-services-20261030.webp" alt={page.imageAlt} width="1122" height="1402" fetchpriority="high" />}
+      <figcaption>{cms?.heroImage ? page.imageCaption : ({zh: "AI 概念图 · 非真实作业现场", en: "AI concept image · not an actual work site", ru: "Иллюстрация ИИ · не реальное место работы"}[lang])}</figcaption>
     </figure>
   </section>
 

@@ -32,7 +32,7 @@ const companyStory = cms?.story ?? COMPANY_STORY[lang];
 const heroImage = {
   services: { src: "/images/corporate/hero-services-customs.webp", size: { width: 1122, height: 1402 }, alt: { zh: "仓内验货与清关前置作业", en: "Warehouse inspection and customs-ready handling", ru: "Складская проверка и подготовка к таможне" } },
   routes: { src: "/images/corporate/hero-routes-tir.webp", size: { width: 1122, height: 1402 }, alt: { zh: "白色 HPF.kz TIR 公路运输车队穿越哈萨克草原", en: "White HPF.kz TIR road freight convoy across the Kazakh steppe", ru: "Белая автоколонна HPF.kz TIR в казахской степи" } },
-  about: { src: "/images/corporate/hero-about-team.webp", size: { width: 1003, height: 1568 }, alt: { zh: "阿拉木图团队讨论跨境路线", en: "Almaty team reviewing a cross-border route", ru: "Команда в Алматы обсуждает трансграничный маршрут" } },
+  about: { src: "/images/corporate/hero-about-20261030.webp", size: { width: 1003, height: 1568 }, alt: { zh: "阿拉木图团队讨论跨境路线", en: "Almaty team reviewing a cross-border route", ru: "Команда в Алматы обсуждает трансграничный маршрут" } },
 }[pageKey];
 const labels = cms?.labels ?? {
   en: { do: "We commit to", dont: "We do not claim", image: "Operational scene visualization", scope: "Scope / operating detail", process: "Process", boundary: "Promise boundary" },
@@ -67,8 +67,8 @@ const globalContacts=await loadSiteSettings(lang);
       </div>
     </div>
     <figure>
-      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={cms.heroAlt} width={heroImage.size.width} height={heroImage.size.height} /> : <img src={heroImage.src} alt={cms?.heroAlt ?? heroImage.alt[lang]} width={heroImage.size.width} height={heroImage.size.height} fetchpriority="high" />}
-      <figcaption>{labels.image}</figcaption>
+      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={cms.heroAlt} width={heroImage.size.width} height={heroImage.size.height} /> : <img src={heroImage.src} alt={pageKey === "about" ? ({zh: "物流路线讨论概念图", en: "Concept image of logistics route planning", ru: "Иллюстрация обсуждения логистического маршрута"}[lang]) : (cms?.heroAlt ?? heroImage.alt[lang])} width={heroImage.size.width} height={heroImage.size.height} fetchpriority="high" />}
+      <figcaption>{pageKey === "about" && !cms?.heroImage ? ({zh: "AI 概念图 · 非真实团队或办公室", en: "AI concept image · not an actual team or office", ru: "Иллюстрация ИИ · не реальные сотрудники или офис"}[lang]) : labels.image}</figcaption>
     </figure>
   </section>
 

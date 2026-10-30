@@ -16,13 +16,13 @@ const {contacts}=await loadSiteSettings(lang);
       <p class="lead">{page.lead}</p>
     </div>
     <aside class="contact-hero__visual">
-      <img src="/images/corporate/hero-contact-request.webp" alt={lang === "zh" ? "根据货运需求制作公路运输方案" : lang === "ru" ? "Подготовка автотранспортного плана по заявке на груз" : "Preparing a road freight plan from a shipment request"} width="1024" height="1536" fetchpriority="high" />
+      <img src="/images/corporate/hero-contact-20261030.webp" alt={lang === "zh" ? "货运方案桌面概念图" : lang === "ru" ? "Иллюстрация подготовки плана перевозки" : "Concept image of freight planning"} width="1024" height="1536" fetchpriority="high" />
       <div class="contact-hero__details">
         <p class="eyebrow">Data boundary</p>
         <h2>{page.asideTitle}</h2>
         <p>{page.asideText}</p>
         <dl><div><dt>{page.emailLabel}</dt><dd><a href={`mailto:${contacts.email}`}>{contacts.email}</a></dd></div></dl>
-        <small>{page.responseNote}</small>
+        <small>{page.responseNote}</small><small>{({zh: "AI 概念图 · 非真实办公室", en: "AI concept image · not an actual office", ru: "Иллюстрация ИИ · не реальный офис"}[lang])}</small>
       </div>
     </aside>
   </section>

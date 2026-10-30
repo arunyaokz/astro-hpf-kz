@@ -30,8 +30,8 @@ const labels = cms?.labels ?? {
       </dl>
     </div>
     <figure class="hero-image">
-      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={labels.scene} width={1122} height={1402} /> : <img src="/images/corporate/hero-routes-tir.webp" alt={labels.scene} width="1122" height="1402" fetchpriority="high" />}
-      <figcaption>{cms?.heroCaption ?? "HPF.kz / Eurasian route planning"}</figcaption>
+      {cms?.heroImage ? <EmDashImage image={cms.heroImage} alt={labels.scene} width={1122} height={1402} /> : <img src="/images/corporate/hero-routes-20261030.webp" alt={labels.scene} width="1122" height="1402" fetchpriority="high" />}
+      <figcaption>{cms?.heroImage ? (cms?.heroCaption ?? "HPF.kz / Eurasian route planning") : ({zh: "AI 概念图 · 非 HPF 自有车辆", en: "AI concept image · not an HPF-owned vehicle", ru: "Иллюстрация ИИ · автомобиль не принадлежит HPF"}[lang])}</figcaption>
     </figure>
   </section>
 

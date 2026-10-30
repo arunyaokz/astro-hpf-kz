@@ -1,13 +1,1 @@
-<svg width="260" height="96" viewBox="0 0 260 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <title>HPF KZ</title>
-  <desc>Transparent minimal wordmark for HPF KZ.</desc>
-  <text
-    x="6"
-    y="67"
-    fill="#FFFAF1"
-    font-family="'Avenir Next Condensed', 'Helvetica Neue', Arial, sans-serif"
-    font-size="62"
-    font-weight="700"
-    letter-spacing="5"
-  >HPF KZ</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 120" role="img" aria-labelledby="title"><title id="title">HPF</title><g fill="#FFFFFF"><path d="M0 0h25v47c24-2 43 10 67 6V0h25v120H92V74c-24 4-43-8-67-6v52H0z"/><path fill-rule="evenodd" d="M134 0h83c33 0 48 16 48 42s-15 42-48 42h-58v36h-25V0zm25 24v36h58c15 0 22-6 22-18s-7-18-22-18z"/><path d="M282 0h112v24h-87v25h78v24h-78v47h-25z"/></g><circle cx="418" cy="108" r="12" fill="#D71920"/></svg>

@@ -87,7 +87,7 @@ const isActive=(url:string)=>{
 <style>
   .site-header { position: absolute; z-index: var(--z-header); inset: 0 0 auto; border: 0; background: linear-gradient(180deg,rgba(5,3,18,.68),rgba(5,3,18,.18) 58%,transparent); color: #fff; }
   .nav { display: grid; min-height: var(--header-height); grid-template-columns: 8.25rem minmax(0,1fr) auto; align-items: center; gap: var(--space-3); }
-  .wordmark { display: inline-flex; width: 6.9rem; align-items: center; }
+  .wordmark { display: inline-flex; width: 3.45rem; align-items: center; }
   .wordmark img { width: 100%; height: auto; }
   .desktop-links { display: flex; justify-content: center; gap: .25rem; }
   .desktop-links a { position: relative; padding: .75rem 1rem; color: rgba(255,255,255,.62); font-size: .85rem; font-weight: 600; white-space: nowrap; }
@@ -106,7 +106,7 @@ const isActive=(url:string)=>{
   .mobile-menu::backdrop { background: rgba(4,2,15,.72); backdrop-filter: blur(6px); }
   .mobile-menu[open] { display: grid; grid-template-rows: auto 1fr auto; }
   .mobile-head { display: flex; min-height: var(--header-height); align-items: center; justify-content: space-between; padding-inline: var(--space-2); border-bottom: 1px solid rgba(255,255,255,.1); }
-  .mobile-head img { width: 6.9rem; height: auto; }
+  .mobile-head img { width: 3.45rem; height: auto; }
   .mobile-head button { min-height: 2.7rem; padding-inline: 1rem; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.06); color: #fff; }
   .mobile-menu nav { padding: var(--space-3) var(--space-2); }
   .mobile-menu nav a { display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--space-2); align-items: baseline; padding-block: var(--space-3); border-bottom: 1px solid rgba(255,255,255,.1); }
