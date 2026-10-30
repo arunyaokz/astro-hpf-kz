@@ -2245,7 +2245,7 @@
       "slug": "products",
       "label": "运输产品",
       "labelSingular": "运输产品",
-      "description": "运输与海关服务产品。由 Horiza 同步的条目只改图片、分类和服务要点；名称、简介、价格和服务资料请在 Horiza 改，否则下次同步会被覆盖。俄语须经母语者校对。",
+      "description": "运输与海关服务产品，在这里人工维护。先建英文版再加中文、俄文翻译；不填价格就显示「按需报价」。俄语须经母语者校对。",
       "icon": "truck",
       "supports": [
         "drafts",
@@ -2289,22 +2289,22 @@
         },
         {
           "slug": "sku_id",
-          "label": "产品编号（Horiza 同步，勿改）",
+          "label": "产品编号（可留空）",
           "type": "string"
         },
         {
           "slug": "revision_ref",
-          "label": "产品版本（Horiza 同步，勿改）",
+          "label": "外部同步版本（留空）",
           "type": "string"
         },
         {
           "slug": "revision_hash",
-          "label": "版本指纹（Horiza 同步，勿改）",
+          "label": "外部同步指纹（留空）",
           "type": "string"
         },
         {
           "slug": "pricing_mode",
-          "label": "询价标记（Horiza 同步，quote = 按需报价）",
+          "label": "询价标记（填 quote 则一律显示「按需报价」，可留空）",
           "type": "string"
         },
         {
