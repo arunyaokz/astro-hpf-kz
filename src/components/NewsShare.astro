@@ -3,10 +3,10 @@ import type { NewsLang } from "../news";
 interface Props { lang: NewsLang; title: string; description: string; url: string; }
 const { lang, title, description, url } = Astro.props;
 const copy = {
-  zh: { source: "来源：HPF.kz", label: "分享这篇文章", native: "更多分享方式", copy: "复制分享内容（微信）", copied: "分享内容已复制，可粘贴到微信", failed: "复制失败，请手动复制地址栏链接" },
-  en: { source: "Source: HPF.kz", label: "Share this article", native: "More sharing options", copy: "Copy share text", copied: "Share text copied", failed: "Could not copy. Please copy the address from your browser." },
-  ru: { source: "Источник: HPF.kz", label: "Поделиться статьёй", native: "Другие способы", copy: "Копировать текст", copied: "Текст для публикации скопирован", failed: "Не удалось скопировать. Скопируйте ссылку из адресной строки." },
-  kk: { source: "Дереккөз: HPF.kz", label: "Мақаламен бөлісу", native: "Басқа тәсілдер", copy: "Бөлісу мәтінін көшіру", copied: "Бөлісу мәтіні көшірілді", failed: "Көшіру мүмкін болмады. Сілтемені мекенжай жолағынан көшіріңіз." },
+  zh: { source: "来源：HPF.kz", label: "分享这篇文章", native: "更多分享方式", copy: "微信 · 复制分享内容", copied: "分享内容已复制，可粘贴到微信", failed: "复制失败，请手动复制地址栏链接" },
+  en: { source: "Source: HPF.kz", label: "Share this article", native: "More sharing options", copy: "WeChat · Copy share text", copied: "Share text copied", failed: "Could not copy. Please copy the address from your browser." },
+  ru: { source: "Источник: HPF.kz", label: "Поделиться статьёй", native: "Другие способы", copy: "WeChat · Копировать текст", copied: "Текст для публикации скопирован", failed: "Не удалось скопировать. Скопируйте ссылку из адресной строки." },
+  kk: { source: "Дереккөз: HPF.kz", label: "Мақаламен бөлісу", native: "Басқа тәсілдер", copy: "WeChat · Мәтінді көшіру", copied: "Бөлісу мәтіні көшірілді", failed: "Көшіру мүмкін болмады. Сілтемені мекенжай жолағынан көшіріңіз." },
 }[lang];
 const u = encodeURIComponent(url);
 const shareText = [title, description, url, copy.source].filter(Boolean).join("\n\n");
@@ -23,9 +23,9 @@ const platforms = [
 <section class="share" aria-label={copy.label} data-news-share data-url={url} data-title={title} data-text={shareText} data-message={messageWithoutUrl} data-copied={copy.copied} data-failed={copy.failed}>
   <h2>{copy.label}</h2>
   <div class="share-actions">
-    <button type="button" class="native-share" data-native-share hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m-4 4 4-4 4 4M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>{copy.native}</button>
+    <button type="button" data-copy-share><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.6 3C4.4 3 1 5.8 1 9.2c0 1.9 1.1 3.6 2.8 4.8l-.7 2.1 2.5-1.2c.7.2 1.5.4 2.3.4-.1-.4-.1-.8-.1-1.2 0-3.2 3.1-5.8 6.9-5.8.3 0 .6 0 .9.1C15.1 5.3 12.2 3 8.6 3ZM6.2 6.4a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm4.8 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm3.7 3.2c-3.3 0-6 2.1-6 4.8s2.7 4.8 6 4.8c.7 0 1.4-.1 2.1-.3l2.1 1-.6-1.8c1.5-.9 2.4-2.3 2.4-3.7 0-2.7-2.7-4.8-6-4.8Zm-2 2.7a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Zm4 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Z" /></svg>{copy.copy}</button>
     {platforms.map((platform) => <a href={platform.href} target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={platform.icon} fill="currentColor" /></svg><span>{platform.name}</span></a>)}
-    <button type="button" data-copy-share><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="M16 8V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h1" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>{copy.copy}</button>
+    <button type="button" class="native-share" data-native-share hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m-4 4 4-4 4 4M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>{copy.native}</button>
   </div>
   <p class="share-status" data-share-status role="status" aria-live="polite"></p>
 </section>
