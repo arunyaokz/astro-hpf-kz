@@ -1,0 +1,64 @@
+---
+import type { NewsLang } from "../news";
+interface Props { lang: NewsLang; title: string; url: string; }
+const { lang, title, url } = Astro.props;
+const copy = {
+  zh: { label: "分享这篇文章", native: "更多分享方式", copy: "复制链接（微信）", copied: "链接已复制，可粘贴到微信", failed: "复制失败，请手动复制地址栏链接" },
+  en: { label: "Share this article", native: "More sharing options", copy: "Copy link", copied: "Link copied", failed: "Could not copy. Please copy the address from your browser." },
+  ru: { label: "Поделиться статьёй", native: "Другие способы", copy: "Копировать ссылку", copied: "Ссылка скопирована", failed: "Не удалось скопировать. Скопируйте ссылку из адресной строки." },
+  kk: { label: "Мақаламен бөлісу", native: "Басқа тәсілдер", copy: "Сілтемені көшіру", copied: "Сілтеме көшірілді", failed: "Көшіру мүмкін болмады. Сілтемені мекенжай жолағынан көшіріңіз." },
+}[lang];
+const u = encodeURIComponent(url);
+const t = encodeURIComponent(title);
+const platforms = [
+  { name: "WhatsApp", href: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}` },
+  { name: "Telegram", href: `https://t.me/share/url?url=${u}&text=${t}` },
+  { name: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}` },
+  { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
+  { name: "X", href: `https://twitter.com/intent/tweet?url=${u}&text=${t}` },
+];
+---
+<section class="share" aria-label={copy.label} data-news-share data-url={url} data-title={title} data-copied={copy.copied} data-failed={copy.failed}>
+  <h2>{copy.label}</h2>
+  <div class="share-actions">
+    <button type="button" class="native-share" data-native-share hidden>{copy.native} ↗</button>
+    {platforms.map((platform) => <a href={platform.href} target="_blank" rel="noopener noreferrer">{platform.name} ↗</a>)}
+    <button type="button" data-copy-share>{copy.copy}</button>
+  </div>
+  <p class="share-status" data-share-status role="status" aria-live="polite"></p>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-news-share]').forEach((share) => {
+    const url = share.dataset.url ?? '';
+    const title = share.dataset.title ?? '';
+    const status = share.querySelector<HTMLElement>('[data-share-status]');
+    const native = share.querySelector<HTMLButtonElement>('[data-native-share]');
+    if (native && navigator.share) {
+      native.hidden = false;
+      native.addEventListener('click', async () => {
+        try { await navigator.share({ title, url }); } catch (error) {
+          if (error instanceof DOMException && error.name === 'AbortError') return;
+          if (status) status.textContent = share.dataset.failed ?? '';
+        }
+      });
+    }
+    share.querySelector<HTMLButtonElement>('[data-copy-share]')?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+        if (status) status.textContent = share.dataset.copied ?? '';
+      } catch {
+        if (status) status.textContent = share.dataset.failed ?? '';
+      }
+    });
+  });
+</script>
+<style>
+  .share { max-width: 46rem; margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
+  .share h2 { margin: 0 0 1rem; font-size: 1rem; }
+  .share-actions { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .share-actions a, .share-actions button { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .55rem .85rem; border: 1px solid var(--line); border-radius: .3rem; background: transparent; color: var(--violet); font: inherit; font-size: .875rem; text-decoration: none; cursor: pointer; }
+  .share-actions a:hover, .share-actions button:hover { border-color: var(--violet); }
+  .share-actions a:focus-visible, .share-actions button:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+  .share-actions [hidden] { display: none; }
+  .share-status { min-height: 1.4em; margin: .65rem 0 0; color: var(--muted); font-size: .85rem; }
+</style>
