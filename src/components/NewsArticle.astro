@@ -63,11 +63,11 @@ Astro.response.headers.set("Cache-Control", "private, no-store");
   .hero-visual, .hero-image, .hero-visual :global(img), .hero-wash { position: absolute; inset: 0; width: 100%; height: 100%; }
   .hero-visual { z-index: -1; overflow: hidden; }
   .hero-visual :global(img) { object-fit: cover; object-position: center; }
-  .hero-wash { background: radial-gradient(circle at 50% 38%, rgba(72,36,190,.12), transparent 32%), linear-gradient(180deg, rgba(7,4,26,.55), rgba(7,4,26,.47) 48%, rgba(7,4,26,.82)); }
+  .hero-wash { background: radial-gradient(circle at 50% 38%, rgba(72,36,190,.12), transparent 32%), linear-gradient(180deg, rgba(7,4,26,.28), rgba(7,4,26,.1) 48%, rgba(7,4,26,.82)); }
   .hero-orbit { position: absolute; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; filter: drop-shadow(0 0 24px rgba(101,89,255,.2)); pointer-events: none; }
   .hero-orbit--one { width: min(74vw,68rem); aspect-ratio: 2.8 / 1; inset: 30% auto auto 50%; transform: translateX(-50%) rotate(-7deg); }
   .hero-orbit--two { width: min(92vw,84rem); aspect-ratio: 3.5 / 1; inset: 38% auto auto 50%; transform: translateX(-50%) rotate(4deg); }
-  .hero-content { position: relative; width: 100%; padding-block: 9rem 5rem; }
+  .hero-content { position: relative; width: 100%; padding-block: 9rem 5rem; text-shadow: 0 2px 16px rgba(5,3,18,.72); }
   .back { display: inline-block; color: #e2dcff; margin-bottom: 2.5rem; }
   .category { color: #d6ceff; font-size: .85rem; margin: 0 0 1.1rem; }
   h1 { color: #fff; max-width: 62rem; margin: 0; font-size: clamp(2.4rem,5vw,4.5rem); line-height: 1.2; overflow-wrap: anywhere; }
