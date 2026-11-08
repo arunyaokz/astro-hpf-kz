@@ -10,18 +10,39 @@ const { lang, entry } = Astro.props;
 const { data, edit } = entry;
 const text = NEWS_COPY[lang];
 const links = sourceUrls(data.source_urls);
+// Match only the explicitly labelled final editorial note; ordinary final paragraphs stay unchanged.
+const lastBlock = data.content?.at(-1);
+const lastChildren = lastBlock && "children" in lastBlock && Array.isArray(lastBlock.children) ? lastBlock.children : [];
+const lastText = lastChildren.map((child: { text?: string }) => child.text ?? "").join("").trim();
+const hasEditorialNote = /^\*?(?:资料核验截至|Sources checked|Источники проверены|Дереккөздер)/i.test(lastText);
+if (hasEditorialNote && lastText.startsWith("*") && lastText.endsWith("*") && lastChildren.length === 1 && typeof lastChildren[0].text === "string") {
+  lastChildren[0].text = lastChildren[0].text.replace(/^\*/, "").replace(/\*$/, "");
+}
 const { translations } = await getTranslations("news", entry.data.id);
 const alternates = translations.filter((item) => item.status === "published" && item.slug && (LANGS as readonly string[]).concat("kk").includes(item.locale)).map((item) => ({ lang: item.locale as NewsLang, path: newsPath(item.locale as Lang, item.slug!) }));
+const published = data.publishedAt ? new Date(data.publishedAt) : null;
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: data.title,
+  description: data.description,
+  mainEntityOfPage: new URL(newsPath(lang, data.slug), Astro.site).toString(),
+  inLanguage: lang,
+  ...(published && !Number.isNaN(published.getTime()) ? { datePublished: published.toISOString() } : {}),
+  ...(data.author_name === "HPF.kz" ? { author: { "@type": "Organization", name: data.author_name } } : {}),
+  publisher: { "@type": "Organization", name: "HPF.kz", url: new URL("/", Astro.site).toString() },
+};
 Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
 <SiteLayout title={`${data.title} | HPF.kz`} description={data.description} lang={lang === "kk" ? "ru" : lang} htmlLang={lang} active="news" canonicalPath={newsPath(lang, data.slug)} alternates={alternates}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema).replaceAll("<", "\\u003c")} />
   <article class="shell article" {...edit}>
     <header><a class="back" href={newsPath(lang)}>← {text.back}</a><p class="category">{newsLabel(data.category, lang)}</p><h1 {...edit.title}>{data.title}</h1><p class="lead" {...edit.description}>{data.description}</p><p class="meta">{data.author_name ?? "HPF.kz"} · {new Date(data.publishedAt ?? new Date()).toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : lang === "kk" ? "kk-KZ" : "en-GB", { timeZone: "Asia/Almaty" })}</p><p class="meta">{text.verification}：{newsLabel(data.verification_status, lang)}</p></header>
     {data.hero_image && <div {...edit.hero_image}><EmDashImage image={data.hero_image} class="cover" /></div>}
-    <div class="prose"><PortableText value={data.content} /></div>
+    <div class:list={["prose", { "has-editorial-note": hasEditorialNote }]}><PortableText value={data.content} /></div>
     {links.length > 0 && <footer><h2>{text.sources}</h2><ul>{links.map((url) => <li><a href={url} rel="noreferrer">{url}</a></li>)}</ul></footer>}
   </article>
 </SiteLayout>
 <style>
-  .article{max-width:68rem;padding-block:4rem 6rem}header{display:grid;gap:1.25rem;margin-bottom:3rem}h1{font-size:clamp(2.4rem,5vw,4.5rem)}.lead{font-size:1.2rem}.meta,.category,.lead{color:var(--muted)}.back,a{color:var(--violet)}.prose{max-width:46rem;font-size:1.1rem;line-height:1.85}.prose :global(p),.prose :global(ul),.prose :global(ol){margin-block:1.25rem}.prose :global(h2),.prose :global(h3){margin:2.25rem 0 1rem}.prose :global(img){height:auto;border-radius:.5rem}.article :global(.cover){max-height:34rem;object-fit:cover;margin-bottom:2.5rem}footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line);overflow-wrap:anywhere}
+  .article{max-width:68rem;padding-block:4rem 6rem}header{display:grid;gap:1.25rem;margin-bottom:3rem}h1{font-size:clamp(2.4rem,5vw,4.5rem)}.lead{font-size:1.2rem}.meta,.category,.lead{color:var(--muted)}.back,a{color:var(--violet)}.prose{max-width:46rem;font-size:1.1rem;line-height:1.85}.prose :global(p),.prose :global(ul),.prose :global(ol){margin-block:1.25rem}.prose :global(h2),.prose :global(h3){margin:2.25rem 0 1rem}.prose :global(img){height:auto;border-radius:.5rem}.has-editorial-note :global(p:last-child){font-size:.85rem;line-height:1.7;color:var(--muted)}.article :global(.cover){max-height:34rem;object-fit:cover;margin-bottom:2.5rem}footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line);overflow-wrap:anywhere}
 </style>

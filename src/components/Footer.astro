@@ -1,6 +1,7 @@
 ---
 import { loadSiteSettings } from "../cms/pages";
 import { type Lang } from "../site-v2";
+import { PUBLIC_PHONE } from "../public-contact";
 
 interface Props { lang?: Lang; }
 const { lang = "en" } = Astro.props;
@@ -23,7 +24,7 @@ const year = new Date().getFullYear();
     <dl class="legal-ledger">
       {footer.entityFacts.map(fact=><div><dt>{fact.label}</dt><dd>{fact.verified?fact.value:`[${localized.pending}]`}</dd></div>)}
       <div><dt>{localized.officeLabel}</dt><dd><a href={contacts.mapUrl} target="_blank" rel="noreferrer">{localized.office}</a></dd></div>
-      <div><dt>{localized.phoneLabel}</dt><dd>{contacts.phone || `[${localized.pending}]`}</dd></div>
+      <div><dt>{localized.phoneLabel}</dt><dd><a href={`tel:${PUBLIC_PHONE.href}`}>{PUBLIC_PHONE.display}</a> · <a href={`https://wa.me/${PUBLIC_PHONE.href.slice(1)}`} target="_blank" rel="noopener noreferrer">WhatsApp</a></dd></div>
     </dl>
   </div>
   <div class="shell footer-bottom">

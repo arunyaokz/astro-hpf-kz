@@ -1,0 +1,74 @@
+---
+import type { Lang } from "../site-v2";
+const { lang } = Astro.props as { lang: Lang };
+const copy = {
+  zh: {
+    title: "跨境物流常见问题",
+    lead: "从询价到交付，先把货物条件、服务范围和责任说清楚。",
+    items: [
+      ["中国到哈萨克斯坦运输，询价需要提供什么？", "请提供货物名称和用途、起运与交付地址、件数、每件尺寸、毛重、包装、计划备货及到货时间。如有贸易术语、货值、商品编码或温控等要求，也请一并说明；资料不完整时可先联系我们确认。"],
+      ["公路、铁路和多式联运怎么选择？", "选择取决于货物尺寸和重量、起终点、时效要求、可用运力和中转换装条件。我们会根据每票货物讨论可行方案；具体路线和承运安排以确认的运输方案为准。"],
+      ["运输和清关通常需要准备哪些资料？", "可先准备合同、商业发票、装箱单和已有的运输文件，核对货名、数量、重量和收发货人信息。具体申报资料、许可证或产品合规文件取决于货物、路线和适用要求，须由相关专业人员逐票确认。"],
+      ["运费和时效如何确定？", "需要先确认起终点、货物条件、运输方式和服务范围。比较报价时，应核对报价币种、有效期、包含与不包含的环节，以及查验、等待或路线变化可能产生的费用。时效受运力、口岸、天气和单证等因素影响，以具体方案约定为准。"],
+      ["超限或特殊货物可以运输吗？", "请提前提供每件货物的准确尺寸、重量、图纸、装卸要求和拟定路线。是否可承运、所需车辆及许可，需要按实际货物、车辆和途经路段逐项核查；取得适用许可后才能安排相应运输。"],
+    ],
+    source: "参考资料：", iru: "国际道路运输联盟：TIR 如何运作", un: "联合国亚太经社会：跨境运输手册", contact: "提交货物信息，讨论运输方案",
+  },
+  en: {
+    title: "Cross-border freight: common questions",
+    lead: "Clarify the cargo, scope and responsibilities before the shipment moves.",
+    items: [
+      ["What information is needed for a China–Kazakhstan freight quote?", "Share the cargo name and use, collection and delivery addresses, number of packages, dimensions of each piece, gross weight, packaging, cargo-ready date and required arrival window. Include trade terms, value, commodity code or temperature requirements if known. Contact us if some details are still missing."],
+      ["How do I choose road, rail or multimodal transport?", "The choice depends on cargo dimensions and weight, origin and destination, timing, available capacity and transfer conditions. We discuss feasible options for each shipment; the route and carrier arrangements are subject to the confirmed plan."],
+      ["Which documents should I prepare for transport and customs?", "Start with the contract, commercial invoice, packing list and any transport documents already available. Check the descriptions, quantities, weights and shipper and consignee details. Declarations, permits and product compliance documents depend on the cargo, route and applicable requirements and must be checked for each shipment by the relevant specialists."],
+      ["How are freight cost and transit time determined?", "First confirm the origin, destination, cargo, transport mode and scope of service. When comparing quotes, check the currency, validity, included and excluded services, and possible charges for inspection, waiting or route changes. Capacity, border conditions, weather and documents can affect timing; the agreed shipment plan sets the applicable terms."],
+      ["Can oversized or special cargo be transported?", "Provide accurate dimensions and weight for each piece, drawings, handling requirements and the proposed route in advance. Feasibility, vehicle choice and permits must be checked against the actual cargo, vehicle and road sections; the relevant transport can be arranged once applicable permits are obtained."],
+    ],
+    source: "References: ", iru: "IRU: how TIR works", un: "UN ESCAP: cross-border transport handbook", contact: "Share your cargo details",
+  },
+  ru: {
+    title: "Частые вопросы о международных перевозках",
+    lead: "До отправки уточните характеристики груза, состав услуг и ответственность сторон.",
+    items: [
+      ["Какие данные нужны для расчёта перевозки из Китая в Казахстан?", "Укажите наименование и назначение груза, адреса забора и доставки, количество мест, размеры каждого места, вес брутто, упаковку, дату готовности и желаемый срок прибытия. Если известны условия поставки, стоимость, код товара или температурный режим, сообщите и их. Если часть данных пока неизвестна, свяжитесь с нами для уточнения."],
+      ["Как выбрать автомобильную, железнодорожную или мультимодальную перевозку?", "Выбор зависит от размеров и веса груза, пунктов отправления и назначения, сроков, доступного транспорта и условий перегрузки. Мы обсуждаем возможные варианты для каждой отправки; маршрут и привлечение перевозчиков определяются согласованной схемой."],
+      ["Какие документы подготовить для перевозки и таможенного оформления?", "Для начала подготовьте контракт, коммерческий инвойс, упаковочный лист и имеющиеся транспортные документы. Сверьте наименование и количество товара, вес, данные отправителя и получателя. Состав деклараций, разрешений и документов о соответствии зависит от груза, маршрута и применимых требований; его проверяют профильные специалисты для каждой отправки."],
+      ["Как определяются стоимость и срок доставки?", "Сначала необходимо согласовать пункты отправления и назначения, характеристики груза, вид транспорта и состав услуг. Сравнивая предложения, проверьте валюту, срок действия, включённые и исключённые услуги, а также возможные расходы на досмотр, ожидание или изменение маршрута. На срок влияют доступность транспорта, условия на границе, погода и документы; условия фиксируются в согласованной схеме перевозки."],
+      ["Можно ли перевезти негабаритный или специальный груз?", "Заранее предоставьте точные размеры и вес каждого места, чертежи, требования к погрузке и разгрузке и предполагаемый маршрут. Возможность перевозки, выбор транспорта и разрешения проверяются с учётом фактического груза, автомобиля и участков пути; соответствующую перевозку можно организовать после получения необходимых разрешений."],
+    ],
+    source: "Источники: ", iru: "IRU: как работает МДП (TIR)", un: "ЭСКАТО ООН: руководство по международным перевозкам", contact: "Отправить данные о грузе",
+  },
+}[lang];
+---
+<section class="faq shell" id="freight-faq" aria-labelledby="freight-faq-title">
+  <header class="faq-intro">
+    <p class="faq-label">FREIGHT / FAQ</p>
+    <h2 class="section-title" id="freight-faq-title">{copy.title}</h2>
+    <p class="faq-lead">{copy.lead}</p>
+    <a class="button button--primary" href={`/${lang === "en" ? "" : `${lang}/`}about/#contact`}>{copy.contact} <span aria-hidden="true">↗</span></a>
+  </header>
+  <div class="faq-content">
+    <ol class="faq-list">
+      {copy.items.map(([question, answer], index) => <li><span class="faq-number">{String(index + 1).padStart(2, "0")}</span><div><h3>{question}</h3><p>{answer}</p></div></li>)}
+    </ol>
+    <p class="faq-sources"><span>{copy.source}</span><a href="https://www.iru.org/what-we-do/facilitating-trade-and-transit/tir/how-tir-works">{copy.iru} ↗</a><a href="https://www.unescap.org/sites/default/files/English_0.pdf">{copy.un} ↗</a></p>
+  </div>
+</section>
+<style>
+  .faq { display:grid; grid-template-columns:minmax(16rem,.65fr) minmax(0,1.35fr); gap:clamp(3rem,7vw,7rem); padding-block:clamp(6rem,10vw,10rem); }
+  .faq-intro { display:flex; flex-direction:column; align-items:flex-start; gap:1.5rem; }
+  .faq-label,.faq-number { color:var(--violet); font-family:var(--font-num); font-size:.72rem; letter-spacing:.08em; }
+  .faq-intro h2 { max-width:13ch; }
+  .faq-lead { max-width:32ch; color:var(--muted); line-height:1.75; }
+  .faq-intro .button { margin-top:.5rem; }
+  .faq-intro .button span { margin-left:.6rem; }
+  .faq-list { margin:0; padding:0; border-top:2px solid var(--text); list-style:none; }
+  .faq-list li { display:grid; grid-template-columns:2.5rem minmax(0,1fr); gap:1rem; padding-block:1.7rem; border-bottom:1px solid var(--line); }
+  .faq-number { padding-top:.3rem; }
+  .faq-list h3 { margin:0; font-size:clamp(1.1rem,1.35vw,1.3rem); line-height:1.4; }
+  .faq-list li p { max-width:70ch; margin:.8rem 0 0; color:var(--muted); line-height:1.8; }
+  .faq-sources { display:flex; flex-wrap:wrap; gap:.5rem 1rem; margin:2rem 0 0; color:var(--muted); font-size:.8rem; line-height:1.6; }
+  .faq-sources a { color:var(--violet); text-decoration:underline; text-underline-offset:.2em; }
+  @media (max-width:65rem) { .faq { grid-template-columns:1fr; } .faq-intro h2 { max-width:none; } }
+  @media (max-width:48rem) { .faq { gap:2.5rem; padding-block:5rem; } .faq-list li { grid-template-columns:2rem minmax(0,1fr); gap:.75rem; padding-block:1.4rem; } .faq-intro .button { max-width:100%; } }
+</style>

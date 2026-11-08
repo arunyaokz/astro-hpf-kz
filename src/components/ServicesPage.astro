@@ -4,6 +4,7 @@ import type { CorporatePages } from "../cms/pages";
 import { SERVICES_COPY } from "../services-content";
 import { pagePath, type Lang } from "../site-v2";
 import CardVisual from "./CardVisual.astro";
+import ServiceQuestions from "./ServiceQuestions.astro";
 
 interface Props { lang: Lang; cms?: CorporatePages["services"]; }
 const { lang, cms } = Astro.props;
@@ -156,6 +157,7 @@ const principleVisuals = ["docs-first", "responsibility", "memory"];
     </div>
   </section>
 
+  <ServiceQuestions lang={lang} />
   <section class="freight-brief">
     <div class="shell brief-layout">
       <header>

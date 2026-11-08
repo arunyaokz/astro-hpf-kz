@@ -1,5 +1,7 @@
 # HPF.kz AI News Workflow
 
+> 历史方案：2026-10-25 起，官网新闻以 EmDash 为准。Codex 生图、媒体入库和中俄哈关联草稿流程见 `ops/EmDash与Codex图文草稿流程.md`；下面的 Git 文件发布约定不再作为当前入库步骤。
+
 HPF.kz uses Git and Astro Content Collections as its editorial system. No traditional CMS is required for the current publishing volume.
 
 ## Publishing contract

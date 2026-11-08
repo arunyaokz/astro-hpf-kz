@@ -2,6 +2,7 @@
 import { loadSiteSettings } from "../cms/pages";
 import { getCollection } from "astro:content";
 import { LANGS, pagePath, type CorePage, type Lang } from "../site-v2";
+import { PUBLIC_PHONE } from "../public-contact";
 
 interface Props {
   htmlLang?: string;
@@ -26,7 +27,7 @@ const organizationSchema = {
   name: verified.get("public_identity") ?? "HPF.kz",
   url: new URL(pagePath("en", "home"), Astro.site).toString(),
   email: contacts.email,
-  telephone:contacts.phone || undefined,
+  telephone: PUBLIC_PHONE.display,
   address: verified.get("operating_city") ? {
     "@type": "PostalAddress",
     addressLocality: localized.city,
@@ -39,7 +40,7 @@ const organizationSchema = {
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=hpf-red-dot" />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonicalURL} />
 {languageLinks.map(({ lang: code, path }) => <link rel="alternate" hreflang={code === "zh" ? "zh-CN" : code} href={new URL(path, Astro.site)} />)}
