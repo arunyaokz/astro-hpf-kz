@@ -73,11 +73,11 @@ Astro.response.headers.set("Cache-Control", "private, no-store");
   h1 { color: #fff; max-width: 62rem; margin: 0; font-size: clamp(2.4rem,5vw,4.5rem); line-height: 1.2; overflow-wrap: anywhere; }
   .lead { max-width: 50rem; margin: 1.4rem 0 0; color: rgba(255,255,255,.84); font-size: 1.2rem; line-height: 1.65; }
   .meta { color: rgba(255,255,255,.72); margin: 1.5rem 0 0; font-size: .875rem; line-height: 1.7; }
-  .article-body { max-width: 68rem; padding-block: 4rem 6rem; }
-  .prose { max-width: 46rem; font-size: 1.1rem; line-height: 1.85; }
+  .article-body { padding-block: 4rem 6rem; }
+  .prose { font-size: 1.1rem; line-height: 1.85; }
   .prose :global(p), .prose :global(ul), .prose :global(ol) { margin-block: 1.25rem; }
   .prose :global(h2), .prose :global(h3) { margin: 2.25rem 0 1rem; }
-  .prose :global(img) { height: auto; border-radius: .5rem; }
+  .prose :global(img) { max-width: 100%; height: auto; border-radius: .5rem; }
   .has-editorial-note :global(p:last-child) { font-size: .85rem; line-height: 1.7; color: var(--muted); }
   footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
   footer a { color: var(--violet); }
