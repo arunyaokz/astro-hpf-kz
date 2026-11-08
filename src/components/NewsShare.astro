@@ -13,19 +13,19 @@ const shareText = [title, description, url, copy.source].filter(Boolean).join("\
 const messageWithoutUrl = [title, description, copy.source].filter(Boolean).join("\n\n");
 const t = encodeURIComponent(messageWithoutUrl);
 const platforms = [
-  { name: "WhatsApp", href: `https://wa.me/?text=${encodeURIComponent(shareText)}` },
-  { name: "Telegram", href: `https://t.me/share/url?url=${u}&text=${t}` },
-  { name: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}` },
-  { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
-  { name: "X", href: `https://twitter.com/intent/tweet?url=${u}&text=${t}` },
+  { name: "WhatsApp", icon: "M12.04 2a9.9 9.9 0 0 0-8.5 15L2 22l5.2-1.5A10 10 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.89.87-3-.2-.32a8.1 8.1 0 1 1 6.9 3.76Zm4.5-6.05c-.25-.13-1.45-.72-1.68-.8-.22-.08-.38-.12-.54.12s-.62.8-.76.96c-.14.16-.28.18-.52.06a6.7 6.7 0 0 1-3.32-2.9c-.14-.24-.01-.37.1-.49.1-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.17.04-.3-.02-.42-.06-.12-.54-1.31-.75-1.8-.2-.47-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.3.98 2.46c.12.16 1.68 2.57 4.07 3.6.57.25 1.02.4 1.37.5.58.19 1.11.16 1.53.1.47-.07 1.45-.6 1.65-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z", href: `https://wa.me/?text=${encodeURIComponent(shareText)}` },
+  { name: "Telegram", icon: "M21.5 3.5 18.4 20c-.2 1.2-.9 1.5-1.8 1l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.3L6.3 13.8 1.6 12.3c-1-.3-1-1 .2-1.4L20 3.9c.8-.3 1.6.2 1.5-.4Z", href: `https://t.me/share/url?url=${u}&text=${t}` },
+  { name: "LinkedIn", icon: "M5.2 3A2.2 2.2 0 1 0 5.2 7.4 2.2 2.2 0 0 0 5.2 3ZM3.4 9h3.7v12H3.4V9Zm6 0h3.5v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.5V21h-3.7v-6c0-1.4 0-3.2-2-3.2s-2.2 1.5-2.2 3.1V21H9.4V9Z", href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}` },
+  { name: "Facebook", icon: "M13.3 21v-8h2.8l.4-3.2h-3.2v-2c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H7V13h2.9v8h3.4Z", href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
+  { name: "X", icon: "M18.9 3h2.9l-6.4 7.3L23 21h-5.9l-4.6-6-5.3 6H4.3l6.9-7.9L3.9 3H10l4.2 5.6L18.9 3Zm-1 16.1h1.6L9.1 4.8H7.4l10.5 14.3Z", href: `https://twitter.com/intent/tweet?url=${u}&text=${t}` },
 ];
 ---
 <section class="share" aria-label={copy.label} data-news-share data-url={url} data-title={title} data-text={shareText} data-message={messageWithoutUrl} data-copied={copy.copied} data-failed={copy.failed}>
   <h2>{copy.label}</h2>
   <div class="share-actions">
-    <button type="button" class="native-share" data-native-share hidden>{copy.native} ↗</button>
-    {platforms.map((platform) => <a href={platform.href} target="_blank" rel="noopener noreferrer">{platform.name} ↗</a>)}
-    <button type="button" data-copy-share>{copy.copy}</button>
+    <button type="button" class="native-share" data-native-share hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m-4 4 4-4 4 4M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>{copy.native}</button>
+    {platforms.map((platform) => <a href={platform.href} target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={platform.icon} fill="currentColor" /></svg><span>{platform.name}</span></a>)}
+    <button type="button" data-copy-share><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" /><path d="M16 8V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h1" fill="none" stroke="currentColor" stroke-width="1.7" /></svg>{copy.copy}</button>
   </div>
   <p class="share-status" data-share-status role="status" aria-live="polite"></p>
 </section>
@@ -60,7 +60,8 @@ const platforms = [
   .share { max-width: 46rem; margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
   .share h2 { margin: 0 0 1rem; font-size: 1rem; }
   .share-actions { display: flex; flex-wrap: wrap; gap: .55rem; }
-  .share-actions a, .share-actions button { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .55rem .85rem; border: 1px solid var(--line); border-radius: .3rem; background: transparent; color: var(--violet); font: inherit; font-size: .875rem; text-decoration: none; cursor: pointer; }
+  .share-actions a, .share-actions button { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; padding: .55rem .85rem; border: 1px solid var(--line); border-radius: .3rem; background: transparent; color: var(--violet); font: inherit; font-size: .875rem; text-decoration: none; cursor: pointer; }
+  .share-actions svg { width: 1.15rem; height: 1.15rem; flex: none; }
   .share-actions a:hover, .share-actions button:hover { border-color: var(--violet); }
   .share-actions a:focus-visible, .share-actions button:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
   .share-actions [hidden] { display: none; }
