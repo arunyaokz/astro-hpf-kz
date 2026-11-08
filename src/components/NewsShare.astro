@@ -1,24 +1,26 @@
 ---
 import type { NewsLang } from "../news";
-interface Props { lang: NewsLang; title: string; url: string; }
-const { lang, title, url } = Astro.props;
+interface Props { lang: NewsLang; title: string; description: string; url: string; }
+const { lang, title, description, url } = Astro.props;
 const copy = {
-  zh: { label: "分享这篇文章", native: "更多分享方式", copy: "复制链接（微信）", copied: "链接已复制，可粘贴到微信", failed: "复制失败，请手动复制地址栏链接" },
-  en: { label: "Share this article", native: "More sharing options", copy: "Copy link", copied: "Link copied", failed: "Could not copy. Please copy the address from your browser." },
-  ru: { label: "Поделиться статьёй", native: "Другие способы", copy: "Копировать ссылку", copied: "Ссылка скопирована", failed: "Не удалось скопировать. Скопируйте ссылку из адресной строки." },
-  kk: { label: "Мақаламен бөлісу", native: "Басқа тәсілдер", copy: "Сілтемені көшіру", copied: "Сілтеме көшірілді", failed: "Көшіру мүмкін болмады. Сілтемені мекенжай жолағынан көшіріңіз." },
+  zh: { source: "来源：HPF.kz", label: "分享这篇文章", native: "更多分享方式", copy: "复制分享内容（微信）", copied: "分享内容已复制，可粘贴到微信", failed: "复制失败，请手动复制地址栏链接" },
+  en: { source: "Source: HPF.kz", label: "Share this article", native: "More sharing options", copy: "Copy share text", copied: "Share text copied", failed: "Could not copy. Please copy the address from your browser." },
+  ru: { source: "Источник: HPF.kz", label: "Поделиться статьёй", native: "Другие способы", copy: "Копировать текст", copied: "Текст для публикации скопирован", failed: "Не удалось скопировать. Скопируйте ссылку из адресной строки." },
+  kk: { source: "Дереккөз: HPF.kz", label: "Мақаламен бөлісу", native: "Басқа тәсілдер", copy: "Бөлісу мәтінін көшіру", copied: "Бөлісу мәтіні көшірілді", failed: "Көшіру мүмкін болмады. Сілтемені мекенжай жолағынан көшіріңіз." },
 }[lang];
 const u = encodeURIComponent(url);
-const t = encodeURIComponent(title);
+const shareText = [title, description, url, copy.source].filter(Boolean).join("\n\n");
+const messageWithoutUrl = [title, description, copy.source].filter(Boolean).join("\n\n");
+const t = encodeURIComponent(messageWithoutUrl);
 const platforms = [
-  { name: "WhatsApp", href: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}` },
+  { name: "WhatsApp", href: `https://wa.me/?text=${encodeURIComponent(shareText)}` },
   { name: "Telegram", href: `https://t.me/share/url?url=${u}&text=${t}` },
   { name: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}` },
   { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
   { name: "X", href: `https://twitter.com/intent/tweet?url=${u}&text=${t}` },
 ];
 ---
-<section class="share" aria-label={copy.label} data-news-share data-url={url} data-title={title} data-copied={copy.copied} data-failed={copy.failed}>
+<section class="share" aria-label={copy.label} data-news-share data-url={url} data-title={title} data-text={shareText} data-message={messageWithoutUrl} data-copied={copy.copied} data-failed={copy.failed}>
   <h2>{copy.label}</h2>
   <div class="share-actions">
     <button type="button" class="native-share" data-native-share hidden>{copy.native} ↗</button>
@@ -31,12 +33,14 @@ const platforms = [
   document.querySelectorAll<HTMLElement>('[data-news-share]').forEach((share) => {
     const url = share.dataset.url ?? '';
     const title = share.dataset.title ?? '';
+    const text = share.dataset.text ?? url;
+    const message = share.dataset.message ?? title;
     const status = share.querySelector<HTMLElement>('[data-share-status]');
     const native = share.querySelector<HTMLButtonElement>('[data-native-share]');
     if (native && navigator.share) {
       native.hidden = false;
       native.addEventListener('click', async () => {
-        try { await navigator.share({ title, url }); } catch (error) {
+        try { await navigator.share({ title, text: message, url }); } catch (error) {
           if (error instanceof DOMException && error.name === 'AbortError') return;
           if (status) status.textContent = share.dataset.failed ?? '';
         }
@@ -44,7 +48,7 @@ const platforms = [
     }
     share.querySelector<HTMLButtonElement>('[data-copy-share]')?.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(text);
         if (status) status.textContent = share.dataset.copied ?? '';
       } catch {
         if (status) status.textContent = share.dataset.failed ?? '';
