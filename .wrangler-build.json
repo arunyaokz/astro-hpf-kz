@@ -35,7 +35,8 @@
   "secrets": {
     "required": [
       "EMDASH_ENCRYPTION_KEY",
-      "HPF_CMS_SETUP_TOKEN"
+      "HPF_CMS_SETUP_TOKEN",
+      "HPF_SITE_PULL_SECRET"
     ]
   },
   "observability": {

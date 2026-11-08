@@ -19,8 +19,8 @@ const {contacts}=await loadSiteSettings(lang);
       <img src="/images/corporate/hero-contact-20261030.webp" alt={lang === "zh" ? "货运方案桌面概念图" : lang === "ru" ? "Иллюстрация подготовки плана перевозки" : "Concept image of freight planning"} width="1024" height="1536" fetchpriority="high" />
       <div class="contact-hero__details">
         <p class="eyebrow">Data boundary</p>
-        <h2>{page.asideTitle}</h2>
-        <p>{page.asideText}</p>
+        <h2>{({zh:'在线提交货运需求', en:'Submit a freight enquiry online', ru:'Отправьте запрос на перевозку онлайн'}[lang])}</h2>
+        <p>{({zh:'提交后，我们会保存询价并用于跟进。若提交失败，可通过邮件发送。', en:'We save your enquiry to follow up. If submission fails, you can send it by email.', ru:'Мы сохраним ваш запрос для обработки. Если отправить его не удастся, воспользуйтесь электронной почтой.'}[lang])}</p>
         <dl><div><dt>{page.emailLabel}</dt><dd><a href={`mailto:${contacts.email}`}>{contacts.email}</a></dd></div></dl>
         <small>{page.responseNote}</small><small>{({zh: "AI 概念图 · 非真实办公室", en: "AI concept image · not an actual office", ru: "Иллюстрация ИИ · не реальный офис"}[lang])}</small>
       </div>
@@ -28,7 +28,7 @@ const {contacts}=await loadSiteSettings(lang);
   </section>
 
   <section class="form-section shell">
-    <form data-contact-email={contacts.email} data-enquiry-form data-required-message={page.fields.required} data-mail-subject="HPF.kz freight enquiry">
+    <form data-contact-email={contacts.email} data-enquiry-form data-inquiry-lang={lang} data-required-message={page.fields.required} data-mail-subject="HPF.kz freight enquiry">
       <div class="form-grid">
         <label>{page.fields.name}<span aria-hidden="true">*</span><input name="name" autocomplete="name" required /></label>
         <label>{page.fields.company}<input name="company" autocomplete="organization" /></label>
@@ -40,33 +40,14 @@ const {contacts}=await loadSiteSettings(lang);
         <label class="wide">{page.fields.window}<input name="window" /></label>
         <label class="wide">{page.fields.message}<textarea name="message" rows="4"></textarea></label>
       </div>
-      <label class="consent"><input type="checkbox" name="consent" required /><span>{page.fields.consent} <a href={pagePath(lang, "privacy")}>{lang === "zh" ? "查看政策" : lang === "ru" ? "Открыть уведомление" : "Read notice"}</a></span></label>
-      <div class="form-actions"><button class="button button--primary" type="submit">{page.fields.submit}</button><p data-form-status aria-live="polite"></p></div>
+      <label class="consent"><input type="checkbox" name="consent" required /><span>{({zh:'我同意提交以上信息，并已阅读隐私政策。', en:'I agree to submit these details and have read the privacy notice.', ru:'Я согласен отправить эти данные и ознакомился с уведомлением о конфиденциальности.'}[lang])} <a href={pagePath(lang, "privacy")}>{lang === "zh" ? "查看政策" : lang === "ru" ? "Открыть уведомление" : "Read notice"}</a></span></label>
+      <div class="form-actions"><button class="button button--primary" type="submit">{({zh:'提交询价', en:'Submit enquiry', ru:'Отправить запрос'}[lang])}</button><p data-form-status aria-live="polite"></p></div>
     </form>
   </section>
 </article>
 
 <script>
-  const form = document.querySelector<HTMLFormElement>("[data-enquiry-form]");
-  const status = form?.querySelector<HTMLElement>("[data-form-status]");
-  // 从运输产品页点「询价」过来时，把产品名带进「货物」一栏（只填空栏，访客可改）
-  const product = new URLSearchParams(window.location.search).get("product")?.trim().slice(0, 200);
-  const cargo = form?.querySelector<HTMLTextAreaElement>("textarea[name=cargo]");
-  if (product && cargo && !cargo.value) cargo.value = product;
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      if (status) status.textContent = form.dataset.requiredMessage ?? "Complete the required fields.";
-      return;
-    }
-    const data = new FormData(form);
-    const lines = Array.from(data.entries())
-      .filter(([key]) => key !== "consent")
-      .map(([key, value]) => `${key}: ${String(value).trim() || "—"}`);
-    const subject = form.dataset.mailSubject ?? "HPF.kz freight enquiry";
-    window.location.href = `mailto:${form.dataset.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-  });
+  import "../farsail-inquiry-form";
 </script>
 
 <style>
