@@ -473,9 +473,9 @@ export const PRIVACY_COPY: Record<Lang, {
 }> = {
   en: {
     metaTitle: "Privacy notice | HPF.kz", metaDescription: "How HPF.kz handles information submitted through this website.",
-    eyebrow: "Legal / privacy", title: "Privacy notice", lead: "This launch version avoids website-side collection until the processing route, storage location and legal wording are confirmed.",
+    eyebrow: "Legal / privacy", title: "Privacy notice", lead: "We use the information you submit to respond to your freight enquiry.",
     sections: [
-      { title: "Information you choose to send", text: "The enquiry worksheet prepares an email in your own mail application. HPF.kz may receive the contact and shipment details included in that email." },
+      { title: "Information you choose to send", text: "When you submit an enquiry, HPF.kz stores your contact and shipment details on its website and transfers them to Farsail for follow-up. If submission fails, you may send an email instead." },
       { title: "Purpose", text: "The information is used to review a freight request, clarify route and compliance requirements and respond to the sender." },
       { title: "Legal basis and location", text: "The final consent wording, retention period, data controller identity and storage location remain pending legal confirmation under Kazakhstan Law No. 94-V on Personal Data and Their Protection." },
       { title: "Your choices", text: "Do not send sensitive personal data through a freight enquiry. You may contact bd@hpf.kz to request correction or deletion, subject to legal retention duties." },
@@ -483,9 +483,9 @@ export const PRIVACY_COPY: Record<Lang, {
   },
   zh: {
     metaTitle: "隐私政策｜HPF.kz", metaDescription: "HPF.kz 如何处理通过本网站提交的信息。",
-    eyebrow: "法律 / 隐私", title: "隐私政策", lead: "在处理路径、存储地点与法务口径确认前，本上线版本不在网站端收集表单数据。",
+    eyebrow: "法律 / 隐私", title: "隐私政策", lead: "我们使用您提交的信息处理并回复货运询价。",
     sections: [
-      { title: "你主动发送的信息", text: "货运需求表只在你的邮件客户端中生成邮件。HPF.kz 可能接收邮件中填写的联系方式与货物信息。" },
+      { title: "你主动发送的信息", text: "提交询价后，HPF.kz 会在网站保存您填写的联系方式及货物信息，并转交远帆工作台跟进。提交失败时，您可以选择通过邮件发送。" },
       { title: "使用目的", text: "这些信息用于评估货运需求、澄清路线与合规条件，并回复发件人。" },
       { title: "法律依据与存储地点", text: "最终同意条款、保存期限、数据控制者身份与存储地点，仍需根据哈萨克斯坦《个人数据及其保护法》（№94-V）完成法务确认。" },
       { title: "你的选择", text: "请勿通过货运询价发送敏感个人信息。你可以联系 bd@hpf.kz 请求更正或删除，但依法需要保留的记录除外。" },
@@ -493,9 +493,9 @@ export const PRIVACY_COPY: Record<Lang, {
   },
   ru: {
     metaTitle: "Уведомление о конфиденциальности | HPF.kz", metaDescription: "Как HPF.kz обрабатывает информацию, переданную через сайт.",
-    eyebrow: "Правовая информация / данные", title: "Уведомление о конфиденциальности", lead: "До подтверждения способа обработки, места хранения и юридических формулировок сайт не собирает данные формы на сервере.",
+    eyebrow: "Правовая информация / данные", title: "Уведомление о конфиденциальности", lead: "Мы используем отправленные вами данные для обработки запроса на перевозку и ответа вам.",
     sections: [
-      { title: "Информация, которую вы отправляете", text: "Форма запроса создаёт письмо в вашей почтовой программе. HPF.kz может получить указанные в письме контакты и данные груза." },
+      { title: "Информация, которую вы отправляете", text: "После отправки запроса HPF.kz сохраняет указанные контакты и данные груза на сайте и передаёт их в Farsail для обработки. Если отправить запрос не удалось, вы можете воспользоваться электронной почтой." },
       { title: "Цель", text: "Информация используется для рассмотрения запроса, уточнения маршрута и требований соответствия, а также ответа отправителю." },
       { title: "Правовое основание и место хранения", text: "Окончательный текст согласия, срок хранения, личность оператора и место хранения требуют юридического подтверждения по Закону Республики Казахстан №94-V «О персональных данных и их защите»." },
       { title: "Ваш выбор", text: "Не отправляйте в запросе чувствительные персональные данные. Для исправления или удаления напишите на bd@hpf.kz с учётом обязательных сроков хранения." },

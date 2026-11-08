@@ -1,8 +1,11 @@
+import { handleInquiry } from "./farsail-inquiry.mjs";
 import handler, { createScheduledHandler } from "@emdash-cms/cloudflare/worker";
 
 export default {
   ...handler,
   async fetch(request, env, ctx) {
+    const bridge = await handleInquiry(request, env);
+    if (bridge) return bridge;
     const url = new URL(request.url);
     if (url.pathname === '/_hpf/contact-event') {
       if (request.method !== 'POST' || request.headers.get('Origin') !== url.origin) return new Response(null, { status: 403 });
