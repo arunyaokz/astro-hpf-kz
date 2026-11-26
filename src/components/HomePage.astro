@@ -76,7 +76,7 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
           </li>
         ))}
       </ol>
-      <div class="promise-line"><p>{page.customs.boundary}</p><a href={pagePath(lang, "services")}>{page.customs.button}<span aria-hidden="true">→</span></a></div>
+      <div class="promise-line"><p>{page.customs.boundary}</p><a href={pagePath(lang, "services") + "#customs"}>{page.customs.button}<span aria-hidden="true">→</span></a></div>
     </div>
   </section>
 
@@ -105,7 +105,7 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
       <header class="service-heading"><h2>{servicesLabel}</h2><p>{page.services.intro}</p></header>
       <div class="service-mosaic">
         {page.services.items.map((item, index) => (
-          <a class:list={[`service-tile service-tile--${index + 1}`]} href={pagePath(lang, "services")}>
+          <a class:list={[`service-tile service-tile--${index + 1}`]} href={pagePath(lang, "services") + "#" + serviceVisuals[index]}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <CardVisual kind={serviceVisuals[index]} />
             <div><h3>{item.title}</h3><p>{item.text}</p></div>
