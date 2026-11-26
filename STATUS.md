@@ -7,7 +7,7 @@
 - 正式发布分支为 `codex/website-astro-update`，本机发布工作树为 `/Users/arunyao/Developer/HPFKZ/website-production`。GitHub 默认分支 `main` 同步本次升级及首页换图，并保留其新闻分享、文章首屏和 Farsail 询价对接。
 - 本次询价修复前的生产 Worker 为 `5d99e129-a956-4375-a94d-6c94280d4226`。正式发布分支已收录其 Astro 7.4.13、EmDash 1.6.0 升级源码、依赖锁和迁移清单，以及三语首页的三张 `hero-tir-*-wide-20261126-v2.webp`、手机裁切适配和原有首页 CSS 兼容地址。EmDash 升级的七项生产数据库迁移已在此前完成。
 - 用锁文件运行 `npm ci`，然后运行 `npm run check` 构建、检查类型和预演部署。按发布流程切流后，回查三语首页图片、轮播、新闻和统计脚本。
-- 亮色品牌版 `hero-tir-*-wide-20261126-bright.webp` 已成为源码中的默认轮播图，三张为带官网 HPF 标志的 AI 概念图。本次只同步源码，当前生产仍使用 `20261126-v2.webp`。
+- 亮色品牌版 `hero-tir-*-wide-20261126-bright-svg.webp` 是源码中的默认轮播图。三张 AI 概念图的车身标志直接由官网原版 `public/brand/hpf-mark.svg` 渲染到图片，亮度、景深及裁切保留。本次只同步源码，当前生产仍使用 `20261126-v2.webp`。
 
 ## 官网询价与文案（2026-11-26）
 
