@@ -2,8 +2,8 @@
 import { getTranslations, type ContentEntry } from "emdash";
 import { PortableText, Image as EmDashImage } from "emdash/ui";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { newsPath, newsLabel, sourceUrls, NEWS_COPY, type NewsData } from "../news";
-import { LANGS, type Lang } from "../site-v2";
+import { listNews, newsPath, newsLabel, sourceUrls, NEWS_COPY, type NewsData } from "../news";
+import { LANGS, UI, pagePath, type Lang } from "../site-v2";
 type NewsLang = Lang | "kk";
 interface Props { lang: NewsLang; entry: ContentEntry<NewsData>; }
 const { lang, entry } = Astro.props;
@@ -19,30 +19,146 @@ if (hasEditorialNote && lastText.startsWith("*") && lastText.endsWith("*") && la
   lastChildren[0].text = lastChildren[0].text.replace(/^\*/, "").replace(/\*$/, "");
 }
 const { translations } = await getTranslations("news", entry.data.id);
-const alternates = translations.filter((item) => item.status === "published" && item.slug && (LANGS as readonly string[]).concat("kk").includes(item.locale)).map((item) => ({ lang: item.locale as NewsLang, path: newsPath(item.locale as Lang, item.slug!) }));
+const alternates = translations
+  .filter((item) => item.status === "published" && item.slug && (LANGS as readonly string[]).concat("kk").includes(item.locale))
+  .map((item) => ({ lang: item.locale as NewsLang, path: newsPath(item.locale as Lang, item.slug!) }));
+
+const { entries: recentEntries } = await listNews(lang);
+const related = recentEntries.filter((item) => item.data.slug !== data.slug).slice(0, 3);
+
+const heroRef = data.hero_image as { id?: string; src?: string; url?: string } | undefined;
+const coverPath = heroRef?.src || heroRef?.url || (heroRef?.id ? `/_emdash/api/media/file/${heroRef.id}` : undefined);
+const coverAbsolute = coverPath ? new URL(coverPath, Astro.site).toString() : new URL("/og-hpf-kz.png", Astro.site).toString();
+
 const published = data.publishedAt ? new Date(data.publishedAt) : null;
+const publishedIso = published && !Number.isNaN(published.getTime()) ? published.toISOString() : undefined;
+const updatedRaw = (data as { updatedAt?: Date | string }).updatedAt;
+const updated = updatedRaw ? new Date(updatedRaw) : null;
+const modifiedIso = updated && !Number.isNaN(updated.getTime()) ? updated.toISOString() : publishedIso;
+
+const siteLang: Lang = lang === "kk" ? "ru" : lang;
+const contactPrefix = siteLang === "en" ? "" : `/${siteLang}`;
+const inquiryHref = `${contactPrefix}/about/?from=${encodeURIComponent(`news:${data.slug}`)}#contact`;
+
+const ctaCopy = {
+  zh: {
+    eyebrow: "货运方案与清关协同",
+    title: "有中哈欧跨境运输或清关需求？",
+    text: "提供品名、起终点与期望到货窗口，我们先帮您核对路线、单证与节点风险。",
+    primary: "提交货运需求",
+    services: "查看服务范围",
+    routes: "查看路线网络",
+    relatedTitle: "继续阅读",
+  },
+  en: {
+    eyebrow: "Route & customs planning",
+    title: "Planning a China–Kazakhstan–Europe shipment?",
+    text: "Share the commodity, origin, destination and arrival window. We clarify route constraints, documents and handover risks first.",
+    primary: "Request a transport plan",
+    services: "Explore services",
+    routes: "View routes & network",
+    relatedTitle: "Related updates",
+  },
+  ru: {
+    eyebrow: "Маршруты и таможенная подготовка",
+    title: "Планируете перевозку Китай–Казахстан–Европа?",
+    text: "Сообщите товар, отправление, назначение и окно прибытия — сначала разберём маршрут, документы и риски по узлам.",
+    primary: "Запросить маршрут",
+    services: "Наши услуги",
+    routes: "Маршруты и сеть",
+    relatedTitle: "Читайте также",
+  },
+  kk: {
+    eyebrow: "Маршрут және кедендік дайындық",
+    title: "Қытай–Қазақстан–Еуропа тасымалын жоспарлап отырсыз ба?",
+    text: "Жүк атауын, жөнелту мен жеткізу нүктелерін жіберіңіз — маршрут, құжаттар мен тәуекелдерді алдын ала нақтылаймыз.",
+    primary: "Тасымал сұранысын жіберу",
+    services: "Қызметтер (орысша)",
+    routes: "Маршруттар (орысша)",
+    relatedTitle: "Басқа жаңалықтар",
+  },
+}[lang];
+
+const breadcrumbs = [
+  { name: lang === "kk" ? "HPF.kz" : UI[siteLang].nav.home, path: lang === "kk" ? "/ru/" : pagePath(siteLang, "home") },
+  { name: lang === "kk" ? "Жаңалықтар" : UI[siteLang].nav.news, path: newsPath(lang) },
+  { name: data.title, path: newsPath(lang, data.slug) },
+];
+
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: data.title,
   description: data.description,
+  image: [coverAbsolute],
   mainEntityOfPage: new URL(newsPath(lang, data.slug), Astro.site).toString(),
-  inLanguage: lang,
-  ...(published && !Number.isNaN(published.getTime()) ? { datePublished: published.toISOString() } : {}),
-  ...(data.author_name === "HPF.kz" ? { author: { "@type": "Organization", name: data.author_name } } : {}),
-  publisher: { "@type": "Organization", name: "HPF.kz", url: new URL("/", Astro.site).toString() },
+  inLanguage: lang === "zh" ? "zh-CN" : lang,
+  ...(publishedIso ? { datePublished: publishedIso } : {}),
+  ...(modifiedIso ? { dateModified: modifiedIso } : {}),
+  author: { "@type": "Organization", name: data.author_name || "HPF.kz" },
+  publisher: {
+    "@type": "Organization",
+    name: "HPF.kz",
+    url: new URL("/", Astro.site).toString(),
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/brand/hpf-logo.png", Astro.site).toString(),
+    },
+  },
 };
-Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
-<SiteLayout title={`${data.title} | HPF.kz`} description={data.description} lang={lang === "kk" ? "ru" : lang} htmlLang={lang} active="news" canonicalPath={newsPath(lang, data.slug)} alternates={alternates}>
+<SiteLayout
+  title={`${data.title} | HPF.kz`}
+  description={data.description}
+  lang={siteLang}
+  htmlLang={lang}
+  active="news"
+  image={coverPath}
+  ogType="article"
+  publishedTime={publishedIso}
+  modifiedTime={modifiedIso}
+  canonicalPath={newsPath(lang, data.slug)}
+  alternates={alternates}
+  breadcrumbs={breadcrumbs}
+>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema).replaceAll("<", "\\u003c")} />
   <article class="shell article" {...edit}>
     <header><a class="back" href={newsPath(lang)}>← {text.back}</a><p class="category">{newsLabel(data.category, lang)}</p><h1 {...edit.title}>{data.title}</h1><p class="lead" {...edit.description}>{data.description}</p><p class="meta">{data.author_name ?? "HPF.kz"} · {new Date(data.publishedAt ?? new Date()).toLocaleDateString(lang === "zh" ? "zh-CN" : lang === "ru" ? "ru-RU" : lang === "kk" ? "kk-KZ" : "en-GB", { timeZone: "Asia/Almaty" })}</p><p class="meta">{text.verification}：{newsLabel(data.verification_status, lang)}</p></header>
     {data.hero_image && <div {...edit.hero_image}><EmDashImage image={data.hero_image} class="cover" /></div>}
     <div class:list={["prose", { "has-editorial-note": hasEditorialNote }]}><PortableText value={data.content} /></div>
     {links.length > 0 && <footer><h2>{text.sources}</h2><ul>{links.map((url) => <li><a href={url} rel="noreferrer">{url}</a></li>)}</ul></footer>}
+
+    <aside class="article-cta" aria-label={ctaCopy.eyebrow}>
+      <div>
+        <p class="cta-eyebrow">{ctaCopy.eyebrow}</p>
+        <h2>{ctaCopy.title}</h2>
+        <p>{ctaCopy.text}</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button button--primary" href={inquiryHref}>{ctaCopy.primary} ↗</a>
+        <a class="cta-link" href={pagePath(siteLang, "services")}>{ctaCopy.services}</a>
+        <a class="cta-link" href={pagePath(siteLang, "routes")}>{ctaCopy.routes}</a>
+      </div>
+    </aside>
+
+    {related.length > 0 && (
+      <section class="related-news" aria-labelledby="related-news-heading">
+        <h2 id="related-news-heading">{ctaCopy.relatedTitle}</h2>
+        <div class="related-grid">
+          {related.map(({ data: item }) => (
+            <a class="related-card" href={newsPath(lang, item.slug)}>
+              <p class="meta">{newsLabel(item.category, lang)}</p>
+              <h3>{item.title}</h3>
+              <p class="related-desc">{item.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
   </article>
 </SiteLayout>
 <style>
   .article{max-width:68rem;padding-block:4rem 6rem}header{display:grid;gap:1.25rem;margin-bottom:3rem}h1{font-size:clamp(2.4rem,5vw,4.5rem)}.lead{font-size:1.2rem}.meta,.category,.lead{color:var(--muted)}.back,a{color:var(--violet)}.prose{max-width:46rem;font-size:1.1rem;line-height:1.85}.prose :global(p),.prose :global(ul),.prose :global(ol){margin-block:1.25rem}.prose :global(h2),.prose :global(h3){margin:2.25rem 0 1rem}.prose :global(img){height:auto;border-radius:.5rem}.has-editorial-note :global(p:last-child){font-size:.85rem;line-height:1.7;color:var(--muted)}.article :global(.cover){max-height:34rem;object-fit:cover;margin-bottom:2.5rem}footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line);overflow-wrap:anywhere}
+  .article-cta{margin-top:3.5rem;padding:2rem;border:1px solid var(--line);border-radius:1.25rem;background:var(--mist);display:grid;gap:1.5rem}.cta-eyebrow{margin:0;color:var(--violet);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.article-cta h2{margin:.4rem 0 .6rem;font-size:clamp(1.4rem,2.4vw,1.9rem)}.article-cta p{margin:0;color:var(--muted);max-width:48rem}.cta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem}.cta-link{font-size:.92rem;font-weight:600}
+  .related-news{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--line)}.related-news h2{margin:0 0 1.5rem;font-size:1.45rem}.related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}.related-card{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem;border:1px solid var(--line);border-radius:1rem;background:#fff;color:var(--text)}.related-card h3{margin:0;font-size:1.05rem;line-height:1.4}.related-card:hover h3{color:var(--violet)}.related-desc{margin:0;color:var(--muted);font-size:.88rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}@media(max-width:800px){.related-grid{grid-template-columns:1fr}}
 </style>

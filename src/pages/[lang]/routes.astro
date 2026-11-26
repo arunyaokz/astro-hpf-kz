@@ -8,6 +8,8 @@ if (lang !== "zh" && lang !== "ru") return Astro.rewrite("/404");
 const cms = await loadCorporatePage("routes", lang);
 if (!cms) return Astro.rewrite("/404");
 const page = cms.page;
-Astro.response.headers.set("Cache-Control", "private, no-store");
+const crumbs = lang === "zh"
+  ? [{ name: "首页", path: "/zh/" }, { name: "路线与网络", path: "/zh/routes/" }]
+  : [{ name: "Главная", path: "/ru/" }, { name: "Маршруты и сеть", path: "/ru/routes/" }];
 ---
-<SiteLayout title={page.metaTitle} description={page.metaDescription} lang={lang} active="routes"><RouteNetworkPage lang={lang} cms={cms} /></SiteLayout>
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang={lang} active="routes" breadcrumbs={crumbs}><RouteNetworkPage lang={lang} cms={cms} /></SiteLayout>

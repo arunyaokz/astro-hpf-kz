@@ -1,23 +1,36 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#171714"/>
-  <rect x="58" y="58" width="1084" height="514" rx="8" fill="#24231d" stroke="#e45b24" stroke-opacity="0.42"/>
-  <rect x="96" y="96" width="1008" height="52" rx="8" fill="#171714" stroke="#fffaf1" stroke-opacity="0.13"/>
-  <circle cx="124" cy="122" r="7" fill="#e45b24"/>
-  <circle cx="148" cy="122" r="7" fill="#b8c8a5"/>
-  <circle cx="172" cy="122" r="7" fill="#0e7c75"/>
-  <text x="96" y="236" fill="#b8c8a5" font-family="Menlo, Monaco, Consolas, monospace" font-size="22">HPF.kz / trans-caspian atlas</text>
-  <text x="96" y="330" fill="#fffaf1" font-family="Georgia, Times New Roman, serif" font-size="70" font-weight="500">China · Kazakhstan · Europe</text>
-  <text x="96" y="400" fill="#fffaf1" fill-opacity="0.68" font-family="Georgia, Times New Roman, serif" font-size="34">Deterministic cross-border logistics control platform</text>
-  <rect x="96" y="466" width="212" height="54" rx="8" fill="#e45b24"/>
-  <text x="122" y="500" fill="#fffaf1" font-family="Menlo, Monaco, Consolas, monospace" font-size="20">10-12d target</text>
-  <rect x="334" y="466" width="206" height="54" rx="8" fill="#fffaf1" fill-opacity="0.08" stroke="#fffaf1" stroke-opacity="0.16"/>
-  <text x="360" y="500" fill="#fffaf1" font-family="Menlo, Monaco, Consolas, monospace" font-size="20">3 languages</text>
-  <path d="M772 222H1032" stroke="#fffaf1" stroke-width="2" stroke-opacity="0.16"/>
-  <path d="M772 306H1032" stroke="#fffaf1" stroke-width="2" stroke-opacity="0.16"/>
-  <path d="M772 390H1032" stroke="#fffaf1" stroke-width="2" stroke-opacity="0.16"/>
-  <circle cx="812" cy="222" r="16" fill="#dfa88f"/>
-  <circle cx="882" cy="306" r="16" fill="#9fc9a2"/>
-  <circle cx="952" cy="390" r="16" fill="#9fbbe0"/>
-  <circle cx="1032" cy="474" r="16" fill="#c0a8dd"/>
-  <path d="M812 222C846 236 856 278 882 306C912 338 925 360 952 390C982 424 1002 450 1032 474" stroke="#e45b24" stroke-width="5" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B0F26"/>
+      <stop offset="60%" stop-color="#132A63"/>
+      <stop offset="100%" stop-color="#16387E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.28" r="0.55">
+      <stop offset="0%" stop-color="#3D72E8" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#16387E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="44" y="44" width="1112" height="542" rx="24" fill="#0B0F26" fill-opacity="0.34" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <g transform="translate(96, 108) scale(0.48)">
+    <g fill="#FFFFFF">
+      <path d="M0 0h25v47c24-2 43 10 67 6V0h25v120H92V74c-24 4-43-8-67-6v52H0z"/>
+      <path fill-rule="evenodd" d="M134 0h83c33 0 48 16 48 42s-15 42-48 42h-58v36h-25V0zm25 24v36h58c15 0 22-6 22-18s-7-18-22-18z"/>
+      <path d="M282 0h112v24h-87v25h78v24h-78v47h-25z"/>
+    </g>
+    <circle cx="418" cy="108" r="12" fill="#D71920"/>
+  </g>
+  <text x="330" y="148" fill="#9BB8FF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="2.4">HPF.KZ · ALMATY, KAZAKHSTAN</text>
+  <text x="96" y="292" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="66" font-weight="700">China · Kazakhstan · Europe</text>
+  <text x="96" y="362" fill="#D8E3FF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="31" font-weight="400">TIR Transport · Pre-Shipment Customs · Almaty Warehousing</text>
+  <rect x="96" y="438" width="236" height="52" rx="26" fill="#D71920"/>
+  <text x="214" y="471" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="600">Middle Corridor</text>
+  <rect x="352" y="438" width="220" height="52" rx="26" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.22"/>
+  <text x="462" y="471" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="500">EN · 中文 · RU</text>
+  <text x="96" y="546" fill="#8FA8E0" font-family="Menlo, Monaco, Consolas, monospace" font-size="18">https://hpf.kz  ·  bd@hpf.kz  ·  +7 776 702 1414</text>
+  <path d="M840 492 C900 440, 955 390, 1015 322 C1050 282, 1080 245, 1110 212" stroke="#3D72E8" stroke-width="4" stroke-dasharray="8 8" stroke-linecap="round"/>
+  <circle cx="840" cy="492" r="8" fill="#FFFFFF"/>
+  <circle cx="962" cy="382" r="10" fill="#D71920"/>
+  <circle cx="1110" cy="212" r="8" fill="#9BB8FF"/>
 </svg>

@@ -39,7 +39,21 @@ const copy = {
     source: "Источники: ", iru: "IRU: как работает МДП (TIR)", un: "ЭСКАТО ООН: руководство по международным перевозкам", contact: "Отправить данные о грузе",
   },
 }[lang];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: copy.items.map(([question, answer]) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: answer,
+    },
+  })),
+};
 ---
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema).replaceAll("<", "\\u003c")} />
 <section class="faq shell" id="freight-faq" aria-labelledby="freight-faq-title">
   <header class="faq-intro">
     <p class="faq-label">FREIGHT / FAQ</p>

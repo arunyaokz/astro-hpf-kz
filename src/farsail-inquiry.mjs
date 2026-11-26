@@ -33,9 +33,9 @@ function normalize(data) {
   const name = field('name', 80, true), email = field('email', 254, true);
   if (!EMAIL.test(email) || data.consent !== true) throw new Error('bad-field');
   const cargo = field('cargo', 120, true), origin = field('origin', 500, true), destination = field('destination', 500, true);
-  const company = field('company', 500), phone = field('phone', 200), window = field('window', 500), message = field('message', 2500);
+  const company = field('company', 500), phone = field('phone', 200), window = field('window', 500), message = field('message', 2500), source = field('source', 200);
   const lang = ['zh', 'ru', 'en'].includes(data.lang) ? data.lang : 'en';
-  const text = [`公司 / Company: ${company || '—'}`, `电话 / Phone: ${phone || '—'}`, `货物 / Cargo: ${cargo}`, `起运地 / Origin: ${origin}`, `目的地 / Destination: ${destination}`, `期望到达 / Arrival: ${window || '—'}`, `补充说明 / Notes: ${message || '—'}`].join('\n');
+  const text = [`公司 / Company: ${company || '—'}`, `电话 / Phone: ${phone || '—'}`, `货物 / Cargo: ${cargo}`, `起运地 / Origin: ${origin}`, `目的地 / Destination: ${destination}`, `期望到达 / Arrival: ${window || '—'}`, `补充说明 / Notes: ${message || '—'}`, ...(source ? [`来源 / Source: ${source}`] : [])].join('\n');
   if (text.length > 5000) throw new Error('too-large');
   return { name, email, product: cargo, qty: '', lang, text };
 }

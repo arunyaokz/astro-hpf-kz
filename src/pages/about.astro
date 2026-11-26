@@ -6,6 +6,5 @@ import { loadCorporatePage } from "../cms/pages";
 const cms = await loadCorporatePage("company", "en");
 if (!cms) return Astro.rewrite("/404");
 const page = cms.page;
-Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
-<SiteLayout title={page.metaTitle} description={page.metaDescription} lang={"en"} active="about"><ContentPage lang={"en"} cms={cms} pageKey="about" /></SiteLayout>
+<SiteLayout title={page.metaTitle} description={page.metaDescription} lang={"en"} active="about" breadcrumbs={[{ name: "Home", path: "/" }, { name: "Company", path: "/about/" }]}><ContentPage lang={"en"} cms={cms} pageKey="about" /></SiteLayout>

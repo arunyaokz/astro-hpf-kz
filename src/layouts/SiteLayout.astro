@@ -13,19 +13,52 @@ interface Props {
   description: string;
   lang?: Lang;
   active?: CorePage | "news" | "industries" | "platform";
+  image?: string;
+  ogType?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
   canonicalPath?: string;
   alternates?: { lang: Lang | "kk"; path: string }[];
+  breadcrumbs?: { name: string; path: string }[];
 }
 
-const { title, description, htmlLang, lang = "en", active = "home", canonicalPath, alternates } = Astro.props;
+const {
+  title,
+  description,
+  htmlLang,
+  lang = "en",
+  active = "home",
+  image,
+  ogType,
+  publishedTime,
+  modifiedTime,
+  noindex,
+  canonicalPath,
+  alternates,
+  breadcrumbs,
+} = Astro.props;
 const activePage: CorePage = active === "industries" || active === "platform" ? "services" : active;
-Astro.response.headers.set("Cache-Control","private, no-store");
 ---
 
 <!doctype html>
 <html lang={htmlLang ?? HTML_LANG[lang]}>
   <head>
-    <BaseHead htmlLang={htmlLang} title={title} description={description} lang={lang} page={activePage} canonicalPath={canonicalPath} alternates={alternates} />
+    <BaseHead
+      htmlLang={htmlLang}
+      title={title}
+      description={description}
+      lang={lang}
+      page={activePage}
+      image={image}
+      ogType={ogType}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      noindex={noindex}
+      canonicalPath={canonicalPath}
+      alternates={alternates}
+      breadcrumbs={breadcrumbs}
+    />
   </head>
   <body>
     <script src="/hpf-contact-analytics.js" is:inline defer></script>

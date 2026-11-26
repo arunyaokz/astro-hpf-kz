@@ -11,31 +11,83 @@ interface Props {
   lang: Lang;
   page: CorePage;
   image?: string;
+  ogType?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
   canonicalPath?: string;
   alternates?: { lang: Lang | "kk"; path: string }[];
+  breadcrumbs?: { name: string; path: string }[];
 }
 
-const { title, description, lang, htmlLang, page, image = "/og-hpf-kz.svg", canonicalPath, alternates } = Astro.props;
+const {
+  title,
+  description,
+  lang,
+  htmlLang,
+  page,
+  image = "/og-hpf-kz.png",
+  ogType = "website",
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+  canonicalPath,
+  alternates,
+  breadcrumbs,
+} = Astro.props;
+
 const canonicalURL = new URL(canonicalPath ?? pagePath(lang, page), Astro.site);
 const languageLinks = alternates ?? LANGS.map((code) => ({ lang: code, path: pagePath(code, page) }));
+const imageURL = new URL(image, Astro.site);
+const rssPath = lang === "zh" ? "/zh/rss.xml" : lang === "ru" ? "/ru/rss.xml" : "/rss.xml";
 const facts = await getCollection("facts");
 const verified = new Map(facts.filter((fact) => fact.data.verified).map((fact) => [fact.id, fact.data.value]));
-const {contacts,localized}=await loadSiteSettings(lang ?? "en");
+const { contacts, localized } = await loadSiteSettings(lang ?? "en");
+
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LogisticsBusiness"],
+  "@type": ["Organization", "LocalBusiness"],
   name: verified.get("public_identity") ?? "HPF.kz",
+  legalName: "HPF KZ Limited Liability Partnership (LLP)",
   url: new URL(pagePath("en", "home"), Astro.site).toString(),
+  logo: new URL("/brand/hpf-logo.png", Astro.site).toString(),
+  image: new URL("/og-hpf-kz.png", Astro.site).toString(),
   email: contacts.email,
   telephone: PUBLIC_PHONE.display,
+  taxID: "241040015643",
   address: verified.get("operating_city") ? {
     "@type": "PostalAddress",
     addressLocality: localized.city,
     streetAddress: localized.office,
     addressCountry: contacts.countryCode,
   } : undefined,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 43.284122,
+    longitude: 76.981999,
+  },
+  sameAs: ["https://2gis.kz/almaty/geo/70000001060263869/76.981999,43.284122"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: PUBLIC_PHONE.display,
+    email: contacts.email,
+    contactType: "sales",
+    areaServed: ["CN", "KZ", "EU"],
+    availableLanguage: ["English", "Chinese", "Russian", "Kazakh"],
+  },
   areaServed: ["China", "Kazakhstan", "Europe"],
 };
+
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((item, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    name: item.name,
+    item: new URL(item.path, Astro.site).toString(),
+  })),
+} : null;
 ---
 
 <meta charset="utf-8" />
@@ -43,24 +95,28 @@ const organizationSchema = {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=hpf-red-dot" />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonicalURL} />
+<link rel="alternate" type="application/rss+xml" title="HPF.kz News RSS" href={new URL(rssPath, Astro.site)} />
 {languageLinks.map(({ lang: code, path }) => <link rel="alternate" hreflang={code === "zh" ? "zh-CN" : code} href={new URL(path, Astro.site)} />)}
 {languageLinks.find((item) => item.lang === "en") && <link rel="alternate" hreflang="x-default" href={new URL(languageLinks.find((item) => item.lang === "en")!.path, Astro.site)} />}
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="robots" content={noindex ? "noindex,follow" : "index,follow,max-image-preview:large"} />
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:site_name" content="HPF.kz" />
 <meta property="og:locale" content={htmlLang === "kk" ? "kk_KZ" : lang === "zh" ? "zh_CN" : lang === "ru" ? "ru_RU" : "en_US"} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.site)} />
+<meta property="og:image" content={imageURL} />
+{ogType === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{ogType === "article" && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={new URL(image, Astro.site)} />
+<meta name="twitter:image" content={imageURL} />
 
 <script type="application/ld+json" set:html={JSON.stringify(organizationSchema).replaceAll("<", "\\u003c")} />
+{breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema).replaceAll("<", "\\u003c")} />}

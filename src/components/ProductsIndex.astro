@@ -7,9 +7,8 @@ interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const text = PRODUCT_COPY[lang];
 const { entries, nextCursor } = await listProducts(lang, Astro.url.searchParams.get("cursor") ?? undefined);
-Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
-<SiteLayout title={`${text.title} | HPF.kz`} description={text.lead} lang={lang} active="services" canonicalPath={productPath(lang)} alternates={(["en", "zh", "ru"] as const).map((code) => ({ lang: code, path: productPath(code) }))}>
+<SiteLayout title={`${text.title} | HPF.kz`} description={text.lead} lang={lang} active="services" noindex={entries.length === 0} canonicalPath={productPath(lang)} alternates={(["en", "zh", "ru"] as const).map((code) => ({ lang: code, path: productPath(code) }))}>
   <section class="products-hero"><img class="hero-photo" src="/images/corporate/hero-routes-tir.webp" alt="" width="1536" height="1024" fetchpriority="high" /><div class="shell"><p class="eyebrow">{text.eyebrow}</p><h1 class="display">{text.title}</h1><p class="lead">{text.lead}</p></div></section>
   <section class="shell products-content">
     {entries.length === 0 ? <p class="empty">{text.empty}</p> : <div class="product-grid">{entries.map(({ data }) => {

@@ -10,14 +10,16 @@ for (const form of document.querySelectorAll<HTMLFormElement>('[data-enquiry-for
   const msg = messages[lang] ?? messages.en;
   let requestId = crypto.randomUUID();
   const cargo = form.querySelector<HTMLTextAreaElement>('textarea[name=cargo]');
-  const product = new URLSearchParams(location.search).get('product')?.trim().slice(0, 200);
+  const params = new URLSearchParams(location.search);
+  const product = params.get('product')?.trim().slice(0, 200);
+  const sourceRef = params.get('from')?.trim().slice(0, 160) || document.referrer.slice(0, 160);
   if (product && cargo && !cargo.value) cargo.value = product;
   form.addEventListener('input', () => { requestId = crypto.randomUUID(); });
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    const payload: Record<string, unknown> = {requestId, lang, consent: data.has('consent')};
+    const payload: Record<string, unknown> = {requestId, lang, consent: data.has('consent'), source: sourceRef};
     for (const key of ['name','email','company','phone','cargo','origin','destination','window','message']) payload[key] = String(data.get(key) ?? '').trim();
     const lines = Array.from(data.entries()).filter(([key]) => key !== 'consent').map(([key, value]) => `${key}: ${String(value).trim() || '—'}`);
     const email = `mailto:${form.dataset.contactEmail}?subject=${encodeURIComponent(form.dataset.mailSubject ?? 'HPF.kz freight enquiry')}&body=${encodeURIComponent(lines.join('\n'))}`;

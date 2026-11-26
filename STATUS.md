@@ -2,6 +2,16 @@
 
 更新：2026-11-26（Asia/Almaty）
 
+## SEO 技术优化与每日自动巡检上线（2026-11-26）
+
+- 生产 Worker 版本 `40100efb-00d4-4583-9d3c-1fb1c087ea42` 已上线（上一回滚版本 `74353978-1cf9-40cf-a179-41fd04a90d23`），`npm run check` 与 `node scripts/seo-daily-audit.mjs --write-report` 全绿（0 严重错误）。
+- 清理模板页：移除 Astro 模板 `/blog/`、`/colors/` 与假 `/rss.xml`；旧地址及冲突的 `/sitemap-index.xml` 返回 `410 Gone` + `X-Robots-Tag: noindex`。
+- 站点地图与规范化：移除 `@astrojs/sitemap`，统一以 `/sitemap.xml` 为唯一入口并过滤 `footer_settings` / `contact_settings` / `header_settings`，补充 `/sitemap-pages.xml`；全站公开页强制无尾斜杠 `301` 跳带尾斜杠，统一 `hreflang="zh-CN"`。
+- 动态 RSS 与 GEO：上线 `/rss.xml`、`/zh/rss.xml`、`/ru/rss.xml`（实时读取 EmDash 已发布新闻）与 `/llms.txt`。
+- 结构化数据、OG 与转化归因：修复 `Organization` + `LocalBusiness`（移除非法 `LogisticsBusiness`，补 BIN/经纬度/多语客服/PNG Logo）；生成 `1200×630` PNG `/og-hpf-kz.png` 与 `/brand/hpf-logo.png`；服务页接入 `FAQPage`；新闻详情接入 `og:type=article`、封面图 OG、`Article` + `BreadcrumbList`、相关文章内链及带 `?from=news:<slug>` 归因的 Farsail 询价 CTA；空产品页与核验中绿通页自动 `noindex`。
+- 匿名边缘缓存与 IndexNow：匿名访客公开 HTML 开启 `public, max-age=60, s-maxage=300, stale-while-revalidate=3600`（已登录管理员与预览保持 `private, no-store`）；接入 IndexNow 公钥验证文件及 Worker 每 15 分钟自动增量推送（首次核心 16 页推送返回 HTTP 202）。
+- 每日巡检脚本：`scripts/seo-daily-audit.mjs`（`npm run seo:audit`），支持落盘 `ops/seo-reports/YYYY-MM-DD.md` 与 `WECOM_SEO_WEBHOOK` 企微推送。
+
 ## 当前正式发布源码（2026-11-26）
 
 - 正式发布分支为 `codex/website-astro-update`，本机发布工作树为 `/Users/arunyao/Developer/HPFKZ/website-production`。GitHub 默认分支 `main` 同步本次升级及首页换图，并保留其新闻分享、文章首屏和 Farsail 询价对接。

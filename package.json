@@ -45,7 +45,8 @@
     "dev": "astro dev",
     "preview": "astro build && wrangler dev",
     "postbuild": "node scripts/restore-legacy-assets.mjs",
-    "check:admin-chinese": "node scripts/verify-admin-chinese.mjs"
+    "check:admin-chinese": "node scripts/verify-admin-chinese.mjs",
+    "seo:audit": "node scripts/seo-daily-audit.mjs"
   },
   "type": "module",
   "engines": {

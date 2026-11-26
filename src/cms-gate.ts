@@ -14,7 +14,25 @@ async function equalSecret(a: string, b: string): Promise<boolean> {
 export const onRequest = defineMiddleware(async (context, next) => {
   if (!context.url.pathname.startsWith("/_emdash/")) {
     const response = await next();
-    if (response.headers.get("Content-Type")?.includes("text/html")) response.headers.set("Cache-Control", "private, no-store");
+    if (response.headers.get("Content-Type")?.includes("text/html")) {
+      const cookie = context.request.headers.get("cookie") ?? "";
+      const isSignedIn = /(?:^|;\s*)(?:emdash[_-]|__Host-emdash|hpf-cms-setup)/i.test(cookie);
+      const isPreview = context.url.searchParams.has("preview") || context.url.searchParams.has("_preview");
+      const isPrivateRoute = context.url.pathname.startsWith("/cms/");
+      const canEdgeCache =
+        (context.request.method === "GET" || context.request.method === "HEAD") &&
+        response.status === 200 &&
+        !isSignedIn &&
+        !isPreview &&
+        !isPrivateRoute;
+
+      if (canEdgeCache) {
+        response.headers.set("Cache-Control", "public, max-age=60, s-maxage=300, stale-while-revalidate=3600");
+        response.headers.set("Vary", "Cookie");
+      } else {
+        response.headers.set("Cache-Control", "private, no-store");
+      }
+    }
     return response;
   }
 

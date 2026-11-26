@@ -9,7 +9,6 @@ const { data } = entry;
 const text = PRODUCT_COPY[lang];
 const price = productPrice(data, lang);
 const highlights = lines(data.highlights);
-Astro.response.headers.set("Cache-Control", "private, no-store");
 ---
 <SiteLayout title={`${data.title} | HPF.kz`} description={data.summary ?? text.lead} lang={lang} active="services" canonicalPath={productPath(lang, data.slug)}>
   <section class="product-hero">
