@@ -20,17 +20,17 @@ const {heroLead,methodLabel,servicesLabel,routeLabel,visualNote}=cms;
 const signalLabels=cms.signals.map(x=>x.label);
 const {localized}=await loadSiteSettings(lang);
 const carouselLabels = {
-  zh: {label: "公路冷藏运输场景", slides: ["公路运输", "口岸白天", "港口夜间"], pause: "暂停轮播", play: "播放轮播"},
-  en: {label: "Refrigerated road transport scenes", slides: ["Road transport", "Border crossing by day", "Port at night"], pause: "Pause slideshow", play: "Play slideshow"},
-  ru: {label: "Рефрижераторные автоперевозки", slides: ["Автоперевозка", "Пограничный пункт днём", "Порт ночью"], pause: "Приостановить слайд-шоу", play: "Включить слайд-шоу"},
+  zh: {label: "公路冷藏运输场景", slides: ["公路运输", "白天的口岸", "暮色中的港口"], pause: "暂停轮播", play: "播放轮播"},
+  en: {label: "Refrigerated road transport scenes", slides: ["Road transport", "Border crossing by day", "Port at dusk"], pause: "Pause slideshow", play: "Play slideshow"},
+  ru: {label: "Рефрижераторные автоперевозки", slides: ["Автоперевозка", "Пограничный пункт днём", "Порт в сумерках"], pause: "Приостановить слайд-шоу", play: "Включить слайд-шоу"},
 }[lang];
-const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/hero-tir-${kind}-wide-20261106.webp`);
+const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/hero-tir-${kind}-wide-20261126-bright.webp`);
 ---
 
 <article class="home">
   <section class="home-hero">
     <div class="hero-visual" aria-hidden="true">
-      {cms.heroImage ? <EmDashImage image={cms.heroImage} alt="" width={1678} height={945} /> : heroSlides.map((src, index) => <img class:list={["hero-slide", {"is-active": index === 0}]} src={src} alt="" width="1672" height="941" fetchpriority={index === 0 ? "high" : "auto"} loading={index === 0 ? "eager" : "lazy"} decoding="async" />)}
+      {cms.heroImage ? <EmDashImage image={cms.heroImage} alt="" width={1678} height={945} /> : heroSlides.map((src, index) => <img class:list={["hero-slide", {"is-active": index === 0}]} src={src} alt="" width="1664" height="936" fetchpriority={index === 0 ? "high" : "auto"} loading={index === 0 ? "eager" : "lazy"} decoding="async" />)}
       <div class="hero-wash"></div>
       <div class="hero-orbit hero-orbit--one"></div>
       <div class="hero-orbit hero-orbit--two"></div>
@@ -76,7 +76,7 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
           </li>
         ))}
       </ol>
-      <div class="promise-line"><p>{page.customs.boundary}</p><a href={pagePath(lang, "services")}>{page.customs.button}<span aria-hidden="true">→</span></a></div>
+      <div class="promise-line"><p>{page.customs.boundary}</p><a href={pagePath(lang, "services") + "#customs"}>{page.customs.button}<span aria-hidden="true">→</span></a></div>
     </div>
   </section>
 
@@ -105,7 +105,7 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
       <header class="service-heading"><h2>{servicesLabel}</h2><p>{page.services.intro}</p></header>
       <div class="service-mosaic">
         {page.services.items.map((item, index) => (
-          <a class:list={[`service-tile service-tile--${index + 1}`]} href={pagePath(lang, "services")}>
+          <a class:list={[`service-tile service-tile--${index + 1}`]} href={pagePath(lang, "services") + "#" + serviceVisuals[index]}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <CardVisual kind={serviceVisuals[index]} />
             <div><h3>{item.title}</h3><p>{item.text}</p></div>
@@ -198,7 +198,9 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
   .hero-visual :global(img) { object-fit: cover; object-position: center 60%; transform: scale(1.035); animation: hero-breathe 18s ease-in-out infinite alternate; }
   .hero-visual :global(.hero-slide) { opacity: 0; transition: opacity 1s ease; }
   .hero-visual :global(.hero-slide.is-active) { opacity: 1; }
-  @media (max-width: 700px) { .hero-visual :global(.hero-slide:nth-child(2)) { object-position: 72% 60%; } }
+  @media (max-width: 700px) {
+    .hero-visual :global(.hero-slide) { object-position: 62% 60%; }
+  }
   .hero-carousel-controls:not([hidden]) { position:absolute; z-index:2; left:50%; bottom:1.2rem; transform:translateX(-50%); display:flex; align-items:center; gap:.15rem; padding:.15rem .4rem; border-radius:999px; background:rgba(7,12,28,.58); }
   .hero-dot, .hero-toggle { display:grid; place-items:center; min-width:2.5rem; min-height:2.5rem; border:0; background:transparent; color:#fff; cursor:pointer; }
   .hero-dot span { display:block; width:1.3rem; height:3px; border-radius:4px; background:rgba(255,255,255,.45); }
@@ -207,6 +209,7 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
   .hero-dot:focus-visible, .hero-toggle:focus-visible { outline:2px solid white; outline-offset:-3px; }
   @media (prefers-reduced-motion: reduce) { .hero-visual :global(.hero-slide) { transition:none; } }
   .hero-wash { background: radial-gradient(circle at 50% 38%, rgba(72,36,190,.12), transparent 32%), linear-gradient(180deg, rgba(7,4,26,.28), rgba(7,4,26,.1) 48%, rgba(7,4,26,.82)); }
+  .hero-visual:has(.hero-slide) .hero-wash { background: linear-gradient(180deg, rgba(5,18,48,.24), rgba(5,18,48,.49) 46%, rgba(5,18,48,.38) 67%, rgba(5,18,48,.15) 81%, rgba(5,18,48,.58)); }
   .hero-visual::after { position: absolute; inset: 0; opacity: .18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E"); content: ""; mix-blend-mode: soft-light; pointer-events: none; }
   .hero-orbit { position: absolute; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; filter: drop-shadow(0 0 24px rgba(101,89,255,.2)); }
   .hero-orbit--one { width: min(74vw, 68rem); aspect-ratio: 2.8 / 1; inset: 30% auto auto 50%; transform: translateX(-50%) rotate(-7deg); }
@@ -337,6 +340,7 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
   @media (max-width: 44rem) {
     .home-hero { min-height: 100dvh; }
     .hero-content { padding-block: calc(var(--header-height) + 2.75rem) 4.5rem; }
+    .home-hero:has(.hero-slide) .hero-content { padding-block-end: calc(4.5rem + clamp(7rem, 22svh, 12rem)); }
     .home-hero h1 { width: 100%; margin-block-start: 2rem; font-size: clamp(2.5rem,10.8vw,3.5rem); line-height: 1.04; }
     .home-hero h1 span { white-space: nowrap; }
     .hero-lead { max-width: 28rem; margin-block-start: 1.75rem; font-size: .98rem; line-height: 1.65; }
@@ -359,6 +363,11 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
     .fact-mosaic article { min-height: 15rem; }
   }
   @media (prefers-reduced-motion: reduce) { .hero-visual :global(img) { animation: none; } }
+  @media (max-width: 44rem) {
+    .home-hero:has(.hero-slide) h1 { margin-block-start: 1.4rem; }
+    .home-hero:has(.hero-slide) .hero-lead { margin-block-start: 1.1rem; }
+    .home-hero:has(.hero-slide) .hero-actions { margin-block-start: 1.25rem; gap: .65rem; }
+  }
 </style>
 
 <script src="/green-index.js" is:inline defer></script>
