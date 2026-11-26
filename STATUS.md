@@ -1,6 +1,14 @@
 # HPF.kz 官网状态
 
-更新：2026-10-26（Asia/Almaty）
+更新：2026-11-26（Asia/Almaty）
+
+## 当前正式发布源码（2026-11-26）
+
+- 正式发布分支为 `codex/website-astro-update`，本机发布工作树为 `/Users/arunyao/Developer/HPFKZ/website-production`。后续从该分支的最新已同步提交构建。GitHub 默认分支 `main` 有独立改动。
+- 当前生产 Worker 为 `5d99e129-a956-4375-a94d-6c94280d4226`。正式发布分支已收录其 Astro 7.4.13、EmDash 1.6.0 升级源码、依赖锁和迁移清单，以及三语首页的三张 `hero-tir-*-wide-20261126-v2.webp`、手机裁切适配和原有首页 CSS 兼容地址。EmDash 升级的七项生产数据库迁移已在此前完成。
+- 用锁文件运行 `npm ci`，然后运行 `npm run check` 构建、检查类型和预演部署。按发布流程切流后，回查三语首页图片、轮播、新闻和统计脚本。
+
+## 初始上线记录（2026-10-26）
 
 - 官网源码在 `/Users/arunyao/Developer/HPFKZ/website`，独立仓库 `arunyaokz/astro-hpf-kz`。
 - 生产基准源码来自 `origin/codex/services-page` 的 `abf88a5`；`main` 旧于生产，不能直接覆盖。

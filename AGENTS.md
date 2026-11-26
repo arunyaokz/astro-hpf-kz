@@ -12,6 +12,8 @@
 **语言**：中文 / 英文 / 俄文（三语并行）  
 **部署**：Cloudflare Workers（wrangler.json配置）
 
+正式发布源码位于 `origin/codex/website-astro-update`。本机发布工作树为 `/Users/arunyao/Developer/HPFKZ/website-production`。发布前核对当前生产版本并运行 `npm run check`，生产记录见 `STATUS.md`。
+
 ---
 
 ## 关键文件映射

@@ -24,13 +24,13 @@ const carouselLabels = {
   en: {label: "Refrigerated road transport scenes", slides: ["Road transport", "Border crossing by day", "Port at night"], pause: "Pause slideshow", play: "Play slideshow"},
   ru: {label: "Рефрижераторные автоперевозки", slides: ["Автоперевозка", "Пограничный пункт днём", "Порт ночью"], pause: "Приостановить слайд-шоу", play: "Включить слайд-шоу"},
 }[lang];
-const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/hero-tir-${kind}-wide-20261106.webp`);
+const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/hero-tir-${kind}-wide-20261126-v2.webp`);
 ---
 
 <article class="home">
   <section class="home-hero">
     <div class="hero-visual" aria-hidden="true">
-      {cms.heroImage ? <EmDashImage image={cms.heroImage} alt="" width={1678} height={945} /> : heroSlides.map((src, index) => <img class:list={["hero-slide", {"is-active": index === 0}]} src={src} alt="" width="1672" height="941" fetchpriority={index === 0 ? "high" : "auto"} loading={index === 0 ? "eager" : "lazy"} decoding="async" />)}
+      {cms.heroImage ? <EmDashImage image={cms.heroImage} alt="" width={1678} height={945} /> : heroSlides.map((src, index) => <img class:list={["hero-slide", {"is-active": index === 0}]} src={src} alt="" width="1664" height="936" fetchpriority={index === 0 ? "high" : "auto"} loading={index === 0 ? "eager" : "lazy"} decoding="async" />)}
       <div class="hero-wash"></div>
       <div class="hero-orbit hero-orbit--one"></div>
       <div class="hero-orbit hero-orbit--two"></div>
@@ -198,7 +198,11 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
   .hero-visual :global(img) { object-fit: cover; object-position: center 60%; transform: scale(1.035); animation: hero-breathe 18s ease-in-out infinite alternate; }
   .hero-visual :global(.hero-slide) { opacity: 0; transition: opacity 1s ease; }
   .hero-visual :global(.hero-slide.is-active) { opacity: 1; }
-  @media (max-width: 700px) { .hero-visual :global(.hero-slide:nth-child(2)) { object-position: 72% 60%; } }
+  @media (max-width: 700px) {
+    .hero-visual :global(.hero-slide:nth-child(1)) { object-position: 72% 60%; }
+    .hero-visual :global(.hero-slide:nth-child(2)) { object-position: 63% 60%; }
+    .hero-visual :global(.hero-slide:nth-child(3)) { object-position: 61% 60%; }
+  }
   .hero-carousel-controls:not([hidden]) { position:absolute; z-index:2; left:50%; bottom:1.2rem; transform:translateX(-50%); display:flex; align-items:center; gap:.15rem; padding:.15rem .4rem; border-radius:999px; background:rgba(7,12,28,.58); }
   .hero-dot, .hero-toggle { display:grid; place-items:center; min-width:2.5rem; min-height:2.5rem; border:0; background:transparent; color:#fff; cursor:pointer; }
   .hero-dot span { display:block; width:1.3rem; height:3px; border-radius:4px; background:rgba(255,255,255,.45); }
@@ -337,6 +341,7 @@ const heroSlides = ["road", "border", "port"].map(kind => `/images/corporate/her
   @media (max-width: 44rem) {
     .home-hero { min-height: 100dvh; }
     .hero-content { padding-block: calc(var(--header-height) + 2.75rem) 4.5rem; }
+    .home-hero:has(.hero-slide) .hero-content { padding-block-end: calc(4.5rem + clamp(7rem, 22svh, 12rem)); }
     .home-hero h1 { width: 100%; margin-block-start: 2rem; font-size: clamp(2.5rem,10.8vw,3.5rem); line-height: 1.04; }
     .home-hero h1 span { white-space: nowrap; }
     .hero-lead { max-width: 28rem; margin-block-start: 1.75rem; font-size: .98rem; line-height: 1.65; }
