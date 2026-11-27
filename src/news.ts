@@ -1,4 +1,5 @@
 import { getEmDashCollection, getEmDashEntry, type ImageValue, type PortableTextBlock } from "emdash";
+import { env } from "cloudflare:workers";
 import type { Lang } from "./site-v2";
 
 export type NewsLang = Lang | "kk";
@@ -20,12 +21,18 @@ export interface NewsData {
   status: string;
 }
 
+export interface NewsSeoOverride {
+  seoTitle?: string;
+  seoDescription?: string;
+  noIndex?: boolean;
+}
+
 export const newsPath = (lang: NewsLang, slug?: string) =>
   `${lang === "en" ? "" : `/${lang}`}/news/${slug ? `${encodeURIComponent(slug)}/` : ""}`;
 
-export async function listNews(lang: NewsLang, cursor?: string) {
+export async function listNews(lang: NewsLang, cursor?: string, limit = 20) {
   const result = await getEmDashCollection<"news", NewsData>("news", {
-    locale: lang, status: "published", limit: 20, cursor,
+    locale: lang, status: "published", limit, cursor,
     orderBy: { published_at: "desc" },
   });
   if (result.error) throw result.error;
@@ -36,6 +43,47 @@ export async function loadNewsEntry(lang: NewsLang, slug: string) {
   const { entry, error, isPreview } = await getEmDashEntry<"news", NewsData>("news", slug, { locale: lang });
   if (error) throw error;
   return entry && (isPreview || (entry.data.status === "published" && entry.data.locale === lang)) ? entry : null;
+}
+
+export async function resolveMediaPath(mediaId?: string): Promise<string | undefined> {
+  if (!mediaId) return undefined;
+  try {
+    const db = (env as { DB?: D1Database } | undefined)?.DB;
+    if (!db) return undefined;
+    const row = await db
+      .prepare(`SELECT storage_key FROM media WHERE id = ? LIMIT 1`)
+      .bind(mediaId)
+      .first<{ storage_key?: string | null }>();
+    const key = row?.storage_key?.trim();
+    return key ? `/_emdash/api/media/file/${encodeURIComponent(key)}` : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+export async function loadNewsSeo(contentId: string): Promise<NewsSeoOverride> {
+  if (!contentId) return {};
+  try {
+    const db = (env as { DB?: D1Database } | undefined)?.DB;
+    if (!db) return {};
+    const row = await db
+      .prepare(
+        `SELECT seo_title, seo_description, seo_no_index
+         FROM _emdash_seo
+         WHERE collection = 'news' AND content_id = ?
+         LIMIT 1`
+      )
+      .bind(contentId)
+      .first<{ seo_title?: string | null; seo_description?: string | null; seo_no_index?: number | null }>();
+    if (!row) return {};
+    return {
+      seoTitle: row.seo_title?.trim() || undefined,
+      seoDescription: row.seo_description?.trim() || undefined,
+      noIndex: row.seo_no_index === 1,
+    };
+  } catch {
+    return {};
+  }
 }
 
 export const NEWS_COPY = {

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * HPF.kz Daily SEO Health Audit & Chinese Morning Briefing Generator
+ * HPF.kz Daily SEO Health Audit, Edge Cache Warmer & Chinese Morning Briefing
  * Usage:
- *   node scripts/seo-daily-audit.mjs [--base=https://hpf.kz] [--write-report]
+ *   node scripts/seo-daily-audit.mjs [--base=https://hpf.kz] [--warm-cache] [--write-report]
  * Optional env:
  *   WECOM_SEO_WEBHOOK=https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=...
  */
@@ -18,6 +18,7 @@ const args = Object.fromEntries(
 
 const BASE = String(args.base || "https://hpf.kz").replace(/\/$/, "");
 const WRITE_REPORT = Boolean(args["write-report"]);
+const WARM_CACHE = Boolean(args["warm-cache"]);
 const INDEXNOW_KEY = "hpfkz8d4e9a2c1b6f3057e4a9c2d8b1f6a3e0";
 
 const CORE_PAGES = [
@@ -33,15 +34,24 @@ const RETIRED_PAGES = [
   "/blog/first-post/",
   "/colors/",
   "/sitemap-index.xml",
+  "/news/insights/legacy-check/",
 ];
 
 const SLASH_REDIRECTS = ["/zh", "/ru", "/about", "/services", "/routes", "/news"];
 
+const LEGACY_REDIRECTS = [
+  { from: "/about-us", status: 301, endsWith: "/about/" },
+  { from: "/contacts/", status: 301, endsWith: "/about/#contact" },
+  { from: "/kk/", status: 302, endsWith: "/kk/news/" },
+];
+
+const SCANNER_PROBES = ["/.git/config", "/wp-login.php", "/.env"];
+
 async function timedFetch(pathname, init = {}) {
-  const url = `${BASE}${pathname}`;
+  const url = pathname.startsWith("http") ? pathname : `${BASE}${pathname}`;
   const start = performance.now();
   const res = await fetch(url, { redirect: "manual", ...init });
-  const text = await res.text();
+  const text = init.method === "HEAD" ? "" : await res.text();
   const ms = Math.round(performance.now() - start);
   return { url, pathname, status: res.status, headers: res.headers, text, ms };
 }
@@ -74,6 +84,13 @@ function warn(scope, detail) {
   warnings.push({ scope, detail });
 }
 
+// 0. Optional edge cache warm-up (eliminates cold-start TTFB spikes on core pages)
+if (WARM_CACHE) {
+  await Promise.allSettled(
+    CORE_PAGES.map((p) => fetch(`${BASE}${p}`, { redirect: "follow" }).then((r) => r.arrayBuffer())),
+  );
+}
+
 // 1. Core pages audit
 for (const p of CORE_PAGES) {
   const res = await timedFetch(p);
@@ -104,13 +121,13 @@ for (const p of CORE_PAGES) {
   }
 }
 
-// 2. Retired starter routes must return 410
+// 2. Retired starter & broken legacy routes must return 410
 for (const p of RETIRED_PAGES) {
   const res = await timedFetch(p);
   if (res.status !== 410) fail(p, `Expected 410 Gone, got HTTP ${res.status}`);
 }
 
-// 3. Trailing-slash 301 canonicalization
+// 3. Trailing-slash 301 canonicalization & legacy redirects
 for (const p of SLASH_REDIRECTS) {
   const res = await timedFetch(p);
   const loc = res.headers.get("location") || "";
@@ -118,13 +135,36 @@ for (const p of SLASH_REDIRECTS) {
     fail(p, `Expected 301 -> ${p}/, got HTTP ${res.status} (${loc})`);
   }
 }
+for (const rule of LEGACY_REDIRECTS) {
+  const res = await timedFetch(rule.from);
+  const loc = res.headers.get("location") || "";
+  if (res.status !== rule.status || !loc.endsWith(rule.endsWith)) {
+    fail(rule.from, `Expected ${rule.status} -> *${rule.endsWith}, got HTTP ${res.status} (${loc})`);
+  }
+}
 
-// 4. Sitemaps, RSS, llms.txt, IndexNow key, OG image asset
+// 4. Scanner probes blocked cleanly at edge with X-Robots-Tag: noindex
+for (const p of SCANNER_PROBES) {
+  const res = await timedFetch(p);
+  const xRobots = res.headers.get("x-robots-tag") || "";
+  if (res.status !== 404 || !xRobots.includes("noindex")) {
+    warn(p, `Expected edge 404 + noindex, got HTTP ${res.status} (X-Robots-Tag: ${xRobots || "none"})`);
+  }
+}
+
+// 5. robots.txt (must allow public media images + include Yandex Host & Sitemap)
 const robots = await timedFetch("/robots.txt");
 if (robots.status !== 200 || !robots.text.includes("/sitemap.xml")) {
   fail("/robots.txt", "Missing Sitemap directive or non-200");
 }
+if (!robots.text.includes("Allow: /_emdash/api/media/file/")) {
+  fail("/robots.txt", "Missing Allow: /_emdash/api/media/file/ (blocks news cover images!)");
+}
+if (!/^Host:\s*https?:\/\//im.test(robots.text)) {
+  warn("/robots.txt", "Missing Host directive for Yandex");
+}
 
+// 6. Sitemaps, RSS, dynamic llms.txt, IndexNow key, OG image asset
 const sitemapIndex = await timedFetch("/sitemap.xml");
 if (sitemapIndex.status !== 200) fail("/sitemap.xml", `HTTP ${sitemapIndex.status}`);
 for (const forbidden of ["footer_settings", "contact_settings", "header_settings"]) {
@@ -147,15 +187,19 @@ for (const rssPath of ["/rss.xml", "/zh/rss.xml", "/ru/rss.xml"]) {
 }
 
 const llms = await timedFetch("/llms.txt");
-if (llms.status !== 200 || !llms.text.includes("241040015643")) fail("/llms.txt", "Missing or incomplete /llms.txt");
+if (llms.status !== 200 || !llms.text.includes("241040015643")) {
+  fail("/llms.txt", "Missing or incomplete /llms.txt");
+} else if (!llms.text.includes("## Latest Corridor Insights")) {
+  warn("/llms.txt", "Static /llms.txt detected (missing dynamic Latest Corridor Insights)");
+}
 
 const keyFile = await timedFetch(`/${INDEXNOW_KEY}.txt`);
 if (keyFile.status !== 200 || keyFile.text.trim() !== INDEXNOW_KEY) fail(`/${INDEXNOW_KEY}.txt`, "IndexNow key verification failed");
 
-const ogAsset = await timedFetch("/og-hpf-kz.png");
+const ogAsset = await timedFetch("/og-hpf-kz.png", { method: "HEAD" });
 if (ogAsset.status !== 200) fail("/og-hpf-kz.png", `HTTP ${ogAsset.status}`);
 
-// 5. Sample live news articles (up to 4 across locales)
+// 7. Sample live news articles (up to 4 across locales) + verify og:image accessibility
 const sampleUrls = [];
 for (const prefix of ["/news/", "/zh/news/", "/ru/news/", "/kk/news/"]) {
   const found = newsLocs.find((u) => new URL(u).pathname.startsWith(prefix));
@@ -171,13 +215,18 @@ for (const p of sampleUrls) {
   const ogImg = extractAttr(res.text, /<meta property="og:image" content="([^"]+)"/i);
   const schemas = extractJsonLd(res.text);
   if (ogType !== "article") fail(p, `Expected og:type=article, got ${ogType}`);
-  if (!ogImg || ogImg.endsWith(".svg")) fail(p, `Invalid article og:image: ${ogImg}`);
+  if (!ogImg || ogImg.endsWith(".svg")) {
+    fail(p, `Invalid article og:image: ${ogImg}`);
+  } else {
+    const imgCheck = await timedFetch(ogImg, { method: "HEAD" });
+    if (imgCheck.status !== 200) fail(p, `Article og:image unreachable (HTTP ${imgCheck.status}): ${ogImg}`);
+  }
   if (!schemas.some((s) => s["@type"] === "Article")) fail(p, "Missing Article JSON-LD");
   if (!schemas.some((s) => s["@type"] === "BreadcrumbList")) fail(p, "Missing BreadcrumbList JSON-LD");
   if (!res.text.includes("?from=news")) warn(p, "Missing attributed Farsail CTA link");
 }
 
-// 6. Pending/thin pages noindex check
+// 8. Pending/thin pages noindex check
 for (const p of ["/green-channel/", "/zh/green-channel/", "/ru/green-channel/"]) {
   const res = await timedFetch(p);
   if (res.status === 200 && !/noindex/i.test(res.text)) warn(p, "Pending green-channel page missing noindex");
@@ -191,7 +240,7 @@ const statusLabel = failures.length === 0 ? (warnings.length === 0 ? "🟢 健�
 const reportMd = [
   `# HPF.kz 每日 SEO 巡检晨报（${almatyDate}）`,
   "",
-  `- **站点**：${BASE}`,
+  `- **站点**：${BASE}${WARM_CACHE ? "（已预热边缘缓存）" : ""}`,
   `- **健康状态**：${statusLabel}`,
   `- **已收录新闻条目数（Sitemap）**：${newsLocs.length} 条`,
   `- **核心 16 页平均响应时间**：${avgMs} ms`,
@@ -218,7 +267,7 @@ if (WRITE_REPORT) {
   await fs.writeFile(path.join(dir, `${almatyDate}.md`), reportMd, "utf8");
   await fs.writeFile(
     path.join(dir, "latest.json"),
-    JSON.stringify({ date: almatyDate, base: BASE, status: statusLabel, newsCount: newsLocs.length, avgMs, failures, warnings, pageMetrics }, null, 2),
+    JSON.stringify({ date: almatyDate, base: BASE, warmCache: WARM_CACHE, status: statusLabel, newsCount: newsLocs.length, avgMs, failures, warnings, pageMetrics }, null, 2),
     "utf8",
   );
   console.log(`[seo:audit] Saved ops/seo-reports/${almatyDate}.md`);

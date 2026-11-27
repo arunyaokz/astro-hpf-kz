@@ -1,6 +1,21 @@
 # HPF.kz 官网状态
 
-更新：2026-11-26（Asia/Almaty）
+更新：2026-11-27（Asia/Almaty）
+
+## SEO v2.0 策略升级与自动运营上线（2026-11-27）
+
+- 生产 Worker 版本 `1cdf08ae-ef6b-41a3-89b6-8d375a92716f` 已上线（回滚版本 `40100efb-00d4-4583-9d3c-1fb1c087ea42`，打包 gzip `3020.49 KiB`，启动 `22 ms`）。`npm run check` 与 `node scripts/seo-daily-audit.mjs --warm-cache --write-report` 全绿（**🟢 健康：0 严重错误、0 提醒**，核心 16 页平均耗时 `358 ms`，Sitemap 收录新闻 `157` 条）。
+- **P0 修复**：
+  - `/robots.txt` 显式放行 `Allow: /_emdash/api/media/file/` 并添加 Yandex `Host: https://hpf.kz`，解除全站新闻封面图与 `og:image` 抓取封锁。
+  - 修复所有新闻页 `og:image` / `Article.image` 404 漏洞：`src/news.ts` 新增 `resolveMediaPath` 查询 D1 `media.storage_key` 输出真实可访问路径（此前误拼媒体数据库 `id`）。
+  - 修复 IndexNow HTTP 429 死循环：改为每小时 `:05` 增量推送（单批限 10 条），按 `yandex.com` → `bing.com` → `api.indexnow.org` 多端点容灾，并落盘 `hpf_seo_indexnow_state` 指数退避（1h→24h），同步覆盖新闻与运输产品。
+- **元数据、集群内链与 GEO**：
+  - `NewsArticle.astro` 接通 `_emdash_seo` 自定义 `seo_title` / `seo_description` / `seo_no_index`；新建 `src/seo/clusters.ts` 按 5 大商业支柱集群匹配相关阅读并带 `?from=news:<slug>:<cluster>` 归因。
+  - 上线动态 `/llms.txt`（`src/pages/llms.txt.ts`，移除静态 `public/llms.txt`），实时输出已发布产品与最新三语指南。
+- **边缘防护与转化归因**：
+  - `worker-seo.mjs` 边缘拦截 `.git`/`.env`/`wp-*` 等扫描器探针（返回 404 + `noindex`，不写入 D1 `_emdash_404_log`）；`/about-us`、`/contacts/` 等真实旧路 301；`/kk/` 临时 302 至 `/kk/news/`；`/news/insights/*` 归 410。
+  - 升级 `/_hpf/contact-event` 与 `hpf-contact-analytics.js`：向后兼容 `hpf_contact_clicks`，新增零 PII 细分表 `hpf_contact_clicks_detail(day, event, lang, path, source_ref, count)`。
+- **自动化运营**：新增 `scripts/seo-weekly-digest.mjs`（`npm run seo:weekly`，已产出首份 [weekly-2026-W48.md](ops/seo-reports/weekly-2026-W48.md)）与 `.github/workflows/seo-ops.yml`（每日 08:30 预热+晨报、每周一 09:00 周报）；完整策略与方案见 `ops/SEO策略与自动运营方案-20261127.md`。
 
 ## SEO 技术优化与每日自动巡检上线（2026-11-26）
 

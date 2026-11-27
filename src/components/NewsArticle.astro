@@ -2,7 +2,8 @@
 import { getTranslations, type ContentEntry } from "emdash";
 import { PortableText, Image as EmDashImage } from "emdash/ui";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { listNews, newsPath, newsLabel, sourceUrls, NEWS_COPY, type NewsData } from "../news";
+import { listNews, loadNewsSeo, resolveMediaPath, newsPath, newsLabel, sourceUrls, NEWS_COPY, type NewsData } from "../news";
+import { classifyNewsCluster, pickRelatedClusterNews } from "../seo/clusters";
 import { LANGS, UI, pagePath, type Lang } from "../site-v2";
 type NewsLang = Lang | "kk";
 interface Props { lang: NewsLang; entry: ContentEntry<NewsData>; }
@@ -18,16 +19,28 @@ const hasEditorialNote = /^\*?(?:资料核验截至|Sources checked|Источн
 if (hasEditorialNote && lastText.startsWith("*") && lastText.endsWith("*") && lastChildren.length === 1 && typeof lastChildren[0].text === "string") {
   lastChildren[0].text = lastChildren[0].text.replace(/^\*/, "").replace(/\*$/, "");
 }
-const { translations } = await getTranslations("news", entry.data.id);
+const heroRef = data.hero_image as { id?: string; src?: string; url?: string; storage_key?: string } | undefined;
+const directCover = heroRef?.src || heroRef?.url || (heroRef?.storage_key ? `/_emdash/api/media/file/${encodeURIComponent(heroRef.storage_key)}` : undefined);
+
+const [{ translations }, { entries: allEntries }, seoOverride, resolvedCover] = await Promise.all([
+  getTranslations("news", entry.data.id),
+  listNews(lang, undefined, 60),
+  loadNewsSeo(entry.data.id),
+  directCover ? Promise.resolve(directCover) : resolveMediaPath(heroRef?.id),
+]);
 const alternates = translations
   .filter((item) => item.status === "published" && item.slug && (LANGS as readonly string[]).concat("kk").includes(item.locale))
   .map((item) => ({ lang: item.locale as NewsLang, path: newsPath(item.locale as Lang, item.slug!) }));
 
-const { entries: recentEntries } = await listNews(lang);
-const related = recentEntries.filter((item) => item.data.slug !== data.slug).slice(0, 3);
+const cluster = classifyNewsCluster(data.slug, data.category);
+const related = pickRelatedClusterNews(entry, allEntries, 3);
 
-const heroRef = data.hero_image as { id?: string; src?: string; url?: string } | undefined;
-const coverPath = heroRef?.src || heroRef?.url || (heroRef?.id ? `/_emdash/api/media/file/${heroRef.id}` : undefined);
+const rawSeoTitle = seoOverride.seoTitle || data.title;
+const pageTitle = /HPF\.kz/i.test(rawSeoTitle) ? rawSeoTitle : `${rawSeoTitle} | HPF.kz`;
+const pageDescription = seoOverride.seoDescription || data.description;
+const pageNoIndex = Boolean(seoOverride.noIndex);
+
+const coverPath = resolvedCover;
 const coverAbsolute = coverPath ? new URL(coverPath, Astro.site).toString() : new URL("/og-hpf-kz.png", Astro.site).toString();
 
 const published = data.publishedAt ? new Date(data.publishedAt) : null;
@@ -38,7 +51,7 @@ const modifiedIso = updated && !Number.isNaN(updated.getTime()) ? updated.toISOS
 
 const siteLang: Lang = lang === "kk" ? "ru" : lang;
 const contactPrefix = siteLang === "en" ? "" : `/${siteLang}`;
-const inquiryHref = `${contactPrefix}/about/?from=${encodeURIComponent(`news:${data.slug}`)}#contact`;
+const inquiryHref = `${contactPrefix}/about/?from=${encodeURIComponent(`news:${data.slug}:${cluster}`)}#contact`;
 
 const ctaCopy = {
   zh: {
@@ -89,7 +102,7 @@ const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: data.title,
-  description: data.description,
+  description: pageDescription,
   image: [coverAbsolute],
   mainEntityOfPage: new URL(newsPath(lang, data.slug), Astro.site).toString(),
   inLanguage: lang === "zh" ? "zh-CN" : lang,
@@ -108,8 +121,8 @@ const articleSchema = {
 };
 ---
 <SiteLayout
-  title={`${data.title} | HPF.kz`}
-  description={data.description}
+  title={pageTitle}
+  description={pageDescription}
   lang={siteLang}
   htmlLang={lang}
   active="news"
@@ -117,6 +130,7 @@ const articleSchema = {
   ogType="article"
   publishedTime={publishedIso}
   modifiedTime={modifiedIso}
+  noindex={pageNoIndex}
   canonicalPath={newsPath(lang, data.slug)}
   alternates={alternates}
   breadcrumbs={breadcrumbs}
